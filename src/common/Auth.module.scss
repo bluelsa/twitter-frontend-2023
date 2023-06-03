@@ -53,7 +53,7 @@
           line-height: 36px;
           //增加font-size
           font-size:26px;
-          color: #b5b5be;
+ //         color: #b5b5be;
           margin: 0px 10.55px 4px 10.55px;
 
           // placeholder樣式未更新 記得好像要重置才能編輯
@@ -84,9 +84,7 @@
     &.hover {
       cursor: pointer;
     }
-   
-    
-    
+     
   }
  //未完成 adminLink & loginLink 靠右對齊樣式
  //增加subLogin 將 links  包起來。設 flex改變位置
