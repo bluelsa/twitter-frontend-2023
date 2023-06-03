@@ -50,14 +50,17 @@
           border: none;
           background-color: #f5f8fa;
           align-items: center;
-          line-height: 26px;
+          line-height: 36px;
+          //增加font-size
+          font-size:26px;
+          color: #b5b5be;
           margin: 0px 10.55px 4px 10.55px;
 
-          // placeholder樣式未更新
-          ::placeholder {
-            font-size: 30px;
-            color: #b5b5be;
-          }
+          // placeholder樣式未更新 記得好像要重置才能編輯
+        //    ::placeholder{
+          //  font-size: 30px;
+          //color: #b5b5be;
+         // }
         }
       }
     }
@@ -66,7 +69,7 @@
   .button {
     width: 356px;
     height: 46px;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 400;
     border-radius: 50px;
     background-color: var(--major);
@@ -81,10 +84,30 @@
     &.hover {
       cursor: pointer;
     }
-    //未完成 adminLink & loginLink 靠右對齊樣式
-    .linkText {
-      margin: 0 12px 0 12px;
-      color: var(--primary);
-    }
+   
+    
+    
   }
+ //未完成 adminLink & loginLink 靠右對齊樣式
+ //增加subLogin 將 links  包起來。設 flex改變位置
+  .subLogin {
+     width: 356px;
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-end;
+     
+    .loginLink {
+      display: flex;
+      justify-content: center;
+
+      .linkText {
+          margin: 0 12px 0 12px;
+          color: var(--primary);
+          font-size: 24px;
+        }
+  }
+  }
+  
+
 }
+
