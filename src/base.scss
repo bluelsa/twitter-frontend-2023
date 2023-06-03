@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+// :root {
+//   --major: #ff6600;
+//   --primary: #0062ff;
+//   --secondary: #6c757d;
+//   --success: #3dd598;
+//   --warning: #ffc542;
+//   --error: #fc5a5a;
+// }
+
+html,
+body {
+  background-color: #fff;
+  font-family: 'Noto Sans TC';
+  --major: #ff6600;
+  --primary: #0062ff;
+  --secondary: #6c757d;
+  --success: #3dd598;
+  --warning: #ffc542;
+  --error: #fc5a5a;
+}

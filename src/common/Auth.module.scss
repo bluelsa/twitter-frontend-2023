@@ -1,0 +1,90 @@
+@import "../base.scss";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 69px;
+
+  .logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+  }
+
+  h1 {
+    margin: 19px 0 0 0;
+    font-size: 29px;
+    line-height: 26px;
+    font-weight: 700;
+  }
+
+  .inputGroup {
+    margin: 40px 0 8px 0;
+
+    .inputContainer {
+      width: 356px;
+      height: 54px;
+      margin-bottom: 32px;
+
+      .input {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: #f5f8fa;
+        border-radius: 2px;
+        border-bottom: 2px solid #657786;
+
+        div {
+          font-size: 14;
+          line-height: 22px;
+          color: #696974;
+          text-align: start;
+          margin: 2px 10.55px 0px 10.55px;
+        }
+
+        input {
+          outline: none;
+          border: none;
+          background-color: #f5f8fa;
+          align-items: center;
+          line-height: 26px;
+          margin: 0px 10.55px 4px 10.55px;
+
+          // placeholder樣式未更新
+          ::placeholder {
+            font-size: 30px;
+            color: #b5b5be;
+          }
+        }
+      }
+    }
+  }
+
+  .button {
+    width: 356px;
+    height: 46px;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 50px;
+    background-color: var(--major);
+    border: none;
+
+    color: white;
+    min-width: 300px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    padding: 8px 24px;
+
+    &.hover {
+      cursor: pointer;
+    }
+    //未完成 adminLink & loginLink 靠右對齊樣式
+    .linkText {
+      margin: 0 12px 0 12px;
+      color: var(--primary);
+    }
+  }
+}
