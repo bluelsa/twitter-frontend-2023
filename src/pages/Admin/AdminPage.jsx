@@ -1,8 +1,11 @@
 import styles from '../../common/Auth.module.scss'
 import { ReactComponent as Logo } from "../../assets/image/ac-logo.svg";
 import { Link } from "react-router-dom";
+import { useState } from 'react'
 
 const AdminPage = () => {
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null); 
 
   const handleClick = () => {
     console.log("click login");
@@ -18,14 +21,24 @@ const AdminPage = () => {
         <div className={styles.inputContainer}>
           <label className={styles.input}>
             <div>帳號</div>
-            <input type="text" value="" placeholder="請輸入帳號" />
+            <input
+              type="text"
+              value={username}
+              placeholder="請輸入帳號"
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </label>
         </div>
 
         <div className={styles.inputContainer}>
           <label className={styles.input}>
             <div>密碼</div>
-            <input type="password" value="" placeholder="請輸入密碼" />
+            <input
+              type="password"
+              value={password}
+              placeholder="請輸入密碼"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </label>
         </div>
       </div>
@@ -34,7 +47,7 @@ const AdminPage = () => {
         登入
       </button>
 
-      <div className={styles.adminLink}>
+      <div className={styles.loginLink}>
         <Link to="/login">
           <span className={styles.linkText}>前台登入</span>
         </Link>
