@@ -36,13 +36,14 @@
         background-color: #f5f8fa;
         border-radius: 2px;
         border-bottom: 2px solid #657786;
+        padding: 2px 10.55px 4px 10.55px;
 
         div {
-          font-size: 14;
+          font-size: 14px;
           line-height: 22px;
           color: #696974;
-          text-align: start;
-          margin: 2px 10.55px 0px 10.55px;
+          // text-align: start;
+          // margin: 2px 10.55px 0px 10.55px;
         }
 
         input {
@@ -50,14 +51,9 @@
           border: none;
           background-color: #f5f8fa;
           align-items: center;
-          line-height: 26px;
-          margin: 0px 10.55px 4px 10.55px;
-
-          // placeholder樣式未更新
-          ::placeholder {
-            font-size: 30px;
-            color: #b5b5be;
-          }
+          // line-height: 26px;
+          font-size: 16px;
+          // margin: 0px 10.55px 4px 10.55px;
         }
       }
     }
@@ -81,7 +77,16 @@
     &.hover {
       cursor: pointer;
     }
-    //未完成 adminLink & loginLink 靠右對齊樣式
+  }
+  .linkText {
+      margin: 0 12px 0 12px;
+      color: var(--primary);
+    }
+
+  .loginLink {
+    width: 356px;
+    height: 46px;
+    text-align: end;
     .linkText {
       margin: 0 12px 0 12px;
       color: var(--primary);
