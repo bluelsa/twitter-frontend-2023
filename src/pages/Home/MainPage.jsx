@@ -2,6 +2,7 @@ import styles from "./HomeStyle.module.scss";
 import NavBar from "./NavBar";
 import Popular from "./Popular";
 import Twits from "./Twits";
+import TweetModal from "./TweetModal";
 
 const MainPage = () => {
   return (
@@ -11,6 +12,7 @@ const MainPage = () => {
         <Twits />
         <Popular />
       </div>
+      <TweetModal />
     </div>
   );
 };
