@@ -40,6 +40,7 @@ const LoginPage = () => {
               placeholder="請輸入密碼"
               onChange={(e) => setPassword(e.target.value)}
             />
+
           </label>
         </div>
       </div>
@@ -47,16 +48,18 @@ const LoginPage = () => {
       <button className={styles.button} onClick={handleClick}>
         登入
       </button>
-
-      <div className={styles.loginLink}>
-        <Link to="/signup">
+      {/* <div className={styles.subLogin}> */}
+        <div className={styles.loginLink}>   
+         <Link to="/signup">
           <span className={styles.linkText}>註冊</span>
-        </Link>
-        <span>&bull;</span>
-        <Link to="/admin">
+        </Link>       
+        <span>&bull;</span>   
+          <Link to="/admin">
           <span className={styles.linkText}>後台登入</span>
-        </Link>
+        </Link>   
       </div>
+      {/* </div> */}
+      
     </div>
   );
 };
