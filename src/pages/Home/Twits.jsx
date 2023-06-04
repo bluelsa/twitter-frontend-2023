@@ -1,6 +1,6 @@
 import styles from "./HomeStyle.module.scss"
 import TwitForm from "./TwitForm";
-import TweetModal from "./TweetModal";
+
 function Twits() {
   return (
     <div className={`${styles.mainBackground} ${styles.scrollbar}`}>

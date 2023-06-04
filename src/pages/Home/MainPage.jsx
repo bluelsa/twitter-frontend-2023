@@ -12,7 +12,7 @@ const MainPage = () => {
         <Twits />
         <Popular />
       </div>
-      <TweetModal />
+      <TweetModal id='tweetModal'/>
     </div>
   );
 };
