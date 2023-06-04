@@ -66,7 +66,6 @@
     border-radius: 50px;
     background-color: var(--major);
     border: none;
-
     color: white;
     min-width: 300px;
     font-weight: 700;
@@ -91,28 +90,7 @@
       margin: 0 12px 0 12px;
       color: var(--primary);
     }
-
-  }
- //未完成 adminLink & loginLink 靠右對齊樣式
- //增加subLogin 將 links  包起來。設 flex改變位置
-  // .subLogin {
-  //    width: 356px;
-  //    display: flex;
-  //    flex-direction: row;
-  //    justify-content: flex-end;
-     
-  //   .loginLink {
-  //     display: flex;
-  //     justify-content: center;
-
-  //     .linkText {
-  //         margin: 0 12px 0 12px;
-  //         color: var(--primary);
-  //         font-size: 24px;
-  //       }
-  // }
-  // }
-  
+  } 
 
 }
 

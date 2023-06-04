@@ -48,7 +48,7 @@ const LoginPage = () => {
       <button className={styles.button} onClick={handleClick}>
         登入
       </button>
-      <div className={styles.subLogin}>
+      {/* <div className={styles.subLogin}> */}
         <div className={styles.loginLink}>   
          <Link to="/signup">
           <span className={styles.linkText}>註冊</span>
@@ -58,7 +58,7 @@ const LoginPage = () => {
           <span className={styles.linkText}>後台登入</span>
         </Link>   
       </div>
-      </div>
+      {/* </div> */}
       
     </div>
   );
