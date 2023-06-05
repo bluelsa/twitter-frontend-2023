@@ -1,5 +1,5 @@
 import styles from "./TweetList.module.scss";
-import { ReactComponent as LogoDark } from "../../assets/image/ac-logo copy.svg";
+import { ReactComponent as LogoDark } from "../../assets/image/ac-logo-bw.svg";
 import { ReactComponent as DeleteIcon } from "../../assets/image/delete-icon.svg";
 
 const TweetContent = () => {
