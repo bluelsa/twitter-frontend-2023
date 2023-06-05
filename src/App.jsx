@@ -11,7 +11,7 @@ import UserReplyPage from './pages/User/UserReplyPage';
 import UserLikePage from './pages/User/UserLikePage';
 import FollowersPage from './pages/User/FollowersPage';
 import FollowingPage from './pages/User/FollowingPage';
-import TweetsPage from './pages/Admin/TwitListPage';
+import TweetsPage from './pages/Admin/TweetsPage';
 import UsersPage from './pages/Admin/UsersPage';
 import OtherUserPage from './pages/OtherUserPage';
 
