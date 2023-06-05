@@ -23,7 +23,7 @@ const NavBar = () => {
             <HiOutlineCog />
             <div>設定</div>
           </div>
-          <button className={styles.navButton}>推文</button>
+          <button className={styles.navButton} >推文</button>
         </div>
 
         <div className={styles.navIcon}>
