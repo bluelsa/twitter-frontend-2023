@@ -5,14 +5,14 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import SettingPage from './pages/Home/SettingPage';
 import MainPage from './pages/Home/MainPage';
-import AdminPage from './pages/Admin/AdminPage';
+import AdminPage from './pages/AdminPage';
 import UserPage from './pages/Home/UserPage';
 import UserReplyPage from './pages/User/UserReplyPage';
 import UserLikePage from './pages/User/UserLikePage';
 import FollowersPage from './pages/User/FollowersPage';
 import FollowingPage from './pages/User/FollowingPage';
-import TweetsPage from './pages/Admin/TweetsPage';
-import UsersPage from './pages/Admin/UsersPage';
+import TweetsPage from './pages/TweetsPage';
+import UsersPage from './pages/UsersPage';
 import OtherUserPage from './pages/OtherUserPage';
 
 
