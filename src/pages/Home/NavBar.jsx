@@ -5,7 +5,7 @@ import { MdOutlinePerson3 } from "react-icons/md"
 import { HiOutlineCog } from "react-icons/hi"
 import { FiLogOut } from "react-icons/fi"
 
-const NavBar = () => {
+const NavBar = ({tweetClick}) => {
   return (
     <div className={styles.leftColumn}>
       <nav className={styles.navContainer}>
@@ -23,7 +23,7 @@ const NavBar = () => {
             <HiOutlineCog />
             <div>設定</div>
           </div>
-          <button className={styles.navButton} >推文</button>
+          <button className={styles.navButton} onClick={() => {tweetClick()} }>推文</button>
         </div>
 
         <div className={styles.navIcon}>
