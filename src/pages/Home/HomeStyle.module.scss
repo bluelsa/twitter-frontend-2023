@@ -77,13 +77,16 @@
     width: 15px;
     height: 1193px;
     background-color: #FAFAFA;
-    padding: 2px 0;
+    border:1px solid #E6ECF0;
+  
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: #C1C1C1;
-    box-shadow: inset 2px 0px 0px 2px #E8E8E8, inset -2px 0px 0px 2px #F0F0F0;
+    box-shadow: inset 3px 0px 0px#E8E8E8,
+      inset -3px 0px 0px  #F0F0F0;
+    
   }
 }
 
