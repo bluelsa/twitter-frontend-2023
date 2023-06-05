@@ -6,7 +6,7 @@ function Twits() {
   return (
     <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
       <header className={styles.header}>首頁</header>
-      <div className={styles.headDivider}></div>
+      <div className={styles.mainDivider}></div>
       <Post />
       {/* <div className={styles.post}>
         <div className={styles.posting}>

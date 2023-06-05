@@ -1,4 +1,4 @@
-import { ReactComponent as LogoDark } from "../../assets/image/ac-logo copy.svg";
+import { ReactComponent as LogoDark } from "../../assets/image/ac-Dlogo.svg";
 import styles from "./HomeStyle.module.scss";
 const Follower = () => {
   return (

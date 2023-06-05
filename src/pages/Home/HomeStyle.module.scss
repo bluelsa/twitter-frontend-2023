@@ -39,8 +39,8 @@
 
 .interaction {
   &:hover {
-      cursor: pointer;
-    }
+    cursor: pointer;
+  }
 }
 
 //navBar
@@ -119,7 +119,7 @@
 
   }
 
-  .headDivider {
+  .mainDivider {
     width: 640px;
     height: 1px;
     border: none;
@@ -143,29 +143,41 @@
 
 }
 
+.twitAvatar {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #C4C4C4;
+  margin-left: 2.3px;
+  background: url(../../assets/image/Head.svg);
+ 
+  &:hover {
+    cursor: pointer;
+  }
+
+}
+
 //TwitForm.jsx
 .tweetContainer {
   width: 100%;
   height: 153px;
-  border-bottom: 1px solid #E6ECF0;
-
-}
+ }
 
 .tweetCollection {
-  width: 590px;
+  width: 589px;
   height: 136px;
-  margin: 24px auto;
+  margin: 0px auto;
   display: flex;
   gap: 8px;
-
+ 
   .tweetContent {
     width: 532px;
     height: 136px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-
-    .nameInfo {
+     .nameInfo {
       width: 100%;
       height: 26px;
       display: grid;
@@ -197,6 +209,7 @@
     .tweetArticle {
       width: 100%;
       height: 78px;
+      font-family: 'Noto Sans TC';
       font-size: 16px;
       font-weight: 400;
       line-height: 26px;
@@ -210,20 +223,15 @@
       gap: 38px;
 
       .smallIcon {
+        width: 38px;
+        height: 16px;
         display: flex;
         gap: 8px;
 
-        .icon {
-          width: 16px;
-          height: 16px;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-
         div {
           font-size: 14px;
+          font-weight: 600;
+          font-family: 'Montserrat';
           line-height: 14px;
           color: #6C757D;
         }
@@ -267,8 +275,7 @@
 }
 
 //components
-
-//1.follower
+     //1.follower
 .followerContainer {
   width: 100%;
   height: 82px;
@@ -533,10 +540,10 @@
     position: absolute;
     top: 56%;
     right: 4%;
-    
+
     &:hover {
-        cursor: pointer;
-      }
+      cursor: pointer;
+    }
   }
 }
 
