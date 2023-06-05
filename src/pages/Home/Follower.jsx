@@ -1,20 +1,20 @@
-import { ReactComponent as LogoDark } from "../../assets/image/ac-Dlogo.svg";
+import { ReactComponent as FollowButton} from "../../assets/image/FollowButton.svg";
+import { ReactComponent as StopFollow } from "../../assets/image/StopFollow.svg";
+
 import styles from "./HomeStyle.module.scss";
 const Follower = () => {
   return (
     <div className={styles.followerContainer}>
       <div className={styles.followerContent}>
-        <div className={styles.logoWrap}>
-          <LogoDark className={styles.darkLogo} />
+        <div className={styles.twitAvatar}>
+          {/* <LogoDark className={styles.darkLogo} /> */}
         </div>
         <div className={styles.follower}>
-          <div className={styles.followerName}>Apple</div>
-          <div className={styles.followerTime}>@apple</div>
+          <div className={styles.followerName}>Pizza Hut</div>
+          <div className={styles.followerTime}>@Pizzahut</div>
         </div>
         <div className={styles.buttonPosition}>
-          <button className={styles.stopFollow}>
-            <div>跟隨</div>
-          </button>
+          <FollowButton />
         </div>
       </div>
     </div>

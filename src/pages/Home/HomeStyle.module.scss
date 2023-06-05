@@ -143,6 +143,8 @@
 
 }
 
+
+//TwitForm.jsx
 .twitAvatar {
   position: relative;
   width: 50px;
@@ -151,18 +153,17 @@
   background-color: #C4C4C4;
   margin-left: 2.3px;
   background: url(../../assets/image/Head.svg);
- 
+
   &:hover {
     cursor: pointer;
   }
 
 }
 
-//TwitForm.jsx
 .tweetContainer {
   width: 100%;
   height: 153px;
- }
+}
 
 .tweetCollection {
   width: 589px;
@@ -170,14 +171,15 @@
   margin: 0px auto;
   display: flex;
   gap: 8px;
- 
+
   .tweetContent {
     width: 532px;
     height: 136px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-     .nameInfo {
+
+    .nameInfo {
       width: 100%;
       height: 26px;
       display: grid;
@@ -275,17 +277,17 @@
 }
 
 //components
-     //1.follower
+//1.follower
 .followerContainer {
   width: 100%;
   height: 82px;
 
   .followerContent {
-    width: 246px;
+    width: 250px;
     height: 50px;
     margin: 16px;
     display: grid;
-    grid-template-columns: 50px 88px 96px;
+    grid-template-columns: 50px 86px 96px;
     grid-gap: 8px;
 
     .follower {
@@ -311,7 +313,7 @@
         height: 22px;
         font-family: 'Noto Sans TC';
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 22px;
         color: #92929D;
       }
@@ -323,51 +325,6 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-
-      .following {
-        width: 96px;
-        height: 40px;
-        border-radius: 50px;
-        background-color: #FF6600;
-        border: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &:hover {
-          cursor: pointer;
-        }
-
-        div {
-          width: 64px;
-          height: 24px;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
-          text-align: center;
-          color: #FFFFFF;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
-    }
-
-    .stopFollow {
-      width: 64px;
-      height: 40px;
-      border-radius: 50px;
-      background-color: #FFFFFF;
-      border: 1px solid #FF6600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FF6600;
-
-      :hover {
-        cursor: pointer;
-      }
     }
 
   }

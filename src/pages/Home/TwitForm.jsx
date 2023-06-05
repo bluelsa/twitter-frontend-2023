@@ -1,5 +1,4 @@
 import styles from "./HomeStyle.module.scss";
-import { ReactComponent as Head } from "../../assets/image/Head.svg";
 import { ReactComponent as TalkIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/LikeIcon.svg";
 
