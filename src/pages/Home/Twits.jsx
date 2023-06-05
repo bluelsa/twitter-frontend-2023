@@ -1,6 +1,6 @@
 import styles from "./HomeStyle.module.scss"
 import TwitForm from "./TwitForm";
-//  className={`${styles.mainBackground} ${styles.scrollbar}`}
+
 function Twits() {
   return (
     <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
@@ -11,7 +11,7 @@ function Twits() {
       <div className={styles.post}>
         <div className={styles.posting}>
           <div className={styles.avatar}></div>
-          <div className={styles.avatarTitle}>有什麼新鮮事？</div>
+          <textarea className={styles.avatarTitle} placeholder="有什麼新鮮事？"></textarea>
         </div>
         <button className={styles.postButton}>
           <div>推文</div>
@@ -21,39 +21,9 @@ function Twits() {
       <div className={styles.tweets}>
         <TwitForm />
         <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
+
+       
+       
       </div>
     </div>
   );

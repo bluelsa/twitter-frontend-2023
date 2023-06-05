@@ -2,7 +2,8 @@
   width: 100%;
   height: 100vh;
   margin: 0 auto;
-  overflow: hidden;
+  overflow-x: hidden;
+  position: relative;
 }
 
 //MainPage
@@ -140,7 +141,7 @@
 
 //中間Content
 .scrollbar {
-  padding-left: 12px;
+  padding-left: 0px;
 
   &::-webkit-scrollbar {
     width: 15px;
@@ -152,11 +153,8 @@
   &::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: #C1C1C1;
-    box-shadow: inset 2px 0px 0px 2px #E8E8E8,inset -2px 0px 0px 2px #F0F0F0;
-    
+    box-shadow: inset 2px 0px 0px 2px #E8E8E8, inset -2px 0px 0px 2px #F0F0F0;
   }
-
-
 }
 
 .mainBackground {
@@ -165,6 +163,7 @@
   border: 1px solid #E6ECF0;
   overflow-y: scroll;
   overflow-x: hidden;
+  position: relative;
 
   .header {
     margin-top: 10px;
@@ -191,7 +190,7 @@
   .post {
     margin-top: 16px;
     width: 100%;
-    height: 130px;
+    min-height: 130px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -218,11 +217,17 @@
 
       .avatarTitle {
         width: 526px;
-        height: 26px;
+        min-height: 26px;
         font-size: 18px;
         font-weight: 700;
-        line-height: 26px;
-        color: #6C757D;
+        padding-top: 12px;
+        resize: none;
+        border: none;
+        overflow-y: hidden;
+
+        &:focus {
+          outline: none;
+        }
 
         &:hover {
           cursor: pointer;
@@ -494,4 +499,115 @@
     }
 
   }
+}
+
+//tweet modal
+
+.modalContainer {
+  position: absolute;
+  top: 56px;
+  left: 336px;
+  width: 634px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  border:1px solid #92929D;
+  
+  .modalHeader {
+    width: 100%;
+    height: 41px;
+    margin-top: 16px;
+    border-bottom: 1px solid #E6ECF0;
+
+    .modalIcon {
+      margin-left: 15px;
+      font-size: 24px;
+      color: #FF6600;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  .post {
+    margin-top: 16px;
+    width: 100%;
+    height: 180px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .posting {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 8px;
+      width: 592px;
+      min-height: 120px;
+      margin: 0 auto;
+
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #C4C4C4;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .avatarTitle {
+        width: 526px;
+        height: 150px;
+        font-size: 18px;
+        font-weight: 700;
+        padding-top: 12px;
+        resize: none;
+        border: none;
+        overflow-y: hidden;
+
+        &:focus {
+          outline: none;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .postButton {
+    width: 64.5px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #FF6600;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 81.33%;
+    right: 2.52%;
+
+    :hover {
+      cursor: pointer;
+    }
+
+    div {
+      width: 32px;
+      height: 24px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #FFFFFF;
+    }
+  }
+
 }
