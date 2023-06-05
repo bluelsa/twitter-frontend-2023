@@ -37,7 +37,13 @@
   fill: rgba(255, 255, 255, 0.3);
 }
 
-//nav
+.interaction {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+//navBar
 .leftColumn {
   width: 100%;
   height: 100%;
@@ -48,96 +54,32 @@
     height: 100%;
     position: absolute;
     top: 0;
-    left: 39%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    left: 130px;
+
+    .Navlogo {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      left: 8px;
+      top: 8px;
+    }
 
     .navBar {
-      width: 178px;
-      height: 310px;
+      margin-top: 8px;
+      width: 100%;
+      height: 244px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-
-      .homeIcon {
-        width: 100%;
-        height: 26px;
-        display: flex;
-        align-items: center;
-        font-size: 24px;
-        font-weight: 700;
-        gap: 16px;
-        padding-left: 16px;
-        margin: 16px 0;
-        color: #FF6600;
-
-        :hover {
-          cursor: pointer;
-        }
-
-        div {
-          width: 100px;
-          height: 26px;
-          font-size: 18px;
-
-          :hover {
-            cursor: pointer;
-          }
-
-        }
-      }
-
-      .navButton {
-        width: 100%;
-        height: 46px;
-        border-radius: 50px;
-        border: none;
-        font-size: 20px;
-        font-weight: 400;
-        color: #FFFFFF;
-        background-color: #FF6600;
-
-        :hover {
-          cursor: pointer;
-        }
-      }
-
     }
 
-    .logo {
-      width: 50px;
-      height: 50px;
-      margin: 8px 0;
-      padding-left: 16px;
-    }
-  }
-
-  .navIcon {
-    width: 100%;
-    height: 26px;
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    font-weight: 700;
-    gap: 16px;
-    padding: 16px;
-
-    :hover {
-      cursor: pointer;
-    }
-
-    div {
-      width: 100px;
-      height: 26px;
-      font-size: 18px;
-
-      :hover {
-        cursor: pointer;
-      }
+    .logOut {
+      position: absolute;
+      top: 1142px;
     }
   }
 }
+
 
 //中間Content
 .scrollbar {
@@ -175,101 +117,21 @@
     color: #171725;
     position: relative;
 
-    .divider {
-      width: 640px;
-      height: 1px;
-      border: none;
-      background-color: #E6ECF0;
-      position: absolute;
-      bottom: 0%;
-      left: 0%;
-    }
-
   }
 
-  .post {
-    margin-top: 16px;
-    width: 100%;
-    min-height: 130px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  .mainDivider {
+    width: 640px;
+    height: 1px;
+    border: none;
+    background-color: #E6ECF0;
+    margin-bottom: 16px;
+  }
 
-    .posting {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 8px;
-      width: 592px;
-      height: 50px;
-      margin: 0 auto;
-
-      .avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #C4C4C4;
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-
-      .avatarTitle {
-        width: 526px;
-        min-height: 26px;
-        font-size: 18px;
-        font-weight: 700;
-        padding-top: 12px;
-        resize: none;
-        border: none;
-        overflow-y: hidden;
-
-        &:focus {
-          outline: none;
-        }
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-
-    .postButton {
-      width: 64.5px;
-      height: 40px;
-      border-radius: 50px;
-      background-color: #FF6600;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      top: 60px;
-      right: 26px;
-
-      :hover {
-        cursor: pointer;
-      }
-
-      div {
-        width: 32px;
-        height: 24px;
-        font-size: 16px;
-        font-weight: 400;
-        color: #FFFFFF;
-      }
-    }
-
-    .postDivider {
-      width: 639px;
-      height: 10px;
-      border: none;
-      background-color: #E6ECF0;
-      position: absolute;
-      bottom: 0px;
-      left: 0px;
-    }
+  .postDivider {
+    width: 639px;
+    height: 10px;
+    border: none;
+    background-color: #E6ECF0;
   }
 
   .tweets {
@@ -281,18 +143,32 @@
 
 }
 
+
 //TwitForm.jsx
-.tweetContainer {
-  width: 100%;
-  height: 153px;
-  border-bottom: 1px solid #E6ECF0;
+.twitAvatar {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #C4C4C4;
+  margin-left: 2.3px;
+  background: url(../../assets/image/Head.svg);
+
+  &:hover {
+    cursor: pointer;
+  }
 
 }
 
+.tweetContainer {
+  width: 100%;
+  height: 153px;
+}
+
 .tweetCollection {
-  width: 590px;
+  width: 589px;
   height: 136px;
-  margin: 24px auto;
+  margin: 0px auto;
   display: flex;
   gap: 8px;
 
@@ -335,6 +211,7 @@
     .tweetArticle {
       width: 100%;
       height: 78px;
+      font-family: 'Noto Sans TC';
       font-size: 16px;
       font-weight: 400;
       line-height: 26px;
@@ -348,20 +225,15 @@
       gap: 38px;
 
       .smallIcon {
+        width: 38px;
+        height: 16px;
         display: flex;
         gap: 8px;
 
-        .icon {
-          width: 16px;
-          height: 16px;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-
         div {
           font-size: 14px;
+          font-weight: 600;
+          font-family: 'Montserrat';
           line-height: 14px;
           color: #6C757D;
         }
@@ -404,16 +276,18 @@
   }
 }
 
+//components
+//1.follower
 .followerContainer {
   width: 100%;
   height: 82px;
 
   .followerContent {
-    width: 246px;
+    width: 250px;
     height: 50px;
     margin: 16px;
     display: grid;
-    grid-template-columns: 50px 88px 96px;
+    grid-template-columns: 50px 86px 96px;
     grid-gap: 8px;
 
     .follower {
@@ -439,7 +313,7 @@
         height: 22px;
         font-family: 'Noto Sans TC';
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 22px;
         color: #92929D;
       }
@@ -451,57 +325,12 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-
-      .following {
-        width: 96px;
-        height: 40px;
-        border-radius: 50px;
-        background-color: #FF6600;
-        border: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &:hover {
-          cursor: pointer;
-        }
-
-        div {
-          width: 64px;
-          height: 24px;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
-          text-align: center;
-          color: #FFFFFF;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
-    }
-
-    .stopFollow {
-      width: 64px;
-      height: 40px;
-      border-radius: 50px;
-      background-color: #FFFFFF;
-      border: 1px solid #FF6600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FF6600;
-
-      :hover {
-        cursor: pointer;
-      }
     }
 
   }
 }
 
-//tweet modal
+//2.tweet modal
 
 .modalContainer {
   position: absolute;
@@ -514,8 +343,8 @@
   z-index: 1000;
   background-color: #FFFFFF;
   border-radius: 14px;
-  border:1px solid #92929D;
-  
+  border: 1px solid #92929D;
+
   .modalHeader {
     width: 100%;
     height: 41px;
@@ -610,4 +439,74 @@
     }
   }
 
+}
+
+//3.post
+.postContainer {
+  width: 639px;
+  height: 130px;
+  position: relative;
+
+  .postContent {
+    width: 588.61px;
+    height: 50px;
+    margin-left: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    .postAvatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #C4C4C4;
+      margin-left: 2.3px;
+      background: url(../../assets/image/PostPhoto.svg);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .postText {
+      width: 526px;
+      height: 26px;
+      font-family: 'Noto Sans TC';
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 26px;
+      resize: none;
+      border: none;
+      overflow-y: hidden;
+      color: #6C757D;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .postButton {
+    width: 64.5px;
+    height: 40px;
+    position: absolute;
+    top: 56%;
+    right: 4%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+// replyPopUp
+.replyPopUpContanier {
+  width: 643px;
+  height: 500px;
+  background-color: #FFFFFF;
 }
