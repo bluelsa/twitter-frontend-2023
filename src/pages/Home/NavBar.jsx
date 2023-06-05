@@ -1,38 +1,29 @@
-import styles from "./HomeStyle.module.scss"
-import { ReactComponent as Logo } from "../../assets/image/ac-logo.svg"
-import { RiHome7Fill } from "react-icons/ri"
-import { MdOutlinePerson3 } from "react-icons/md"
-import { HiOutlineCog } from "react-icons/hi"
-import { FiLogOut } from "react-icons/fi"
+import styles from "./HomeStyle.module.scss";
+import { ReactComponent as Logo } from "../../assets/image/ac-logo.svg";
+import { ReactComponent as NavIndex } from "../../assets/image/NavIndex.svg";
+import { ReactComponent as NavPersonal } from "../../assets/image/NavPersonal.svg";
+import { ReactComponent as NavSetting } from "../../assets/image/NavSetting.svg";
+import { ReactComponent as NavOut } from "../../assets/image/NavOut.svg";
+import { ReactComponent as NavButton } from "../../assets/image/NavButton.svg";
 
-const NavBar = ({tweetClick}) => {
+const NavBar = () => {
   return (
     <div className={styles.leftColumn}>
       <nav className={styles.navContainer}>
+        <div className={styles.Navlogo}>
+          <Logo />
+        </div>
         <div className={styles.navBar}>
-          <Logo className={styles.logo} />
-          <div className={styles.homeIcon}>
-            <RiHome7Fill />
-            <div>首頁</div>
-          </div>
-          <div className={styles.navIcon}>
-            <MdOutlinePerson3 />
-            <div>個人資料</div>
-          </div>
-          <div className={styles.navIcon}>
-            <HiOutlineCog />
-            <div>設定</div>
-          </div>
-          <button className={styles.navButton} onClick={() => {tweetClick()} }>推文</button>
+          <NavIndex />
+          <NavPersonal />
+          <NavSetting />
+          <NavButton />
         </div>
 
-        <div className={styles.navIcon}>
-          <FiLogOut />
-          <div>登出</div>
-        </div>
+        <NavOut className={styles.logOut} />
       </nav>
     </div>
   );
-}
+};
 
 export default NavBar;

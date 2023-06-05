@@ -2,24 +2,20 @@ import styles from "./HomeStyle.module.scss";
 import NavBar from "./NavBar";
 import Popular from "./Popular";
 import Twits from "./Twits";
-import TweetModal from "./TweetModal";
-import {useState} from "react"
+// import TweetModal from "./TweetModal";
+ 
 
 
 const MainPage = () => {
-  const [buttonPop, setButtonPop] = useState(false)
   
-   const tweetClick = ()=> {
-     setButtonPop(true)
-   }
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
-        <NavBar tweetClick={tweetClick()} />
+        <NavBar />
         <Twits />
         <Popular />
       </div>
-      <TweetModal trigger={buttonPop} setButtonPop={setButtonPop} />
+      {/* <TweetModal /> */}
     </div>
   );
 };

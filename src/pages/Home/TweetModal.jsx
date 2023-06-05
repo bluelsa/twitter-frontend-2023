@@ -3,8 +3,8 @@ import { RxCross2 } from "react-icons/rx";
 
 
 
-const TweetModal = ( {trigger, setButtonPop}) => {
-return (trigger?
+const TweetModal = () => {
+return (
   <div className={styles.modalContainer} >
     <div className={styles.modalHeader}>
       <RxCross2 className={styles.modalIcon}/>
@@ -23,7 +23,7 @@ return (trigger?
       <div>推文</div>
     </button>
   </div>
-: ''
+
 )
 }
 
