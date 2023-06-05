@@ -11,13 +11,13 @@ const NavBar = () => {
     <div className={styles.leftColumn}>
       <nav className={styles.navContainer}>
         <div className={styles.Navlogo}>
-          <Logo />
+          <Logo className={styles.interaction} />
         </div>
         <div className={styles.navBar}>
-          <NavIndex />
-          <NavPersonal />
-          <NavSetting />
-          <NavButton />
+          <NavIndex className={styles.interaction} />
+          <NavPersonal className={styles.interaction} />
+          <NavSetting className={styles.interaction} />
+          <NavButton className={styles.interaction} />
         </div>
 
         <NavOut className={styles.logOut} />

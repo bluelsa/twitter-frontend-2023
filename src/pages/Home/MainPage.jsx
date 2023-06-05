@@ -3,11 +3,8 @@ import NavBar from "./NavBar";
 import Popular from "./Popular";
 import Twits from "./Twits";
 // import TweetModal from "./TweetModal";
- 
-
 
 const MainPage = () => {
-  
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>

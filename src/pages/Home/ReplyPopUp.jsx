@@ -1,17 +1,9 @@
-import styles from './HomeStyle.module.scss'
-import Follower from './Follower'
-import WhatIsNew from './WhatIsNew'
-
-
-
+import styles from "./HomeStyle.module.scss";
+import Follower from "./Follower";
+import WhatIsNew from "./Post";
 
 const ReplyPopUp = () => {
-  return (
-<div className={styles.replyPopUpContanier}>
+  return <div className={styles.replyPopUpContanier}></div>;
+};
 
-</div>
-
-  )
-}
-
-export default ReplyPopUp
+export default ReplyPopUp;
