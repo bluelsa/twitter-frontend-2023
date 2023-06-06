@@ -77,16 +77,16 @@
     width: 15px;
     height: 1193px;
     background-color: #FAFAFA;
-    border:1px solid #E6ECF0;
-  
+    border: 1px solid #E6ECF0;
+
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: #C1C1C1;
     box-shadow: inset 3px 0px 0px#E8E8E8,
-      inset -3px 0px 0px  #F0F0F0;
-    
+      inset -3px 0px 0px #F0F0F0;
+
   }
 }
 
@@ -370,7 +370,7 @@
     width: 64.5px;
     height: 40px;
     position: absolute;
-    top: 244px;
+    bottom: 16px;
     right: 16px;
 
     &:hover {
@@ -432,5 +432,11 @@
 .replyPopUpContanier {
   width: 643px;
   height: 500px;
+  position: relative;
+  top: 556px;
+  left: 0px;
+  z-index: 1000;
   background-color: #FFFFFF;
+  border-radius: 14px;
+  border: 1px solid #92929D;
 }

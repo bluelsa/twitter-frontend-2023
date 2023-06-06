@@ -1,8 +1,7 @@
 import styles from "./HomeStyle.module.scss";
 import { ReactComponent as ModalX } from "../../assets/image/ModalX.svg";
 import { ReactComponent as PostButton } from "../../assets/image/PostButton.svg";
-
-import Post from "./Post";
+ import Post from "./Post";
 
 const TwitPopUp = () => {
   return (
