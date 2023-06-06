@@ -1,0 +1,133 @@
+@import "../../base.scss";
+
+// UserList
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .lineContent {
+    width: 1250px;
+    margin: 0 auto;
+    border: 1px solid #e6ecf0;
+    border-top-style: none;
+    border-right-style: none;
+    line-height: 74px;
+    .title {
+      top: 0;
+      padding-left: 20.92px;
+      align-items: center;
+      font-family: "Noto Sans TC";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 26px;
+      color: #171725;
+    }
+  }
+  .cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 210px);
+    grid-gap: 16px;
+  }
+}
+
+// UserCard
+.userCard {
+  margin-top: 16px;
+  margin-left: 16px;
+  width: 210px;
+  height: 314px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background-color: #f6f7f8;
+  .cover {
+    height: 140px;
+  }
+  .avatar {
+    position: absolute;
+    top: 64px;
+    left: 55px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border: solid 4px white;
+  }
+
+  .info {
+    height: 118px;
+    margin-top: 32px;
+    margin: 32px 10px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    .name {
+      margin-top: 32px;
+      line-height: 26px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .account {
+      color: var(--secondary);
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    .tweetInfo {
+      display: flex;
+      margin-top: 16px;
+
+      .tweetNum {
+        display: flex;
+        margin-top: 2px;
+        font-family: 'Montserrat';
+
+        .iconContainer {
+          margin-top: 2px;
+          margin-right: 8.13px;
+          .icon {
+            width: 23.87px;
+          }
+        }
+      }
+
+      .likeNum {
+        margin-left: 17.95px;
+        display: flex;
+        margin-top: 2px;
+        font-family: 'Montserrat';
+
+        .iconContainer {
+          margin-top: 1px;
+          margin-right: 9.95px;
+          .icon {
+            width: 20.1px;
+          }
+        }
+
+        
+      }
+    }
+    .followInfo {
+      margin-bottom: 24px;
+      display: flex;
+      font-size: 14px;
+      line-height: 22px;
+      gap: 8px;
+
+      .sub {
+        color: var(--secondary);
+      }
+    }
+  }
+}
+
+.num {
+          margin-left: 2px;
+          margin-top: 4px;
+          font-size: 16px;
+        }
