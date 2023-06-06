@@ -1,5 +1,5 @@
-import styles from '../../common/Auth.module.scss'
-import { ReactComponent as Logo } from "../../assets/image/ac-logo.svg";
+import styles from '../common/Auth.module.scss'
+import { ReactComponent as Logo } from "../assets/image/ac-logo.svg"
 import { Link } from "react-router-dom";
 import { useState } from 'react'
 

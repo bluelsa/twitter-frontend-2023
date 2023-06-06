@@ -3,7 +3,7 @@ import TwitForm from "./TwitForm";
 import { ReactComponent as PostButton } from "../../assets/image/PostButton.svg";
 import Post from "./Post";
 import TwitPopUp from "./TwitPopUp";
-import ReplyPopUp from "./ReplyPopUp"
+import ReplyPopUp from "./ReplyPopUp";
 
 function Twits() {
   return (

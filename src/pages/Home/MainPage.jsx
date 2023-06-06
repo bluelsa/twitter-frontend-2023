@@ -4,6 +4,7 @@ import Popular from "./Popular";
 import Twits from "./Twits";
 
 
+
 const MainPage = () => {
   return (
     <div className={styles.homeContainer}>
@@ -12,7 +13,6 @@ const MainPage = () => {
         <Twits />
         <Popular />
       </div>
-   
     </div>
   );
 };

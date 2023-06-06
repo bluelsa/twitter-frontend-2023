@@ -8,20 +8,21 @@ import { ReactComponent as NavButton } from "../../assets/image/NavButton.svg";
 
 const NavBar = () => {
   return (
-    <div className={styles.leftColumn}>
-      <nav className={styles.navContainer}>
-        <div className={styles.Navlogo}>
-          <Logo className={styles.interaction} />
-        </div>
-        <div className={styles.navBar}>
-          <NavIndex className={styles.interaction} />
-          <NavPersonal className={styles.interaction} />
-          <NavSetting className={styles.interaction} />
-          <NavButton className={styles.interaction} />
-        </div>
-
-        <NavOut className={styles.logOut} />
-      </nav>
+    <div>
+      <div className={styles.leftColumn}>
+        <nav className={styles.navContainer}>
+          <div className={styles.Navlogo}>
+            <Logo className={styles.interaction} />
+          </div>
+          <div className={styles.navBar}>
+            <NavIndex className={styles.interaction} />
+            <NavPersonal className={styles.interaction} />
+            <NavSetting className={styles.interaction} />
+            <NavButton className={styles.interaction} />
+          </div>
+           <NavOut className={styles.logOut} />
+        </nav>
+      </div>
     </div>
   );
 };
