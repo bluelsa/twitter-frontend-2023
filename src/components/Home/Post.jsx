@@ -1,4 +1,4 @@
-import styles from "./HomeStyle.module.scss";
+import styles from "../../pages/Home/HomeStyle.module.scss";
 import { ReactComponent as PostButton } from "../../assets/image/PostButton.svg";
 
 const Post = () => {

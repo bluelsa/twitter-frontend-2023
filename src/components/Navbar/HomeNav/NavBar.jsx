@@ -1,10 +1,10 @@
-import styles from "./HomeStyle.module.scss";
-import { ReactComponent as Logo } from "../../assets/image/ac-logo.svg";
-import { ReactComponent as NavIndex } from "../../assets/image/NavIndex.svg";
-import { ReactComponent as NavPersonal } from "../../assets/image/NavPersonal.svg";
-import { ReactComponent as NavSetting } from "../../assets/image/NavSetting.svg";
-import { ReactComponent as NavOut } from "../../assets/image/NavOut.svg";
-import { ReactComponent as NavButton } from "../../assets/image/NavButton.svg";
+import styles from "../../../pages/Home/HomeStyle.module.scss";
+import { ReactComponent as Logo } from "../../../assets/image/ac-logo.svg";
+import { ReactComponent as NavIndex } from "../../../assets/image/NavIndex.svg";
+import { ReactComponent as NavPersonal } from "../../../assets/image/NavPersonal.svg";
+import { ReactComponent as NavSetting } from "../../../assets/image/NavSetting.svg";
+import { ReactComponent as NavOut } from "../../../assets/image/NavOut.svg";
+import { ReactComponent as NavButton } from "../../../assets/image/NavButton.svg";
 
 const NavBar = () => {
   return (

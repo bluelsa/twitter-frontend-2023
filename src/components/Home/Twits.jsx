@@ -1,4 +1,4 @@
-import styles from "./HomeStyle.module.scss"
+import styles from "../../pages/Home/HomeStyle.module.scss"
 import TwitForm from "./TwitForm";
 import Post from './Post'
 
@@ -20,6 +20,18 @@ function Twits() {
       </div> */}
       <div className={styles.postDivider}></div>
       <div className={styles.tweets}>
+        <TwitForm />
+        <TwitForm />
+        <TwitForm />
+        <TwitForm />
+        <TwitForm />
+        <TwitForm />
+        <TwitForm />
+        <TwitForm />
+        <TwitForm />
+        <TwitForm />
+        <TwitForm />
+        <TwitForm />
         <TwitForm />
         <TwitForm />
       </div>

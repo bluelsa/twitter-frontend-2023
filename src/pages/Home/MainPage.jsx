@@ -1,7 +1,7 @@
 import styles from "./HomeStyle.module.scss";
-import NavBar from "./NavBar";
-import Popular from "./Popular";
-import Twits from "./Twits";
+import NavBar from "../../components/Navbar/HomeNav/NavBar";
+import Popular from "../../components/Home/Popular";
+import Twits from "../../components/Home/Twits";
 // import TweetModal from "./TweetModal";
 
 const MainPage = () => {
