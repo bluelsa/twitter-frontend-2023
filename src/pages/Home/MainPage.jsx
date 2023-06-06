@@ -1,16 +1,16 @@
 import styles from "./HomeStyle.module.scss";
 import NavBar from "./NavBar";
 import Popular from "./Popular";
-import Twits from "./Twits";
-
-
+import ReplyTwits from '../Reply/ReplyTwits';
+import Twits from './Twits';
 
 const MainPage = () => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
         <NavBar />
-        <Twits />
+        <ReplyTwits />
+        {/* <Twits /> */}
         <Popular />
       </div>
     </div>
