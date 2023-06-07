@@ -1,0 +1,16 @@
+.container {
+  position: fixed;
+  top: 56px;
+  left: 334px;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .popupContainer {
+    position: relative;
+    width: 634px;
+    height: 610px;
+    background-color: #fff;
+  }
+}
