@@ -1,6 +1,6 @@
-import styles from "../pages/Home/HomeStyle.module.scss";
-import NavBar from "../components/Navbar/HomeNav/NavBar";
-import Popular from "../components/Home/Popular";
+import styles from "../pages/HomeStyle.module.scss";
+import UserNav from "../components/User/UserNav";
+import Popular from "../common/Popular";
 import UserReply from "../components/User/UserReply";
 // import TweetModal from "./TweetModal";
 
@@ -8,7 +8,7 @@ const UserReplyPage = () => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
-        <NavBar />
+        <UserNav />
         <UserReply />
         <Popular />
       </div>

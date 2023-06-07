@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import SettingPage from './pages/SettingPage';
-import MainPage from './pages/Home/MainPage';
+import MainPage from './pages/MainPage';
 import AdminPage from './pages/AdminPage';
 import UserProfilePage from './pages/UserProfilePage';
 import UserReplyPage from './pages/UserReplyPage';
