@@ -42,7 +42,7 @@
     height: 1200px;
     margin-left: 130px;
 
-    .Navlogo {
+    .navLogo {
       width: 50px;
       height: 50px;
       padding: 5px 5px;
@@ -59,7 +59,6 @@
       flex-direction: column;
       gap: 8px;
     }
-
     .logOut {
       position: absolute;
       top: 1142px;
@@ -150,7 +149,7 @@
   border-radius: 50%;
   background-color: #C4C4C4;
   margin-left: 2.3px;
-  background: url(../../assets/image/Head.svg);
+  background: url(../assets/image/Head.svg);
 
   &:hover {
     cursor: pointer;
@@ -388,7 +387,7 @@
     border-radius: 50%;
     background-color: #C4C4C4;
     margin-left: 2.3px;
-    background: url(../../assets/image/PostPhoto.svg);
+    background: url(../assets/image/PostPhoto.svg);
 
     &:hover {
       cursor: pointer;

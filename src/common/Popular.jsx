@@ -1,5 +1,5 @@
-import styles from "./HomeStyle.module.scss"
-import Follower from './Follower'
+import styles from "../pages/HomeStyle.module.scss";
+import Follower from "../components/Home/Follower";
 
 const Popular = () => {
   return (

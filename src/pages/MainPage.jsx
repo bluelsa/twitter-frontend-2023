@@ -1,8 +1,8 @@
 import styles from "./HomeStyle.module.scss";
-import NavBar from "./NavBar";
-import Popular from "./Popular";
-import ReplyTwits from '../Reply/ReplyTwits';
-import Twits from './Twits';
+import NavBar from "../common/NavBar";
+import Popular from "../common/Popular";
+import ReplyTwits from "../common/Reply/ReplyTwits";
+// import Twits from './Twits';
 
 const MainPage = () => {
   return (

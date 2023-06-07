@@ -2,7 +2,7 @@ import styles from "./Admin.module.scss";
 import UserList from "../components/Admin/UserList";
 import { ReactComponent as LogoutIcon } from "../assets/image/logout.svg";
 import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
-import { ReactComponent as HomeIcon } from "../assets/image/home-bw.svg";
+import { ReactComponent as HomeIcon } from "../assets/image/home-hollow.svg";
 import { ReactComponent as UserIcon } from "../assets/image/user-solid-orange.svg";
 import { Link } from "react-router-dom";
 
@@ -30,7 +30,9 @@ const UsersPage = () => {
 
           <div className={styles.logoutIcon}>
             <LogoutIcon />
+            <Link to='/admin'>
             <div>登出</div>
+            </Link>
           </div>
         </nav>
       </div>
