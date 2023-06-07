@@ -16,7 +16,7 @@ const UserEditModal = () => {
         </div>
       </div>
       {/* <div className={styles.mainDivider}></div> */}
-      <div className={styles.Container}>
+      <div className={styles.imageContainer}>
         <img
           className={styles.cover}
           src="https://picsum.photos/634/200"

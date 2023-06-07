@@ -4,15 +4,15 @@ import { ReactComponent as AccountSet } from "../assets/image/AccountSetText.svg
 import { ReactComponent as SaveButton } from "../assets/image/SetSaveButton.svg";
 // import { ReactComponent as TestHouse } from "../assets/image/TestChangeHouse.svg";
 // import { Link } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 // import clsx from "clsx";
 
 const SettingPage = () => {
   // const [username, setUsername] = useState('');
   // const [nickname, setNickname] = useState('');
   // const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [checkPassword, setCheckPassword] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [checkPassword, setCheckPassword] = useState('');
   // const [isPush, setIsPush] = useState(false)
 
   // const handleClick = () => {
@@ -79,7 +79,7 @@ const SettingPage = () => {
                   type="password"
                   // defaultValue={password}
                   placeholder="請設定密碼"
-                  onChange={(e) => setPassword(e.target.value)}
+                  // onChange={(e) => setPassword(e.target.value)}
                 />
               </label>
             </div>
@@ -91,7 +91,7 @@ const SettingPage = () => {
                   type="password"
                   // defaultValue={checkPassword}
                   placeholder="請再次輸入密碼"
-                  onChange={(e) => setCheckPassword(e.target.value)}
+                  // onChange={(e) => setCheckPassword(e.target.value)}
                 />
               </label>
             </div>

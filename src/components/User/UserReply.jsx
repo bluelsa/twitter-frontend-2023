@@ -3,7 +3,7 @@ import UserProfile from "./UserProfile";
 import UserReplyList from "./UserReplyList";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
 import { Link } from "react-router-dom";
-import OtherProfile from "../Others/OtherProfile";
+
 
 const UserMain = () => {
   return (
@@ -19,8 +19,7 @@ const UserMain = () => {
           <div className={styles.tweetNum}>25 推文</div>
         </div>
       </div>
-      {/* <UserProfile /> */}
-      <OtherProfile />
+      <UserProfile />
       <UserReplyList />
     </div>
   );
