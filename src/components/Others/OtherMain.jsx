@@ -1,10 +1,13 @@
-import styles from "./User.module.scss";
-import UserProfile from "./UserProfile";
-import UserTweetList from "./UserTweetList";
+import styles from "./otherStyle.module.scss";
+import UserTweetList from "../User/UserTweetList";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
 import { Link } from "react-router-dom";
 import OtherProfile from "../Others/OtherProfile";
-const UserMain = () => {
+import StickOption from './StickOption'
+import TwitForm from '../Home/TwitForm'
+import ReplyList from "../../common/Reply/ReplyList";
+import UserEditModal from '../../components/User/UserEditModal'
+const OtherMain = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -18,11 +21,15 @@ const UserMain = () => {
           <div className={styles.tweetNum}>25 推文</div>
         </div>
       </div>
-      {/* <UserProfile/> */}
       <OtherProfile />
-      <UserTweetList />
+      <StickOption />
+      <div className={styles.mainDivider}></div>
+      {/* <UserTweetList /> */}
+      <TwitForm />
+      <ReplyList />  
+      <UserEditModal />
     </div>
   );
 };
 
-export default UserMain;
+export default OtherMain;

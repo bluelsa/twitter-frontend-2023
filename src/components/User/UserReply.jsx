@@ -2,8 +2,8 @@ import styles from "./User.module.scss";
 import UserProfile from "./UserProfile";
 import UserReplyList from "./UserReplyList";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
-import { Link } from 'react-router-dom'
-import OtherProfile from "./OtherProfile";
+import { Link } from "react-router-dom";
+import OtherProfile from "../Others/OtherProfile";
 
 const UserMain = () => {
   return (
