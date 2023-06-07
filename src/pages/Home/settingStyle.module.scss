@@ -89,11 +89,18 @@ input {
     }
 }
 
-.setHouse {
-  
-  fill: rgba(255, 255, 255, 0.3);
+.redHouse {
+  fill: red;
 
   &:hover {
       cursor: pointer;
     }
+}
+
+.blueHouse {
+  fill: blue;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

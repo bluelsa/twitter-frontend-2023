@@ -5,17 +5,25 @@ import { ReactComponent as SaveButton } from "../../assets/image/SetSaveButton.s
 import { ReactComponent as TestHouse } from "../../assets/image/TestChangeHouse.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import clsx from "clsx";
 
 const SettingPage = () => {
-  const [username, setUsername] = useState(null);
-  const [nickname, setNickname] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [checkPassword, setCheckPassword] = useState(null);
+  const [username, setUsername] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
+  // const [isPush, setIsPush] = useState(false)
 
   const handleClick = () => {
     console.log("click signup");
   };
+
+  //下面為測試用
+  // const itemClick = () => {
+  //   console.log("click signup");
+  //    setIsPush(true)
+  //  };
 
   return (
     <div className={styles.homeContainer}>
@@ -33,7 +41,7 @@ const SettingPage = () => {
                 <div>帳號</div>
                 <input
                   type="text"
-                  value={username}
+                  defaultValue={username}
                   placeholder="請輸入帳號"
                   // onChange={(e) => setUsername(e.target.value)}
                 />
@@ -45,7 +53,7 @@ const SettingPage = () => {
                 <div>名稱</div>
                 <input
                   type="text"
-                  value={nickname}
+                  defaultValue={nickname}
                   placeholder="請輸入使用者名稱"
                   // onChange={(e) => setNickname(e.target.value)}
                 />
@@ -57,7 +65,7 @@ const SettingPage = () => {
                 <div>Email</div>
                 <input
                   type="text"
-                  value={email}
+                  defaultValue={email}
                   placeholder="請輸入Email"
                   // onChange={(e) => setEmail(e.target.value)}
                 />
@@ -69,7 +77,7 @@ const SettingPage = () => {
                 <div>密碼</div>
                 <input
                   type="password"
-                  value={password}
+                  defaultValue={password}
                   placeholder="請設定密碼"
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -81,7 +89,7 @@ const SettingPage = () => {
                 <div>密碼再確認</div>
                 <input
                   type="password"
-                  value={checkPassword}
+                  defaultValue={checkPassword}
                   placeholder="請再次輸入密碼"
                   onChange={(e) => setCheckPassword(e.target.value)}
                 />
@@ -91,7 +99,13 @@ const SettingPage = () => {
               <SaveButton />
             </div>
           </div>
-          <TestHouse className={styles.setHouse} />
+
+          {/* 測試…
+          <div onClick={() => itemClick()}>
+            <TestHouse className={isPush && `${styles.blueHouse}` }/>
+          </div> */}
+
+    
         </div>
       </div>
     </div>
