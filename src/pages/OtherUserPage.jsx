@@ -1,11 +1,18 @@
-
+import styles from "../pages/HomeStyle.module.scss";
+import UserNav from "../components/User/UserNav";
+import Popular from "../common/Popular";
+import UserMain from "../components/User/UserMain";
 
 const OtherUserPage = () => {
   return (
-    <div>
-      <h1> OtherUser Page</h1>
+    <div className={styles.homeContainer}>
+      <div className={styles.mainContainer}>
+        <UserNav />
+        <UserMain />
+        <Popular />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default OtherUserPage
+export default OtherUserPage;
