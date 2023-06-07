@@ -1,18 +1,18 @@
 import styles from "./HomeStyle.module.scss";
 import NavBar from "../../components/Navbar/HomeNav/NavBar";
 import Popular from "../../components/Home/Popular";
-import Twits from "../../components/Home/Twits";
-// import TweetModal from "./TweetModal";
+import ReplyTwits from '../Reply/ReplyTwits';
+// import Twits from './Twits';
 
 const MainPage = () => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
         <NavBar />
-        <Twits />
+        <ReplyTwits />
+        {/* <Twits /> */}
         <Popular />
       </div>
-      {/* <TweetModal /> */}
     </div>
   );
 };

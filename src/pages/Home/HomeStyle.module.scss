@@ -6,7 +6,7 @@
   position: relative;
 }
 
-//MainPage
+//MainPage Popularitems
 .mainContainer {
   width: 1400px;
   height: 1200px;
@@ -14,33 +14,21 @@
   display: grid;
   grid-template-columns: 333px 641px 426px;
   grid-template-rows: 1200px;
-}
 
-.logoWrap {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  background-color: rgb(189, 188, 188);
-  border-radius: 50%;
-
-  :hover {
-    cursor: pointer;
-  }
-}
-
-.darkLogo {
-  position: absolute;
-  top: 9px;
-  left: 9px;
-  width: 32px;
-  height: 32px;
-  fill: rgba(255, 255, 255, 0.3);
 }
 
 .interaction {
   &:hover {
     cursor: pointer;
   }
+}
+
+.mainDivider {
+  width: 640px;
+  height: 1px;
+  border: none;
+  background-color: #E6ECF0;
+  margin-bottom: 16px;
 }
 
 //navBar
@@ -51,14 +39,13 @@
 
   .navContainer {
     width: 178px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 130px;
+    height: 1200px;
+    margin-left: 130px;
 
     .navLogo {
       width: 50px;
       height: 50px;
+      padding: 5px 5px;
       position: relative;
       left: 8px;
       top: 8px;
@@ -89,13 +76,15 @@
     width: 15px;
     height: 1193px;
     background-color: #FAFAFA;
-    padding: 2px 0;
+    border: 1px solid #E6ECF0;
+
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: #C1C1C1;
-    box-shadow: inset 2px 0px 0px 2px #E8E8E8, inset -2px 0px 0px 2px #F0F0F0;
+    box-shadow: inset 3px 0px 0px#E8E8E8,
+      inset -3px 0px 0px #F0F0F0;
   }
 }
 
@@ -108,9 +97,10 @@
   position: relative;
 
   .header {
-    margin-top: 10px;
+    margin-top: 20px;
     width: 100%;
-    height: 60px;
+    height: 52px;
+    font-family: 'Noto Sans TC';
     font-size: 24px;
     font-weight: 700;
     padding-left: 23px;
@@ -119,12 +109,23 @@
 
   }
 
-  .mainDivider {
-    width: 640px;
-    height: 1px;
-    border: none;
-    background-color: #E6ECF0;
-    margin-bottom: 16px;
+  .postContainer {
+    width: 100%;
+    height: 120px;
+    position: relative;
+
+    .postButton {
+      width: 64.5px;
+      height: 40px;
+      position: absolute;
+      top: 56%;
+      right: 4%;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
   }
 
   .postDivider {
@@ -138,11 +139,8 @@
     margin-top: 16px;
     width: 100%;
     min-height: 942px;
-
   }
-
 }
-
 
 //TwitForm.jsx
 .twitAvatar {
@@ -179,35 +177,6 @@
     flex-direction: column;
     gap: 8px;
 
-    .nameInfo {
-      width: 100%;
-      height: 26px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      grid-gap: 8px;
-
-      .tweetName {
-        font-family: 'Noto Sans TC';
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 26px;
-        color: #171725;
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-
-      .tweetTime {
-        font-family: 'Noto Sans TC';
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 22px;
-        color: #6C757D;
-        padding-top: 2px;
-      }
-    }
-
     .tweetArticle {
       width: 100%;
       height: 78px;
@@ -242,6 +211,35 @@
   }
 }
 
+.nameInfo {
+  width: 100%;
+  height: 26px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 8px;
+
+  .tweetName {
+    font-family: 'Noto Sans TC';
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 26px;
+    color: #171725;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .tweetTime {
+    font-family: 'Noto Sans TC';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #6C757D;
+    padding-top: 2px;
+  }
+}
+
 //Right popular section
 .rightColumn {
   position: relative;
@@ -257,10 +255,16 @@
     border-radius: 16px;
     background-color: #FAFAFB;
 
+    .popularRectangle {
+      width: 273px;
+      height: 1px;
+      border: none;
+      background-color: #E6ECF0;
+    }
+
     .popularTitle {
       width: 100%;
       height: 58px;
-      border-bottom: 1px solid #E6ECF0;
 
       div {
         width: 96px;
@@ -270,7 +274,6 @@
         font-family: 'Noto Sans TC';
         margin-top: 24px;
         margin-left: 24px;
-        color: #171725;
       }
     }
   }
@@ -281,6 +284,7 @@
 .followerContainer {
   width: 100%;
   height: 82px;
+  border: 1px solid #FAFAFB;
 
   .followerContent {
     width: 250px;
@@ -326,177 +330,28 @@
       justify-content: flex-end;
       align-items: center;
     }
-
   }
 }
 
-//2.tweet modal
-
-.modalContainer {
-  position: absolute;
+//TwitPopUp
+.popContainer {
+  position: relative;
   top: 56px;
-  left: 336px;
+  left: 0px;
   width: 634px;
   height: 300px;
-  display: flex;
-  flex-direction: column;
+
   z-index: 1000;
   background-color: #FFFFFF;
   border-radius: 14px;
   border: 1px solid #92929D;
 
-  .modalHeader {
-    width: 100%;
-    height: 41px;
-    margin-top: 16px;
-    border-bottom: 1px solid #E6ECF0;
-
-    .modalIcon {
-      margin-left: 15px;
-      font-size: 24px;
-      color: #FF6600;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-  }
-
-  .post {
-    margin-top: 16px;
-    width: 100%;
-    height: 180px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-
-    .posting {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 8px;
-      width: 592px;
-      min-height: 120px;
-      margin: 0 auto;
-
-      .avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #C4C4C4;
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-
-      .avatarTitle {
-        width: 526px;
-        height: 150px;
-        font-size: 18px;
-        font-weight: 700;
-        padding-top: 12px;
-        resize: none;
-        border: none;
-        overflow-y: hidden;
-
-        &:focus {
-          outline: none;
-        }
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-
-  .postButton {
-    width: 64.5px;
-    height: 40px;
-    border-radius: 50px;
-    background-color: #FF6600;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    position: absolute;
-    top: 81.33%;
-    right: 2.52%;
-
-    :hover {
-      cursor: pointer;
-    }
-
-    div {
-      width: 32px;
-      height: 24px;
-      font-size: 16px;
-      font-weight: 400;
-      color: #FFFFFF;
-    }
-  }
-
-}
-
-//3.post
-.postContainer {
-  width: 639px;
-  height: 130px;
-  position: relative;
-
-  .postContent {
-    width: 588.61px;
-    height: 50px;
-    margin-left: 24px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-
-    .postAvatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: #C4C4C4;
-      margin-left: 2.3px;
-      background: url(../../assets/image/PostPhoto.svg);
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    .postText {
-      width: 526px;
-      height: 26px;
-      font-family: 'Noto Sans TC';
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 26px;
-      resize: none;
-      border: none;
-      overflow-y: hidden;
-      color: #6C757D;
-
-      &:focus {
-        outline: none;
-      }
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-
-  .postButton {
+  .popButton {
     width: 64.5px;
     height: 40px;
     position: absolute;
-    top: 56%;
-    right: 4%;
+    bottom: 16px;
+    right: 16px;
 
     &:hover {
       cursor: pointer;
@@ -504,9 +359,138 @@
   }
 }
 
+.popHeader {
+  width: 100%;
+  height: 41px;
+  margin-top: 16px;
+
+  div {
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+  }
+}
+
+//Post
+
+.postContent {
+  width: 588.61px;
+  height: 50px;
+  margin-left: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  .postAvatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #C4C4C4;
+    margin-left: 2.3px;
+    background: url(../../assets/image/PostPhoto.svg);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .postText {
+    width: 526px;
+    height: 26px;
+    font-family: 'Noto Sans TC';
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    resize: none;
+    border: none;
+    overflow-y: hidden;
+    color: #6C757D;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+
 // replyPopUp
 .replyPopUpContanier {
-  width: 643px;
+  width: 634px;
   height: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 256px;
+  left: 0px;
+  z-index: 1000;
   background-color: #FFFFFF;
+  border-radius: 14px;
+  border: 1px solid #92929D;
+  position: relative;
 }
+
+.replyCollection {
+  width: 589px;
+  height: 175px;
+  margin: 0px auto;
+  display: flex;
+  gap: 8px;
+
+}
+
+.replyAvatar {
+  width: 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.replyDivider {
+  width: 2px;
+  height: 86px;
+  background: #ccd6dd;
+}
+
+.replyButton {
+  position: absolute;
+  top: 88.8%;
+  right: 16px;
+}
+
+.replyInfo {
+  width: 100%;
+  height: 26px;
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 8px;
+}
+
+.replyTo {
+  width: 100%;
+  height: 22px;
+  font-family: 'Noto Sans TC';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #6C757D;
+}
+
+.replyName {
+  width: 100%;
+  height: 22px;
+  font-family: 'Noto Sans TC';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #FF6600;
+
+}
+
