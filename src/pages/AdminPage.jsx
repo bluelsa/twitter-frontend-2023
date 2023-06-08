@@ -1,14 +1,45 @@
 import styles from '../common/Auth.module.scss'
 import { ReactComponent as Logo } from "../assets/image/ac-logo.svg"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react'
+import { adminlogin } from '../api/adminlogin'
+import Swal from "sweetalert2";
 
 const AdminPage = () => {
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null); 
+  const [account, setAccount] = useState('');
+  const [password, setPassword] = useState(''); 
+  const navigate = useNavigate()
 
-  const handleClick = () => {
-    console.log("click login");
+  const handleClick = async() =>  {
+    if (account.length === 0 || password.length === 0) {
+      Swal.fire({
+        position: "top",
+        title: "登入失敗",
+        text: "請確實填寫帳號、密碼欄位",
+        timer: 2000,
+        icon: "error",
+        showConfirmButton: false,
+      });
+      return;
+    }
+
+    const { status, token } = await adminlogin({
+      account,
+      password,
+    });
+    console.log(status)
+    if ( status === 'success' ) {
+    localStorage.setItem('token', token);
+      Swal.fire({
+        position: "top",
+        title: "登入成功",
+        timer: 2000,
+        icon: "success",
+        showConfirmButton: false,
+      });
+      navigate('/admin/tweets');
+    }
+    return
   };
 
   return (
@@ -23,9 +54,9 @@ const AdminPage = () => {
             <div>帳號</div>
             <input
               type="text"
-              value={username}
+              value={account}
               placeholder="請輸入帳號"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setAccount(e.target.value)}
             />
           </label>
         </div>

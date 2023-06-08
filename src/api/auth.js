@@ -1,0 +1,40 @@
+import axios from "axios";
+
+const authURL = "https://pure-waters-81841.herokuapp.com/api";
+
+export const login = async ({ account, password }) => {
+  try {
+    const { data } = await axios.post(`${authURL}/login`, {
+      account,
+      password,
+    });
+console.log(data)
+
+
+const { token } = data.data
+const { status } = data
+if (token) {
+  return { status , token}
+}
+return data
+  } catch (error) {
+    console.error("[Login Failed]:", error);
+  }
+};
+
+export const signup = async ({ account, name, email, password, checkPassword }) => {
+  try {
+    const { data } = await axios.post(`${authURL}/signup`, {
+      account,
+      name,
+      email,
+      password,
+      checkPassword
+    });
+     const { status } = data
+     return { status }
+    
+  } catch (error) {
+    console.error("[Signup Failed]: ", error);
+  }
+};
