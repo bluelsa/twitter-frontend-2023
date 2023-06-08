@@ -1,0 +1,106 @@
+@import "../../base.scss";
+
+.homeContainer {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+//MainPage Popular items
+.mainContainer {
+  width: 1400px;
+  height: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 333px 641px 426px;
+  grid-template-rows: 1200px;
+}
+
+.setDivider {
+  width: 640px;
+  height: 1px;
+  border: none;
+  background-color: #E6ECF0;
+  margin-bottom: 16px;
+}
+
+//中間設定區
+.mainBackground {
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #E6ECF0;
+  border-right: 1px solid #E6ECF0;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.title {
+  width: 100%;
+  height: 51px;
+  margin-top: 24px;
+  padding-left: 24px;
+}
+
+.inputGroup {
+  width: 593px;
+  height: 484px;
+  margin-left: 24px;
+
+  .inputContainer {
+    width: 593px;
+    height: 54px;
+    margin-bottom: 32px;
+
+    .input {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      background-color: #f5f8fa;
+      border-radius: 2px;
+      border-bottom: 2px solid #657786;
+      padding: 2px 10.55px 4px 10.55px;
+
+      div {
+        font-size: 14px;
+        line-height: 22px;
+        color: #696974;
+    }
+  }
+}
+}
+
+input {
+  outline: none;
+  border: none;
+  background-color: #f5f8fa;
+  align-items: center;
+  font-size: 16px;
+}
+
+.saveButton {
+  margin-top: 8px;
+  text-align: end;
+
+  &:hover {
+      cursor: pointer;
+    }
+}
+
+.redHouse {
+  fill: red;
+
+  &:hover {
+      cursor: pointer;
+    }
+}
+
+.blueHouse {
+  fill: blue;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

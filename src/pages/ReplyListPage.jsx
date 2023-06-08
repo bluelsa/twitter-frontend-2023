@@ -5,7 +5,7 @@ const ReplyListPage = () => {
     <div>
       <h1> Reply List Page</h1>
     </div>
-  )
-}
+  );
+};
 
-export default ReplyListPage
+export default ReplyListPage;

@@ -1,4 +1,4 @@
-import styles from "../../pages/Home/HomeStyle.module.scss";
+import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as TalkIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/LikeIcon.svg";
 

@@ -1,6 +1,5 @@
-import { ReactComponent as FollowButton} from "../../assets/image/FollowButton.svg";
+import { ReactComponent as FollowButton } from "../../assets/image/FollowButton.svg";
 // import { ReactComponent as StopFollow } from "../../assets/image/StopFollow.svg";
-
 import styles from "../../pages/HomeStyle.module.scss";
 const Follower = () => {
   return (
