@@ -9,16 +9,6 @@ function Twits() {
       <header className={styles.header}>首頁</header>
       <div className={styles.mainDivider}></div>
       <Post />
-      {/* <div className={styles.post}>
-        <div className={styles.posting}>
-          <div className={styles.avatar}></div>
-          <textarea className={styles.avatarTitle} placeholder="有什麼新鮮事？"></textarea>
-        </div>
-        <button className={styles.postButton}>
-          <div>推文</div>
-        </button>
-        
-      </div> */}
       <div className={styles.postDivider}></div>
       <div className={styles.tweets}>
         <TwitForm />
