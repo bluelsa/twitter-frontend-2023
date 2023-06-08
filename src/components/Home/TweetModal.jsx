@@ -1,7 +1,4 @@
 import styles from "../../pages/HomeStyle.module.scss";
-import { Smallx} from "../../assets/image/smallx.svg";
-
-
 
 const TweetModal = () => {
 return (
