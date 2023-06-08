@@ -2,7 +2,7 @@ import styles from '../common/Auth.module.scss'
 import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
 import { Link } from "react-router-dom";
 import { useState } from 'react'
-import { login } from '../api/auth'
+import { login } from '../api/userlogin'
 // import Swal from "sweetalert2";
 
 const LoginPage = () => {
