@@ -5,8 +5,8 @@ import { useState } from 'react'
 
 const SignUpPage = () => {
 
-  const [ username, setUsername ] = useState(null); 
-  const [ nickname, setNickname ] = useState(null); 
+  const [ account, setAccount ] = useState(null); 
+  const [ name, setName ] = useState(null); 
   const [ email, setEmail ] = useState(null); 
   const [ password, setPassword ] = useState(null); 
   const [ checkPassword, setCheckPassword ] = useState(null)
@@ -28,9 +28,9 @@ const SignUpPage = () => {
             <div>帳號</div>
             <input
               type="text"
-              value={username}
+              value={account}
               placeholder="請輸入帳號"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setAccount(e.target.value)}
             />
           </label>
         </div>
@@ -40,9 +40,9 @@ const SignUpPage = () => {
             <div>名稱</div>
             <input
               type="text"
-              value={nickname}
+              value={name}
               placeholder="請輸入使用者名稱"
-              onChange={(e) => setNickname(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
           </label>
         </div>

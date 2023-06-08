@@ -1,38 +1,34 @@
-[
-  {
-    "id": 1,
-    "name": "Apple",
-    "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
-    "isFollow": true
-
-  },
-  {
-    "id": 2,
-    "name": "Jane Cathy",
-    "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
-    "isFollow": true
-
-  },
-   {
-    "id": 3,
-    "name": "McDomold adword.junior",
-    "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
-    "isFollow": false
-
-  },
-   {
-    "id": 4,
-    "name": "Billy ocean",
-    "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
-    "isFollow": false
-
-  },
-   {
-    "id": 5,
-    "name": "Adm studoward",
-    "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
-    "isFollow": false
-
-  }
-  
-]
+{
+  "tweets": [
+    {
+      "id": 1,
+      "name": "Apple",
+      "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
+      "isFollow": true
+    },
+    {
+      "id": 2,
+      "name": "Jane Cathy",
+      "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
+      "isFollow": true
+    },
+    {
+      "id": 3,
+      "name": "McDomold adword.junior",
+      "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
+      "isFollow": false
+    },
+    {
+      "id": 4,
+      "name": "Billy ocean",
+      "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
+      "isFollow": false
+    },
+    {
+      "id": 5,
+      "name": "Adm studoward",
+      "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
+      "isFollow": false
+    }
+  ]
+}

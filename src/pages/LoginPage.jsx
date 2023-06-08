@@ -2,15 +2,28 @@ import styles from '../common/Auth.module.scss'
 import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
 import { Link } from "react-router-dom";
 import { useState } from 'react'
+import { login } from '../api/auth'
+// import Swal from "sweetalert2";
 
 const LoginPage = () => {
 
-  const [ username, setUsername ] = useState(null) 
+  const [ account, setAccount ] = useState(null) 
   const [ password, setPassword ] = useState(null) 
 
-  const handleClick = () => {
-    console.log("click login");
-  };
+  const handleClick = async () => {
+   if (account.length === 0) return
+   if (password.length === 0) return
+
+  await login ({
+    account,
+    password
+   })
+  
+  //  if (status === 'success') {
+  //   localStorage.setItem('token' , token)
+  //  }
+   }
+
 
   return (
     <div className={styles.container}>
@@ -24,9 +37,9 @@ const LoginPage = () => {
             <div>帳號</div>
             <input
               type="text"
-              value={username}
+              value={account}
               placeholder="請輸入帳號"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setAccount(e.target.value)}
             />
           </label>
         </div>
