@@ -1,9 +1,9 @@
 import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as PostButton } from "../../assets/image/PostButton.svg";
 
-const Post = () => {
+const Post = (props) => {
   return (
-    <div className={styles.postContainer}>
+    <div className={styles.postContainer} onClick={() => props.setTwit(true)}>
       <div className={styles.postContent}>
         <div className={styles.postAvatar}></div>
         <textarea

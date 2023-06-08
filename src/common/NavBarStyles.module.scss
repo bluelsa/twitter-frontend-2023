@@ -28,6 +28,9 @@
     .navBigButton {
       width: 178px;
       height: 46px;
+      :hover {
+          cursor: pointer;
+        }
     }
 
     .logOut {

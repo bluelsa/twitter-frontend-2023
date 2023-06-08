@@ -1,5 +1,5 @@
-import styles from "./HomeStyle.module.scss";
-import { RxCross2 } from "react-icons/rx";
+import styles from "../../pages/HomeStyle.module.scss";
+import { Smallx} from "../../assets/image/smallx.svg";
 
 
 
@@ -7,7 +7,8 @@ const TweetModal = () => {
 return (
   <div className={styles.modalContainer} >
     <div className={styles.modalHeader}>
-      <RxCross2 className={styles.modalIcon}/>
+      {/* <RxCross2 className={styles.modalIcon}/> */}
+      <smallx />
     </div>
     <div className={styles.post}>
       <div className={styles.posting}>

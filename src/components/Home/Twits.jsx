@@ -1,31 +1,32 @@
-
 import styles from "../../pages/HomeStyle.module.scss"
 import TwitForm from "./TwitForm";
 import Post from './Post'
+// import { useState } from "react";
 
-function Twits() {
+function Twits(props) {
+  // const [house, setHouse] = useState(true);
+  // const [person, setPerson] = useState(false);
+  // const [setting, setSetting] = useState(false);
+  // const [twit, setTwit] = useState(false);
   return (
-    // <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
     <>
       <header className={styles.header}>首頁</header>
       <div className={styles.mainDivider}></div>
-      <Post />
+      <Post twit={props.twit} setTwit={props.setTwit} />
       <div className={styles.postDivider}></div>
       <div className={styles.tweets}>
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
-        <TwitForm />
+        <TwitForm
+          replyTwit={props.replyTwit}
+          setReplyTwit={props.setReplyTwit}
+        />
+        <TwitForm
+          replyTwit={props.replyTwit}
+          setReplyTwit={props.setReplyTwit}
+        />
+        <TwitForm
+          replyTwit={props.replyTwit}
+          setReplyTwit={props.setReplyTwit}
+        />
       </div>
     </>
 

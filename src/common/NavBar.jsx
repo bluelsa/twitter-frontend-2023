@@ -9,7 +9,7 @@ import { ReactComponent as BlackIndex } from "../assets/image/NavBlackHouse.svg"
 import { ReactComponent as RedIndex } from "../assets/image/Redhouse.svg";
 import { ReactComponent as RedPersonal } from "../assets/image/user-active.svg"
 import { ReactComponent as RedSet } from "../assets/image/NavRedSet.svg";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
   
@@ -30,7 +30,7 @@ const NavBar = (props) => {
               props.setSetting(false);
             }}
           >
-            {props.house ? <RedIndex /> : <blackIndex />}
+            {props.house ? <RedIndex /> : <BlackIndex />}
           </div>
           {/* </Link> */}
 
@@ -44,7 +44,7 @@ const NavBar = (props) => {
               props.setSetting(false);
             }}
           >
-            {props.Person ? <RedPersonal /> : <NavPersonal />}
+            {props.person ? <RedPersonal /> : <NavPersonal />}
           </div>
           {/* </Link>  */}
           {/* <Link to="/setting"> */}
@@ -61,7 +61,10 @@ const NavBar = (props) => {
           </div>
           {/* </Link> */}
           <div className={styles.navBigButton}>
-            <NavButton className={styles.interaction} />
+            <NavButton
+              className={styles.interaction}
+              onClick={() => props.setTwit(true)}
+            />
           </div>
         </div>
         <NavOut className={styles.logOut} />
