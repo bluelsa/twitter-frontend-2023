@@ -1,10 +1,15 @@
 import styles from "./HomeStyle.module.scss";
 import NavBar from "../common/NavBar";
 import Popular from "../common/Popular";
-import ReplyTwits from "../common/Reply/ReplyTwits";
-import { useState, useEffect } from "react";
+import SettingPage from "./SettingPage";
+import UserMainNew from "../components/Others/UserMainNew";
+// import ReplyTwits from "../common/Reply/ReplyTwits";
+import Twits from '../components/Home/Twits';
+
+import { useState } from "react";
+// import UserMain from "../components/User/UserMain";
 // import {useState} from "react"
-// import Twits from './Twits';
+
 
 const MainPage = () => {
    const [house, setHouse] = useState(true);
@@ -13,7 +18,7 @@ const MainPage = () => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
-        <NavBar 
+        <NavBar
           house={house}
           setHouse={setHouse}
           person={person}
@@ -21,8 +26,16 @@ const MainPage = () => {
           setting={setting}
           setSetting={setSetting}
         />
-        <ReplyTwits />
+        {/* <ReplyTwits /> */}
         {/* <Twits /> */}
+        <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
+          {house && <Twits /> }
+           { person && <UserMainNew />}
+          {setting && <SettingPage /> }
+
+          
+        </div>
+
         <Popular />
       </div>
     </div>

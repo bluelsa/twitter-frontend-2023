@@ -25,7 +25,7 @@ function App() {
       <Route path="login" element={<LoginPage />} />
       <Route path="signup" element={<SignUpPage />} />
       <Route path="home" element={<MainPage />} />
-      <Route path="setting" element={<SettingPage />} />
+      {/* <Route path="setting" element={<SettingPage />} /> */}
       
       <Route path="user" element={<UserProfilePage />} />
       <Route path="user/replies" element={<UserReplyPage />} />

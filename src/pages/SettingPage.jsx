@@ -6,6 +6,23 @@ import { ReactComponent as SaveButton } from "../assets/image/SetSaveButton.svg"
 // import { Link } from "react-router-dom";
 // import { useState } from "react";
 // import clsx from "clsx";
+export const SettingInput = (props) => {
+  return (
+    <div className={styles.eachInput}>
+      <div className={styles.settinginputContainer}>
+        <label className={styles.setlabel}>{props.title}</label>
+        <input
+          className={styles.setinput}
+          type={props.type}
+          // defaultValue={username}
+          placeholder={props.placeholder}
+          // onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+      <div className={styles.setbigDivider}></div>
+    </div>
+  );
+};
 
 const SettingPage = () => {
   // const [username, setUsername] = useState('');
@@ -26,9 +43,9 @@ const SettingPage = () => {
   //  };
 
   return (
-    <div className={styles.homeContainer}>
-      <div className={styles.mainContainer}>
-        <NavBar />
+    // <div className={styles.homeContainer}>
+    //   <div className={styles.mainContainer}>
+    //     <NavBar />
         <div className={styles.mainBackground}>
           <div className={styles.title}>
             <AccountSet />
@@ -36,79 +53,39 @@ const SettingPage = () => {
           <div className={styles.setDivider}></div>
 
           <div className={styles.inputGroup}>
-            <div className={styles.inputContainer}>
-              <label className={styles.input}>
-                <div>帳號</div>
-                <input
-                  type="text"
-                  // defaultValue={username}
-                  placeholder="請輸入帳號"
-                  // onChange={(e) => setUsername(e.target.value)}
-                />
-              </label>
-            </div>
+            <SettingInput 
+            title="帳號" 
+            type="text" 
+            placeholder="請輸入帳號" 
+            />
+            <SettingInput
+              title="名稱"
+              type="text"
+              placeholder="請輸入使用者名稱"
+            />
+            <SettingInput 
+            title="Email" 
+            type="text" 
+            placeholder="請輸入Email" 
+            />
+            <SettingInput
+              title="密碼"
+              type="password"
+              placeholder="請輸入帳號"
+            />
+            <SettingInput
+              title="密碼再確認"
+              type="password"
+              placeholder="請再次輸入密碼"
+            />
 
-            <div className={styles.inputContainer}>
-              <label className={styles.input}>
-                <div>名稱</div>
-                <input
-                  type="text"
-                  // defaultValue={nickname}
-                  placeholder="請輸入使用者名稱"
-                  // onChange={(e) => setNickname(e.target.value)}
-                />
-              </label>
-            </div>
-
-            <div className={styles.inputContainer}>
-              <label className={styles.input}>
-                <div>Email</div>
-                <input
-                  type="text"
-                  // defaultValue={email}
-                  placeholder="請輸入Email"
-                  // onChange={(e) => setEmail(e.target.value)}
-                />
-              </label>
-            </div>
-
-            <div className={styles.inputContainer}>
-              <label className={styles.input}>
-                <div>密碼</div>
-                <input
-                  type="password"
-                  // defaultValue={password}
-                  placeholder="請設定密碼"
-                  // onChange={(e) => setPassword(e.target.value)}
-                />
-              </label>
-            </div>
-
-            <div className={styles.inputContainer}>
-              <label className={styles.input}>
-                <div>密碼再確認</div>
-                <input
-                  type="password"
-                  // defaultValue={checkPassword}
-                  placeholder="請再次輸入密碼"
-                  // onChange={(e) => setCheckPassword(e.target.value)}
-                />
-              </label>
-            </div>
             <div className={styles.saveButton}>
               <SaveButton />
             </div>
           </div>
-
-          {/* 測試…
-          <div onClick={() => itemClick()}>
-            <TestHouse className={isPush && `${styles.blueHouse}` }/>
-          </div> */}
-
-    
         </div>
-      </div>
-    </div>
+    //   </div>
+    // </div>
   );
 };
 

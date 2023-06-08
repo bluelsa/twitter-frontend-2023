@@ -19,7 +19,7 @@ const LoginPage = () => {
       </div>
       <h1>登入 Alphitter</h1>
       <div className={styles.inputGroup}>
-        <div className={styles.logininputContainer}>
+        <div className={styles.inputContainer}>
           <label className={styles.input}>
             <div>帳號</div>
             <input
@@ -31,7 +31,7 @@ const LoginPage = () => {
           </label>
         </div>
 
-        <div className={styles.logininputContainer}>
+        <div className={styles.inputContainer}>
           <label className={styles.input}>
             <div>密碼</div>
             <input

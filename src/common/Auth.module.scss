@@ -47,6 +47,7 @@
         }
 
         input {
+          width: 93.5%;
           outline: none;
           border: none;
           background-color: #f5f8fa;
@@ -95,42 +96,3 @@
   }
 }
 
- .inputGroup {
-   margin: 40px 0 8px 0;
-
-   .logininputContainer {
-     width: 356px;
-     height: 54px;
-     margin-bottom: 32px;
- 
-     .input {
-       display: flex;
-       flex-direction: column;
-       justify-content: space-around;
-       background-color: #f5f8fa;
-       border-radius: 2px;
-       border-bottom: 2px solid #657786;
-       padding: 2px 10.55px 4px 10.55px;
- 
-       div {
-         font-size: 14px;
-         line-height: 22px;
-         color: #696974;
-          // text-align: start;
-         // margin: 2px 10.55px 0px 10.55px;
-       }
-
-       input {
-        width:93.5%;
-         outline: none;
-         border: none;
-         background-color: #f5f8fa;
-         align-items: center;
-         // line-height: 26px;
-         font-size: 16px;
-  
-         // margin: 0px 10.55px 4px 10.55px;
-       }
-     }
-   }
- }
