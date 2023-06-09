@@ -27,7 +27,6 @@ const AdminPage = () => {
       account,
       password,
     });
-    console.log(status)
     if ( status === 'success' ) {
     localStorage.setItem('token', token);
       Swal.fire({
@@ -38,8 +37,15 @@ const AdminPage = () => {
         showConfirmButton: false,
       });
       navigate('/admin/tweets');
+      return
     }
-    return
+    Swal.fire({
+      position: "top",
+      title: "登入成功",
+      timer: 2000,
+      icon: "success",
+      showConfirmButton: false,
+    });
   };
 
   return (

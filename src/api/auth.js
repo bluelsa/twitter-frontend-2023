@@ -8,13 +8,13 @@ export const login = async ({ account, password }) => {
       account,
       password,
     });
-console.log(data)
+// console.log(data)
 
 
 const { token } = data.data
 const { status } = data
 if (token) {
-  return { status , token}
+  return { status , token }
 }
 return data
   } catch (error) {
@@ -24,13 +24,15 @@ return data
 
 export const signup = async ({ account, name, email, password, checkPassword }) => {
   try {
-    const { data } = await axios.post(`${authURL}/signup`, {
+    const {data}  = await axios.post(`${authURL}/signup`, {
       account,
       name,
       email,
       password,
       checkPassword
     });
+    // console.log(data)
+    
      const { status } = data
      return { status }
     

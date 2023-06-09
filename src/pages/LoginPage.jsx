@@ -38,8 +38,8 @@ const LoginPage = () => {
         showConfirmButton: false,
       });
       navigate('/home')
+      return
     }
-    if (status === 'error') {
       Swal.fire({
         position: "top",
         title: "登入失敗",
@@ -48,8 +48,6 @@ const LoginPage = () => {
         icon: "error",
         showConfirmButton: false,
       });
-    
-      return;}
   };
 
   return (

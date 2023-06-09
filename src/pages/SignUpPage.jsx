@@ -45,6 +45,8 @@ return
     checkPassword
   })
 
+  // console.log(status)
+
   if ( status === 'error') {
     Swal.fire({
       position: "top",

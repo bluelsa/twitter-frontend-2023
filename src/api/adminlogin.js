@@ -4,17 +4,16 @@ const adminURL = "https://pure-waters-81841.herokuapp.com/api/admin/users";
 
 export const adminlogin = async ({ account, password }) => {
   try {
-    const { data } = await axios.post(`${adminURL}`, {
+    const { data }  = await axios.post(`${adminURL}`, {
       account,
       password,
     });
-    console.log(data)
 
     const { token } = data.data;
     const { status } = data;
-    if (status === 'success') {
+    if (token) {
     return { token, status }}
-    return data;
+    return data
   } catch (error) {
     console.error("[Login Failed]:", error);
   }
