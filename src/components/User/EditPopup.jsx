@@ -1,4 +1,4 @@
-import styles from "../../components/User/User.module.scss";
+import styles from "./EditPopup.module.scss";
 import { ReactComponent as Delete } from "../../assets/image/delete-orange.svg";
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/camera.svg";
 import { ReactComponent as DeleteCover } from "../../assets/image/delete-white.svg";

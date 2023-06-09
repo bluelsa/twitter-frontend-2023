@@ -37,7 +37,7 @@ Swal.fire({
 });
 return
     }
-    const { status } = await signup ({
+    const data = await signup ({
     account,
     name, 
     email, 
@@ -45,21 +45,8 @@ return
     checkPassword
   })
 
-  // console.log(status)
-
-  if ( status === 'error') {
+  if ( data.status === 'success') {
     Swal.fire({
-      position: "top",
-      title: "註冊失敗",
-      text: "此帳號/Email已註冊",
-      timer: 2000,
-      icon: "error",
-      showConfirmButton: false,
-    });
-    return
-    
-  }
-  Swal.fire({
       position: "top",
       title: "註冊成功",
       timer: 2000,
@@ -67,6 +54,16 @@ return
       showConfirmButton: false,
     });
     navigate('/login')
+    return
+  }
+  Swal.fire({
+      position: "top",
+      title: "註冊失敗",
+      text: "此帳號/Email已註冊",
+      timer: 2000,
+      icon: "error",
+      showConfirmButton: false,
+    });
   }
 
 
@@ -96,6 +93,7 @@ return
               type="text"
               value={name}
               placeholder="請輸入使用者名稱"
+              maxLength="50"
               onChange={(e) => setName(e.target.value)}
             />
           </label>

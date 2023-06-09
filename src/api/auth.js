@@ -8,14 +8,15 @@ export const login = async ({ account, password }) => {
       account,
       password,
     });
-// console.log(data)
+console.log(data)
 
 
-const { token } = data.data
-const { status } = data
-if (token) {
-  return { status , token }
-}
+// const { token } = data.data
+// const { status } = data
+// if (token) {
+//   return { status , token }
+// }
+
 return data
   } catch (error) {
     console.error("[Login Failed]:", error);
@@ -31,10 +32,12 @@ export const signup = async ({ account, name, email, password, checkPassword }) 
       password,
       checkPassword
     });
-    // console.log(data)
+    console.log(data)
     
-     const { status } = data
-     return { status }
+    //  const { status } = data
+    //  return { status }
+
+    return data
     
   } catch (error) {
     console.error("[Signup Failed]: ", error);

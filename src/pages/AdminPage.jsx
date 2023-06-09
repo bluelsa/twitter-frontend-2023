@@ -23,12 +23,16 @@ const AdminPage = () => {
       return;
     }
 
-    const { status, token } = await adminlogin({
+    const data = await adminlogin({
       account,
       password,
     });
-    if ( status === 'success' ) {
-    localStorage.setItem('token', token);
+    console.log(data)
+    console.log(data.status)
+    // console.log(data.data.token)
+    // const {token} = data.data
+    if ( data.status === 'success' ) {
+    localStorage.setItem('token', data.data.token );
       Swal.fire({
         position: "top",
         title: "登入成功",
@@ -39,13 +43,15 @@ const AdminPage = () => {
       navigate('/admin/tweets');
       return
     }
+    // if (data.status === 'error') {
     Swal.fire({
       position: "top",
-      title: "登入成功",
+      title: "登入失敗",
       timer: 2000,
-      icon: "success",
+      icon: "error",
       showConfirmButton: false,
     });
+  // }
   };
 
   return (
