@@ -1,5 +1,4 @@
 import styles from "./otherStyle.module.scss";
-// import UserTweetList from "../User/UserTweetList";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
 import { Link } from "react-router-dom";
 import UserProfileNew from "../Others/UserProfileNew";

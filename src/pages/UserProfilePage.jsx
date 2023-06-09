@@ -4,7 +4,7 @@ import NavBar from "../common/NavBar";
 import SettingPage from "./SettingPage";
 import UserMainNew from "../components/Others/UserMainNew";
 import MainFollow from "../components/Others/MainFollow";
-import ReplyTwits from "../common/Reply/ReplyTwits";
+// import ReplyTwits from "../common/Reply/ReplyTwits";
 import { useState } from "react";
 
 const UserProfilePage = () => {
