@@ -1,12 +1,18 @@
-import styles from "../pages/HomeStyle.module.scss";
-import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
-import { ReactComponent as NavIndex } from "../assets/image/NavIndex.svg";
+// import styles from "../pages/HomeStyle.module.scss";
+import styles from "./NavBarStyles.module.scss";
+import { ReactComponent as Logo } from "../assets/image/log50x50.svg";
 import { ReactComponent as NavPersonal } from "../assets/image/NavPersonal.svg";
 import { ReactComponent as NavSetting } from "../assets/image/NavSetting.svg";
 import { ReactComponent as NavOut } from "../assets/image/NavOut.svg";
-import { ReactComponent as NavButton } from "../assets/image/NavButton.svg";
+import { ReactComponent as NavButton } from "../assets/image/NavBigButton.svg";
+import { ReactComponent as BlackIndex } from "../assets/image/NavBlackHouse.svg";
+import { ReactComponent as RedIndex } from "../assets/image/Redhouse.svg";
+import { ReactComponent as RedPersonal } from "../assets/image/user-active.svg"
+import { ReactComponent as RedSet } from "../assets/image/NavRedSet.svg";
+// import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (props) => {
+  
   return (
     <div className={styles.leftColumn}>
       <nav className={styles.navContainer}>
@@ -14,12 +20,53 @@ const NavBar = () => {
           <Logo className={styles.interaction} />
         </div>
         <div className={styles.navBar}>
-          <NavIndex className={styles.interaction} />
-          <NavPersonal className={styles.interaction} />
-          <NavSetting className={styles.interaction} />
-          <NavButton className={styles.interaction} />
-        </div>
+          {/* <Link to="/home"> */}
+          <div
+            className={styles.navItem}
+            id="1"
+            onClick={() => {
+              props.setHouse(true);
+              props.setPerson(false);
+              props.setSetting(false);
+            }}
+          >
+            {props.house ? <RedIndex /> : <BlackIndex />}
+          </div>
+          {/* </Link> */}
 
+          {/* <Link to="/user"> */}
+          <div
+            className={styles.navItem}
+            id="2"
+            onClick={() => {
+              props.setHouse(false);
+              props.setPerson(true);
+              props.setSetting(false);
+            }}
+          >
+            {props.person ? <RedPersonal /> : <NavPersonal />}
+          </div>
+          {/* </Link>  */}
+          {/* <Link to="/setting"> */}
+          <div
+            className={styles.navItem}
+            id="3"
+            onClick={() => {
+              props.setHouse(false);
+              props.setPerson(false);
+              props.setSetting(true);
+            }}
+          >
+            {props.setting ? <RedSet /> : <NavSetting />}
+          </div>
+          {/* </Link> */}
+          <div className={styles.navBigButton}>
+            <NavButton
+              className={styles.interaction}
+              onClick={() => props.setTwit(true)}
+            />
+          </div>
+        </div>
         <NavOut className={styles.logOut} />
       </nav>
     </div>

@@ -2,12 +2,15 @@ import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as TalkIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/LikeIcon.svg";
 
-const TwitForm = () => {
+const TwitForm = (props) => {
   return (
     <>
       <div className={styles.tweetContainer}>
         <div className={styles.tweetCollection}>
-          <div className={styles.twitAvatar}>{/* <Head /> */}</div>
+          <div className={styles.twitAvatar} 
+             onClick={() => {
+               props.setReplyTwit(true);
+     } }>{/* <Head /> */}</div>
           <div className={styles.tweetContent}>
             <div className={styles.nameInfo}>
               <div className={styles.tweetName}>Apple</div>

@@ -3,6 +3,7 @@ import UserNav from '../components/User/UserNav'
 import Popular from "../common/Popular";
 import UserMain from "../components/User/UserMain";
 
+
 const UserProfilePage = () => {
   return (
     <div className={styles.homeContainer}>
