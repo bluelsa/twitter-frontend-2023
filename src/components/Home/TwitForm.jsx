@@ -9,21 +9,30 @@ const TwitForm = (props) => {
         <div className={styles.tweetCollection}>
           <div
             className={styles.twitAvatar}
-            onClick={() => props.setReplyTwit(true)}
+            onClick={() => {
+              props.setReplyTwit(true);
+              
+            }}
           >
             {/* <Head /> */}
           </div>
           <div className={styles.tweetContent}>
             <div
               className={styles.nameInfo}
-              onClick={() => props.setReplyTwit(true)}
+              onClick={() => {
+                props.setReplyTwit(true);
+               
+              }}
             >
               <div className={styles.tweetName}>Apple</div>
               <div className={styles.tweetTime}>@apple &bull;3小時</div>
             </div>
             <div
               className={styles.tweetArticle}
-              onClick={() => props.setReplyTwit(true)}
+              onClick={() => {
+                props.setReplyTwit(true);
+                
+              }}
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint illo
               temporibus, non enim debitis ipsum repudiandae beatae nesciunt ea

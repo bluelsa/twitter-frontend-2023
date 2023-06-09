@@ -1,8 +1,8 @@
-import styles from "./editStyle.module.scss"
+import styles from "./editStyle.module.scss";
 import { ReactComponent as ModalX } from "../../assets/image/ModalX.svg";
 import { ReactComponent as EditTitle } from "../../assets/image/EditTitle.svg";
 import { ReactComponent as EditSave } from "../../assets/image/EditSave.svg";
-import { ReactComponent as CameraGroup} from "../../assets/image/ImageEditor.svg"
+import { ReactComponent as CameraGroup } from "../../assets/image/ImageEditor.svg";
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/iconCCamera.svg";
 
 const UserEditModal = (props) => {

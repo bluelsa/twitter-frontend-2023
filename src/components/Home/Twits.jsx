@@ -1,13 +1,9 @@
 import styles from "../../pages/HomeStyle.module.scss"
 import TwitForm from "./TwitForm";
 import Post from './Post'
-// import { useState } from "react";
 
 function Twits(props) {
-  // const [house, setHouse] = useState(true);
-  // const [person, setPerson] = useState(false);
-  // const [setting, setSetting] = useState(false);
-  // const [twit, setTwit] = useState(false);
+  
   return (
     <>
       <header className={styles.header}>首頁</header>

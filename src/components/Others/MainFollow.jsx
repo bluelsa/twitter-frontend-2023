@@ -1,39 +1,59 @@
-
 import styles from "./otherStyle.module.scss";
 // import UserTweetList from "../User/UserTweetList";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
-import { Link } from "react-router-dom";
-import UserProfileNew from "../Others/UserProfileNew";
-import StickOption from "./StickOption";
-import TwitForm from "../Home/TwitForm";
-import ReplyList from "../../common/Reply/ReplyList";
-import UserEditModal from "./UserEditModal";
-import LikeForm from "../Home/LikeForm";
-import { useState } from "react";
+import { ReactComponent as FollowARed } from "../../assets/image/FollowA.svg";
+import { ReactComponent as FollowBBlack } from "../../assets/image/FllowerB.svg";
+import { ReactComponent as FollowABlack} from "../../assets/image/itemFollowAblack.svg";
+import { ReactComponent as FollowBRed } from "../../assets/image/itemFollowBred.svg";
+import MainFollower from "./MainFollower";
+import WholeFollowing from "./WholeFollowing";
 
-const MainFollow = () => {
-  const [twitSection, setTwitSection] = useState(true);
-  const [replySection, setReplySection] = useState(false);
-  const [likeSection, setLikeSection] = useState(false);
-  const [editPopup, setEditPopup] = useState(false);
+const MainFollow = (props) => {
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <Link to="/home">
-          <div className={styles.arrow}>
+    <>
+      <div className={styles.mfcontainer}>
+        <div className={styles.mfheader}>
+          <div className={styles.mfarrow}>
             <Arrow />
           </div>
-        </Link>
-        <div className={styles.returnWrapper}>
-          <div className={styles.userName}>John Doe</div>
-          <div className={styles.tweetNum}>25 推文</div>
+          <div
+            className={styles.mfWrapper}
+            onClick={() =>props.setIsChange(false)}
+          >
+            <div className={styles.userName}>John Doe</div>
+            <div className={styles.tweetNum}>25 推文</div>
+          </div>
         </div>
+
+        <div className={styles.mainFollowDivider}></div>
+        <div className={styles.ChoiceBox}>
+          {props.isFollow ? (
+            <FollowARed />
+          ) : (
+            <FollowABlack
+              onClick={() => {
+                props.setIsFollow(true);
+                props.setIsWhole(false);
+              }}
+              className={styles.interaction}
+            />
+          )}
+          {props.isWhole ? (
+            <FollowBRed />
+          ) : (
+            <FollowBBlack
+              onClick={() => {
+                props.setIsFollow(false);
+                props.setIsWhole(true);
+              }}
+              className={styles.interaction}
+            />
+          )}
+        </div>
+        <div className={styles.mainDivider}></div>
+        {props.isFollow ? <MainFollower /> : <WholeFollowing />}
       </div>
-     <div className={styles.ChoiceBox}>
-      
-     </div>
-  
-    </div>
+    </>
   );
 };
 

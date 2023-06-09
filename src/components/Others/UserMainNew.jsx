@@ -9,11 +9,14 @@ import ReplyList from "../../common/Reply/ReplyList";
 import UserEditModal from "./UserEditModal";
 import LikeForm from "../Home/LikeForm";
 import { useState } from "react";
-const UserMainNew = () => {
+
+
+const UserMainNew = (props) => {
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
   const [likeSection, setLikeSection] = useState(false);
   const [editPopup, setEditPopup] = useState(false);
+ 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -27,7 +30,16 @@ const UserMainNew = () => {
           <div className={styles.tweetNum}>25 推文</div>
         </div>
       </div>
-      <UserProfileNew editPopup={editPopup} setEditPopup={setEditPopup} />
+      <UserProfileNew
+        editPopup={editPopup}
+        setEditPopup={setEditPopup}
+        isFollow={props.isFollow}
+        setIsFollow={props.setIsFollow}
+        isWhole={props.isWhole}
+        setIsWhole={props.setIsWhole}
+        isChange={props.isChange}
+        setIsChange={props.setIsChange}
+      />
       <StickOption
         twitSection={twitSection}
         setTwitSection={setTwitSection}
@@ -38,10 +50,10 @@ const UserMainNew = () => {
       />
       <div className={styles.mainDivider}></div>
 
-      {twitSection && <TwitForm />}
+      {twitSection && ( <TwitForm/>)}
       {replySection && <ReplyList />}
       {likeSection && <LikeForm />}
-      {/* <ReplyList /> */}
+
       {editPopup && (
         <UserEditModal
           editPopup={editPopup}

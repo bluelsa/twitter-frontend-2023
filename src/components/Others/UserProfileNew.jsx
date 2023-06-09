@@ -1,7 +1,6 @@
 import styles from "./otherStyle.module.scss";
 import { ReactComponent as EditPrivate } from "../../assets/image/UserPrivate.svg";
 
-
 const OtherProfile = (props) => {
   return (
     <>
@@ -37,12 +36,24 @@ const OtherProfile = (props) => {
 
           <div className={styles.description}>other test.</div>
           <div className={styles.otherNumWrapper}>
-            <div>
-              {" "}
+            <div
+              className={styles.interaction}
+              onClick={() => {
+                props.setIsFollow(true);
+                props.setIsWhole(false)
+                props.setIsChange(true);
+              }}
+            >
               34 個<span>跟隨中</span>
             </div>
-            <div>
-              {" "}
+            <div
+              className={styles.interaction}
+              onClick={() => {
+                props.setIsFollow(false);
+                props.setIsWhole(true);
+                props.setIsChange(true);
+              }}
+            >
               59 位<span>跟隨者</span>
             </div>
           </div>
