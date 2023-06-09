@@ -49,7 +49,7 @@ const UserMainNew = (props) => {
       />
       <div className={styles.mainDivider}></div>
 
-      {twitSection && ( <TwitForm/>)}
+      {twitSection &&  <TwitForm/>}
       {replySection && <ReplyList />}
       {likeSection && <LikeForm />}
 
