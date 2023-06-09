@@ -11,7 +11,6 @@ const TwitForm = (props) => {
             className={styles.twitAvatar}
             onClick={() => {
               props.setReplyTwit(true);
-              
             }}
           >
             {/* <Head /> */}
@@ -21,7 +20,6 @@ const TwitForm = (props) => {
               className={styles.nameInfo}
               onClick={() => {
                 props.setReplyTwit(true);
-               
               }}
             >
               <div className={styles.tweetName}>Apple</div>
@@ -31,7 +29,6 @@ const TwitForm = (props) => {
               className={styles.tweetArticle}
               onClick={() => {
                 props.setReplyTwit(true);
-                
               }}
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint illo
@@ -39,11 +36,11 @@ const TwitForm = (props) => {
               odio?
             </div>
             <div className={styles.tweetMessage}>
-              <div
-                className={styles.smallIcon}
-                onClick={() => props.setReplyPop(true)}
-              >
-                <TalkIcon className={styles.interaction} />
+              <div className={styles.smallIcon}>
+                <TalkIcon
+                  className={styles.interaction}
+                  onClick={() => props.setReplyPop(true)}
+                />
                 <div>13</div>
               </div>
               <div className={styles.smallIcon}>
