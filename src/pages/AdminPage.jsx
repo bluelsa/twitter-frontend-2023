@@ -2,24 +2,18 @@ import styles from '../common/Auth.module.scss'
 import { ReactComponent as Logo } from "../assets/image/ac-logo.svg"
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react'
-import { adminlogin } from '../api/adminlogin'
-import Swal from "sweetalert2";
+import { adminlogin } from '../api/admin'
+import TimePopup from '../components/TimePopup/TimePopup';
 
 const AdminPage = () => {
   const [account, setAccount] = useState('');
   const [password, setPassword] = useState(''); 
+  const [notiStatus, setNotiStatus] = useState("finished");
   const navigate = useNavigate()
 
   const handleClick = async() =>  {
     if (account.length === 0 || password.length === 0) {
-      Swal.fire({
-        position: "top",
-        title: "登入失敗",
-        text: "請確實填寫帳號、密碼欄位",
-        timer: 2000,
-        icon: "error",
-        showConfirmButton: false,
-      });
+      setNotiStatus('incomplete')
       return;
     }
 
@@ -33,28 +27,28 @@ const AdminPage = () => {
     // const {token} = data.data
     if ( data.status === 'success' ) {
     localStorage.setItem('token', data.data.token );
-      Swal.fire({
-        position: "top",
-        title: "登入成功",
-        timer: 2000,
-        icon: "success",
-        showConfirmButton: false,
-      });
       navigate('/admin/tweets');
       return
     }
-    // if (data.status === 'error') {
-    Swal.fire({
-      position: "top",
-      title: "登入失敗",
-      timer: 2000,
-      icon: "error",
-      showConfirmButton: false,
-    });
-  // }
+    setNotiStatus('failed')
+
   };
 
   return (
+    <>
+    <div className={styles.notiContainer}>
+        {notiStatus === "failed" && (
+          <TimePopup
+            notification="error"
+            title="帳號密碼錯誤"
+            onClick="alert('clicked')"
+          />
+        )}
+        {notiStatus === "incomplete" && (
+          <TimePopup notification="error" title="請輸入完整資訊" />
+        )}
+        {notiStatus === "finish" && ""}
+      </div>
     <div className={styles.container}>
       <div>
         <Logo className={styles.logo} />
@@ -96,6 +90,7 @@ const AdminPage = () => {
         </Link>
       </div>
     </div>
+    </>
   );
 };
 

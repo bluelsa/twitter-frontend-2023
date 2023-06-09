@@ -8,14 +8,7 @@ export const login = async ({ account, password }) => {
       account,
       password,
     });
-console.log(data)
-
-
-// const { token } = data.data
-// const { status } = data
-// if (token) {
-//   return { status , token }
-// }
+// console.log(data)
 
 return data
   } catch (error) {

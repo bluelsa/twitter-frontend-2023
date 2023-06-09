@@ -3,7 +3,7 @@ import { ReactComponent as Logo } from '../assets/image/ac-logo.svg'
 import { Link, useNavigate} from 'react-router-dom'
 import { useState } from 'react'
 import { signup } from '../api/auth'
-import Swal from "sweetalert2";
+import TimePopup from '../components/TimePopup/TimePopup'
 
 const SignUpPage = () => {
 
@@ -12,29 +12,21 @@ const SignUpPage = () => {
   const [ email, setEmail ] = useState(''); 
   const [ password, setPassword ] = useState(''); 
   const [ checkPassword, setCheckPassword ] = useState('')
+   const [notiStatus, setNotiStatus] = useState("finished");
   const navigate = useNavigate()
+
+  const handlePopupClick  = () => {
+    console.log('click')
+    setNotiStatus('finished')
+  }
 
   const handleClick = async () => {
     if (account.length === 0 || name.length === 0 || email.length === 0 || password.length === 0 || checkPassword === 0) {
-Swal.fire({
-  position: "top",
-  title: "註冊失敗",
-  text: "請確認每個欄位確實填寫",
-  timer: 2000,
-  icon: "error",
-  showConfirmButton: false,
-});
+  setNotiStatus('incomplete')
 return
     }
     if (password !== checkPassword) {
-Swal.fire({
-  position: "top",
-  title: "註冊失敗",
-  text: "密碼輸入不符，請再次確認密碼",
-  timer: 2000,
-  icon: "error",
-  showConfirmButton: false,
-});
+setNotiStatus('code')
 return
     }
     const data = await signup ({
@@ -46,29 +38,22 @@ return
   })
 
   if ( data.status === 'success') {
-    Swal.fire({
-      position: "top",
-      title: "註冊成功",
-      timer: 2000,
-      icon: "success",
-      showConfirmButton: false,
-    });
     navigate('/login')
     return
   }
-  Swal.fire({
-      position: "top",
-      title: "註冊失敗",
-      text: "此帳號/Email已註冊",
-      timer: 2000,
-      icon: "error",
-      showConfirmButton: false,
-    });
+  setNotiStatus('failed')
   }
 
 
   return (
-    <div className={styles.container}>
+        <>
+      <div className={styles.notiContainer}>
+        {notiStatus === 'failed' && <TimePopup notification="error" title="帳號/email已註冊" onClick={handlePopupClick}/>}
+        {notiStatus === 'incomplete' && <TimePopup notification="error" title="請輸入完整資訊" />}
+        {notiStatus === 'code' && <TimePopup notification="error" title="再次確認請輸入相同密碼" />}
+        {notiStatus === 'finish' && ''}
+      </div>
+    <div className={styles.container}  >
       <div>
         <Logo className={styles.logo} />
       </div>
@@ -144,6 +129,7 @@ return
         </Link>
       </div>
     </div>
+    </>
   );
 }
 
