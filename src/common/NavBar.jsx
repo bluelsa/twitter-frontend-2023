@@ -9,7 +9,7 @@ import { ReactComponent as BlackIndex } from "../assets/image/NavBlackHouse.svg"
 import { ReactComponent as RedIndex } from "../assets/image/Redhouse.svg";
 import { ReactComponent as RedPersonal } from "../assets/image/user-active.svg"
 import { ReactComponent as RedSet } from "../assets/image/NavRedSet.svg";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
   
@@ -20,7 +20,7 @@ const NavBar = (props) => {
           <Logo className={styles.interaction} />
         </div>
         <div className={styles.navBar}>
-          {/* <Link to="/home"> */}
+           <Link to="/home"> 
           <div
             className={styles.navItem}
             id="1"
@@ -32,9 +32,9 @@ const NavBar = (props) => {
           >
             {props.house ? <RedIndex /> : <BlackIndex />}
           </div>
-          {/* </Link> */}
+          </Link> 
 
-          {/* <Link to="/user"> */}
+          <Link to="/user"> 
           <div
             className={styles.navItem}
             id="2"
@@ -46,7 +46,7 @@ const NavBar = (props) => {
           >
             {props.person ? <RedPersonal /> : <NavPersonal />}
           </div>
-          {/* </Link>  */}
+          </Link> 
           {/* <Link to="/setting"> */}
           <div
             className={styles.navItem}

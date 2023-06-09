@@ -2,7 +2,7 @@ import styles from "./otherStyle.module.scss";
 import { ReactComponent as EditPrivate } from "../../assets/image/UserPrivate.svg";
 
 
-const OtherProfile = () => {
+const OtherProfile = (props) => {
   return (
     <>
       <div className={styles.imageContainer}>
@@ -22,7 +22,10 @@ const OtherProfile = () => {
           <div>
             {/* <RedEmail className={styles.interaction} />
             <RedBell className={styles.interaction} /> */}
-            <EditPrivate className={styles.interaction} />
+            <EditPrivate
+              className={styles.interaction}
+              onClick={() => props.setEditPopup(true)}
+            />
           </div>
         </div>
 

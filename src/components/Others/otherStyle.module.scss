@@ -364,21 +364,39 @@
   height: 52px;
   display: flex;
   flex-direction: row;
+}
 
-  div {
-    width: 90px;
-    height: 52px;
-    font-family: 'Noto Sans TC';
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 52px;
-    color: #657786;
-    text-align: center;
+
+.origin {
+  width: 90px;
+  height: 52px;
+  font-family: 'Noto Sans TC';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 52px;
+  color: #657786;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
   }
 
+}
 
-  .stickRed {
-    color: #ff6600;
-    border-bottom: 2px solid #ff6600;
+
+.stickRed {
+  width: 90px;
+  height: 52px;
+  font-family: 'Noto Sans TC';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 52px;
+  color: #657786;
+  text-align: center;
+  color: #ff6600;
+  border-bottom: 2px solid #ff6600;
+
+  &:hover {
+    cursor: default;
   }
 }

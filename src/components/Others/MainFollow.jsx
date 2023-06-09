@@ -1,3 +1,4 @@
+
 import styles from "./otherStyle.module.scss";
 // import UserTweetList from "../User/UserTweetList";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
@@ -9,7 +10,8 @@ import ReplyList from "../../common/Reply/ReplyList";
 import UserEditModal from "./UserEditModal";
 import LikeForm from "../Home/LikeForm";
 import { useState } from "react";
-const UserMainNew = () => {
+
+const MainFollow = () => {
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
   const [likeSection, setLikeSection] = useState(false);
@@ -27,30 +29,12 @@ const UserMainNew = () => {
           <div className={styles.tweetNum}>25 推文</div>
         </div>
       </div>
-      <UserProfileNew editPopup={editPopup} setEditPopup={setEditPopup} />
-      <StickOption
-        twitSection={twitSection}
-        setTwitSection={setTwitSection}
-        replySection={replySection}
-        setReplySection={setReplySection}
-        likeSection={likeSection}
-        setLikeSection={setLikeSection}
-      />
-      <div className={styles.mainDivider}></div>
-
-      {twitSection && <TwitForm />}
-      {replySection && <ReplyList />}
-      {likeSection && <LikeForm />}
-      {/* <ReplyList /> */}
-      {editPopup && (
-        <UserEditModal
-          editPopup={editPopup}
-          setEditPopup={setEditPopup}
-          onSave={""}
-        />
-      )}
+     <div className={styles.ChoiceBox}>
+      
+     </div>
+  
     </div>
   );
 };
 
-export default UserMainNew;
+export default MainFollow;

@@ -1,30 +1,23 @@
 import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as TalkIcon } from "../../assets/image/TalkIcon.svg";
-import { ReactComponent as LikeIcon } from "../../assets/image/LikeIcon.svg";
+// import { ReactComponent as LikeIcon } from "../../assets/image/LikeIcon.svg";
+import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 
-const TwitForm = (props) => {
+const LikeForm = (props) => {
   return (
     <>
-      <div className={styles.tweetContainer}>
+      <div
+        className={styles.tweetContainer}
+        onClick={() => props.setReplyTwit(true)}
+      >
         <div className={styles.tweetCollection}>
-          <div
-            className={styles.twitAvatar}
-            onClick={() => props.setReplyTwit(true)}
-          >
-            {/* <Head /> */}
-          </div>
+          <div className={styles.twitAvatar}>{/* <Head /> */}</div>
           <div className={styles.tweetContent}>
-            <div
-              className={styles.nameInfo}
-              onClick={() => props.setReplyTwit(true)}
-            >
+            <div className={styles.nameInfo}>
               <div className={styles.tweetName}>Apple</div>
               <div className={styles.tweetTime}>@apple &bull;3小時</div>
             </div>
-            <div
-              className={styles.tweetArticle}
-              onClick={() => props.setReplyTwit(true)}
-            >
+            <div className={styles.tweetArticle}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint illo
               temporibus, non enim debitis ipsum repudiandae beatae nesciunt ea
               odio?
@@ -50,4 +43,4 @@ const TwitForm = (props) => {
   );
 };
 
-export default TwitForm;
+export default LikeForm;

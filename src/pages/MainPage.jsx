@@ -17,11 +17,7 @@ const MainPage = () => {
   const [replyTwit, setReplyTwit] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   return (
-    <div
-      className={`${styles.mainBackground} ${
-        twit ? styles.grayBackground : ""
-      }`}
-    >
+    
       <div className={styles.homeContainer}>
         <div className={styles.mainContainer}>
           <NavBar
@@ -50,8 +46,14 @@ const MainPage = () => {
                 <ReplyTwits
                   replyTwit={replyTwit}
                   setReplyTwit={setReplyTwit}
-                  replyPop={replyPop}
-                  setReplyPop={setReplyPop}
+                  house={house}
+                  setHouse={setHouse}
+                  person={person}
+                  setPerson={setPerson}
+                  setting={setting}
+                  setSetting={setSetting}
+                  twit={twit}
+                  setTwit={setTwit}
                 />
               ))}
             {person && <UserMainNew />}
@@ -67,7 +69,7 @@ const MainPage = () => {
           <Popular />
         </div>
       </div>
-    </div>
+  
   );
 };
 
