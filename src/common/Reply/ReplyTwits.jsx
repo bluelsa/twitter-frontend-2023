@@ -12,9 +12,11 @@ function ReplyTwits(props) {
       {/* <div className={`${styles.mainBackground} ${styles.scrollbar}`}> */}
 
       <header className={styles.replyHeader}>
-        <div onClick={() => {
-          props.setReplyTwit(false)
-        }}>
+        <div
+          onClick={() => {
+            props.setReplyTwit(false);
+          }}
+        >
           <Arrow className={styles.interaction} />
           <ReplyText className={styles.interaction} />
         </div>
@@ -51,7 +53,12 @@ function ReplyTwits(props) {
         </div>
         <div className={styles.shortDivider}></div>
         <div className={styles.heartTalk}>
-          <BigTalk className={styles.interaction} />
+          <BigTalk
+            className={styles.interaction}
+            onClick={() => {
+              props.setReplyPop(true);
+            }}
+          />
           <Heart className={styles.interaction} />
         </div>
         <div className={styles.mainDivider}></div>

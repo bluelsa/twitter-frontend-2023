@@ -5,12 +5,12 @@ import { ReactComponent as LikeIcon } from "../../assets/image/LikeIcon.svg";
 const TwitForm = (props) => {
   return (
     <>
-      <div className={styles.tweetContainer}>
+      <div
+        className={styles.tweetContainer}
+        onClick={() => props.setReplyTwit(true)}
+      >
         <div className={styles.tweetCollection}>
-          <div className={styles.twitAvatar} 
-             onClick={() => {
-               props.setReplyTwit(true);
-     } }>{/* <Head /> */}</div>
+          <div className={styles.twitAvatar}>{/* <Head /> */}</div>
           <div className={styles.tweetContent}>
             <div className={styles.nameInfo}>
               <div className={styles.tweetName}>Apple</div>
@@ -22,7 +22,10 @@ const TwitForm = (props) => {
               odio?
             </div>
             <div className={styles.tweetMessage}>
-              <div className={styles.smallIcon}>
+              <div
+                className={styles.smallIcon}
+                onClick={() => props.setReplyPop(true)}
+              >
                 <TalkIcon className={styles.interaction} />
                 <div>13</div>
               </div>
