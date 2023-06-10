@@ -2,10 +2,9 @@ import styles from "../components/Home/settingStyle.module.scss";
 
 import { ReactComponent as AccountSet } from "../assets/image/AccountSetText.svg";
 import { ReactComponent as SaveButton } from "../assets/image/SetSaveButton.svg";
-// import { ReactComponent as TestHouse } from "../assets/image/TestChangeHouse.svg";
-// import { Link } from "react-router-dom";
-// import { useState } from "react";
-// import clsx from "clsx";
+import { ReactComponent as TestHouse } from "../assets/image/TestChangeHouse.svg";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 export const SettingInput = (props) => {
   return (
     <div className={styles.eachInput}>
@@ -14,9 +13,9 @@ export const SettingInput = (props) => {
         <input
           className={styles.setinput}
           type={props.type}
-          // defaultValue={username}
+          defaultValue={props.username}
           placeholder={props.placeholder}
-          // onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => props.setUsername(e.target.value)}
         />
       </div>
       <div className={styles.setbigDivider}></div>
@@ -25,16 +24,16 @@ export const SettingInput = (props) => {
 };
 
 const SettingPage = () => {
-  // const [username, setUsername] = useState('');
-  // const [nickname, setNickname] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [checkPassword, setCheckPassword] = useState('');
-  // const [isPush, setIsPush] = useState(false)
+  const [username, setUsername] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
+  const [isPush, setIsPush] = useState(false)
 
-  // const handleClick = () => {
-  //   console.log("click signup");
-  // };
+  const handleClick = () => {
+    console.log("click signup");
+  };
 
   //下面為測試用
   // const itemClick = () => {
