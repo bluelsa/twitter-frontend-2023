@@ -14,7 +14,6 @@
   display: grid;
   grid-template-columns: 333px 641px 426px;
   grid-template-rows: 1200px;
-
 }
 
 .interaction {
@@ -27,12 +26,9 @@
   width: 640px;
   height: 1px;
   border: none;
-  background-color: #E6ECF0;
+  background-color: #e6ecf0;
   margin-bottom: 16px;
 }
-
-
-
 
 //中間Content
 .scrollbar {
@@ -41,16 +37,14 @@
   &::-webkit-scrollbar {
     width: 15px;
     height: 1193px;
-    background-color: #FAFAFA;
-    border: 1px solid #E6ECF0;
-
+    background-color: #fafafa;
+    border: 1px solid #e6ecf0;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 8px;
-    background-color: #C1C1C1;
-    box-shadow: inset 3px 0px 0px#E8E8E8,
-      inset -3px 0px 0px #F0F0F0;
+    background-color: #c1c1c1;
+    box-shadow: inset 3px 0px 0px#E8E8E8, inset -3px 0px 0px #f0f0f0;
   }
 }
 
@@ -58,15 +52,14 @@
   width: 1400px;
   height: 1200px;
   position: fixed;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   filter: brightness(60%);
-
 }
 
 .mainBackground {
   width: 100%;
   height: 100%;
-  border: 1px solid #E6ECF0;
+  border: 1px solid #e6ecf0;
   overflow-y: scroll;
   overflow-x: hidden;
   position: relative;
@@ -75,13 +68,12 @@
     margin-top: 20px;
     width: 100%;
     height: 52px;
-    font-family: 'Noto Sans TC';
+    font-family: "Noto Sans TC";
     font-size: 24px;
     font-weight: 700;
     padding-left: 23px;
     color: #171725;
     position: relative;
-
   }
 
   .postContainer {
@@ -100,14 +92,13 @@
         cursor: pointer;
       }
     }
-
   }
 
   .postDivider {
     width: 639px;
     height: 10px;
     border: none;
-    background-color: #E6ECF0;
+    background-color: #e6ecf0;
   }
 
   .tweets {
@@ -120,7 +111,7 @@
 .grayBackground {
   position: fixed;
   z-index: 1000;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   filter: brightness(60%);
 }
 
@@ -130,14 +121,13 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   margin-left: 2.3px;
   background: url(../assets/image/Head.svg);
 
   &:hover {
     cursor: pointer;
   }
-
 }
 
 .tweetContainer {
@@ -158,7 +148,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    
+
     :hover {
       cursor: pointer;
     }
@@ -166,7 +156,7 @@
     .tweetArticle {
       width: 100%;
       height: 78px;
-      font-family: 'Noto Sans TC';
+      font-family: "Noto Sans TC";
       font-size: 16px;
       font-weight: 400;
       line-height: 26px;
@@ -188,9 +178,9 @@
         div {
           font-size: 14px;
           font-weight: 600;
-          font-family: 'Montserrat';
+          font-family: "Montserrat";
           line-height: 14px;
-          color: #6C757D;
+          color: #6c757d;
         }
       }
     }
@@ -205,7 +195,7 @@
   grid-gap: 8px;
 
   .tweetName {
-    font-family: 'Noto Sans TC';
+    font-family: "Noto Sans TC";
     font-size: 16px;
     font-weight: 700;
     line-height: 26px;
@@ -217,11 +207,11 @@
   }
 
   .tweetTime {
-    font-family: 'Noto Sans TC';
+    font-family: "Noto Sans TC";
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
-    color: #6C757D;
+    color: #6c757d;
     padding-top: 2px;
   }
 }
@@ -239,13 +229,13 @@
     top: 16px;
     left: 25px;
     border-radius: 16px;
-    background-color: #FAFAFB;
+    background-color: #fafafb;
 
     .popularRectangle {
       width: 273px;
       height: 1px;
       border: none;
-      background-color: #E6ECF0;
+      background-color: #e6ecf0;
     }
 
     .popularTitle {
@@ -257,7 +247,7 @@
         height: 26px;
         font-size: 24px;
         font-weight: 700;
-        font-family: 'Noto Sans TC';
+        font-family: "Noto Sans TC";
         margin-top: 24px;
         margin-left: 24px;
       }
@@ -270,7 +260,7 @@
 .followerContainer {
   width: 100%;
   height: 82px;
-  border: 1px solid #FAFAFB;
+  border: 1px solid #fafafb;
 
   .followerContent {
     width: 250px;
@@ -287,7 +277,7 @@
       .followerName {
         width: 100%;
         height: 26px;
-        font-family: 'Noto Sans TC';
+        font-family: "Noto Sans TC";
         font-size: 16px;
         font-weight: 700;
         line-height: 26px;
@@ -301,11 +291,11 @@
       .followerTime {
         width: 100%;
         height: 22px;
-        font-family: 'Noto Sans TC';
+        font-family: "Noto Sans TC";
         font-size: 14px;
         font-weight: 500;
         line-height: 22px;
-        color: #92929D;
+        color: #92929d;
       }
     }
 
@@ -321,39 +311,44 @@
 
 //TwitPopUp
 .popContainer {
-  position: fixed;
-  top: 56px;
-  left: 336px;
-  width: 634px;
-  height: 300px;
-  z-index: 1000;
-  background-color: #FFFFFF;
-  border-radius: 14px;
-  border: 1px solid #92929D;
-  z-index: 1000;
-
-  .popButton {
-    width: 64.5px;
-    height: 40px;
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-
-.popHeader {
+  border: 1px solid #000;
   width: 100%;
-  height: 41px;
-  margin-top: 16px;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0, 0.5);
 
-  div {
-    width: 24px;
-    height: 24px;
-    margin-left: 15px;
+  .popInner {
+    margin-top: 56px;
+    margin-left: 336px;
+    width: 634px;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 14px;
+
+    .popButton {
+      text-align: end;
+      margin-top: 50px;
+      margin-right: 16px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .popHeader {
+      border-bottom: 1px solid#E6ECF0;
+      width: 100%;
+      height: 56px;
+      margin-top: 16px;
+      display: flex;
+
+      .deleteIcon {
+        margin-top: 20px;
+        margin-left: 19.5px;
+      }
+    }
   }
 }
 
@@ -369,13 +364,6 @@
   gap: 8px;
 
   .postAvatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #C4C4C4;
-    margin-left: 2.3px;
-    background: url(../assets/image/PostPhoto.svg);
-
     &:hover {
       cursor: pointer;
     }
@@ -384,14 +372,14 @@
   .postText {
     width: 526px;
     height: 26px;
-    font-family: 'Noto Sans TC';
+    font-family: "Noto Sans TC";
     font-size: 18px;
     font-weight: 700;
     line-height: 26px;
     resize: none;
     border: none;
     overflow-y: hidden;
-    color: #6C757D;
+    color: #6c757d;
 
     &:focus {
       outline: none;
@@ -403,7 +391,6 @@
   }
 }
 
-
 // replyPopUp
 .replyPopUpContanier {
   width: 634px;
@@ -414,10 +401,9 @@
   top: 56px;
   left: 336px;
   z-index: 1000;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 14px;
-  border: 1px solid #92929D;
-  
+  border: 1px solid #92929d;
 }
 
 .replyCollection {
@@ -426,7 +412,6 @@
   margin: 0px auto;
   display: flex;
   gap: 8px;
-
 }
 
 .replyAvatar {
@@ -462,20 +447,19 @@
 .replyTo {
   width: 100%;
   height: 22px;
-  font-family: 'Noto Sans TC';
+  font-family: "Noto Sans TC";
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
-  color: #6C757D;
+  color: #6c757d;
 }
 
 .replyName {
   width: 100%;
   height: 22px;
-  font-family: 'Noto Sans TC';
+  font-family: "Noto Sans TC";
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
-  color: #FF6600;
-
+  color: #ff6600;
 }
