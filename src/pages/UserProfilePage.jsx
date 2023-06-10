@@ -15,49 +15,54 @@ const UserProfilePage = () => {
   const [isFollow, setIsFollow] = useState(false);
   const [isWhole, setIsWhole] = useState(false);
   const [isChange, setIsChange] = useState(false);
-  
+
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
         {/* <UserNav /> */}
-        <NavBar
-          house={house}
-          setHouse={setHouse}
-          person={person}
-          setPerson={setPerson}
-          setting={setting}
-          setSetting={setSetting}
-          twit={twit}
-          setTwit={setTwit}
-          isChange={isChange}
-          setIsChange={setIsChange}
-        />
-        <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
-          {person &&
-            (isChange ? (
-              <MainFollow
-                isFollow={isFollow}
-                setIsFollow={setIsFollow}
-                isWhole={isWhole}
-                setIsWhole={setIsWhole}
-                isChange={isChange}
-                setIsChange={setIsChange}
-              />
-            ) : (
-              <UserMainNew
-                isFollow={isFollow}
-                setIsFollow={setIsFollow}
-                isWhole={isWhole}
-                setIsWhole={setIsWhole}
-                isChange={isChange}
-                setIsChange={setIsChange}
-              />
-            ))}
-
-          {setting && <SettingPage />}
+        <div className={styles.leftColumn}>
+          <NavBar
+            house={house}
+            setHouse={setHouse}
+            person={person}
+            setPerson={setPerson}
+            setting={setting}
+            setSetting={setSetting}
+            twit={twit}
+            setTwit={setTwit}
+            isChange={isChange}
+            setIsChange={setIsChange}
+          />
         </div>
+        <div className={styles.middleColumn}>
+          <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
+            {person &&
+              (isChange ? (
+                <MainFollow
+                  isFollow={isFollow}
+                  setIsFollow={setIsFollow}
+                  isWhole={isWhole}
+                  setIsWhole={setIsWhole}
+                  isChange={isChange}
+                  setIsChange={setIsChange}
+                />
+              ) : (
+                <UserMainNew
+                  isFollow={isFollow}
+                  setIsFollow={setIsFollow}
+                  isWhole={isWhole}
+                  setIsWhole={setIsWhole}
+                  isChange={isChange}
+                  setIsChange={setIsChange}
+                />
+              ))}
 
-        <Popular />
+            {setting && <SettingPage />}
+          </div>
+        </div>
+        <div className={styles.rightColumn}>
+          <Popular />
+        </div>
       </div>
     </div>
   );
