@@ -16,24 +16,10 @@ function Twits(props) {
           setReplyTwit={props.setReplyTwit}
           replyPop={props.replyPop}
           setReplyPop={props.setReplyPop}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
+          isOther={props.isOther}
+          setIsOther={props.setIsOther}
+          house={props.house}
+          setHouse={props.setHouse}
         />
       </div>
     </>

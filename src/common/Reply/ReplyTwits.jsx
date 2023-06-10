@@ -5,7 +5,6 @@ import { ReactComponent as Heart } from "../../assets/image/heart-hollow.svg";
 import { ReactComponent as BigTalk } from "../../assets/image/25x25Talk.svg";
 import ReplyList from "./ReplyList";
 
-
 function ReplyTwits(props) {
   return (
     <>

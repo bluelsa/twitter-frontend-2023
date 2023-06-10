@@ -1,4 +1,5 @@
 import styles from "./otherStyle.module.scss";
+import Twitredbox from '../../assets/image/REDwithline.svg'
 
 const StickOption = (props) => {
   return (
@@ -42,6 +43,7 @@ const StickOption = (props) => {
           喜歡的內容
         </div>
       </div>
+     
     </div>
   );
 };
