@@ -24,6 +24,14 @@
   display: flex;
   flex-direction: column;
   }
+  .editHeader {
+    position: relative;
+    display: flex;
+    .saveIcon {
+      position: absolute;
+      right: 0px;
+    }
+  }
 }
 
 .imageContainer {

@@ -10,10 +10,15 @@ const UserEditModal = (props) => {
     <div className={styles.editContainer}>
       <div className={styles.editInner}>
       <div className={styles.editHeader}>
-        <div>
+        
+          <div>
           <ModalX onClick={() => props.setEditPopup(false)} />
           <EditTitle />
-        </div>
+          </div>
+          <div>
+            <EditSave className={styles.saveIcon}/>
+          </div>
+        
         <div>
           {/* 目前先由fasle 代替 */}
           {/* <EditSave onClick={() => props.setEditPopup(false)} /> */}
