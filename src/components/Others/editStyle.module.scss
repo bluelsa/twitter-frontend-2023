@@ -1,0 +1,175 @@
+@import "../../base.scss";
+
+//edit
+.editContainer {
+  position:fixed;
+  top: 56px;
+  left: 337px;
+  width: 634px;
+  height: 610px;
+  z-index: 1000;
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  border: 1px solid #92929D;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.imageContainer {
+  position: relative;
+  width: 634px;
+  height: 340px;
+}
+
+ .avatarWrapper {
+   .avatar {
+     position: absolute;
+     top: 124px;
+     left: 16.13px;
+     border-radius: 50%;
+     width: 141.1px;
+     height: 140px;
+     border: solid 4px white;
+     filter: brightness(60%)
+   }
+
+   .changeIcon {
+     position: absolute;
+     top: 184px;
+     left: 76px;
+   }
+ }
+
+.iconWrapper {
+  position: absolute;
+  top: 88px;
+  left: 277px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 38.5px;
+}
+
+.changeIcon {
+  position: absolute;
+  top: 184px;
+  left: 76px;
+}
+
+.editHeader {
+  width: 598px;
+  height: 58px;
+  display: flex;
+  line-height: 58px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 20px;
+
+
+  div:nth-child(1) {
+    width: 200px;
+    height: 58px;
+    display: flex;
+    gap: 36.5px;
+    align-items: center;
+  }
+
+  div:nth-child(2) {
+    width: 64px;
+    height: 58px;
+    display: flex;
+    gap: 36.5px;
+    align-items: center;
+  }
+}
+
+
+
+.inputContainer {
+  width: 602px;
+  height: 54px;
+  margin-left: 16px;
+  background-color: #f5f8fa;
+  border-bottom: 2px solid #657786;
+
+  div {
+    width: 567px;
+    height: 22px;
+    font-family: 'Noto Sans TC';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #696974;
+    margin: 0 auto;
+  }
+}
+
+
+.edittInput {
+  width: 567px;
+  height: 22px;
+  font-family: 'Noto Sans TC';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  padding-left: 18px;
+  align-items: center;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  background-color: #f5f8fa;
+}
+
+.textCount {
+  width: 600px;
+  height: 20px;
+  font-family: 'Noto Sans TC';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  margin: 0 auto;
+  color: #696974;
+  text-align: end;
+  margin-top: 4px;
+}
+
+.textareaWrap {
+  width: 602px;
+  height: 171px;
+  margin: 0 auto;
+}
+
+.textContainer {
+  width: 602px;
+  height: 147px;
+  background-color: #f5f8fa;
+  border-bottom: 2px solid #657786;
+
+  textarea {
+    background-color: #f5f8fa;
+    resize: none;
+    display: inline-block;
+    width: 566px;
+    height: 115px;
+    font-family: 'Noto Sans TC';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #171725;
+    margin-left: 14px;
+    border: none;
+  }
+}
+
+.textTitle {
+  display: inline-block;
+  width: 566px;
+  height: 22px;
+  font-family: 'Noto Sans TC';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #696974;
+  margin-left: 14px;
+}

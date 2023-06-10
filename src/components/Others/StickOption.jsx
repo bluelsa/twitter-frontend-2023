@@ -1,22 +1,49 @@
 import styles from "./otherStyle.module.scss";
 
-const StickOption = () => {
-return (
-  <div className={styles.stickContainer}>
-    <div className={styles.stick}>
-      {/* <Link to="/user"> */}
-        <div className={''}>推文</div>
-      {/* </Link> */}
-      {/* <Link to="/user/replies"> */}
-        <div className={''}>回覆</div>
-      {/* </Link> */}
-      {/* <Link to="/user/likes"> */}
-        <div className={styles.stickRed}>喜歡的內容</div>
-      {/* </Link> */}
+const StickOption = (props) => {
+  return (
+    <div className={styles.stickContainer}>
+      <div className={styles.stick}>
+        <div
+          onClick={() => {
+            props.setTwitSection(true);
+            props.setReplySection(false);
+            props.setLikeSection(false);
+          }}
+          className={
+            props.twitSection ? `${styles.stickRed}` : `${styles.origin}`
+          }
+        >
+          推文
+        </div>
+
+        <div
+          onClick={() => {
+            props.setTwitSection(false);
+            props.setReplySection(true);
+            props.setLikeSection(false);
+          }}
+          className={
+            props.replySection ? `${styles.stickRed}` : `${styles.origin}`
+          }
+        >
+          回覆
+        </div>
+        <div
+          onClick={() => {
+            props.setTwitSection(false);
+            props.setReplySection(false);
+            props.setLikeSection(true);
+          }}
+          className={
+            props.likeSection ? `${styles.stickRed}` : `${styles.origin}`
+          }
+        >
+          喜歡的內容
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-}
-
-export default StickOption
+export default StickOption;

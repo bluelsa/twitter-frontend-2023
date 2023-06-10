@@ -5,8 +5,8 @@ import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
 import { Link } from "react-router-dom";
 const UserMain = () => {
   return (
-     <div className={styles.container}>
-      
+    // <div className={styles.container}>
+      <>
         <div className={styles.header}>
           <Link to="/home">
             <div className={styles.arrow}>
@@ -20,8 +20,8 @@ const UserMain = () => {
         </div>
         <UserProfile />
         <UserTweetList />
-    
-    </div>
+      </>
+    // </div>
   );
 };
 

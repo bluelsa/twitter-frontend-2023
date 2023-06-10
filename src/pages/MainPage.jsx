@@ -6,6 +6,7 @@ import UserMainNew from "../components/Others/UserMainNew";
 import Twits from "../components/Home/Twits";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyTwits from "../common/Reply/ReplyTwits";
+import ReplyPopUp from '../components/Home/ReplyPopUp'
 import { useState } from "react";
 
 const MainPage = () => {
@@ -14,45 +15,59 @@ const MainPage = () => {
   const [setting, setSetting] = useState(false);
   const [twit, setTwit] = useState(false);
   const [replyTwit, setReplyTwit] = useState(false);
+  const [replyPop, setReplyPop] = useState(false);
   return (
-    <div
-      className={`${styles.mainBackground} ${
-        twit ? styles.grayBackground : ""
-      }`}
-    >
-      <div className={styles.homeContainer}>
-        <div className={styles.mainContainer}>
-          <NavBar
-            house={house}
-            setHouse={setHouse}
-            person={person}
-            setPerson={setPerson}
-            setting={setting}
-            setSetting={setSetting}
-            twit={twit}
-            setTwit={setTwit}
-          />
-          {/* 中間推文部分 */}
-          <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
-            {house &&
-              (!replyTwit ? (
-                <Twits
-                  twit={twit}
-                  setTwit={setTwit}
-                  replyTwit={replyTwit}
-                  setReplyTwit={setReplyTwit}
-                />
-              ) : (
-                <ReplyTwits replyTwit={replyTwit} setReplyTwit={setReplyTwit} />
-              ))}
-            {person && <UserMainNew />}
-            {setting && <SettingPage />}
-            {/* {replyTwit && <ReplyTwits />} */}
-            {twit && <TwitPopUp twit={twit} setTwit={setTwit} />}
-          </div>
+    <div className={styles.homeContainer}>
+      <div className={styles.mainContainer}>
+        <NavBar
+          house={house}
+          setHouse={setHouse}
+          person={person}
+          setPerson={setPerson}
+          setting={setting}
+          setSetting={setSetting}
+          twit={twit}
+          setTwit={setTwit}
+        />
+        {/* 中間推文部分 */}
+        <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
+          {house &&
+            (!replyTwit ? (
+              <Twits
+                twit={twit}
+                setTwit={setTwit}
+                replyTwit={replyTwit}
+                setReplyTwit={setReplyTwit}
+                replyPop={replyPop}
+                setReplyPop={setReplyPop}
+              />
+            ) : (
+              <ReplyTwits
+                replyTwit={replyTwit}
+                setReplyTwit={setReplyTwit}
+                house={house}
+                setHouse={setHouse}
+                person={person}
+                setPerson={setPerson}
+                setting={setting}
+                setSetting={setSetting}
+                twit={twit}
+                setTwit={setTwit}
+                replyPop={replyPop}
+                setReplyPop={setReplyPop}
+              />
+            ))}
+          {person && <UserMainNew />}
+          {setting && <SettingPage />}
+          {/* {replyTwit && <ReplyTwits />} */}
+          {twit && <TwitPopUp twit={twit} setTwit={setTwit} />}
 
-          <Popular />
+          {replyPop && (
+            <ReplyPopUp replyPop={replyPop} setReplyPop={setReplyPop} />
+          )}
         </div>
+
+        <Popular />
       </div>
     </div>
   );

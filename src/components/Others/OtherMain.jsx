@@ -1,12 +1,11 @@
 import styles from "./otherStyle.module.scss";
-// import UserTweetList from "../User/UserTweetList";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
 import { Link } from "react-router-dom";
 import OtherProfile from "../Others/OtherProfile";
-import StickOption from './StickOption'
-import TwitForm from '../Home/TwitForm'
+import StickOption from "./StickOption";
+import TwitForm from "../Home/TwitForm";
 import ReplyList from "../../common/Reply/ReplyList";
-import UserEditModal from '../../components/User/UserEditModal'
+import UserEditModal from "./UserEditModal";
 const OtherMain = () => {
   return (
     <div className={styles.container}>
@@ -26,7 +25,7 @@ const OtherMain = () => {
       <div className={styles.mainDivider}></div>
       {/* <UserTweetList /> */}
       <TwitForm />
-      <ReplyList />  
+      <ReplyList />
       <UserEditModal />
     </div>
   );
