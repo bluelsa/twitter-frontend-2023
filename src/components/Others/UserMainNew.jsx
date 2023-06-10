@@ -9,21 +9,27 @@ import UserEditModal from "./UserEditModal";
 import LikeForm from "../Home/LikeForm";
 import { useState } from "react";
 
-
 const UserMainNew = (props) => {
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
   const [likeSection, setLikeSection] = useState(false);
   const [editPopup, setEditPopup] = useState(false);
- 
+
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <Link to="/home">
-          <div className={styles.arrow}>
-            <Arrow />
-          </div>
-        </Link>
+      <div
+        className={styles.header}
+        onClick={() => {
+          setTwitSection(true);
+          setReplySection(false);
+          setLikeSection(false);
+        }}
+      >
+        {/* <Link to="/home"> */}
+        <div className={styles.arrow}>
+          <Arrow />
+        </div>
+        {/* </Link> */}
         <div className={styles.returnWrapper}>
           <div className={styles.userName}>John Doe</div>
           <div className={styles.tweetNum}>25 推文</div>
@@ -49,7 +55,7 @@ const UserMainNew = (props) => {
       />
       <div className={styles.mainDivider}></div>
 
-      {twitSection &&  <TwitForm/>}
+      {twitSection && <TwitForm />}
       {replySection && <ReplyList />}
       {likeSection && <LikeForm />}
 
