@@ -1,5 +1,4 @@
-// import styles from "../pages/HomeStyle.module.scss";
-import styles from "./NavBarStyles.module.scss";
+ import styles from "./NavBarStyles.module.scss";
 import { ReactComponent as Logo } from "../assets/image/log50x50.svg";
 import { ReactComponent as NavPersonal } from "../assets/image/NavPersonal.svg";
 import { ReactComponent as NavSetting } from "../assets/image/NavSetting.svg";
@@ -20,21 +19,21 @@ const NavBar = (props) => {
           <Logo className={styles.interaction} />
         </div>
         <div className={styles.navBar}>
-           <Link to="/home"> 
-          <div
-            className={styles.navItem}
-            id="1"
-            onClick={() => {
-              props.setHouse(true);
-              props.setPerson(false);
-              props.setSetting(false);
-            }}
-          >
-            {props.house ? <RedIndex /> : <BlackIndex />}
-          </div>
-          </Link> 
+          {/* <Link to="/home"> */}
+            <div
+              className={styles.navItem}
+              id="1"
+              onClick={() => {
+                props.setHouse(true);
+                props.setPerson(false);
+                props.setSetting(false);
+              }}
+            >
+              {props.house ? <RedIndex /> : <BlackIndex />}
+            </div>
+          {/* </Link> */}
 
-          <Link to="/user"> 
+          {/* <Link to="/user">  */}
           <div
             className={styles.navItem}
             id="2"
@@ -46,7 +45,7 @@ const NavBar = (props) => {
           >
             {props.person ? <RedPersonal /> : <NavPersonal />}
           </div>
-          </Link> 
+          {/* </Link>  */}
           {/* <Link to="/setting"> */}
           <div
             className={styles.navItem}
@@ -67,7 +66,9 @@ const NavBar = (props) => {
             />
           </div>
         </div>
-        <NavOut className={styles.logOut} />
+        <Link to="/login">
+          <NavOut className={styles.logOut} />
+        </Link>
       </nav>
     </div>
   );

@@ -1,5 +1,5 @@
 import styles from "../components/Home/settingStyle.module.scss";
-import NavBar from "../common/NavBar";
+
 import { ReactComponent as AccountSet } from "../assets/image/AccountSetText.svg";
 import { ReactComponent as SaveButton } from "../assets/image/SetSaveButton.svg";
 // import { ReactComponent as TestHouse } from "../assets/image/TestChangeHouse.svg";
