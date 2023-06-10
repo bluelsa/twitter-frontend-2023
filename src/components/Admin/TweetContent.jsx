@@ -2,7 +2,7 @@ import styles from "./TweetList.module.scss";
 import { ReactComponent as LogoDark } from "../../assets/image/ac-logo-bw.svg";
 import { ReactComponent as DeleteIcon } from "../../assets/image/delete-icon.svg";
 
-const TweetContent = () => {
+const TweetContent = ({tweet, onDelete}) => {
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetCollection}>
@@ -16,14 +16,12 @@ const TweetContent = () => {
               <div className={styles.tweetName}>Apple</div>
               <div className={styles.tweetTime}>@apple &bull;3小時</div>
               <div>
-                <DeleteIcon className={styles.deleteIcon} />
+                <DeleteIcon className={styles.deleteIcon} onClick={()=>onDelete?.(tweet.id)}/>
               </div>
             </div>
           </div>
           <div className={styles.tweetArticle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint illo
-            temporibus, non enim debitis ipsum repudiandae beatae nesciunt ea
-            odio?
+            {tweet.description}
           </div>
         </div>
       </div>

@@ -4,11 +4,66 @@ import { ReactComponent as LogoutIcon } from '../assets/image/logout.svg';
 import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
 import { ReactComponent as HomeIcon } from "../assets/image/home-orange.svg";
 import { ReactComponent as UserIcon } from "../assets/image/user-hollow.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import AdminNav from '../components/Navbar/AdminNav';
-
+import { useState, useEffect } from 'react'
+import { deleteTweets, getTweets } from '../api/admin'
 
 const TweetsPage = () => {
+  console.log('有進來')
+  const [tweets, setTweets] = useState([])
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate()
+
+  useEffect(() => {  
+    const token = localStorage.getItem("token");
+    console.log(token)
+    const getUsersAsync = async (token) => {
+      try {
+        const tweets = await getTweets(token);
+        console.log(tweets.status);
+        if (tweets.status === "success") {
+          setTweets(tweets.data);
+          setIsAuthenticated(true);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+   getUsersAsync(token);
+  }, [navigate]);
+
+useEffect(() => {
+  if (!isLoading) {
+  if (!isAuthenticated) {
+    navigate("/admin");
+  }
+  console.log('驗證')
+}
+}, [navigate, isAuthenticated, isLoading]);
+
+
+  const handleDelete = async (id) => {
+   const token = localStorage.getItem("token");
+   try {
+     await deleteTweets(id, token);
+     setTweets((prevTweets) => {
+      return prevTweets.filter((tweet) => tweet.id !== id)
+     })
+   } catch(error) {
+    console.error(error)
+   }
+
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
+
+
   return (
     <div className={styles.Container}>
       {/* navbar */}
@@ -34,14 +89,14 @@ const TweetsPage = () => {
             <div className={styles.logoutIcon}>
               <LogoutIcon />
               <Link to='/admin'>
-              <div>登出</div>
+              <div onClick={handleLogout}>登出</div>
               </Link>
             </div>
           </nav>
       </div>
 {/* content */}
       <div className={styles.contentContainer}>
-        <TweetList />
+        <TweetList tweets={tweets} onDelete={handleDelete}/>
       </div>
     </div>
   );
