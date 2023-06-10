@@ -25,14 +25,14 @@ useEffect(() => {
   const getUsersAsync = async (token) => {
     try {
       const users = await getUsers(token);
-      if (users.status === "success") {
-        setUsers(users.data);
-        
+      if (!users.status) {
+        setUsers(users);
         setIsAuthenticated(true);
       }
     } catch (error) {
       console.error(error);
-    } finally {
+    } 
+    finally {
       setIsLoading(false);
     }
   }
