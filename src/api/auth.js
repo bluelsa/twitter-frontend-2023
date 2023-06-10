@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const authURL = "https://pure-waters-81841.herokuapp.com/api";
+const authURL = "https://pure-waters-81841.herokuapp.com/api/users";
 
 export const login = async ({ account, password }) => {
   try {
@@ -17,7 +17,7 @@ return data
 
 export const signup = async ({ account, name, email, password, checkPassword }) => {
   try {
-    const {data}  = await axios.post(`${authURL}/signup`, {
+    const {data}  = await axios.post(`${authURL}`, {
       account,
       name,
       email,

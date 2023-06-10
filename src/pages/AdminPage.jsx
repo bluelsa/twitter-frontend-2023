@@ -50,7 +50,7 @@ const handleClosePopup = () => {
     <>
       <div className={styles.notiContainer} onClick={handleClosePopup}>
         {notiStatus === "success" && (
-          <TimePopup notification="success" title="註冊成功" />
+          <TimePopup notification="success" title="登入成功" />
         )}
         {notiStatus === "failed" && (
           <TimePopup
