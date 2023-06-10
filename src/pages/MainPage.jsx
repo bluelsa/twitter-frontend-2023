@@ -7,6 +7,7 @@ import Twits from "../components/Home/Twits";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyTwits from "../common/Reply/ReplyTwits";
 import ReplyPopUp from '../components/Home/ReplyPopUp'
+import OtherMain from "../components/Others/OtherMain";
 import { useState } from "react";
 
 const MainPage = () => {
@@ -16,6 +17,7 @@ const MainPage = () => {
   const [twit, setTwit] = useState(false);
   const [replyTwit, setReplyTwit] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
+  const [isOther, setIsOther] =useState(false)
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
@@ -28,6 +30,10 @@ const MainPage = () => {
           setSetting={setSetting}
           twit={twit}
           setTwit={setTwit}
+          replyTwit={replyTwit}
+          setReplyTwit={setReplyTwit}
+          isOther={isOther}
+          setIsOther={setIsOther}
         />
         {/* 中間推文部分 */}
         <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
@@ -40,6 +46,10 @@ const MainPage = () => {
                 setReplyTwit={setReplyTwit}
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
+                isOther={isOther}
+                setIsOther={setIsOther}
+                house={house}
+                setHouse={setHouse}
               />
             ) : (
               <ReplyTwits
@@ -55,13 +65,27 @@ const MainPage = () => {
                 setTwit={setTwit}
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
+                isOther={isOther}
+                setIsOther={setIsOther}
               />
             ))}
+
           {person && <UserMainNew />}
           {setting && <SettingPage />}
+          {isOther && (
+            <OtherMain
+              isOther={isOther}
+              setIsOther={setIsOther}
+              twit={twit}
+              setTwit={setTwit}
+              replyTwit={replyTwit}
+              setReplyTwit={setReplyTwit}
+              house={house}
+              setHouse={setHouse}
+            />
+          )}
           {/* {replyTwit && <ReplyTwits />} */}
           {twit && <TwitPopUp twit={twit} setTwit={setTwit} />}
-
           {replyPop && (
             <ReplyPopUp replyPop={replyPop} setReplyPop={setReplyPop} />
           )}

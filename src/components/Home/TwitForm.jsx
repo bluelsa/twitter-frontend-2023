@@ -10,7 +10,9 @@ const TwitForm = (props) => {
           <div
             className={styles.twitAvatar}
             onClick={() => {
-              props.setReplyTwit(true);
+              props.setIsOther(true);
+              props.setHouse(false)
+              props.setReplyTwit(false)
             }}
           >
             {/* <Head /> */}

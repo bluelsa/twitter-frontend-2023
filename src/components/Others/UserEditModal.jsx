@@ -15,7 +15,7 @@ const UserEditModal = (props) => {
         </div>
         <div>
           {/* 目前先由fasle 代替 */}
-          <EditSave onClick={() => props.setEditPopup(false)} />
+          {/* <EditSave onClick={() => props.setEditPopup(false)} /> */}
         </div>
       </div>
       <div className={styles.imageContainer}>

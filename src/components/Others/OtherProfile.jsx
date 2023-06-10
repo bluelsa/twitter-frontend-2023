@@ -19,7 +19,7 @@ const OtherProfile = () => {
           alt="avatar"
         />
 
-        <div className={styles.followSection}>
+        <div className={styles.otherProSection}>
           <div>
             <RedEmail className={styles.interaction} />
             <RedBell className={styles.interaction} />
