@@ -10,11 +10,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [notiStatus, setNotiStatus] = useState('finished')
   const navigate = useNavigate()
- 
-// const handlePopupClick = () => {
-//   console.log("click");
-//   setNotiStatus("finished");
-// };
+
 
   const handleClick = async () => {
     if (account.length === 0 || password.length === 0) {

@@ -27,6 +27,7 @@ useEffect(() => {
       const users = await getUsers(token);
       if (users.status === "success") {
         setUsers(users.data);
+        
         setIsAuthenticated(true);
       }
     } catch (error) {

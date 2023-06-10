@@ -49,7 +49,6 @@ export const deleteTweets = async (id, token) => {
         Authorization: "Bearer " + token,
       },
     });
-console.log('aaa:  ' + data)
     return data;
   } catch (error) {
     console.error("[Get Tweets failed]: ", error);

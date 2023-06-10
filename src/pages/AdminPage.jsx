@@ -11,14 +11,6 @@ const AdminPage = () => {
   const [notiStatus, setNotiStatus] = useState("finished");
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   console.log("12345  "+isAuthenticated)
-  //   if (isAuthenticated) {
-  //     navigate("/admin/tweets");
-  //   }
-  // }, [navigate, isAuthenticated]);
-
-
   const handleClick = async() =>  {
     if (account.length === 0 || password.length === 0) {
       setNotiStatus('incomplete')
@@ -29,7 +21,7 @@ const AdminPage = () => {
       account,
       password,
     });
-console.log(data.status)
+
     if ( data.status === 'success' ) {
     localStorage.setItem('token', data.data.token );
     setNotiStatus('success')
