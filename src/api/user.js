@@ -11,13 +11,5 @@ export const getTweets = async () => {
   }
 };
 
-export const createTweets = async () => {
-  try {
-    const res = await axios.get(`${tweetURL}`);
-    return res.data;
-  } catch (error) {
-    console.error("[Get Tweets failed]: ", error);
-  }
-};
 
 

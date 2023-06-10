@@ -10,7 +10,6 @@ import { useState, useEffect } from 'react'
 import { deleteTweets, getTweets } from '../api/admin'
 
 const TweetsPage = () => {
-  console.log('有進來')
   const [tweets, setTweets] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
@@ -18,11 +17,11 @@ const TweetsPage = () => {
 
   useEffect(() => {  
     const token = localStorage.getItem("token");
-    console.log(token)
+    
     const getUsersAsync = async (token) => {
       try {
         const tweets = await getTweets(token);
-        console.log(tweets.status);
+       
         if (tweets.status === "success") {
           setTweets(tweets.data);
           setIsAuthenticated(true);
@@ -41,7 +40,6 @@ useEffect(() => {
   if (!isAuthenticated) {
     navigate("/admin");
   }
-  console.log('驗證')
 }
 }, [navigate, isAuthenticated, isLoading]);
 
