@@ -1,12 +1,13 @@
-import styles from "../../components/User/User.module.scss";
+import styles from "./EditPopup.module.scss";
 import { ReactComponent as Delete } from "../../assets/image/delete-orange.svg";
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/camera.svg";
 import { ReactComponent as DeleteCover } from "../../assets/image/delete-white.svg";
-// import { useState } from 'react'
+import { useState } from 'react'
 
 function EditPopup(props) {
-  // const [username, setUsername] = useState(null)
-  // const [info, setInfo] = useState(null)
+// const [name, setName] = useState('');
+// const [introduction, setIntroduction] = useState("");
+
 
   return props.trigger ? (
     <div className={styles.popupContainer}>
@@ -49,9 +50,9 @@ function EditPopup(props) {
               <input
                 type="text"
                 maxlength="50"
-                value="John Doe"
-                placeholder="請輸入名稱"
-                // onChange={(e) => setUsername(e.target.value)}
+                value={props.name}
+                placeholder={props.name}
+                onChange={(e) => props.onNameChange(e.target.value)}
               />
             </label>
           </div>
@@ -62,7 +63,9 @@ function EditPopup(props) {
                 rows="10"
                 cols="10"
                 maxlength="140"
-                value="John Doe" // onChange={(e) => setInfo(e.target.value)}
+                value={props.info}
+                placeholder='John Doe'
+                onChange={(e) => props.onInfoChange(e.target.value)}
               />
             </label>
           </div>
