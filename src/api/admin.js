@@ -15,29 +15,36 @@ export const adminlogin = async ({ account, password }) => {
   }
 };
 
-export const getUsers = async () => {
+
+export const getUsers = async (token) => {
   try {
-    const res = await axios.get(`${adminURL}/users`);
-    return res.data;
+    console.log('admin:' + token)
+    const { data } = await axios.get(`${adminURL}/users`, {
+      header: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    return data;
   } catch (error) {
     console.error('[Get Users failed]: ', error);
   }
 };
 
-export const getTweets = async () => {
-  try {
-    const res = await axios.get(`${adminURL}/tweets`);
-    return res.data;
-  } catch (error) {
-    console.error("[Get Tweets failed]: ", error);
-  }
-};
+// export const getTweets = async () => {
+//   try {
+//     const { data } = await axios.get(`${adminURL}/tweets`);
+//     return data;
+//   } catch (error) {
+//     console.error("[Get Tweets failed]: ", error);
+//   }
+// };
 
-export const deleteTweets = async (id) => {
-  try {
-    const res = await axios.get(`${adminURL}/tweets/${id}`);
-    return res.data;
-  } catch (error) {
-    console.error("[Get Tweets failed]: ", error);
-  }
-};
+// export const deleteTweets = async (id) => {
+//   try {
+//     const { data } = await axios.get(`${adminURL}/tweets/${id}`);
+//     return data;
+//   } catch (error) {
+//     console.error("[Get Tweets failed]: ", error);
+//   }
+// };
+

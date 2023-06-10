@@ -3,18 +3,18 @@ import styles from './UserList.module.scss'
 import { ReactComponent as Feather } from '../../assets/image/feather.svg'
 import { ReactComponent as Likes } from '../../assets/image/heart-hollow.svg'
 
-const UserCard = () => {
+const UserCard = ({user}) => {
   return (
     <div className={styles.userCard}>
       <img
         className={styles.cover}
-        src="https://picsum.photos/210/140"
+        src={user.background}
         alt="cover"
       />
-      <img className={styles.avatar} src="https://i.pravatar.cc" alt="avatar" />
+      <img className={styles.avatar} src={user.avatar} alt="avatar" />
       <div className={styles.info}>
-        <div className={styles.name}>John Doe</div>
-        <div className={styles.account}>@heyjohn</div>
+        <div className={styles.name}>{user.name}</div>
+        <div className={styles.account}>@{user.account}</div>
         <div className={styles.tweetInfo}>
           <div className={styles.tweetNum}>
             <div className={styles.iconContainer}>

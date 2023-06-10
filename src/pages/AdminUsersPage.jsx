@@ -5,8 +5,32 @@ import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
 import { ReactComponent as HomeIcon } from "../assets/image/home-hollow.svg";
 import { ReactComponent as UserIcon } from "../assets/image/user-solid-orange.svg";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import { getUsers } from '../api/admin'
+
+
+
+
 
 const UsersPage = () => {
+
+const [users, setUsers] = useState([])
+
+useEffect(() => {
+  const token = localStorage.getItem("token");
+  console.log('21'+token)
+  const getUsersAsync = async (token) => {
+    try {
+      console.log('24'+token)
+const users = await getUsers(token);
+setUsers(users)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  getUsersAsync(token)
+}, [])
+
   return (
     <div className={styles.Container}>
       {/* navbar */}
@@ -38,7 +62,7 @@ const UsersPage = () => {
       </div>
       {/* content */}
       <div className={styles.contentContainer}>
-        <UserList />
+        <UserList users={users}/>
       </div>
     </div>
   );
