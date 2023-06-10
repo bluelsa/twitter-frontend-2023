@@ -8,7 +8,6 @@ export const login = async ({ account, password }) => {
       account,
       password,
     });
-// console.log(data)
 
 return data
   } catch (error) {
@@ -25,10 +24,6 @@ export const signup = async ({ account, name, email, password, checkPassword }) 
       password,
       checkPassword
     });
-    console.log(data)
-    
-    //  const { status } = data
-    //  return { status }
 
     return data
     

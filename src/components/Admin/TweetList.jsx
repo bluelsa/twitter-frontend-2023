@@ -1,32 +1,16 @@
 import TweetContent from "./TweetContent"
 import styles from './TweetList.module.scss'
 
-const TweetList = () => {
+const TweetList = ({tweets, onDelete}) => {
+  
   return (
     <div className={styles.Container}>
       <div className={styles.lineContent}>
-      <h4 className={styles.title}>推文清單</h4>
+        <h4 className={styles.title}>推文清單</h4>
       </div>
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
-      <TweetContent />
+      {tweets.map((tweet) => {
+        return <TweetContent tweet={tweet} onDelete={onDelete}/>;
+      })}
     </div>
   );
 }

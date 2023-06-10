@@ -29,15 +29,25 @@ const LoginPage = () => {
 
     if (data.status === 'success') {
       localStorage.setItem("token", data.data.token);
-      navigate('/home')
+      setNotiStatus('success')
+      setTimeout(() => {
+        navigate('/home');
+      }, 2000);
       return
     }
       setNotiStatus('failed')
   };
 
+  const handleClosePopup = () => {
+    setNotiStatus('finished')
+  }
+
   return (
     <>
-      <div className={styles.notiContainer}>
+      <div className={styles.notiContainer} onClick={handleClosePopup}>
+        {notiStatus === "success" && (
+          <TimePopup notification="success" title="註冊成功" />
+        )}
         {notiStatus === "failed" && (
           <TimePopup
             notification="error"

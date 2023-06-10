@@ -4,7 +4,7 @@ import { ReactComponent as LogoutIcon } from "../assets/image/logout.svg";
 import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
 import { ReactComponent as HomeIcon } from "../assets/image/home-hollow.svg";
 import { ReactComponent as UserIcon } from "../assets/image/user-solid-orange.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react'
 import { getUsers } from '../api/admin'
 
@@ -15,21 +15,40 @@ import { getUsers } from '../api/admin'
 const UsersPage = () => {
 
 const [users, setUsers] = useState([])
+const [isAuthenticated, setIsAuthenticated] = useState(false)
+const [isLoading, setIsLoading] = useState(true);
+const navigate = useNavigate()
+
 
 useEffect(() => {
   const token = localStorage.getItem("token");
-  console.log('21'+token)
   const getUsersAsync = async (token) => {
     try {
-      console.log('24'+token)
-const users = await getUsers(token);
-setUsers(users)
+      const users = await getUsers(token);
+      if (users.status === "success") {
+        setUsers(users.data);
+        setIsAuthenticated(true);
+      }
     } catch (error) {
-      console.error(error)
+      console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   }
   getUsersAsync(token)
 }, [])
+
+useEffect(() => {
+  if (!isLoading) {
+  if (!isAuthenticated) {
+    navigate("/admin");
+  }
+}
+}, [navigate, isAuthenticated, isLoading]);
+
+const handleLogout = () => {
+  localStorage.removeItem('token')
+}
 
   return (
     <div className={styles.Container}>
@@ -55,7 +74,7 @@ setUsers(users)
           <div className={styles.logoutIcon}>
             <LogoutIcon />
             <Link to='/admin'>
-            <div>登出</div>
+            <div onClick={handleLogout}>登出</div>
             </Link>
           </div>
         </nav>

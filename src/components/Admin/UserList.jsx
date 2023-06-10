@@ -2,6 +2,7 @@ import styles from "./UserList.module.scss";
 import UserCard from './UserCard'
 
 const UserList = ({users}) => {
+
   return (
     <div className={styles.container}>
       <div className={styles.lineContent}>
