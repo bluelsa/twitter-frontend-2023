@@ -2,12 +2,9 @@ import styles from "./EditPopup.module.scss";
 import { ReactComponent as Delete } from "../../assets/image/delete-orange.svg";
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/camera.svg";
 import { ReactComponent as DeleteCover } from "../../assets/image/delete-white.svg";
-import { useState } from 'react'
+
 
 function EditPopup(props) {
-// const [name, setName] = useState('');
-// const [introduction, setIntroduction] = useState("");
-
 
   return props.trigger ? (
     <div className={styles.popupContainer}>
@@ -52,7 +49,7 @@ function EditPopup(props) {
                 maxlength="50"
                 value={props.name}
                 placeholder={props.name}
-                onChange={(e) => props.onNameChange(e.target.value)}
+                // onChange={(e) => props.onNameChange(e.target.value)}
               />
             </label>
           </div>
@@ -65,7 +62,7 @@ function EditPopup(props) {
                 maxlength="140"
                 value={props.info}
                 placeholder='John Doe'
-                onChange={(e) => props.onInfoChange(e.target.value)}
+                // onChange={(e) => props.onInfoChange(e.target.value)}
               />
             </label>
           </div>
