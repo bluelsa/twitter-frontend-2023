@@ -1,14 +1,16 @@
-import styles from "./HomeStyle.module.scss";
+import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as ModalX } from "../../assets/image/ModalX.svg";
 import { ReactComponent as ReplyButton } from "../../assets/image/ReplyButton.svg";
-import Post from "./Post";
 
-const ReplyPopUp = () => {
+const ReplyPopUp = (props) => {
   return (
     <div className={styles.replyPopUpContanier}>
       <div className={styles.popHeader}>
         <div>
-          <ModalX />
+          <ModalX
+            className={styles.interaction}
+            onClick={() => props.setReplyPop(false)}
+          />
         </div>
       </div>
       <div className={styles.mainDivider}></div>
@@ -25,18 +27,32 @@ const ReplyPopUp = () => {
             <div className={styles.tweetTime}>@apple &bull;3小時</div>
           </div>
           <div className={styles.tweetArticle}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus accusamus commodi reiciendis veritatis, at nostrum ut itaque similique quo, recusandae, iusto maxime quas eos illum! Cumque nobis ipsam suscipit molestias,
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus
+            accusamus commodi reiciendis veritatis, at nostrum ut itaque
+            similique quo, recusandae, iusto maxime quas eos illum! Cumque nobis
+            ipsam suscipit molestias,
           </div>
-         <div className={styles.replyInfo}>
+          <div className={styles.replyInfo}>
             <div className={styles.replyTo}>回覆給</div>
             <div className={styles.replyName}>@Nowelswaoresndrfwef</div>
           </div>
         </div>
       </div>
+      <div className={styles.postContainer}>
+        <div className={styles.postContent}>
+          <div className={styles.postAvatar}></div>
+          <textarea
+            className={styles.postText}
+            placeholder="有什麼新鮮事？"
+          ></textarea>
+        </div>
+      </div>
 
-      <Post />
       <div className={styles.replyButton}>
-        <ReplyButton />
+        <ReplyButton
+          className={styles.interaction}
+          onClick={() => props.setReplyPop(false)}
+        />
       </div>
     </div>
   );

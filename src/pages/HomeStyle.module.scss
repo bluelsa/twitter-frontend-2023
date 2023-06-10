@@ -54,13 +54,13 @@
   }
 }
 
-.mainBlack{
-width: 1400px;
+.mainBlack {
+  width: 1400px;
   height: 1200px;
-  position:fixed;
+  position: fixed;
   background-color: #C4C4C4;
   filter: brightness(60%);
-  
+
 }
 
 .mainBackground {
@@ -119,8 +119,9 @@ width: 1400px;
 
 .grayBackground {
   position: fixed;
-    background-color: #C4C4C4;
-    filter: brightness(60%);
+  z-index: 1000;
+  background-color: #C4C4C4;
+  filter: brightness(60%);
 }
 
 //TwitForm.jsx
@@ -157,6 +158,10 @@ width: 1400px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    
+    :hover {
+      cursor: pointer;
+    }
 
     .tweetArticle {
       width: 100%;
@@ -316,16 +321,17 @@ width: 1400px;
 
 //TwitPopUp
 .popContainer {
-  position:fixed;
+  position: fixed;
   top: 56px;
   left: 336px;
   width: 634px;
   height: 300px;
-   z-index: 1000;
+  z-index: 1000;
   background-color: #FFFFFF;
   border-radius: 14px;
   border: 1px solid #92929D;
-   z-index: 1000;
+  z-index: 1000;
+
   .popButton {
     width: 64.5px;
     height: 40px;
@@ -402,16 +408,16 @@ width: 1400px;
 .replyPopUpContanier {
   width: 634px;
   height: 500px;
-  position: relative;
+  position: fixed;
   display: flex;
   flex-direction: column;
-  top: 256px;
-  left: 0px;
+  top: 56px;
+  left: 336px;
   z-index: 1000;
   background-color: #FFFFFF;
   border-radius: 14px;
   border: 1px solid #92929D;
-  position: relative;
+  
 }
 
 .replyCollection {
@@ -473,4 +479,3 @@ width: 1400px;
   color: #FF6600;
 
 }
-
