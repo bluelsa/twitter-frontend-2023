@@ -1,44 +1,34 @@
-import styles from "../../pages/HomeStyle.module.scss";
-import { ReactComponent as TalkIcon } from "../../assets/image/TalkIcon.svg";
-import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
+import UserLikeTweet from "../User/UserLikeTweet";
+import { useEffect, useState } from "react";
+import { getUserLikes } from "../../api/user";
 
-const LikeForm = (props) => {
+const LikeForm = ({setReplyPop, setReplyTwit}) => {
+
+  const [userLikes, setUserLikes] = useState([]);
+
+  const userId = localStorage.getItem("userId")
+  useEffect(() => {
+    const getUserLikesAsync = async (userId) => {
+      try {
+        const userLikes = await getUserLikes(userId);
+        
+        if (!userLikes.status) {
+          setUserLikes(userLikes);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getUserLikesAsync(userId);
+  }, []);
+
   return (
-    <>
-      <div
-        className={styles.tweetContainer}
-        onClick={() => props.setReplyTwit(true)}
-      >
-        <div className={styles.tweetCollection}>
-          <div className={styles.twitAvatar}>{/* <Head /> */}</div>
-          <div className={styles.tweetContent}>
-            <div className={styles.nameInfo}>
-              <div className={styles.tweetName}>Apple</div>
-              <div className={styles.tweetTime}>@apple &bull;3小時</div>
-            </div>
-            <div className={styles.tweetArticle}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint illo
-              temporibus, non enim debitis ipsum repudiandae beatae nesciunt ea
-              odio?
-            </div>
-            <div className={styles.tweetMessage}>
-              <div
-                className={styles.smallIcon}
-                onClick={() => props.setReplyPop(true)}
-              >
-                <TalkIcon className={styles.interaction} />
-                <div>13</div>
-              </div>
-              <div className={styles.smallIcon}>
-                <LikeIcon className={styles.interaction} />
-                <div>73</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.mainDivider}></div>
-    </>
+    <div>
+      {userLikes.map((userLike) => {
+        return <UserLikeTweet userLike={userLike}/>
+      })}
+    </div>
   );
 };
 

@@ -8,29 +8,6 @@ import { useState, useEffect } from "react";
 import ReplyList from "./ReplyList";
 
 function ReplyTwits(props) {
-    const [ReplyTwit, setReplyTwit] = useState([])
-
-    useEffect(() =>{
- const getReplies = async () => {
-      try{
- const replies = await getTweetsReplies ();
-     setReplyTwit(replies.map(item =>item.name))
-
-     } catch (error) {
-         console.log('replies',error)
-      }
-      }
-
-     getReplies()
-
- console.log('here is replyTwits')
-    },[])
-    
-   
-
-
-
-
   return (
     <>
       {/* <div className={`${styles.mainBackground} ${styles.scrollbar}`}> */}
@@ -90,12 +67,76 @@ function ReplyTwits(props) {
 
       <div className={styles.tweets}>
         {/* Render here */}
-        {ReplyTwit.map(item =>{
-          <ReplyList key={item} />;
-        })}
-  
+        {/* <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList />
+        <ReplyList /> */}
       </div>
-      {/* </div> */}
+     
     </>
   );
 }

@@ -8,9 +8,17 @@ const OtherUserPage = () => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
+        
+        <div className={styles.leftColumn}> 
         <NavBar />
-        <OtherMain />
-        <Popular />
+        </div>
+       <div className={styles.middleColumn}> 
+       <OtherMain />
+       </div>
+       <div className={styles.rightColumn}> 
+       <Popular />
+       </div>
+       
       </div>
     </div>
   );

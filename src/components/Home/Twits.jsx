@@ -33,31 +33,15 @@ function Twits(props) {
       <Post twit={props.twit} setTwit={props.setTwit} />
       <div className={styles.postDivider}></div>
       <div className={styles.tweets}>
-        <TwitForm
+        {/* <TwitForm
           replyTwit={props.replyTwit}
           setReplyTwit={props.setReplyTwit}
           replyPop={props.replyPop}
           setReplyPop={props.setReplyPop}
           twit={props.twit}
           setTwit={props.setTwit}
-        />
-        <TwitForm
-           replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          twit={props.twit}
-          setTwit={props.setTwit}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          twit={props.twit}
-          setTwit={props.setTwit}
-        />
-      
+        /> */}
+        
       </div>
     </>
   );

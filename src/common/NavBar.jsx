@@ -11,10 +11,11 @@ import { ReactComponent as RedSet } from "../assets/image/NavRedSet.svg";
 import {useState} from "react"
 import { Link } from "react-router-dom";
 
-const NavBar = (props) => {
+const NavBar = ({onClick, setTwitPop}) => {
   const [house, setHouse] = useState(true)
   const [person, setPerson] = useState(false);
   const [setting, setSetting] = useState(false);
+
   return (
     <div className={styles.leftColumn}>
       <nav className={styles.navContainer}>
@@ -75,15 +76,17 @@ const NavBar = (props) => {
           <div
             className={styles.navBigButton}
             onClick={() => {
-              props.setTwitPop(true);
+              setTwitPop(true);
             }}
           >
             <NavButton className={styles.interaction} />
           </div>
         </div>
-        <Link to="/login">
-          <NavOut className={styles.logOut} />
-        </Link>
+        <div >
+          <Link to="/login">
+          <NavOut className={styles.logOut} onClick={onClick}/>
+          </Link>
+        </div>
       </nav>
     </div>
   );
