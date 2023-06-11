@@ -10,7 +10,7 @@ const TwitPopUp = (props) => {
         <div className={styles.popHeader}>
           <ModalX
             className={styles.deleteIcon}
-            onClick={() => props.setTwit(false)}
+            onClick={() => props.setTwitPop(false)}
           />
         </div>
         <div className={styles.mainDivider}></div>
@@ -25,7 +25,7 @@ const TwitPopUp = (props) => {
             ></textarea>
           </div>
         </div>
-        <div className={styles.popButton} onClick={() => props.setTwit(false)}>
+        <div className={styles.popButton} onClick={() => props.setTwitPop(false)}>
           <PostButton />
         </div>
       </div>
