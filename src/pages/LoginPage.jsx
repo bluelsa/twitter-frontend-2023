@@ -24,7 +24,8 @@ const LoginPage = () => {
     });
 
     if (data.status === 'success') {
-      localStorage.setItem("token", data.data.token);
+      localStorage.setItem("token", data.data.token)
+      localStorage.setItem('userId', data.data.user.id );
       setNotiStatus('success')
       setTimeout(() => {
         navigate('/home');

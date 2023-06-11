@@ -1,19 +1,46 @@
 import styles from "./otherStyle.module.scss";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
-import { Link } from "react-router-dom";
 import UserProfileNew from "../Others/UserProfileNew";
 import StickOption from "./StickOption";
-import TwitForm from "../Home/TwitForm";
 import ReplyList from "../../common/Reply/ReplyList";
 import UserEditModal from "./UserEditModal";
 import LikeForm from "../Home/LikeForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import TwitForm from "../Home/TwitForm";
+import { getUserTweets } from '../../api/user'
 
-const UserMainNew = (props) => {
+const UserMainNew = ({
+  user,
+  isFollow,
+  setIsFollow,
+  isWhole,
+  setIsWhole,
+  isChange,
+  setIsChange,
+}) => {
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
   const [likeSection, setLikeSection] = useState(false);
   const [editPopup, setEditPopup] = useState(false);
+
+ const [userTweets, setUserTweets] = useState([]);
+ 
+ const userId = localStorage.getItem("userId");
+
+ useEffect(() => {
+   const getUserTweetsAsync = async (userId) => {
+     try {
+       const userTweets = await getUserTweets(userId);
+       if (!userTweets.status) {
+         setUserTweets(userTweets);
+       }
+       console.log('userMain' + userTweets)
+     } catch (error) {
+       console.error(error);
+     }
+   };
+   getUserTweetsAsync(userId);
+ }, [userId]);
 
   return (
     <div className={styles.container}>
@@ -25,25 +52,27 @@ const UserMainNew = (props) => {
           setLikeSection(false);
         }}
       >
-        {/* <Link to="/home"> */}
         <div className={styles.arrow}>
           <Arrow />
         </div>
-        {/* </Link> */}
+
         <div className={styles.returnWrapper}>
-          <div className={styles.userName}>John Doe</div>
-          <div className={styles.tweetNum}>25 推文</div>
+          <div className={styles.userName}>{user.name}</div>
+          <div className={styles.tweetNum}>
+            {userTweets.length} 
+            推文</div>
         </div>
       </div>
       <UserProfileNew
         editPopup={editPopup}
         setEditPopup={setEditPopup}
-        isFollow={props.isFollow}
-        setIsFollow={props.setIsFollow}
-        isWhole={props.isWhole}
-        setIsWhole={props.setIsWhole}
-        isChange={props.isChange}
-        setIsChange={props.setIsChange}
+        isFollow={isFollow}
+        setIsFollow={setIsFollow}
+        isWhole={isWhole}
+        setIsWhole={setIsWhole}
+        isChange={isChange}
+        setIsChange={setIsChange}
+        user={user}
       />
       <StickOption
         twitSection={twitSection}
@@ -53,20 +82,17 @@ const UserMainNew = (props) => {
         likeSection={likeSection}
         setLikeSection={setLikeSection}
       />
-      <div className={styles.mainDivider}></div>
 
-      {twitSection && (
-        <TwitForm />
-      )}
-      {replySection && <ReplyList />}
+      {twitSection && <TwitForm
+      user={user} 
+      userTweets={userTweets} 
+      />}
+      {replySection && <ReplyList userId={userId} user={user} />}
       {likeSection && <LikeForm />}
 
-     {editPopup && (
-        <UserEditModal
-          editPopup={editPopup}
-          setEditPopup={setEditPopup}
-                               />
-                        )}
+      {editPopup && (
+        <UserEditModal editPopup={editPopup} setEditPopup={setEditPopup} />
+      )}
     </div>
   );
 };

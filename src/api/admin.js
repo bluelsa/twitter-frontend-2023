@@ -15,7 +15,6 @@ export const adminlogin = async ({ account, password }) => {
   }
 };
 
-
 export const getUsers = async (token) => {
   try {
     const { data } = await axios.get(`${adminURL}/users`, {

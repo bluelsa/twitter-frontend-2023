@@ -137,32 +137,37 @@
   width: 100%;
   min-height: 148px;
   border: 1px solid #e6ecf0;
+  border-bottom: none;
   padding-top: 17px;
+  gap: 5px;
 }
 
 .tweetCollection {
   display: flex;
-  margin-left: 23.13px;
+  margin-left: 24px;
 
-  .logoWrap {
+  .avatarWrap {
+margin-right: 5px;
+    img {
     position: relative;
     width: 50px;
     height: 50px;
-    background-color: rgb(189, 188, 188);
+    // background-color: rgb(189, 188, 188);
     border-radius: 50%;
+    }
 
     :hover {
       cursor: pointer;
     }
 
-    .darkLogo {
-      position: absolute;
-      top: 9px;
-      left: 9px;
-      width: 34px;
-      height: 34px;
-      opacity: 0.3;
-    }
+    // .darkLogo {
+    //   position: absolute;
+    //   top: 9px;
+    //   left: 9px;
+    //   width: 34px;
+    //   height: 34px;
+    //   opacity: 0.3;
+    // }
   }
 
   .tweetContent {
@@ -202,6 +207,15 @@
     }
 
     .tweetArticle {
+      width: 90%;
+      // margin-top: 8px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 26px;
+      color: #171725;
+    }
+
+    .tweetReplyArticle {
       width: 90%;
       margin-top: 8px;
       font-size: 16px;
@@ -380,6 +394,13 @@ input {
   color: #696974;
   margin-left: 14px;
 }
+
+// user tweets form
+.userTweetContainer {
+border: 1px solid #000;
+}
+
+
 
 // EditPopup
 
