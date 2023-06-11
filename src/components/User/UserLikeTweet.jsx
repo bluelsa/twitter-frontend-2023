@@ -1,14 +1,13 @@
 import styles from "./User.module.scss";
-import { ReactComponent as LogoDark } from "../../assets/image/DarkLogo.svg";
 import { ReactComponent as ReplyIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 
-const UserLikeTweet = () => {
+const UserLikeTweet = ({userLike}) => {
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetCollection}>
-        <div className={styles.logoWrap}>
-          <LogoDark className={styles.darkLogo} />
+        <div className={styles.avatarWrap}>
+          <img src="https://i.pravatar.cc" alt="avatar" />
         </div>
         <div className={styles.tweetContent}>
           <div>
@@ -18,8 +17,7 @@ const UserLikeTweet = () => {
             </div>
           </div>
           <div className={styles.tweetArticle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint illo
-            temporibus
+            {userLike.Tweet.description}
           </div>
           <div className={styles.count}>
             <div className={styles.replyNum}>

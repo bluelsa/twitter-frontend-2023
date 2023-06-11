@@ -65,6 +65,7 @@ function ReplyTwits(props) {
 
       <div className={styles.tweets}>
         {/* Render here */}
+        {/* <ReplyList />
         <ReplyList />
         <ReplyList />
         <ReplyList />
@@ -131,8 +132,7 @@ function ReplyTwits(props) {
         <ReplyList />
         <ReplyList />
         <ReplyList />
-        <ReplyList />
-        <ReplyList />
+        <ReplyList /> */}
       </div>
       {/* </div> */}
     </>

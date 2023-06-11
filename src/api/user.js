@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("token");
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
@@ -30,6 +30,7 @@ export const getUser = async (id) => {
 
 export const getUserTweets = async (id) => {
   try {
+    console.log("m" + `${userURL}/${id}/tweets`);
     const { data } = await axiosInstance.get(`${userURL}/${id}/tweets`);
     return data;
   } catch (error) {
@@ -39,6 +40,7 @@ export const getUserTweets = async (id) => {
 
 export const getUserReplies = async (id) => {
   try {
+    console.log("AAA" + `${userURL}/${id}/replied_tweets`);
     const { data } = await axiosInstance.get(`${userURL}/${id}/replied_tweets`);
     return data;
   } catch (error) {

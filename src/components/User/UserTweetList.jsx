@@ -16,11 +16,13 @@ const UserTweetList = () => {
           <div>喜歡的內容</div>
         </Link>
       </nav>
+      <div>
       <UserTweet />
       <UserTweet />
       <UserTweet />
       <UserTweet />
       <UserTweet />
+      </div>
     </>
   );
 };
