@@ -26,7 +26,7 @@ export const SettingInput = (props) => {
 
 const SettingPage = () => {
   const [twitPop, setTwitPop] = useState(false);
-  const [setting, setSetting] = useState(false);
+  
   // const [username, setUsername] = useState('');
   // const [nickname, setNickname] = useState('');
   // const [email, setEmail] = useState('');
@@ -51,8 +51,7 @@ const SettingPage = () => {
         <NavBar 
         twitPop={twitPop} 
         setTwitPop={setTwitPop}
-        setting={setting}
-        setSetting={setSetting}
+        
         />
 
         {/* 中間部分 */}

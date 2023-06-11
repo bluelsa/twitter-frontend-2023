@@ -12,7 +12,9 @@ import {useState} from "react"
 import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
-  const [getRed, setGetRed] = useState(false)
+  const [house, setHouse] = useState(true)
+  const [person, setPerson] = useState(false);
+  const [setting, setSetting] = useState(false);
   return (
     <div className={styles.leftColumn}>
       <nav className={styles.navContainer}>
@@ -23,13 +25,13 @@ const NavBar = (props) => {
           <Link
             to="/home"
             onClick={() => {
-              // props.setHouse(true);
-              // props.setPerson(false);
-              // props.setSetting(false);
+              setHouse(true);
+              setPerson(false);
+              setSetting(false);
             }}
           >
             {/* <div className={styles.navItem} id="1"> */}
-              {props.house ? (
+              {house ? (
                 <RedIndex className={styles.navItem} />
               ) : (
                 <BlackIndex className={styles.navItem} />
@@ -40,13 +42,13 @@ const NavBar = (props) => {
           <Link
             to="/user"
             onClick={() => {
-              // props.setHouse(false);
-              // props.setPerson(true);
-              // props.setSetting(false);
+              setHouse(false);
+              setPerson(true);
+              setSetting(false);
             }}
           >
             {/* <div className={styles.navItem} id="2"> */}
-              {props.person ? (
+              {person ? (
                 <RedPersonal className={styles.navItem} />
               ) : (
                 <NavPersonal className={styles.navItem} />
@@ -56,13 +58,13 @@ const NavBar = (props) => {
           <Link
             to="/setting"
             onClick={() => {
-              // props.setHouse(false);
-              // props.setPerson(false);
-              // props.setSetting(true);
+              setHouse(false);
+              setPerson(false);
+              setSetting(true);
             }}
           >
             {/* <div className={styles.navItem} id="3"> */}
-            {props.setting ? (
+            {setting ? (
               <RedSet className={styles.navItem} />
             ) : (
               <NavSetting className={styles.navItem} />

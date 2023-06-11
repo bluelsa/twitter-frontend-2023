@@ -15,9 +15,7 @@ const MainPage = () => {
   const [replyTwit, setReplyTwit] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [isOther, setIsOther] = useState(false);
-  const [house, setHouse] = useState(true);
-  // const [person, setPerson] = useState(false);
-  // const [setting, setSetting] = useState(false);
+  
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
@@ -25,8 +23,7 @@ const MainPage = () => {
           <NavBar         
             twitPop={twitPop}
             setTwitPop={setTwitPop}
-            house={house}
-            setHouse={setHouse}
+         
           />
         </div>
         {/* 中間推文部分 */}

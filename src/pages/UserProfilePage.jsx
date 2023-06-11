@@ -25,10 +25,7 @@ const UserProfilePage = () => {
           <NavBar
             twitPop={twitPop}
             setTwitPo={setTwitPop}
-            person={person}
-            setPerson={setPerson}
-            isChange={isChange}
-            setIsChange={setIsChange}
+           
           />
         </div>
         <div className={styles.middleColumn}>
