@@ -3,9 +3,34 @@ import { ReactComponent as Arrow } from "../../assets/image/Arrow.svg";
 import { ReactComponent as ReplyText } from "../../assets/image/ReplyText.svg";
 import { ReactComponent as Heart } from "../../assets/image/heart-hollow.svg";
 import { ReactComponent as BigTalk } from "../../assets/image/25x25Talk.svg";
+import { getTweetsReplies} from "../../api/tweets";
+import { useState, useEffect } from "react";
 import ReplyList from "./ReplyList";
 
 function ReplyTwits(props) {
+    const [ReplyTwit, setReplyTwit] = useState([])
+
+    useEffect(() =>{
+ const getReplies = async () => {
+      try{
+ const replies = await getTweetsReplies ();
+     setReplyTwit(replies.map(item =>item.name))
+
+     } catch (error) {
+         console.log('replies',error)
+      }
+      }
+
+     getReplies()
+
+ console.log('here is replyTwits')
+    },[])
+    
+   
+
+
+
+
   return (
     <>
       {/* <div className={`${styles.mainBackground} ${styles.scrollbar}`}> */}
@@ -65,74 +90,10 @@ function ReplyTwits(props) {
 
       <div className={styles.tweets}>
         {/* Render here */}
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
+        {ReplyTwit.map(item =>{
+          <ReplyList key={item} />;
+        })}
+  
       </div>
       {/* </div> */}
     </>

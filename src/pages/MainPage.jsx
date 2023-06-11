@@ -1,20 +1,16 @@
 import styles from "./HomeStyle.module.scss";
 import NavBar from "../common/NavBar";
 import Popular from "../common/Popular";
-import SettingPage from "./SettingPage";
-import UserMainNew from "../components/Others/UserMainNew";
 import Twits from "../components/Home/Twits";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyTwits from "../common/Reply/ReplyTwits";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
-import OtherMain from "../components/Others/OtherMain";
 import { useState } from "react";
 
 const MainPage = () => {
   const [twitPop, setTwitPop] = useState(false);
   const [replyTwit, setReplyTwit] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
-  const [isOther, setIsOther] = useState(false);
   const [twit, setTwit] = useState(true);
   return (
     <div className={styles.homeContainer}>

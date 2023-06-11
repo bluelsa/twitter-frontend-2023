@@ -19,7 +19,7 @@ const TwitForm = (props) => {
                 props.setTwit(false);
               }}
             >
-              <div className={styles.tweetName}>{props.tweets.id}</div>
+              <div className={styles.tweetName}>{props.article}</div>
               <div className={styles.tweetTime}>@apple &bull;3小時</div>
             </div>
             <div
@@ -29,7 +29,7 @@ const TwitForm = (props) => {
                 props.setTwit(false);
               }}
             >
-              {props.tweets.description}
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione error beatae eligendi aperiam nobis expedita doloribus nostrum impedit, veritatis earum.
             </div>
             {/* </Link> */}
             <div className={styles.tweetMessage}>
