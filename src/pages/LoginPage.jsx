@@ -47,7 +47,7 @@ const LoginPage = () => {
         {notiStatus === "failed" && (
           <TimePopup
             notification="error"
-            title="帳號不存在"
+            title="帳號密碼錯誤"
             onClick="alert('clicked')"
           />
         )}

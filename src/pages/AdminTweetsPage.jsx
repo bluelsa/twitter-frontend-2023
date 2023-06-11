@@ -22,8 +22,8 @@ const TweetsPage = () => {
       try {
         const tweets = await getTweets(token);
        
-        if (tweets.status === "success") {
-          setTweets(tweets.data);
+        if (!tweets.status) {
+          setTweets(tweets);
           setIsAuthenticated(true);
         }
       } catch (error) {
@@ -33,7 +33,7 @@ const TweetsPage = () => {
       }
     };
    getUsersAsync(token);
-  }, [navigate]);
+  }, []);
 
 useEffect(() => {
   if (!isLoading) {

@@ -22,8 +22,8 @@ const AdminPage = () => {
       password,
     });
 
-    if ( data.status === 'success' ) {
-    localStorage.setItem('token', data.data.token );
+    if ( !data.status ) {
+    localStorage.setItem('token', data.token );
     setNotiStatus('success')
     setTimeout(() => {
       navigate("/admin/tweets");
@@ -31,7 +31,6 @@ const AdminPage = () => {
     return;
     }
     setNotiStatus('failed')
-
   };
 
 const handleClosePopup = () => {
