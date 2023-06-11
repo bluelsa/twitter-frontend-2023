@@ -11,84 +11,38 @@ import OtherMain from "../components/Others/OtherMain";
 import { useState } from "react";
 
 const MainPage = () => {
-  const [house, setHouse] = useState(true);
-  const [person, setPerson] = useState(false);
-  const [setting, setSetting] = useState(false);
-  const [twit, setTwit] = useState(false);
+  const [twitPop, setTwitPop] = useState(false);
   const [replyTwit, setReplyTwit] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [isOther, setIsOther] = useState(false);
+  const [house, setHouse] = useState(true);
+  // const [person, setPerson] = useState(false);
+  // const [setting, setSetting] = useState(false);
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
         <div className={styles.leftColumn}>
-        <NavBar
-          house={house}
-          setHouse={setHouse}
-          person={person}
-          setPerson={setPerson}
-          setting={setting}
-          setSetting={setSetting}
-          twit={twit}
-          setTwit={setTwit}
-          replyTwit={replyTwit}
-          setReplyTwit={setReplyTwit}
-          isOther={isOther}
-          setIsOther={setIsOther}
-        />
+          <NavBar         
+            twitPop={twitPop}
+            setTwitPop={setTwitPop}
+            house={house}
+            setHouse={setHouse}
+          />
         </div>
         {/* 中間推文部分 */}
         <div className={styles.middleColumn}>
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
-            {house &&
-              (!replyTwit ? (
-                <Twits
-                  twit={twit}
-                  setTwit={setTwit}
-                  replyTwit={replyTwit}
-                  setReplyTwit={setReplyTwit}
-                  replyPop={replyPop}
-                  setReplyPop={setReplyPop}
-                  isOther={isOther}
-                  setIsOther={setIsOther}
-                  house={house}
-                  setHouse={setHouse}
-                />
-              ) : (
-                <ReplyTwits
-                  replyTwit={replyTwit}
-                  setReplyTwit={setReplyTwit}
-                  house={house}
-                  setHouse={setHouse}
-                  person={person}
-                  setPerson={setPerson}
-                  setting={setting}
-                  setSetting={setSetting}
-                  twit={twit}
-                  setTwit={setTwit}
-                  replyPop={replyPop}
-                  setReplyPop={setReplyPop}
-                  isOther={isOther}
-                  setIsOther={setIsOther}
-                />
-              ))}
-
-            {person && <UserMainNew />}
-            {setting && <SettingPage />}
-            {isOther && (
-              <OtherMain
-                isOther={isOther}
-                setIsOther={setIsOther}
-                twit={twit}
-                setTwit={setTwit}
+              <Twits
+                // twitPop={twitPop}
+                // setTwitPop={setTwitPop}
                 replyTwit={replyTwit}
                 setReplyTwit={setReplyTwit}
-                house={house}
-                setHouse={setHouse}
+                replyPop={replyPop}
+                setReplyPop={setReplyPop}
+                isOther={isOther}
+                setIsOther={setIsOther}             
               />
-            )}
-            {/* {replyTwit && <ReplyTwits />} */}
-            {twit && <TwitPopUp twit={twit} setTwit={setTwit} />}
+            {twitPop && <TwitPopUp twitPop={twitPop} setTwitPop={setTwitPop} />}
             {replyPop && (
               <ReplyPopUp replyPop={replyPop} setReplyPop={setReplyPop} />
             )}

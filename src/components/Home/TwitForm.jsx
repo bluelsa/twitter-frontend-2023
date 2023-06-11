@@ -1,22 +1,25 @@
 import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as TalkIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/LikeIcon.svg";
-
+import { Link } from "react-router-dom";
 const TwitForm = (props) => {
   return (
     <>
       <div className={styles.tweetContainer}>
         <div className={styles.tweetCollection}>
-          <div
-            className={styles.twitAvatar}
-            onClick={() => {
-              props.setIsOther(true);
-              props.setHouse(false)
-              props.setReplyTwit(false)
-            }}
-          >
-            {/* <Head /> */}
-          </div>
+          <Link to="/otheruser">
+            <div
+              className={styles.twitAvatar}
+              // onClick={() => {
+              //   props.setIsOther(true);
+              //   props.setHouse(false);
+              //   props.setReplyTwit(false);
+              // }}
+            >
+              {/* <Head /> */}
+            </div>
+          </Link>
+{/* <Link to="/"> */}
           <div className={styles.tweetContent}>
             <div
               className={styles.nameInfo}
@@ -37,6 +40,7 @@ const TwitForm = (props) => {
               temporibus, non enim debitis ipsum repudiandae beatae nesciunt ea
               odio?
             </div>
+            {/* </Link> */}
             <div className={styles.tweetMessage}>
               <div className={styles.smallIcon}>
                 <TalkIcon
