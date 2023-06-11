@@ -7,7 +7,7 @@ function Twits(props) {
   return (
     <>
       <header className={styles.header}>首頁</header>
-      <div className={styles.mainDivider}></div>
+      <div className={styles.twitsDivider}></div>
       <Post twit={props.twit} setTwit={props.setTwit} />
       <div className={styles.postDivider}></div>
       <div className={styles.tweets}>
@@ -16,111 +16,10 @@ function Twits(props) {
           setReplyTwit={props.setReplyTwit}
           replyPop={props.replyPop}
           setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
+          twit={props.twit}
+          setTwit={props.setTwit}
         />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
-        />
-        <TwitForm
-          replyTwit={props.replyTwit}
-          setReplyTwit={props.setReplyTwit}
-          replyPop={props.replyPop}
-          setReplyPop={props.setReplyPop}
-          isOther={props.isOther}
-          setIsOther={props.setIsOther}
-          house={props.house}
-          setHouse={props.setHouse}
-        />
+        
       </div>
     </>
 

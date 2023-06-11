@@ -20,29 +20,28 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="login" element={<LoginPage />} />
-      <Route path="signup" element={<SignUpPage />} />
-      <Route path="home" element={<MainPage />} />
-      <Route path="setting" element={<SettingPage />} />
-      
-      <Route path="user" element={<UserProfilePage />} />
-      <Route path="user/replies" element={<UserReplyPage />} />
-      <Route path="user/likes" element={<UserLikePage />} />
-      <Route path="user/followers" element={<FollowersPage />} />
-      <Route path="user/following" element={<FollowingPage />} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="signup" element={<SignUpPage />} />
+          <Route path="home" element={<MainPage />} />
+          <Route path="setting" element={<SettingPage />} />
 
-      <Route path="otheruser" element={<OtherUserPage />} />
+          <Route path="user" element={<UserProfilePage />} />
+          <Route path="user/replies" element={<UserReplyPage />} />
+          <Route path="user/likes" element={<UserLikePage />} />
+          <Route path="user/followers" element={<FollowersPage />} />
+          <Route path="user/following" element={<FollowingPage />} />
+         
+          <Route path="otheruser" element={<OtherUserPage />} />
 
-      <Route path="admin" element={<AdminPage />} />
-      <Route path="admin/tweets" element={<TweetsPage />} />
-      <Route path="admin/users" element={<UsersPage />} />
-    </Routes>
-  </BrowserRouter>
+          <Route path="admin" element={<AdminPage />} />
+          <Route path="admin/tweets" element={<TweetsPage />} />
+          <Route path="admin/users" element={<UsersPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
-    
-  )
+  );
 }
 
 export default App;

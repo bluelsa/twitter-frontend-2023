@@ -5,7 +5,7 @@ import { ReactComponent as ReplyButton } from "../../assets/image/ReplyButton.sv
 const ReplyPopUp = (props) => {
   return (
     <div className={styles.replyPopUpContanier}>
-      <div className={styles.popHeader}>
+      <div className={styles.replyPopHeader}>
         <div>
           <ModalX
             className={styles.interaction}
@@ -40,7 +40,13 @@ const ReplyPopUp = (props) => {
       </div>
       <div className={styles.postContainer}>
         <div className={styles.postContent}>
-          <div className={styles.postAvatar}></div>
+          <div className={styles.postAvatar}>
+            <img
+              className={styles.postAvatar}
+              src="https://i.pravatar.cc"
+              alt="avatar"
+            />
+          </div>
           <textarea
             className={styles.postText}
             placeholder="有什麼新鮮事？"
