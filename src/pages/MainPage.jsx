@@ -15,30 +15,41 @@ const MainPage = () => {
   const [replyTwit, setReplyTwit] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [isOther, setIsOther] = useState(false);
-  
+  const [twit, setTwit] = useState(true);
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
         <div className={styles.leftColumn}>
-          <NavBar         
-            twitPop={twitPop}
-            setTwitPop={setTwitPop}
-         
-          />
+          <NavBar twitPop={twitPop} setTwitPop={setTwitPop} />
         </div>
         {/* 中間推文部分 */}
         <div className={styles.middleColumn}>
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
+            {twit && (
               <Twits
-                // twitPop={twitPop}
-                // setTwitPop={setTwitPop}
+                twit={twit}
+                setTwit={setTwit}
+                twitPop={twitPop}
+                setTwitPop={setTwitPop}
                 replyTwit={replyTwit}
                 setReplyTwit={setReplyTwit}
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
-                isOther={isOther}
-                setIsOther={setIsOther}             
               />
+            )}
+
+            {replyTwit && (
+              <ReplyTwits
+                twit={twit}
+                setTwit={setTwit}
+                twitPop={twitPop}
+                setTwitPop={setTwitPop}
+                replyTwit={replyTwit}
+                setReplyTwit={setReplyTwit}
+                replyPop={replyPop}
+                setReplyPop={setReplyPop}
+              />
+            )}
             {twitPop && <TwitPopUp twitPop={twitPop} setTwitPop={setTwitPop} />}
             {replyPop && (
               <ReplyPopUp replyPop={replyPop} setReplyPop={setReplyPop} />
