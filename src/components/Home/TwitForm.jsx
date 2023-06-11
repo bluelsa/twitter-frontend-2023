@@ -19,7 +19,7 @@ const TwitForm = (props) => {
                 props.setTwit(false);
               }}
             >
-              <div className={styles.tweetName}>{props.article}</div>
+              <div className={styles.tweetName}>apple</div>
               <div className={styles.tweetTime}>@apple &bull;3小時</div>
             </div>
             <div
