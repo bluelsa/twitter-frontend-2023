@@ -47,8 +47,9 @@ function ReplyTwits(props) {
       <div className={styles.GuestSection}>
         <div className={styles.replyGuest}>
           <div className={styles.replyAvatar}>
-            <div className={styles.twitAvatar}>
-              {/* <LogoDark className={styles.darkLogo} /> */}
+            <div className={styles.avatarWrap}>
+              {/* <img src="https://i.pravatar.cc" alt="avatar" /> */}
+              <img src={props.user.avatar} alt="avatar" />
             </div>
             <div className={styles.follower}>
               <div className={styles.followerName}>{props.user.name}</div>
