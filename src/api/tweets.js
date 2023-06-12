@@ -45,7 +45,7 @@ export const getTweetsId = async (id) => {
 export const getTweetsReplies = async (id) => {
   try {
     const { res } = await axiosInstance.get(`${baseURL}/${id}/replies`);
-    return res.data
+    return res
 
   } catch (error) {
 

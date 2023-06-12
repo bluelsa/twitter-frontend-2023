@@ -1,0 +1,251 @@
+.scrollbar {
+  padding-left: 0px;
+}
+.scrollbar::-webkit-scrollbar {
+  width: 15px;
+  height: 1193px;
+  background-color: #FAFAFA;
+  border: 1px solid #E6ECF0;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #C1C1C1;
+  box-shadow: inset 3px 0px 0px #E8E8E8, inset -3px 0px 0px #F0F0F0;
+}
+
+.mainDivider {
+  width: 640px;
+  height: 1px;
+  border: none;
+  background-color: #E6ECF0;
+  margin-bottom: 16px;
+}
+
+.mainBackground {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #E6ECF0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.replyHeader {
+  margin-top: 24px;
+  width: 100%;
+  height: 51px;
+  font-family: "Noto Sans TC";
+  font-size: 24px;
+  font-weight: 700;
+  color: #171725;
+  position: relative;
+}
+.replyHeader div {
+  width: 100%;
+  margin-left: 28px;
+  display: flex;
+  flex-direction: row;
+  gap: 19px;
+}
+
+.twitAvatar {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #C4C4C4;
+  margin-left: 2.3px;
+}
+.twitAvatar:hover {
+  cursor: pointer;
+}
+
+.GuestSection {
+  width: 100%;
+  height: 350px;
+}
+.GuestSection .replyGuest {
+  width: 602px;
+  height: 205px;
+  margin: 16px 0px 0px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.GuestSection .replyAvatar {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.GuestSection .replyAvatar .follower {
+  width: 100%;
+  height: 47px;
+}
+.GuestSection .replyAvatar .follower .followerName {
+  width: 100%;
+  height: 26px;
+  font-family: "Noto Sans TC";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #171725;
+}
+.GuestSection .replyAvatar .follower .followerName:hover {
+  cursor: pointer;
+}
+.GuestSection .replyAvatar .follower .followerTime {
+  width: 100%;
+  height: 22px;
+  font-family: "Noto Sans TC";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #6C757D;
+}
+.GuestSection .replyContent {
+  width: 578px;
+  height: 108px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  color: #171725;
+}
+.GuestSection .replyTime {
+  width: 188px;
+  height: 22px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #6C757D;
+}
+.GuestSection .shortDivider {
+  width: 606.75px;
+  height: 1px;
+  background-color: #E6ECF0;
+  margin-left: 16.13px;
+}
+.GuestSection .replyLike {
+  width: 220px;
+  height: 28px;
+  margin: 16px 0 16px 16.95px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.GuestSection .replyLike div:nth-child(1) {
+  width: 72px;
+  height: 28px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 23px;
+  color: #171725;
+}
+.GuestSection .replyLike div:nth-child(2) {
+  width: 130px;
+  height: 28px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 23px;
+  color: #171725;
+}
+.GuestSection .replyLike span {
+  color: #6C757D;
+}
+.GuestSection .heartTalk {
+  width: 188px;
+  height: 36px;
+  margin: 16px 0 16px 16.95px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0, 3px;
+}
+
+.tweets {
+  margin-top: 16px;
+  width: 100%;
+  min-height: 942px;
+}
+
+.twitAvatar {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #C4C4C4;
+  margin-left: 2.3px;
+  background: url(../../assets/image/Head.svg);
+}
+.twitAvatar:hover {
+  cursor: pointer;
+}
+
+.interaction:hover {
+  cursor: pointer;
+}
+
+.replyTo {
+  width: 82px;
+  height: 22px;
+}
+.replyTo div {
+  width: 130px;
+  height: 28px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 23px;
+  color: #6C757D;
+}
+.replyTo span {
+  color: #FF6600;
+}
+
+.listArticle {
+  width: 100%;
+  height: 52px;
+  font-family: "Noto Sans TC";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #171725;
+}
+
+.nameInfo {
+  width: 100%;
+  height: 26px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 8px;
+}
+.nameInfo .tweetName {
+  font-family: "Noto Sans TC";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #171725;
+}
+.nameInfo .tweetName:hover {
+  cursor: pointer;
+}
+.nameInfo .tweetTime {
+  font-family: "Noto Sans TC";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #6C757D;
+  padding-top: 2px;
+}/*# sourceMappingURL=replyStyle.module.css.map */

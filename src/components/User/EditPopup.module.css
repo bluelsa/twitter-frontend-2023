@@ -1,0 +1,144 @@
+.popupContainer {
+  border: 1px solid red;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popupContainer .popupInner {
+  top: 56px;
+  left: 334px;
+  width: 634px;
+  height: 610px;
+  background-color: #fff;
+  border-radius: 14px;
+}
+.popupContainer .popupInner .headerWrapper {
+  width: 100%;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px 0 19.5px;
+}
+.popupContainer .popupInner .headerWrapper .deleteIcon:hover {
+  cursor: pointer;
+}
+.popupContainer .popupInner .headerWrapper .editTitle {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 375px 0 36.5px;
+}
+.popupContainer .popupInner .headerWrapper .storeButton {
+  width: 64px;
+  height: 40px;
+  background: #ff6600;
+  border-radius: 50px;
+  color: #fff;
+  border-style: none;
+}
+.popupContainer .popupInner .headerWrapper .storeButton:hover {
+  cursor: pointer;
+}
+.popupContainer .popupInner .imageWrapper {
+  position: relative;
+  width: 634px;
+  height: 280px;
+}
+.popupContainer .popupInner .imageWrapper .coverWrapper .cover {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 38.5px;
+  filter: brightness(60%);
+}
+.popupContainer .popupInner .imageWrapper .coverWrapper .iconWrapper {
+  position: absolute;
+  top: 90px;
+  left: 279px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 38.5px;
+}
+.popupContainer .popupInner .imageWrapper .avatarWrapper .avatar {
+  position: absolute;
+  top: 124px;
+  left: 16.13px;
+  border-radius: 50%;
+  width: 141.1px;
+  height: 140px;
+  border: solid 4px white;
+  filter: brightness(60%);
+}
+.popupContainer .popupInner .imageWrapper .avatarWrapper .changeIcon {
+  position: absolute;
+  top: 184px;
+  left: 76px;
+}
+.popupContainer .popupInner .inputWrapper {
+  width: 602px;
+  height: 233px;
+  margin: 10px 16px 8px 16px;
+}
+.popupContainer .popupInner .inputWrapper .inputContainer {
+  width: 602px;
+  margin-bottom: 32px;
+}
+.popupContainer .popupInner .inputWrapper .inputContainer .nameInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #f5f8fa;
+  border-radius: 2px;
+  border-bottom: 2px solid #657786;
+  padding: 2px 10.55px 4px 10.55px;
+}
+.popupContainer .popupInner .inputWrapper .inputContainer .nameInput div {
+  font-size: 14px;
+  line-height: 22px;
+  color: #696974;
+}
+.popupContainer .popupInner .inputWrapper .inputContainer .nameInput input {
+  outline: none;
+  border: none;
+  background-color: #f5f8fa;
+  align-items: center;
+  font-size: 16px;
+}
+.popupContainer .popupInner .inputWrapper .inputContainer .infoInput {
+  height: 147px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #f5f8fa;
+  border-radius: 2px;
+  border-bottom: 2px solid #657786;
+  padding: 2px 10.55px 4px 10.55px;
+}
+.popupContainer .popupInner .inputWrapper .inputContainer .infoInput textarea {
+  border-style: none;
+  background-color: #f5f8fa;
+  font-size: 16px;
+}
+.popupContainer .popupInner .inputWrapper .inputContainer .infoInput div {
+  font-size: 14px;
+  line-height: 22px;
+  color: #696974;
+}
+.popupContainer .popupInner .inputWrapper .inputContainer .infoInput input {
+  outline: none;
+  border: none;
+  background-color: #f5f8fa;
+  align-items: center;
+  font-size: 16px;
+  font-family: "Noto Sans TC";
+}/*# sourceMappingURL=EditPopup.module.css.map */

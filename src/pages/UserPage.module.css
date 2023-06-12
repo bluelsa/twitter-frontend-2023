@@ -1,0 +1,89 @@
+.userContainer {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.mainContainer {
+  width: 1400px;
+  height: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 333px 641px 426px;
+  grid-template-rows: 1200px;
+}
+
+.leftColumn {
+  border: 1px solid #000;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.leftColumn .navContainer {
+  border: 1px solid #000;
+  width: 178px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 130px;
+}
+.leftColumn .navContainer .logo {
+  margin: 13px 0 0 13px;
+}
+.leftColumn .navContainer .navBar {
+  border: 1px solid red;
+  margin-top: 8px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.leftColumn .navContainer .navBar .lineWrapper {
+  height: 26px;
+  border: 1px solid blue;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.leftColumn .navContainer .navBar .lineWrapper .homeIcon {
+  border: 1px solid #000;
+}
+.leftColumn .navContainer .navBar .lineWrapper .userIcon {
+  border: 1px solid #000;
+}
+.leftColumn .navContainer .navBar .lineWrapper .settingIcon {
+  border: 1px solid #000;
+}
+.leftColumn .navContainer .navBar .lineWrapper .active {
+  color: #ff6600;
+}
+.leftColumn .navContainer .navBar .tweetButton {
+  width: 178px;
+  height: 46px;
+  background: #ff6600;
+  border-radius: 50px;
+  border-style: none;
+  color: #fff;
+  font-size: 20px;
+}
+
+.logout {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  left: 19px;
+  bottom: 16px;
+  gap: 16px;
+}
+
+.notiContainer {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}/*# sourceMappingURL=UserPage.module.css.map */

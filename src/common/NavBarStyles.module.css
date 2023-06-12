@@ -1,0 +1,58 @@
+.leftColumn {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.leftColumn .navContainer {
+  width: 178px;
+  height: 100vh;
+  margin-left: 130px;
+}
+.leftColumn .navContainer .navlogo {
+  width: 50px;
+  height: 50px;
+  padding: 5px 5px;
+  position: relative;
+}
+.leftColumn .navContainer .navBar {
+  margin-top: 8px;
+  width: 100%;
+  height: 244px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.leftColumn .navContainer .navBigButton {
+  width: 178px;
+  height: 46px;
+}
+.leftColumn .navContainer .navBigButton :hover {
+  cursor: pointer;
+}
+.leftColumn .navContainer .logOut {
+  position: absolute;
+  bottom: 16px;
+}
+
+.blackIcon {
+  fill: #44444F;
+}
+.blackIcon :hover {
+  cursor: pointer;
+}
+
+.orangeIcon {
+  fill: #FF6600;
+}
+.orangeIcon :hover {
+  cursor: pointer;
+}
+
+.navItem {
+  width: 178px;
+  height: 58px;
+}
+.navItem :hover {
+  cursor: pointer;
+}/*# sourceMappingURL=NavBarStyles.module.css.map */

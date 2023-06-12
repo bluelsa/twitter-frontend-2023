@@ -5,26 +5,26 @@ import { getTweetsAll } from "../../api/tweets";
 import { useState, useEffect } from "react";
 
 function Twits(props) {
-  const [tweetsAll, setTweetsAll] = useState({});
-  const id = localStorage.getItem("userId");
-  console.log("吃到了沒？", tweetsAll);
+  const [tweetsAll, setTweetsAll] = useState([]);
+  
+  console.log("twits吃到了沒?", tweetsAll);
 
-  useEffect(
-    () => {
-      const getAllTweets = async () => {
+  useEffect(() => {
+const id = localStorage.getItem("userId");
+      const getAllTweetsAsync = async () => {
         try {
           const allTweets = await getTweetsAll();
-          if (!allTweets.status) {
+          // if (!allTweets.status) {
             setTweetsAll(allTweets);
-           }
+          //  }
          console.log('nonono:', allTweets)
         } catch (error) {
           console.log("get allTwits failed", error);
         }
       };
-      getAllTweets(id);
+      getAllTweetsAsync();
     },
-    { tweetsAll }
+    [tweetsAll ]
   );
 
   return (

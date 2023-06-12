@@ -1,0 +1,461 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans+TC:wght@400;500;700&display=swap");
+:root {
+  background-color: #fff;
+  font-family: "Noto Sans TC";
+  --major: #ff6600;
+  --primary: #0062ff;
+  --secondary: #6c757d;
+  --success: #3dd598;
+  --warning: #ffc542;
+  --error: #fc5a5a;
+}
+
+::-webkit-input-placeholder {
+  color: #b5b5be;
+  font-size: 16px;
+}
+
+.homeContainer {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.mainContainer {
+  width: 1400px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+}
+.mainContainer .leftColumn {
+  margin-right: 20px;
+}
+
+.interaction:hover {
+  cursor: pointer;
+}
+
+.scrollbar {
+  padding-left: 0px;
+}
+.scrollbar::-webkit-scrollbar {
+  width: 15px;
+  height: 1193px;
+  background-color: #fafafa;
+  border: 1px solid #e6ecf0;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #c1c1c1;
+  box-shadow: inset 3px 0px 0px #E8E8E8, inset -3px 0px 0px #f0f0f0;
+}
+
+.mainBlack {
+  width: 1400px;
+  height: 100vh;
+  position: fixed;
+  background-color: #c4c4c4;
+  filter: brightness(60%);
+}
+
+.mainBackground {
+  width: 639px;
+  height: 100vh;
+  border: 1px solid #e6ecf0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+}
+.mainBackground .header {
+  margin-top: 20px;
+  width: 100%;
+  height: 52px;
+  font-family: "Noto Sans TC";
+  font-size: 24px;
+  font-weight: 700;
+  padding-left: 23px;
+  color: #171725;
+  position: relative;
+}
+.mainBackground .postContainer {
+  width: 100%;
+  height: 120px;
+  position: relative;
+}
+.mainBackground .postContainer .postButton {
+  width: 64.5px;
+  height: 40px;
+  position: absolute;
+  top: 56%;
+  right: 4%;
+}
+.mainBackground .postContainer .postButton:hover {
+  cursor: pointer;
+}
+.mainBackground .postDivider {
+  width: 639px;
+  height: 10px;
+  border: none;
+  background-color: #e6ecf0;
+}
+.mainBackground .tweets {
+  margin-top: 16px;
+  width: 100%;
+  height: 100vh;
+}
+
+.grayBackground {
+  position: fixed;
+  z-index: 1000;
+  background-color: #c4c4c4;
+  filter: brightness(60%);
+}
+
+.twitsDivider {
+  width: 640px;
+  height: 1px;
+  border: none;
+  background-color: #e6ecf0;
+  margin-bottom: 16px;
+}
+
+.twitAvatar {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #c4c4c4;
+  margin-left: 2.3px;
+  background: url(../assets/image/Head.svg);
+}
+.twitAvatar:hover {
+  cursor: pointer;
+}
+
+.tweetContainer {
+  width: 100%;
+  height: 153px;
+}
+
+.tweetCollection {
+  width: 589px;
+  height: 136px;
+  margin: 0px auto;
+  gap: 8px;
+}
+.tweetCollection .tweetContent {
+  width: 532px;
+  height: 136px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tweetCollection .tweetContent :hover {
+  cursor: pointer;
+}
+.tweetCollection .tweetContent .tweetArticle {
+  width: 100%;
+  height: 78px;
+  font-family: "Noto Sans TC";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #171725;
+}
+.tweetCollection .tweetContent .tweetMessage {
+  width: 120px;
+  height: 16px;
+  display: flex;
+  gap: 38px;
+}
+.tweetCollection .tweetContent .tweetMessage .smallIcon {
+  width: 38px;
+  height: 16px;
+  display: flex;
+  gap: 8px;
+}
+.tweetCollection .tweetContent .tweetMessage .smallIcon div {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Montserrat";
+  line-height: 14px;
+  color: #6c757d;
+}
+
+.nameInfo {
+  width: 100%;
+  height: 26px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 8px;
+}
+.nameInfo .tweetName {
+  font-family: "Noto Sans TC";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #171725;
+}
+.nameInfo .tweetName:hover {
+  cursor: pointer;
+}
+.nameInfo .tweetTime {
+  font-family: "Noto Sans TC";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #6c757d;
+  padding-top: 2px;
+}
+
+.rightColumn {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.rightColumn .popularList {
+  position: absolute;
+  width: 273px;
+  max-height: 100vh;
+  top: 16px;
+  left: 25px;
+  border-radius: 16px;
+  background-color: #fafafb;
+}
+.rightColumn .popularList .popularRectangle {
+  width: 273px;
+  height: 1px;
+  border: none;
+  background-color: #e6ecf0;
+}
+.rightColumn .popularList .popularTitle {
+  width: 100%;
+  height: 58px;
+}
+.rightColumn .popularList .popularTitle div {
+  width: 96px;
+  height: 26px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Noto Sans TC";
+  margin-top: 24px;
+  margin-left: 24px;
+}
+
+.followerContainer {
+  width: 100%;
+  height: 82px;
+  border: 1px solid #fafafb;
+}
+.followerContainer .followerContent {
+  width: 250px;
+  height: 50px;
+  margin: 16px;
+  display: grid;
+  grid-template-columns: 50px 86px 96px;
+  grid-gap: 8px;
+}
+.followerContainer .followerContent .follower {
+  width: 100%;
+  height: 47px;
+}
+.followerContainer .followerContent .follower .followerName {
+  width: 100%;
+  height: 26px;
+  font-family: "Noto Sans TC";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  color: #171725;
+}
+.followerContainer .followerContent .follower .followerName:hover {
+  cursor: pointer;
+}
+.followerContainer .followerContent .follower .followerTime {
+  width: 100%;
+  height: 22px;
+  font-family: "Noto Sans TC";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #92929d;
+}
+.followerContainer .followerContent .buttonPosition {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.popContainer {
+  border: 1px solid #000;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+}
+.popContainer .popInner {
+  margin-top: 56px;
+  margin-left: 430px;
+  width: 634px;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 14px;
+}
+.popContainer .popInner .popButton {
+  text-align: end;
+  margin-top: 50px;
+  margin-right: 16px;
+}
+.popContainer .popInner .popButton:hover {
+  cursor: pointer;
+}
+.popContainer .popInner .popHeader {
+  border-bottom: 1px solid #E6ECF0;
+  width: 100%;
+  height: 56px;
+  display: flex;
+}
+.popContainer .popInner .popHeader .deleteIcon {
+  margin-top: 20px;
+  margin-left: 19.5px;
+}
+
+.postContent {
+  width: 588.61px;
+  height: 50px;
+  margin-left: 24px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.postContent .postAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.postContent .postAvatar:hover {
+  cursor: pointer;
+}
+.postContent .postText {
+  width: 526px;
+  height: 26px;
+  font-family: "Noto Sans TC";
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  resize: none;
+  border: none;
+  overflow-y: hidden;
+  color: #6c757d;
+}
+.postContent .postText:focus {
+  outline: none;
+}
+.postContent .postText:hover {
+  cursor: pointer;
+}
+
+.replyPopUpContanier {
+  width: 634px;
+  height: 500px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 56px;
+  left: 336px;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #92929d;
+}
+
+.replyCollection {
+  width: 589px;
+  height: 175px;
+  margin: 0px auto;
+  display: flex;
+  gap: 8px;
+}
+
+.replyPopHeader {
+  width: 100px;
+  height: 41px;
+  margin-top: 16px;
+}
+.replyPopHeader div {
+  margin-left: 20px;
+}
+
+.replyAvatar {
+  width: 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatarWrap {
+  width: 50px;
+  height: 100%;
+}
+.avatarWrap img {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.avatarWrap :hover {
+  cursor: pointer;
+}
+
+.replyDivider {
+  width: 2px;
+  height: 86px;
+  background: #ccd6dd;
+}
+
+.replyButton {
+  position: absolute;
+  top: 88.8%;
+  right: 16px;
+}
+
+.replyInfo {
+  width: 100%;
+  height: 26px;
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 8px;
+}
+
+.replyTo {
+  width: 100%;
+  height: 22px;
+  font-family: "Noto Sans TC";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #6c757d;
+}
+
+.replyName {
+  width: 100%;
+  height: 22px;
+  font-family: "Noto Sans TC";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #ff6600;
+}/*# sourceMappingURL=HomeStyle.module.css.map */

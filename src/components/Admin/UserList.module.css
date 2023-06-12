@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans+TC:wght@400;500;700&display=swap");
+:root {
+  background-color: #fff;
+  font-family: "Noto Sans TC";
+  --major: #ff6600;
+  --primary: #0062ff;
+  --secondary: #6c757d;
+  --success: #3dd598;
+  --warning: #ffc542;
+  --error: #fc5a5a;
+}
+
+::-webkit-input-placeholder {
+  color: #b5b5be;
+  font-size: 16px;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.container .lineContent {
+  width: 1250px;
+  margin: 0 auto;
+  border: 1px solid #e6ecf0;
+  border-top-style: none;
+  border-right-style: none;
+  line-height: 74px;
+}
+.container .lineContent .title {
+  top: 0;
+  padding-left: 20.92px;
+  align-items: center;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+  color: #171725;
+}
+.container .cardsContainer {
+  margin: 16px 0 16px 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 210px);
+  grid-gap: 16px;
+}
+
+.userCard {
+  width: 210px;
+  height: 314px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background-color: #f6f7f8;
+}
+.userCard .cover {
+  height: 140px;
+}
+.userCard .avatar {
+  position: absolute;
+  top: 64px;
+  left: 55px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: solid 4px white;
+}
+.userCard .info {
+  height: 118px;
+  margin-top: 32px;
+  margin: 32px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+.userCard .info .name {
+  margin-top: 32px;
+  line-height: 26px;
+  font-weight: 700;
+  font-size: 16px;
+}
+.userCard .info .account {
+  color: var(--secondary);
+  font-size: 14px;
+  line-height: 22px;
+}
+.userCard .info .tweetInfo {
+  display: flex;
+  margin-top: 8px;
+}
+.userCard .info .tweetInfo .tweetNum {
+  display: flex;
+  margin-top: 2px;
+  font-family: "Montserrat";
+}
+.userCard .info .tweetInfo .tweetNum .iconContainer {
+  margin-top: 2px;
+  margin-right: 8.13px;
+}
+.userCard .info .tweetInfo .tweetNum .iconContainer .icon {
+  width: 23.87px;
+}
+.userCard .info .tweetInfo .likeNum {
+  margin-left: 17.95px;
+  display: flex;
+  margin-top: 2px;
+  font-family: "Montserrat";
+}
+.userCard .info .tweetInfo .likeNum .iconContainer {
+  margin-top: 1px;
+  margin-right: 9.95px;
+}
+.userCard .info .tweetInfo .likeNum .iconContainer .icon {
+  width: 20.1px;
+}
+.userCard .info .followInfo {
+  display: flex;
+  font-size: 14px;
+  line-height: 22px;
+  gap: 8px;
+}
+.userCard .info .followInfo .sub {
+  color: var(--secondary);
+}
+
+.num {
+  margin-left: 2px;
+  margin-top: 4px;
+  font-size: 16px;
+}/*# sourceMappingURL=UserList.module.css.map */

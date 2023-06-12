@@ -3,24 +3,43 @@ import { ReactComponent as Arrow } from "../../assets/image/Arrow.svg";
 import { ReactComponent as ReplyText } from "../../assets/image/ReplyText.svg";
 import { ReactComponent as Heart } from "../../assets/image/heart-hollow.svg";
 import { ReactComponent as BigTalk } from "../../assets/image/25x25Talk.svg";
-import { getTweetsReplies} from "../../api/tweets";
+import { getTweetsReplies } from "../../api/tweets";
 import { useState, useEffect } from "react";
-import ReplyList from "./ReplyList";
 
+import ReplyList from "./ReplyList";
+import { Link } from "react-router-dom";
 function ReplyTwits(props) {
+  const [replies, setReplies] = useState({});
+  const id = localStorage.getItem("userId");
+  console.log("replies吃到了嗎?", replies);
+
+  useEffect(
+    () => {
+      const getAllReplyAsync = async (id) => {
+        try {
+          const allReply = await getTweetsReplies(id);
+          // if (!allReply.status) {
+            setReplies(allReply);
+          // }
+          console.log("nonono:", allReply);
+        } catch (error) {
+          console.log("get allTwits failed", error);
+        }
+      };
+      getAllReplyAsync(id);
+    },
+    { replies }
+  );
+
   return (
     <>
-      {/* <div className={`${styles.mainBackground} ${styles.scrollbar}`}> */}
-
       <header className={styles.replyHeader}>
-        <div
-          onClick={() => {
-            props.setReplyTwit(false);
-          }}
-        >
-          <Arrow className={styles.interaction} />
-          <ReplyText className={styles.interaction} />
-        </div>
+        <Link to="/home">
+          <div>
+            <Arrow className={styles.interaction} />
+            <ReplyText className={styles.interaction} />
+          </div>
+        </Link>
       </header>
 
       <div className={styles.mainDivider}></div>
@@ -32,8 +51,8 @@ function ReplyTwits(props) {
               {/* <LogoDark className={styles.darkLogo} /> */}
             </div>
             <div className={styles.follower}>
-              <div className={styles.followerName}>Pizza Hut</div>
-              <div className={styles.followerTime}>@Pizzahut</div>
+              <div className={styles.followerName}>{props.user.name}</div>
+              <div className={styles.followerTime}>@{props.user.name}</div>
             </div>
           </div>
           <div className={styles.replyContent}>
@@ -136,7 +155,6 @@ function ReplyTwits(props) {
         <ReplyList />
         <ReplyList /> */}
       </div>
-     
     </>
   );
 }
