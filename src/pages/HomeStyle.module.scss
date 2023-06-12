@@ -456,6 +456,23 @@ margin-right: 20px;
   gap: 16px;
 }
 
+.avatarWrap {
+  width: 50px;
+  height: 100%;
+
+  img {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    // background-color: rgb(189, 188, 188);
+    border-radius: 50%;
+  }
+
+  :hover {
+    cursor: pointer;
+  }
+}
+
 .replyDivider {
   width: 2px;
   height: 86px;

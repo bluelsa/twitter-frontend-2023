@@ -9,7 +9,7 @@ const Post = (props) => {
         <div className={styles.postAvatar}>
           <img
             className={styles.postAvatar}
-            src="https://i.pravatar.cc"
+            src={props.user.avatar}
             alt="avatar"
           />
           {/* <Avatar /> */}
@@ -19,7 +19,12 @@ const Post = (props) => {
           placeholder="有什麼新鮮事？"
         ></textarea>
       </div>
-      <div className={styles.postButton}>
+      <div
+        className={styles.postButton}
+        onClick={() => {
+          props.setTwitPop(true);
+        }}
+      >
         <PostButton />
       </div>
     </div>

@@ -23,7 +23,7 @@ axiosInstance.interceptors.request.use((config) => {
 //get觀看所有推文 api/tweets
 export const getTweetsAll = async () => {
   try {
-    const res = await axiosInstance.get(`${baseURL}`);
+    const {res}= await axiosInstance.get(`${baseURL}`);
     return res.data
   } catch (error) {
     console.error("[Get getTweetsaAll failed]: ", error);
@@ -33,7 +33,7 @@ export const getTweetsAll = async () => {
 // get觀看一篇特定推文tweets/:tweetid
 export const getTweetsId = async (id) => {
   try {
-    const res = await axiosInstance.get(`${baseURL}/${id}`);
+    const {res}= await axiosInstance.get(`${baseURL}/${id}`);
     return res.data
 
   } catch (error) {
@@ -44,7 +44,7 @@ export const getTweetsId = async (id) => {
 // get觀看有回覆推文的推文api/tweets/id/replies
 export const getTweetsReplies = async (id) => {
   try {
-    const res = await axiosInstance.get(`${baseURL}/${id}/replies`);
+    const { res } = await axiosInstance.get(`${baseURL}/${id}/replies`);
     return res.data
 
   } catch (error) {
@@ -55,9 +55,9 @@ export const getTweetsReplies = async (id) => {
 
 //post 新增推文 api/tweets
 
-export const tweetCreate = async (description) => {
+export const tweetCreate = async ({id,description}) => {
   try {
-    const res = await axiosInstance.post(`${baseURL}`, { description })
+    const { res } = await axiosInstance.post(`${baseURL}`, { description })
     return res.data
   } catch (error) {
     console.error('[Create Tweet failed:', error)
@@ -68,7 +68,7 @@ export const tweetCreate = async (description) => {
 
 export const tweetsReplies = async ({ id, description }) => {
   try {
-    const res = await axiosInstance.post(`${baseURL}/${id}/replies`, { description })
+    const { res } = await axiosInstance.post(`${baseURL}/${id}/replies`, { description })
     return res.data
 
   } catch (error) {
@@ -80,7 +80,7 @@ export const tweetsReplies = async ({ id, description }) => {
 //post 對推文按讚 api/tweets/id/like
  export const tweetsLike = async (id) => {
   try {
-    const res = await axiosInstance.post(`${baseURL}/${id}/like`)
+    const { res } = await axiosInstance.post(`${baseURL}/${id}/like`)
     return res.data
   }
   catch (error) {
@@ -91,7 +91,7 @@ export const tweetsReplies = async ({ id, description }) => {
 //post 對推文取消按讚 api/tweets/id/unlike
 export const tweetsUnlike = async(id) => {
    try {
-     const res = await axiosInstance.post(`${baseURL}/${id}/unlike`)
+     const { res } = await axiosInstance.post(`${baseURL}/${id}/unlike`)
     return res.data
   }
   catch (error) {

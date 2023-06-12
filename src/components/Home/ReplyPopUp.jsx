@@ -17,13 +17,15 @@ const ReplyPopUp = (props) => {
 
       <div className={styles.replyCollection}>
         <div className={styles.replyAvatar}>
-          <div className={styles.twitAvatar}>{/* <Head /> */}</div>
+          <div className={styles.avatarWrap}>
+            <img src="https://i.pravatar.cc" alt="avatar" />
+          </div>
           <div className={styles.replyDivider}></div>
         </div>
 
         <div className={styles.tweetContent}>
           <div className={styles.nameInfo}>
-            <div className={styles.tweetName}>Apple</div>
+            <div className={styles.tweetName}>{props.user.name}</div>
             <div className={styles.tweetTime}>@apple &bull;3小時</div>
           </div>
           <div className={styles.tweetArticle}>
