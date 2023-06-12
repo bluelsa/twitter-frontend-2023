@@ -1,7 +1,6 @@
-import UserTweet from "../User/UserTweet";
+import UserTweet from "./UserTweet";
 
 const TwitForm = ({ user, userTweets }) => {
-console.log('Happy  '+{userTweets})
   return (
     <div>
       {userTweets.map((userTweet) => {

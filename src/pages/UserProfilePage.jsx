@@ -1,9 +1,8 @@
 import styles from "../pages/HomeStyle.module.scss";
 import Popular from "../common/Popular";
 import NavBar from "../common/NavBar";
-import UserMainNew from "../components/Others/UserMainNew";
-// import MainFollow from "../components/Others/MainFollow";
-// import ReplyTwits from "../common/Reply/ReplyTwits";
+import UserMainNew from "../components/User/UserMainNew";
+
 import { useState, useEffect } from "react";
 import { getUser } from "../api/user";
 import { useNavigate } from "react-router-dom";
@@ -45,20 +44,16 @@ const UserProfilePage = () => {
     }
   }, [navigate, isAuthenticated, isLoading]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-  };
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("userId");
+};
 
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
         <div className={styles.leftColumn}>
-          <NavBar
-            twitPop={twitPop}
-            setTwitPo={setTwitPop}
-            onClick={handleLogout}
-          />
+          <NavBar twitPop={twitPop} setTwitPo={setTwitPop} onClick={handleLogout} />
         </div>
         <div className={styles.middleColumn}>
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
@@ -70,8 +65,8 @@ const UserProfilePage = () => {
               isChange={isChange}
               setIsChange={setIsChange}
               user={user}
-              userId={user.id}
             />
+
           </div>
         </div>
         <div className={styles.rightColumn}>

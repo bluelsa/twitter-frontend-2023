@@ -1,30 +1,31 @@
 import styles from "../../pages/HomeStyle.module.scss";
-import MainTwitForm from "./MainTweetForm";
 import Post from "./Post";
-import { getTweetsAll } from "../../api/tweets";
+import MainTwitForm from "./MainTweetForm";
 import { useState, useEffect } from "react";
+import {getTweetsAll} from '../../api/tweets'
 
 function Twits(props) {
-  const [tweetsAll, setTweetsAll] = useState([]);
-  
-  console.log("twits吃到了沒?", tweetsAll);
+  const [tweets, setTweets] = useState({});
 
-  useEffect(() => {
-const id = localStorage.getItem("userId");
-      const getAllTweetsAsync = async () => {
+  const id = localStorage.getItem("userId");
+  console.log("replies吃到了嗎?", tweets);
+
+  useEffect(
+    () => {
+      const getAllReplyAsync = async () => {
         try {
-          const allTweets = await getTweetsAll();
-          // if (!allTweets.status) {
-            setTweetsAll(allTweets);
-          //  }
-         console.log('nonono:', allTweets)
+          const allReply = await getTweetsAll();
+          // if (!allReply.status) {
+          setTweets(allReply);
+          // }
+          console.log("nonono:", allReply);
         } catch (error) {
           console.log("get allTwits failed", error);
         }
       };
-      getAllTweetsAsync();
+      getAllReplyAsync();
     },
-    [tweetsAll ]
+    [tweets]
   );
 
   return (
@@ -48,7 +49,7 @@ const id = localStorage.getItem("userId");
           twit={props.twit}
           setTwit={props.setTwit}
           user={props.user}
-        />
+        /> 
       </div>
     </>
   );

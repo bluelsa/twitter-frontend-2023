@@ -3,13 +3,13 @@ import { ReactComponent as Arrow } from "../../assets/image/Arrow.svg";
 import { ReactComponent as ReplyText } from "../../assets/image/ReplyText.svg";
 import { ReactComponent as Heart } from "../../assets/image/heart-hollow.svg";
 import { ReactComponent as BigTalk } from "../../assets/image/25x25Talk.svg";
-import { getTweetsReplies } from "../../api/tweets";
+// import ReplyList from "../../components/";
 import { useState, useEffect } from "react";
-
-import ReplyList from "./ReplyList";
+import {getTweetsReplies} from '../../api/tweets'
 import { Link } from "react-router-dom";
 function ReplyTwits(props) {
   const [replies, setReplies] = useState({});
+
   const id = localStorage.getItem("userId");
   console.log("replies吃到了嗎?", replies);
 
@@ -87,75 +87,10 @@ function ReplyTwits(props) {
 
       <div className={styles.tweets}>
         {/* Render here */}
-        {/* <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
-        <ReplyList />
+         {/* <ReplyList />
         <ReplyList /> */}
-      </div>
+
+        </div>
     </>
   );
 }

@@ -1,20 +1,42 @@
- import styles from "./NavBarStyles.module.scss";
+import styles from "./NavBarStyles.module.scss";
 import { ReactComponent as Logo } from "../assets/image/log50x50.svg";
-import { ReactComponent as NavPersonal } from "../assets/image/NavPersonal.svg";
-import { ReactComponent as NavSetting } from "../assets/image/NavSetting.svg";
+// import { ReactComponent as HomeIcon } from "../assets/image/home-inactive.svg";
+import { ReactComponent as HomeActiveIcon } from "../assets/image/home-active.svg";
+import { ReactComponent as ProfileIcon } from "../assets/image/profile.svg";
+// import { ReactComponent as ProfileActiveIcon } from "../assets/image/profile-active.svg";
+import { ReactComponent as SettingIcon } from "../assets/image/setting.svg";
+// import { ReactComponent as SettingActiveIcon } from "../assets/image/setting-active.svg";
 import { ReactComponent as NavOut } from "../assets/image/NavOut.svg";
-import { ReactComponent as NavButton } from "../assets/image/NavBigButton.svg";
-import { ReactComponent as BlackIndex } from "../assets/image/NavBlackHouse.svg";
-import { ReactComponent as RedIndex } from "../assets/image/Redhouse.svg";
-import { ReactComponent as RedPersonal } from "../assets/image/user-active.svg"
-import { ReactComponent as RedSet } from "../assets/image/NavRedSet.svg";
-import {useState} from "react"
-import { Link } from "react-router-dom";
+import { ReactComponent as NavButton } from "../assets/image/tweetButton.svg";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const NavBar = ({onClick, setTwitPop}) => {
-  const [house, setHouse] = useState(true)
-  const [person, setPerson] = useState(false);
-  const [setting, setSetting] = useState(false);
+const NavBar = ({ setTwitPop }) => {
+  // const [house, setHouse] = useState(true)
+  // const [person, setPerson] = useState(false);
+  // const [setting, setSetting] = useState(false);
+  // const [active, setActive] = useState('home')
+  // const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+  };
+
+// const handleHomeClick = () => {
+//   navigate('/home')
+//   setActive('home')
+// }
+
+// const handleProfileClick = () => {
+//   navigate("/user");
+//   setActive("profile");
+// };
+
+// const handleSettingClick = () => {
+//   navigate("/setting");
+//   setActive("setting");
+// };
 
   return (
     <div className={styles.leftColumn}>
@@ -23,7 +45,18 @@ const NavBar = ({onClick, setTwitPop}) => {
           <Logo className={styles.interaction} />
         </div>
         <div className={styles.navBar}>
-          <Link
+          <Link to="/home">
+            <HomeActiveIcon />
+          </Link>
+
+          <Link to="/user">
+            <ProfileIcon />
+          </Link>
+          <Link to="/setting">
+            <SettingIcon />
+          </Link>
+
+          {/* <Link
             to="/home"
             onClick={() => {
               setHouse(true);
@@ -31,13 +64,13 @@ const NavBar = ({onClick, setTwitPop}) => {
               setSetting(false);
             }}
           >
-            {/* <div className={styles.navItem} id="1"> */}
+       
               {house ? (
-                <RedIndex className={styles.navItem} />
+                <HomeActiveIcon className={styles.navItem} />
               ) : (
-                <BlackIndex className={styles.navItem} />
+                <HomeIcon className={styles.navItem} />
               )}
-            {/* </div> */}
+          
           </Link>
 
           <Link
@@ -48,13 +81,13 @@ const NavBar = ({onClick, setTwitPop}) => {
               setSetting(false);
             }}
           >
-            {/* <div className={styles.navItem} id="2"> */}
+         
               {person ? (
-                <RedPersonal className={styles.navItem} />
+                <ProfileActiveIcon className={styles.navItem} />
               ) : (
-                <NavPersonal className={styles.navItem} />
+                <ProfileIcon className={styles.navItem} />
               )}
-            {/* </div> */}
+         
           </Link>
           <Link
             to="/setting"
@@ -64,14 +97,14 @@ const NavBar = ({onClick, setTwitPop}) => {
               setSetting(true);
             }}
           >
-            {/* <div className={styles.navItem} id="3"> */}
+          
             {setting ? (
-              <RedSet className={styles.navItem} />
+              <SettingActiveIcon className={styles.navItem} />
             ) : (
-              <NavSetting className={styles.navItem} />
+              <SettingIcon className={styles.navItem} />
             )}
-            {/* </div> */}
-          </Link>
+
+          </Link> */}
 
           <div
             className={styles.navBigButton}
@@ -82,9 +115,9 @@ const NavBar = ({onClick, setTwitPop}) => {
             <NavButton className={styles.interaction} />
           </div>
         </div>
-        <div >
+        <div>
           <Link to="/login">
-          <NavOut className={styles.logOut} onClick={onClick}/>
+            <NavOut className={styles.logOut} onClick={handleLogout} />
           </Link>
         </div>
       </nav>

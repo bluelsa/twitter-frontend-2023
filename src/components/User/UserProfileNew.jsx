@@ -1,4 +1,4 @@
-import styles from "./otherStyle.module.scss";
+import styles from "../Others/otherStyle.module.scss";
 import { ReactComponent as EditPrivate } from "../../assets/image/UserPrivate.svg";
 
 const UserProfileNew = ({
@@ -30,7 +30,7 @@ const UserProfileNew = ({
             <div className={styles.otherAccount}>@{user.account}</div>
           </div>
 
-          <div className={styles.description}>other test.</div>
+          <div className={styles.description}>{user.introduction}</div>
           <div className={styles.otherNumWrapper}>
             <div
               className={styles.interaction}
