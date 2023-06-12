@@ -1,13 +1,13 @@
-import styles from "./otherStyle.module.scss";
+import styles from "../Others/otherStyle.module.scss";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
-import UserProfileNew from "../Others/UserProfileNew";
-import StickOption from "./StickOption";
-import ReplyList from "../../common/Reply/ReplyList";
+import UserProfileNew from "../User/UserProfileNew";
+import UserNavbar from "./UserNav";
+import ReplyList from "./ReplyList";
 import UserEditModal from "./UserEditModal";
 import LikeForm from "../Home/LikeForm";
 import { useState, useEffect } from "react";
-import TwitForm from "../Home/TwitForm";
-import { getUserTweets } from '../../api/user'
+import TwitForm from "./TwitForm";
+import { getUserTweets } from "../../api/user";
 
 const UserMainNew = ({
   user,
@@ -23,24 +23,23 @@ const UserMainNew = ({
   const [likeSection, setLikeSection] = useState(false);
   const [editPopup, setEditPopup] = useState(false);
 
- const [userTweets, setUserTweets] = useState([]);
- 
- const userId = localStorage.getItem("userId");
+  const [userTweets, setUserTweets] = useState([]);
 
- useEffect(() => {
-   const getUserTweetsAsync = async (userId) => {
-     try {
-       const userTweets = await getUserTweets(userId);
-       if (!userTweets.status) {
-         setUserTweets(userTweets);
-       }
-       console.log('userMain' + userTweets)
-     } catch (error) {
-       console.error(error);
-     }
-   };
-   getUserTweetsAsync(userId);
- }, [userId]);
+  const userId = localStorage.getItem("userId");
+
+  useEffect(() => {
+    const getUserTweetsAsync = async (userId) => {
+      try {
+        const userTweets = await getUserTweets(userId);
+        if (!userTweets.status) {
+          setUserTweets(userTweets);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUserTweetsAsync(userId);
+  }, [userId]);
 
   return (
     <div className={styles.container}>
@@ -59,8 +58,9 @@ const UserMainNew = ({
         <div className={styles.returnWrapper}>
           <div className={styles.userName}>{user.name}</div>
           <div className={styles.tweetNum}>
-            {userTweets.length} 
-            推文</div>
+            {userTweets.length}
+            推文
+          </div>
         </div>
       </div>
       <UserProfileNew
@@ -74,7 +74,7 @@ const UserMainNew = ({
         setIsChange={setIsChange}
         user={user}
       />
-      <StickOption
+      <UserNavbar
         twitSection={twitSection}
         setTwitSection={setTwitSection}
         replySection={replySection}
@@ -83,15 +83,16 @@ const UserMainNew = ({
         setLikeSection={setLikeSection}
       />
 
-      {twitSection && <TwitForm
-      user={user} 
-      userTweets={userTweets} 
-      />}
+      {twitSection && <TwitForm user={user} userTweets={userTweets} />}
       {replySection && <ReplyList userId={userId} user={user} />}
       {likeSection && <LikeForm />}
 
       {editPopup && (
-        <UserEditModal editPopup={editPopup} setEditPopup={setEditPopup} />
+        <UserEditModal
+          editPopup={editPopup}
+          setEditPopup={setEditPopup}
+          user={user}
+        />
       )}
     </div>
   );

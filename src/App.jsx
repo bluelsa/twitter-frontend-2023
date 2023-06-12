@@ -7,10 +7,6 @@ import SettingPage from './pages/SettingPage';
 import MainPage from './pages/MainPage';
 import AdminPage from './pages/AdminPage';
 import UserProfilePage from './pages/UserProfilePage';
-import UserReplyPage from './pages/UserReplyPage';
-import UserLikePage from './pages/UserLikePage';
-import FollowersPage from './pages/UserFollowersPage';
-import FollowingPage from './pages/UserFollowingPage';
 import TweetsPage from './pages/AdminTweetsPage';
 import UsersPage from './pages/AdminUsersPage';
 import OtherUserPage from './pages/OtherUserPage';
@@ -28,11 +24,7 @@ function App() {
           <Route path="setting" element={<SettingPage />} />
 
           <Route path="user" element={<UserProfilePage />} />
-          <Route path="user/replies" element={<UserReplyPage />} />
-          <Route path="user/likes" element={<UserLikePage />} />
-          <Route path="user/followers" element={<FollowersPage />} />
-          <Route path="user/following" element={<FollowingPage />} />
-         
+    
           <Route path="otheruser" element={<OtherUserPage />} />
 
           <Route path="admin" element={<AdminPage />} />

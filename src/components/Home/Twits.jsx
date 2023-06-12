@@ -1,9 +1,8 @@
-import styles from "../../pages/HomeStyle.module.scss"
-import TwitForm from "./TwitForm";
-import Post from './Post'
+import styles from "../../pages/HomeStyle.module.scss";
+// import TwitForm from "../User/TwitForm";
+import Post from "./Post";
 
 function Twits(props) {
-  
   return (
     <>
       <header className={styles.header}>首頁</header>
@@ -19,7 +18,6 @@ function Twits(props) {
           twit={props.twit}
           setTwit={props.setTwit}
         /> */}
-        
       </div>
     </>
 

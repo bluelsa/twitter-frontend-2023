@@ -1,14 +1,20 @@
-import styles from "./otherStyle.module.scss";
+import styles from "../Others/otherStyle.module.scss";
 // import UserTweetList from "../User/UserTweetList";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
 import { ReactComponent as FollowARed } from "../../assets/image/FollowA.svg";
 import { ReactComponent as FollowBBlack } from "../../assets/image/FllowerB.svg";
-import { ReactComponent as FollowABlack} from "../../assets/image/itemFollowAblack.svg";
+import { ReactComponent as FollowABlack } from "../../assets/image/itemFollowAblack.svg";
 import { ReactComponent as FollowBRed } from "../../assets/image/itemFollowBred.svg";
 import MainFollower from "./MainFollower";
 import WholeFollowing from "./WholeFollowing";
 
-const MainFollow = (props) => {
+const MainFollow = ({
+  isFollow,
+  setIsFollow,
+  isWhole,
+  setIsWhole,
+  setIsChange,
+}) => {
   return (
     <>
       <div className={styles.mfcontainer}>
@@ -16,10 +22,7 @@ const MainFollow = (props) => {
           <div className={styles.mfarrow}>
             <Arrow />
           </div>
-          <div
-            className={styles.mfWrapper}
-            onClick={() =>props.setIsChange(false)}
-          >
+          <div className={styles.mfWrapper} onClick={() => setIsChange(false)}>
             <div className={styles.userName}>John Doe</div>
             <div className={styles.tweetNum}>25 推文</div>
           </div>
@@ -27,31 +30,31 @@ const MainFollow = (props) => {
 
         <div className={styles.mainFollowDivider}></div>
         <div className={styles.ChoiceBox}>
-          {props.isFollow ? (
+          {isFollow ? (
             <FollowARed />
           ) : (
             <FollowABlack
               onClick={() => {
-                props.setIsFollow(true);
-                props.setIsWhole(false);
+                setIsFollow(true);
+                setIsWhole(false);
               }}
               className={styles.interaction}
             />
           )}
-          {props.isWhole ? (
+          {isWhole ? (
             <FollowBRed />
           ) : (
             <FollowBBlack
               onClick={() => {
-                props.setIsFollow(false);
-                props.setIsWhole(true);
+                setIsFollow(false);
+                setIsWhole(true);
               }}
               className={styles.interaction}
             />
           )}
         </div>
         <div className={styles.mainDivider}></div>
-        {props.isFollow ? <MainFollower /> : <WholeFollowing />}
+        {isFollow ? <MainFollower /> : <WholeFollowing />}
       </div>
     </>
   );

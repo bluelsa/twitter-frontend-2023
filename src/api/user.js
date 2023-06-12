@@ -30,7 +30,6 @@ export const getUser = async (id) => {
 
 export const getUserTweets = async (id) => {
   try {
-    console.log("m" + `${userURL}/${id}/tweets`);
     const { data } = await axiosInstance.get(`${userURL}/${id}/tweets`);
     return data;
   } catch (error) {
@@ -40,7 +39,6 @@ export const getUserTweets = async (id) => {
 
 export const getUserReplies = async (id) => {
   try {
-    console.log("AAA" + `${userURL}/${id}/replied_tweets`);
     const { data } = await axiosInstance.get(`${userURL}/${id}/replied_tweets`);
     return data;
   } catch (error) {
@@ -76,20 +74,19 @@ export const getUserFollowers = async (id) => {
 };
 
 export const putUser = async (payload) => {
-  const { id, account, name, email, password, avatar, background, introduction } = payload
+  const { id, name, introduction } = payload
   try {
-    const { data } = await axiosInstance.put(`${userURL}/${id}/tweets`, {
-      account,
+    console.log(`${userURL}/${id}`);
+    const { data } = await axiosInstance.put(`${userURL}/${id}`, {
       name,
-      email,
-      password,
-      avatar,
-      background,
       introduction
     }) ;
+    
     return data;
   } catch (error) {
     console.error("[put User failed]: ", error);
   }
 };
+
+
 
