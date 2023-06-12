@@ -3,7 +3,7 @@ import styles from "../components/Home/settingStyle.module.scss";
 import { ReactComponent as AccountSet } from "../assets/image/AccountSetText.svg";
 import { ReactComponent as SaveButton } from "../assets/image/SetSaveButton.svg";
 import { ReactComponent as TestHouse } from "../assets/image/TestChangeHouse.svg";
-import NavBar from "../common/NavBar";
+import NavbarSetting from "../common/NavbarSetting";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 export const SettingInput = (props) => {
@@ -48,7 +48,7 @@ const SettingPage = () => {
     <div className={styles.homeContainer}>
       {/* navbar position */}
       <div className={styles.mainContainer}>
-        <NavBar 
+        <NavbarSetting
         twitPop={twitPop} 
         setTwitPop={setTwitPop}
         

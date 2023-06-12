@@ -1,5 +1,4 @@
 import styles from './User.module.scss'
-import { ReactComponent as LogoDark} from '../../assets/image/DarkLogo.svg'
 import { ReactComponent as ReplyIcon } from '../../assets/image/TalkIcon.svg'
 import { ReactComponent as LikeIcon } from '../../assets/image/heart-hollow-xs.svg'
 

@@ -1,4 +1,4 @@
-import styles from "./otherStyle.module.scss";
+import styles from "../Others/otherStyle.module.scss";
 import MainFollowingItem from "./MainFollowingItem";
 import MainFollowItem from "./MainFollowItem";
 

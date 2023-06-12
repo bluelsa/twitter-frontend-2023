@@ -1,28 +1,49 @@
-import styles from "../../pages/HomeStyle.module.scss";
-import { ReactComponent as Logo } from "../../assets/image/ac-logo.svg";
-import { ReactComponent as NavIndex } from "../../assets/image/home-inactive.svg";
-import { ReactComponent as NavPersonal } from "../../assets/image/user-active.svg";
-import { ReactComponent as NavSetting } from "../../assets/image/NavSetting.svg";
-import { ReactComponent as NavOut } from "../../assets/image/NavOut.svg";
-import { ReactComponent as NavButton } from "../../assets/image/NavButton.svg";
-// import { Link } from 'react-router-dom'
+import styles from "../Others/otherStyle.module.scss";
+import Twitredbox from '../../assets/image/REDwithline.svg'
 
-const UserNav = () => {
+const UserNav = (props) => {
   return (
-    <div className={styles.leftColumn}>
-      <nav className={styles.navContainer}>
-        <div className={styles.navlogo}>
-          <Logo className={styles.interaction} />
-        </div>
-        <div className={styles.navBar}>
-          <NavIndex className={styles.interaction} />
-          <NavPersonal className={styles.interaction} />
-          <NavSetting className={styles.interaction} />
-          <NavButton className={styles.interaction} />
+    <div className={styles.stickContainer}>
+      <div className={styles.stick}>
+        <div
+          onClick={() => {
+            props.setTwitSection(true);
+            props.setReplySection(false);
+            props.setLikeSection(false);
+          }}
+          className={
+            props.twitSection ? `${styles.stickRed}` : `${styles.origin}`
+          }
+        >
+          推文
         </div>
 
-        <NavOut className={styles.logOut} />
-      </nav>
+        <div
+          onClick={() => {
+            props.setTwitSection(false);
+            props.setReplySection(true);
+            props.setLikeSection(false);
+          }}
+          className={
+            props.replySection ? `${styles.stickRed}` : `${styles.origin}`
+          }
+        >
+          回覆
+        </div>
+        <div
+          onClick={() => {
+            props.setTwitSection(false);
+            props.setReplySection(false);
+            props.setLikeSection(true);
+          }}
+          className={
+            props.likeSection ? `${styles.stickRed}` : `${styles.origin}`
+          }
+        >
+          喜歡的內容
+        </div>
+      </div>
+     
     </div>
   );
 };

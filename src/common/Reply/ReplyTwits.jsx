@@ -3,7 +3,7 @@ import { ReactComponent as Arrow } from "../../assets/image/Arrow.svg";
 import { ReactComponent as ReplyText } from "../../assets/image/ReplyText.svg";
 import { ReactComponent as Heart } from "../../assets/image/heart-hollow.svg";
 import { ReactComponent as BigTalk } from "../../assets/image/25x25Talk.svg";
-import ReplyList from "./ReplyList";
+// import ReplyList from "../../components/User/ReplyList";
 
 function ReplyTwits(props) {
   return (

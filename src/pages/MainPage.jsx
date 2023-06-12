@@ -2,7 +2,7 @@ import styles from "./HomeStyle.module.scss";
 import NavBar from "../common/NavBar";
 import Popular from "../common/Popular";
 import SettingPage from "./SettingPage";
-import UserMainNew from "../components/Others/UserMainNew";
+// import UserMainNew from "../components/Others/UserMainNew";
 import Twits from "../components/Home/Twits";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyTwits from "../common/Reply/ReplyTwits";

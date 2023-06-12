@@ -49,7 +49,6 @@ const LoginPage = () => {
           <TimePopup
             notification="error"
             title="帳號密碼錯誤"
-            onClick="alert('clicked')"
           />
         )}
         {notiStatus === "incomplete" && (
