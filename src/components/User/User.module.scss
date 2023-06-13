@@ -118,6 +118,11 @@
   }
 }
 
+// list
+.userList {
+  padding-bottom: 17px;
+}
+
 // UserReplyList
 .userNav {
   height: 52px;
@@ -140,15 +145,20 @@
 }
 
 // UserReplyTweet
+
 .tweetContainer {
   width: 100%;
-  min-height: 148px;
+  height: 100%;
+  // min-height: 148px;
   border: 1px solid #e6ecf0;
   border-top: none;
-  padding-top: 17px;
-  gap: 5px;
+  padding-top: 16px;
+  // margin-top: 10px;
+  // gap: 5px;
 }
 
+.tweetsWrapper {
+  height: 100%;
 .tweetCollection {
   display: flex;
   margin-left: 24px;
@@ -179,10 +189,11 @@ margin-right: 5px;
 
   .tweetContent {
     width: 100%;
-    height: 118px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     margin-left: 8px;
+    margin-bottom: 16px;
 
     .nameInfo {
       position: relative;
@@ -231,7 +242,7 @@ margin-right: 5px;
       color: #171725;
     }
 
-    .count {
+    .numCount {
       margin-top: 9.49px;
       display: flex;
 
@@ -246,6 +257,7 @@ margin-right: 5px;
       }
     }
   }
+}
 }
 
 //popular class

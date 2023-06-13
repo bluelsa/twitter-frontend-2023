@@ -1,17 +1,17 @@
-import UserLikeTweet from "../User/UserLikeTweet";
+import styles from "./User.module.scss";
+import UserLikeTweet from "./UserLikeTweet";
 import { useEffect, useState } from "react";
 import { getUserLikes } from "../../api/user";
 
-const LikeForm = ({setReplyPop, setReplyTwit}) => {
-
+const LikeForm = ({ setReplyPop, setReplyTwit }) => {
   const [userLikes, setUserLikes] = useState([]);
 
-  const userId = localStorage.getItem("userId")
+  const userId = localStorage.getItem("userId");
   useEffect(() => {
     const getUserLikesAsync = async (userId) => {
       try {
         const userLikes = await getUserLikes(userId);
-        
+
         if (!userLikes.status) {
           setUserLikes(userLikes);
         }
@@ -24,9 +24,9 @@ const LikeForm = ({setReplyPop, setReplyTwit}) => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.userList}>
       {userLikes.map((userLike) => {
-        return <UserLikeTweet userLike={userLike}/>
+        return <UserLikeTweet userLike={userLike} />;
       })}
     </div>
   );

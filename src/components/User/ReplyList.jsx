@@ -1,3 +1,4 @@
+import styles from "./User.module.scss";
 import { getUserReplies } from "../../api/user";
 import { useEffect, useState } from "react";
 import UserReplyTweet from "./UserReplyTweet";
@@ -22,7 +23,7 @@ const ReplyList = ({ user, userId }) => {
   }, [userId]);
 
   return (
-    <div>
+    <div className={styles.userList}>
       {userReplies.map((userReply) => {
         return <UserReplyTweet userReply={userReply} user={user} />;
       })}

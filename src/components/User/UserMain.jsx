@@ -4,9 +4,9 @@ import UserProfile from "./UserProfile";
 import UserNavbar from "./UserNav";
 import ReplyList from "./ReplyList";
 import UserEditModal from "./UserEditModal";
-import LikeForm from "../Home/LikeForm";
+import LikeForm from "./LikeForm";
 import { useState, useEffect } from "react";
-import TwitForm from "./TwitForm";
+import UserTweetList from "./UserTweetList";
 import { getUserTweets } from "../../api/user";
 
 const UserMain = ({
@@ -58,11 +58,14 @@ const UserMain = ({
           setLikeSection(false);
         }}
       >
-        <div className={styles.arrow} onClick={()=> {
-          setMain(true)
-          setFollowing(false)
-          setFollower(false)
-        }}>
+        <div
+          className={styles.arrow}
+          onClick={() => {
+            setMain(true);
+            setFollowing(false);
+            setFollower(false);
+          }}
+        >
           <Arrow />
         </div>
 
@@ -100,7 +103,7 @@ const UserMain = ({
         setLikeSection={setLikeSection}
       />
 
-      {twitSection && <TwitForm user={user} userTweets={userTweets} />}
+      {twitSection && <UserTweetList user={user} userTweets={userTweets} />}
       {replySection && <ReplyList userId={userId} user={user} />}
       {likeSection && <LikeForm />}
 

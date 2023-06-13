@@ -2,8 +2,9 @@
 .container {
   width: 639px;
   height: 100%;
-  border: 1px solid #e6ecf0;
+  // border: 1px solid #e6ecf0;
   // border-bottom: none;
+  // border: 1px solid #000;
 
   .header {
     height: 75px;
@@ -385,6 +386,7 @@ width: 100%;
   height: 53px;
   display: flex;
   flex-direction: row;
+  border: 1px solid #e6ecf0;
 }
 
 .stick {
@@ -448,18 +450,18 @@ width: 100%;
 
 }
 
-.foloContainer {
+.followContainer {
   width: 100%;
   height: 142px;
 }
 
 //TwitForm.jsx
-.foloContainer {
+.followContainer {
   width: 100%;
   height: 153px;
 }
 
-.foloCollection {
+.followCollection {
   width: 610px;
   height: 136px;
   margin-left: 24px;
@@ -467,7 +469,7 @@ width: 100%;
   flex-direction: row;
   gap: 8px;
 
-  .foloContent {
+  .followContent {
     width: 552px;
     height: 136px;
     display: flex;
@@ -478,7 +480,7 @@ width: 100%;
       cursor: pointer;
     }
 
-    .foloArticle {
+    .followArticle {
       width: 528px;
       height: 78px;
       font-family: 'Noto Sans TC';
@@ -490,14 +492,14 @@ width: 100%;
   }
 }
 
-.folonameInfo {
+.followNameInfo {
   width: 528px;
   height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  .folotName {
+  .followName {
     font-family: 'Noto Sans TC';
     font-size: 16px;
     font-weight: 700;
@@ -510,7 +512,7 @@ width: 100%;
   }
 }
 
-.foloAvatar {
+.followAvatar {
   position: relative;
   width: 50px;
   height: 50px;

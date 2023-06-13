@@ -1,16 +1,18 @@
 import { ReactComponent as FollowButton } from "../../assets/image/FollowButton.svg";
-// import { ReactComponent as StopFollow } from "../../assets/image/StopFollow.svg";
+import { ReactComponent as StopFollow } from "../../assets/image/StopFollow.svg";
+import { useState } from 'react'
 import styles from "../Others/otherStyle.module.scss";
-const MainFollowItem = () => {
+const MainFollowingItem = () => {
+  const [isFollowing, setIsFollowing] = useState(true)
   return (
     <>
-      <div className={styles.foloContainer}>
-        <div className={styles.foloCollection}>
-          <div className={styles.foloAvatar}></div>
-          <div className={styles.foloContent}>
-            <div className={styles.folonameInfo}>
-              <div className={styles.folotName}>Apple</div>
-              <FollowButton />
+      <div className={styles.followContainer}>
+        <div className={styles.followCollection}>
+          <div className={styles.followAvatar}></div>
+          <div className={styles.followContent}>
+            <div className={styles.followNameInfo}>
+              <div className={styles.followName}>Apple</div>
+              {isFollowing ? (<FollowButton onClick={()=>setIsFollowing(false)}/>): (<StopFollow onClick={()=>setIsFollowing(true)}/>)}
             </div>
             <div className={styles.foloArticle}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint illo
@@ -26,4 +28,4 @@ const MainFollowItem = () => {
   );
 };
 
-export default MainFollowItem;
+export default MainFollowingItem;

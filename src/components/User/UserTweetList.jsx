@@ -1,8 +1,9 @@
+import styles from './User.module.scss'
 import UserTweet from "./UserTweet";
 
-const TwitForm = ({ user, userTweets }) => {
+const UserTweetList = ({ user, userTweets }) => {
   return (
-    <div>
+    <div className={styles.userList}>
       {userTweets.map((userTweet) => {
         return <UserTweet user={user} userTweet={userTweet} />;
       })}
@@ -10,4 +11,4 @@ const TwitForm = ({ user, userTweets }) => {
   );
 };
 
-export default TwitForm;
+export default UserTweetList;
