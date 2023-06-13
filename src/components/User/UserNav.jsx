@@ -1,18 +1,18 @@
 import styles from "../Others/otherStyle.module.scss";
-import Twitredbox from '../../assets/image/REDwithline.svg'
+// import Twitredbox from '../../assets/image/REDwithline.svg'
 
-const UserNav = (props) => {
+const UserNav = ({twitSection, setTwitSection, replySection, setReplySection, likeSection, setLikeSection}) => {
   return (
     <div className={styles.stickContainer}>
       <div className={styles.stick}>
         <div
           onClick={() => {
-            props.setTwitSection(true);
-            props.setReplySection(false);
-            props.setLikeSection(false);
+            setTwitSection(true);
+            setReplySection(false);
+            setLikeSection(false);
           }}
           className={
-            props.twitSection ? `${styles.stickRed}` : `${styles.origin}`
+            twitSection ? `${styles.stickRed}` : `${styles.origin}`
           }
         >
           推文
@@ -20,24 +20,24 @@ const UserNav = (props) => {
 
         <div
           onClick={() => {
-            props.setTwitSection(false);
-            props.setReplySection(true);
-            props.setLikeSection(false);
+            setTwitSection(false);
+            setReplySection(true);
+            setLikeSection(false);
           }}
           className={
-            props.replySection ? `${styles.stickRed}` : `${styles.origin}`
+            replySection ? `${styles.stickRed}` : `${styles.origin}`
           }
         >
           回覆
         </div>
         <div
           onClick={() => {
-            props.setTwitSection(false);
-            props.setReplySection(false);
-            props.setLikeSection(true);
+            setTwitSection(false);
+            setReplySection(false);
+            setLikeSection(true);
           }}
           className={
-            props.likeSection ? `${styles.stickRed}` : `${styles.origin}`
+            likeSection ? `${styles.stickRed}` : `${styles.origin}`
           }
         >
           喜歡的內容

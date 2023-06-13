@@ -1,100 +1,138 @@
-import styles from "../components/Home/settingStyle.module.scss";
+import styles from "./Setting.module.scss";
 
-import { ReactComponent as AccountSet } from "../assets/image/AccountSetText.svg";
-import { ReactComponent as SaveButton } from "../assets/image/SetSaveButton.svg";
-import { ReactComponent as TestHouse } from "../assets/image/TestChangeHouse.svg";
+
 import NavbarSetting from "../common/NavbarSetting";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-export const SettingInput = (props) => {
-  return (
-    <div className={styles.eachInput}>
-      <div className={styles.settinginputContainer}>
-        <label className={styles.setlabel}>{props.title}</label>
-        <input
-          className={styles.setinput}
-          type={props.type}
-          Value={props.name}
-          placeholder={props.placeholder}
-          // onChange={(e) => props.setUsername(e.target.value)}
-        />
-      </div>
-      <div className={styles.setbigDivider}></div>
-    </div>
-  );
-};
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getUser } from "../api/user";
+import TwitPopUp from "../common/TwitPopUp";
 
 const SettingPage = () => {
+  //identification
+  const [user, setUser] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  //input content
+  const [name, setName] = useState('');
+  const [account, setAccount] = useState('user.account');
+  const [email, setEmail] = useState('user.email');
+  const [password, setPassword] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
+
+  // popup window status
   const [twitPop, setTwitPop] = useState(false);
-  
-  // const [username, setUsername] = useState('');
-  // const [nickname, setNickname] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [checkPassword, setCheckPassword] = useState('');
-  // const [isPush, setIsPush] = useState(false)
 
-  // const handleClick = () => {
-  //   console.log("click signup");
-  // };
+  useEffect(() => {
+    const id = localStorage.getItem("userId");
+    const getUsersAsync = async (id) => {
+      try {
+        const user = await getUser(id);
+        if (!user.status) {
+          setUser(user)
+          setName(user.name)
+          setAccount(user.account)
+          setEmail(user.email)
+          setIsAuthenticated(true);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    getUsersAsync(id);
+  }, []);
 
-  //下面為測試用
-  // const itemClick = () => {
-  //   console.log("click signup");
-  //    setIsPush(true)
-  //  };
+  useEffect(() => {
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        navigate("/login");
+      }
+    }
+  }, [navigate, isAuthenticated, isLoading]);
 
   return (
     <div className={styles.homeContainer}>
-      {/* navbar position */}
       <div className={styles.mainContainer}>
-        <NavbarSetting
-        twitPop={twitPop} 
-        setTwitPop={setTwitPop}
-        
-        />
-
-        {/* 中間部分 */}
-        <div className={styles.mainBackground}>
-          <div className={styles.title}>
-            <AccountSet />
-          </div>
-          <div className={styles.setDivider}></div>
-
-          <div className={styles.inputGroup}>
-            <SettingInput
-              title="帳號"
-              type="text"
-              placeholder="請輸入帳號"
-              name="username"
-            />
-            <SettingInput
-              title="名稱"
-              type="text"
-              placeholder="請輸入使用者名稱"
-              name="name"
-            />
-            <SettingInput title="Email" type="text" placeholder="請輸入Email" />
-            <SettingInput
-              title="密碼"
-              type="password"
-              placeholder="請輸入帳號"
-              name="username"
-            />
-            <SettingInput
-              title="密碼再確認"
-              type="password"
-              placeholder="請再次輸入密碼"
-              name="username"
-            />
-
-            <div className={styles.saveButton}>
-              <SaveButton />
-            </div>
-          </div>
+        <div className={styles.leftColumn}>
+          <NavbarSetting twitPop={twitPop} setTwitPop={setTwitPop} />
         </div>
-        <div className={styles.rightColumn}>
-          <div className={styles.popularList}></div>
+        <div className={styles.middleColumn}>
+          <div className={styles.mainBackground}>
+            <div className={styles.header}>帳戶設定</div>
+
+            <div className={styles.inputContainer}>
+              <label className={styles.input}>
+                <div>帳號</div>
+                <input
+                  type="text"
+                  value={account}
+                  placeholder={account}
+                  onChange={(e) => setAccount(e.target.value)}
+                />
+              </label>
+            </div>
+
+            <div className={styles.inputContainer}>
+              <label className={styles.input}>
+                <div>名稱</div>
+                <input
+                  type="text"
+                  value={name}
+                  placeholder={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </label>
+            </div>
+
+            <div className={styles.inputContainer}>
+              <label className={styles.input}>
+                <div>Email</div>
+                <input
+                  type="text"
+                  value={email}
+                  placeholder={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </label>
+            </div>
+
+            <div className={styles.inputContainer}>
+              <label className={styles.input}>
+                <div>密碼</div>
+                <input
+                  type="password"
+                  value={password}
+                  placeholder="請設定密碼"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </label>
+            </div>
+
+            <div className={styles.inputContainer}>
+              <label className={styles.input}>
+                <div>密碼再確認</div>
+                <input
+                  type="password"
+                  value={checkPassword}
+                  placeholder="請再次輸入密碼"
+                  onChange={(e) => setCheckPassword(e.target.value)}
+                />
+              </label>
+            </div>
+
+            <button className={styles.storeButton}>儲存</button>
+
+            {twitPop && (
+              <TwitPopUp
+                twitPop={twitPop}
+                setTwitPop={setTwitPop}
+                user={user}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

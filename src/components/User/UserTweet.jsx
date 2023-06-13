@@ -26,7 +26,7 @@ const UserTweet = ({user,userTweet}) => {
             </div>
             <div className={styles.likeNum}>
               <LikeIcon />
-              <span>76</span>
+              <span>{userTweet.likedCount}</span>
             </div>
           </div>
         </div>

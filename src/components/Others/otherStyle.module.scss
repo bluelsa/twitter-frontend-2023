@@ -3,7 +3,7 @@
   width: 639px;
   height: 100%;
   border: 1px solid #e6ecf0;
-  border-bottom: none;
+  // border-bottom: none;
 
   .header {
     height: 75px;
@@ -575,4 +575,14 @@ width: 100%;
   div:hover {
     cursor: pointer;
   }
+}
+
+.nav {
+  display: flex;
+  border-top: 1px solid #e6ecf0;
+}
+
+.tweetWrapper {
+  border-top: 1px solid #e6ecf0;
+  padding-top: 15px;
 }

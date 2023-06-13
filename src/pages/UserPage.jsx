@@ -1,19 +1,22 @@
 import styles from "../pages/HomeStyle.module.scss";
 import Popular from "../common/Popular";
-// import NavBar from "../common/NavBar";
 import NavbarUser from "../common/NavbarUser";
-import UserMainNew from "../components/User/UserMainNew";
-import MainFollow from "../components/User/MainFollow";
+import UserMain from "../components/User/UserMain";
+import MainFollower from "../components/User/MainFollower";
+import MainFollowing from "../components/User/MainFollow";
 import TwitPopUp from "../common/TwitPopUp";
+import ReplyPopUp from "../components/Home/ReplyPopUp";
 import { useState, useEffect } from "react";
 import { getUser } from "../api/user";
 import { useNavigate } from "react-router-dom";
 
 const UserProfilePage = () => {
   const [twitPop, setTwitPop] = useState(false);
-  const [isFollow, setIsFollow] = useState(false);
-  const [isWhole, setIsWhole] = useState(false);
-  const [isChange, setIsChange] = useState(false);
+  const [replyPop, setReplyPop] = useState(false);
+  const[main, setMain] = useState(true)
+  const [follower, setFollower] = useState(false);
+  const [following, setFollowing] = useState(false)
+
 
   const [user, setUser] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -54,30 +57,47 @@ const UserProfilePage = () => {
         </div>
         <div className={styles.middleColumn}>
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
-            <UserMainNew
-              isFollow={isFollow}
-              setIsFollow={setIsFollow}
-              isWhole={isWhole}
-              setIsWhole={setIsWhole}
-              isChange={isChange}
-              setIsChange={setIsChange}
-              user={user}
-            />
-
-            {isFollow && (
-              <MainFollow
-                isFollow={isFollow}
-                setIsFollow={setIsFollow}
-                isWhole={isWhole}
-                setIsWhole={setIsWhole}
-                isChange={isChange}
-                setIsChange={setIsChange}
+            {main && (
+              <UserMain
+                main={main}
+                setMain={setMain}
+                follower={follower}
+                setFollower={setFollower}
+                following={following}
+                setFollowing={setFollowing}
+                user={user}
               />
             )}
-            {twitPop && <TwitPopUp twitPop={twitPop} setTwitPop={setTwitPop} />}
-            {/* {replyPop && (
-              <ReplyPopUp replyPop={replyPop} setReplyPop={setReplyPop} />
-            )} */}
+            {following && (
+              <MainFollowing
+                user={user}
+                setMain={setMain}
+                setFollower={setFollower}
+                setFollowing={setFollowing}
+              />
+            )}
+            {follower && (
+              <MainFollower
+                user={user}
+                setMain={setMain}
+                setFollower={setFollower}
+                setFollowing={setFollowing}
+              />
+            )}
+            {replyPop && (
+              <ReplyPopUp
+                replyPop={replyPop}
+                setReplyPop={setReplyPop}
+                user={user}
+              />
+            )}
+            {twitPop && (
+              <TwitPopUp
+                twitPop={twitPop}
+                setTwitPop={setTwitPop}
+                user={user}
+              />
+            )}
           </div>
         </div>
         <div className={styles.rightColumn}>

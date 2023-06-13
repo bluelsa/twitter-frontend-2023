@@ -1,6 +1,6 @@
 import styles from "../Others/otherStyle.module.scss";
 import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
-import UserProfileNew from "../User/UserProfileNew";
+import UserProfile from "./UserProfile";
 import UserNavbar from "./UserNav";
 import ReplyList from "./ReplyList";
 import UserEditModal from "./UserEditModal";
@@ -9,18 +9,25 @@ import { useState, useEffect } from "react";
 import TwitForm from "./TwitForm";
 import { getUserTweets } from "../../api/user";
 
-const UserMainNew = ({
+const UserMain = ({
   user,
-  isFollow,
-  setIsFollow,
-  isWhole,
-  setIsWhole,
-  isChange,
-  setIsChange,
+  main,
+  setMain,
+  follower,
+  setFollower,
+  following,
+  setFollowing,
+  // isFollow,
+  // setIsFollow,
+  // isWhole,
+  // setIsWhole,
+  // isChange,
+  // setIsChange,
 }) => {
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
   const [likeSection, setLikeSection] = useState(false);
+
   const [editPopup, setEditPopup] = useState(false);
 
   const [userTweets, setUserTweets] = useState([]);
@@ -51,7 +58,11 @@ const UserMainNew = ({
           setLikeSection(false);
         }}
       >
-        <div className={styles.arrow}>
+        <div className={styles.arrow} onClick={()=> {
+          setMain(true)
+          setFollowing(false)
+          setFollower(false)
+        }}>
           <Arrow />
         </div>
 
@@ -63,15 +74,21 @@ const UserMainNew = ({
           </div>
         </div>
       </div>
-      <UserProfileNew
+      <UserProfile
         editPopup={editPopup}
         setEditPopup={setEditPopup}
-        isFollow={isFollow}
-        setIsFollow={setIsFollow}
-        isWhole={isWhole}
-        setIsWhole={setIsWhole}
-        isChange={isChange}
-        setIsChange={setIsChange}
+        main={main}
+        setMain={setMain}
+        follower={follower}
+        setFollower={setFollower}
+        following={following}
+        setFollowing={setFollowing}
+        // isFollow={isFollow}
+        // setIsFollow={setIsFollow}
+        // isWhole={isWhole}
+        // setIsWhole={setIsWhole}
+        // isChange={isChange}
+        // setIsChange={setIsChange}
         user={user}
       />
       <UserNavbar
@@ -98,4 +115,4 @@ const UserMainNew = ({
   );
 };
 
-export default UserMainNew;
+export default UserMain;

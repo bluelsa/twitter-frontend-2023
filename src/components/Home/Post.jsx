@@ -1,18 +1,18 @@
 import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as PostButton } from "../../assets/image/PostButton.svg";
-// import { ReactComponent as Avatar } from '../../assets/image/PostPhoto.svg'
 
-const Post = (props) => {
+const Post = ({
+  user
+}) => {
   return (
-    <div className={styles.postContainer} onClick={() => props.setTwit(true)}>
+    <div className={styles.postContainer} >
       <div className={styles.postContent}>
         <div className={styles.postAvatar}>
           <img
             className={styles.postAvatar}
-            src="https://i.pravatar.cc"
+            src={user.avatar}
             alt="avatar"
           />
-          {/* <Avatar /> */}
         </div>
         <textarea
           className={styles.postText}
@@ -20,7 +20,7 @@ const Post = (props) => {
         ></textarea>
       </div>
       <div className={styles.postButton}>
-        <PostButton />
+        <PostButton/>
       </div>
     </div>
   );

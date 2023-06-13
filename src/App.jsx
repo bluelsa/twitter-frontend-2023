@@ -6,7 +6,7 @@ import SignUpPage from './pages/SignUpPage';
 import SettingPage from './pages/SettingPage';
 import MainPage from './pages/MainPage';
 import AdminPage from './pages/AdminPage';
-import UserProfilePage from './pages/UserProfilePage';
+import UserPage from './pages/UserPage';
 import TweetsPage from './pages/AdminTweetsPage';
 import UsersPage from './pages/AdminUsersPage';
 import OtherUserPage from './pages/OtherUserPage';
@@ -23,7 +23,7 @@ function App() {
           <Route path="home" element={<MainPage />} />
           <Route path="setting" element={<SettingPage />} />
 
-          <Route path="user" element={<UserProfilePage />} />
+          <Route path="user" element={<UserPage />} />
     
           <Route path="otheruser" element={<OtherUserPage />} />
 
