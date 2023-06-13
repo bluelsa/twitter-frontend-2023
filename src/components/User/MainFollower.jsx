@@ -1,6 +1,6 @@
 import styles from "../Others/otherStyle.module.scss";
 // import MainFollowingItem from "./MainFollowingItem";
-import MainFollowItem from "./MainFollowItem";
+import MainFollowerItem from "./MainFollowerItem";
 import { ReactComponent as FollowerIcon } from "../../assets/image/follower-active.svg";
 import { ReactComponent as FollowingIcon } from "../../assets/image/following.svg";
 import { ReactComponent as Arrow } from "../../assets/image/Arrow.svg";
@@ -46,10 +46,10 @@ const MainFollowers = ({ user, setMain, setFollower, setFollowing }) => {
         </div>
       </div>
       <div className={styles.tweetWrapper}>
-        <MainFollowItem />
-        <MainFollowItem />
-        <MainFollowItem />
-        <MainFollowItem />
+        <MainFollowerItem />
+        <MainFollowerItem />
+        <MainFollowerItem />
+        <MainFollowerItem />
       </div>
     </div>
   );

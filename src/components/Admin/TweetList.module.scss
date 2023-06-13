@@ -36,15 +36,14 @@
   display: flex;
   margin: 16px 0 16px 23.13px;
 
-  .logoWrap {
+  .avatarWrap {
+margin-right: 5px;
+    img {
     position: relative;
     width: 50px;
     height: 50px;
-    background-color: rgb(189, 188, 188);
+    // background-color: rgb(189, 188, 188);
     border-radius: 50%;
-
-    :hover {
-      cursor: pointer;
     }
 
     .darkLogo {
@@ -68,7 +67,7 @@
       position: relative;
       display: flex;
       line-height: 26px;
-      align-items: center;
+      align-items: center; 
       margin-bottom: 8px;
       .tweetName {
         font-size: 16px;
@@ -82,7 +81,7 @@
       }
       .deleteIcon {
         position: absolute;
-        right: 4.63px;
+        right: 17px;
         bottom: 4.5px;
         width: 15px;
         height: 15px;

@@ -1,6 +1,6 @@
 import { ReactComponent as StopFollow } from "../../assets/image/StopFollow.svg";
 import styles from "../Others/otherStyle.module.scss";
-const MainFollowItem = () => {
+const MainFollowerItem = () => {
   return (
     <>
       <div className={styles.foloContainer}>
@@ -25,4 +25,4 @@ const MainFollowItem = () => {
   );
 };
 
-export default MainFollowItem;
+export default MainFollowerItem;

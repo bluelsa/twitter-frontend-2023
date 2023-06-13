@@ -40,10 +40,22 @@ const UserProfile = ({
         <div className={styles.account}>@{user.account}</div>
         <div className={styles.description}>{user.introduction}</div>
         <div className={styles.numWrapper}>
-          <p>
+          <p
+            onClick={() => {
+              setMain(false);
+              setFollower(false);
+              setFollowing(true);
+            }}
+          >
             {user.followingCount}位 <span className={styles.sub}> 跟隨中</span>
-          </p>{" "}
-          <p>
+          </p>
+          <p
+            onClick={() => {
+              setMain(false);
+              setFollower(true);
+              setFollowing(false);
+            }}
+          >
             {user.followerCount}位 <span className={styles.sub}> 跟隨者</span>
           </p>
         </div>

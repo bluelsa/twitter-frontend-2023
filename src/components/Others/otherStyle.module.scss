@@ -96,6 +96,9 @@
 
       p {
         margin-right: 20px;
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       .sub {

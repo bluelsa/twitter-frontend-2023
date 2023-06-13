@@ -1,22 +1,12 @@
 import styles from "../Others/otherStyle.module.scss";
-// import UserTweetList from "../User/UserTweetList";
 import { ReactComponent as Arrow } from "../../assets/image/Arrow.svg";
 import { ReactComponent as FollowingIcon } from "../../assets/image/following-active.svg";
 import { ReactComponent as FollowerIcon } from "../../assets/image/follower.svg";
-// import { ReactComponent as FollowABlack } from "../../assets/image/itemFollowAblack.svg";
-// import { ReactComponent as FollowBRed } from "../../assets/image/itemFollowBred.svg";
-import MainFollowItem from '../User/MainFollowItem'
-// import MainFollower from "./MainFollower";
-// import WholeFollowing from "./WholeFollowing";
+import MainFollowingItem from "./MainFollowingItem";
 
-const MainFollow = ({
-  user,
-  setMain,
-  setFollower,
-  setFollowing
-}) => {
+const MainFollow = ({ user, setMain, setFollower, setFollowing }) => {
   return (
-      <div className={styles.container}>
+    <div className={styles.container}>
       <div className={styles.header}>
         <div
           className={styles.arrow}
@@ -55,10 +45,10 @@ const MainFollow = ({
         </div>
       </div>
       <div className={styles.tweetWrapper}>
-        <MainFollowItem />
-        <MainFollowItem />
-        <MainFollowItem />
-        <MainFollowItem />
+        <MainFollowingItem />
+        <MainFollowingItem />
+        <MainFollowingItem />
+        <MainFollowingItem />
       </div>
     </div>
   );
