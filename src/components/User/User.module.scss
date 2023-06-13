@@ -35,9 +35,11 @@
 .profileContainer {
   position: relative;
   width: 639px;
-  height: 400px;
-
-  .cover {
+  min-height: 400px;
+  .imageWrapper{
+    width: 639px;
+    min-height: 272px;
+    .cover {
     width: 639px;
     height: 200px;
   }
@@ -51,11 +53,13 @@
     height: 140px;
     border: solid 4px white;
   }
+  }
+  
 
   .editButton {
     position: absolute;
     top: 216px;
-    right: 16px;
+    right: 32px;
     // padding: 8px 16px;
     width: 128px;
     height: 40px;
@@ -72,7 +76,7 @@
   }
 
   .infoDescription {
-    margin-top: 72px;
+    margin-top: 20px;
     margin-left: 16px;
 
     .name {
@@ -90,6 +94,8 @@
     }
 
     .description {
+      width: 590px;
+      height: auto;
       font-size: 14px;
       line-height: 22px;
       margin-top: 6px;
@@ -137,7 +143,7 @@
   width: 100%;
   min-height: 148px;
   border: 1px solid #e6ecf0;
-  border-bottom: none;
+  border-top: none;
   padding-top: 17px;
   gap: 5px;
 }

@@ -1,62 +1,66 @@
 import styles from "../Others/otherStyle.module.scss";
 // import UserTweetList from "../User/UserTweetList";
-import { ReactComponent as Arrow } from "../../assets/image/left-arrow.svg";
-import { ReactComponent as FollowARed } from "../../assets/image/FollowA.svg";
-import { ReactComponent as FollowBBlack } from "../../assets/image/FllowerB.svg";
-import { ReactComponent as FollowABlack } from "../../assets/image/itemFollowAblack.svg";
-import { ReactComponent as FollowBRed } from "../../assets/image/itemFollowBred.svg";
-import MainFollower from "./MainFollower";
-import WholeFollowing from "./WholeFollowing";
+import { ReactComponent as Arrow } from "../../assets/image/Arrow.svg";
+import { ReactComponent as FollowingIcon } from "../../assets/image/following-active.svg";
+import { ReactComponent as FollowerIcon } from "../../assets/image/follower.svg";
+// import { ReactComponent as FollowABlack } from "../../assets/image/itemFollowAblack.svg";
+// import { ReactComponent as FollowBRed } from "../../assets/image/itemFollowBred.svg";
+import MainFollowItem from '../User/MainFollowItem'
+// import MainFollower from "./MainFollower";
+// import WholeFollowing from "./WholeFollowing";
 
 const MainFollow = ({
-  isFollow,
-  setIsFollow,
-  isWhole,
-  setIsWhole,
-  setIsChange,
+  user,
+  setMain,
+  setFollower,
+  setFollowing
 }) => {
   return (
-    <>
-      <div className={styles.mfcontainer}>
-        <div className={styles.mfheader}>
-          <div className={styles.mfarrow}>
-            <Arrow />
-          </div>
-          <div className={styles.mfWrapper} onClick={() => setIsChange(false)}>
-            <div className={styles.userName}>John Doe</div>
-            <div className={styles.tweetNum}>25 推文</div>
-          </div>
+      <div className={styles.container}>
+      <div className={styles.header}>
+        <div
+          className={styles.arrow}
+          onClick={() => {
+            setMain(true);
+            setFollowing(false);
+            setFollower(false);
+          }}
+        >
+          <Arrow />
         </div>
 
-        <div className={styles.mainFollowDivider}></div>
-        <div className={styles.ChoiceBox}>
-          {isFollow ? (
-            <FollowARed />
-          ) : (
-            <FollowABlack
-              onClick={() => {
-                setIsFollow(true);
-                setIsWhole(false);
-              }}
-              className={styles.interaction}
-            />
-          )}
-          {isWhole ? (
-            <FollowBRed />
-          ) : (
-            <FollowBBlack
-              onClick={() => {
-                setIsFollow(false);
-                setIsWhole(true);
-              }}
-              className={styles.interaction}
-            />
-          )}
+        <div className={styles.returnWrapper}>
+          <div className={styles.userName}>{user.name}</div>
+          <div className={styles.tweetNum}>{user.userTweetCount} 推文</div>
         </div>
-        <div className={styles.mainDivider}></div>
-        {isFollow ? <MainFollower /> : <WholeFollowing />}
       </div>
-    </>
+      <div className={styles.nav}>
+        <div className={styles.followerIcon}>
+          <FollowerIcon
+            onClick={() => {
+              setMain(false);
+              setFollowing(false);
+              setFollower(true);
+            }}
+          />
+        </div>
+        <div className={styles.followingIcon}>
+          <FollowingIcon
+            onClick={() => {
+              setMain(false);
+              setFollowing(true);
+              setFollower(false);
+            }}
+          />
+        </div>
+      </div>
+      <div className={styles.tweetWrapper}>
+        <MainFollowItem />
+        <MainFollowItem />
+        <MainFollowItem />
+        <MainFollowItem />
+      </div>
+    </div>
   );
 };
 

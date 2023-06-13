@@ -1,23 +1,26 @@
 import styles from "../pages/HomeStyle.module.scss";
 import { ReactComponent as ModalX } from "../assets/image/ModalX.svg";
 import { ReactComponent as PostButton } from "../assets/image/PostButton.svg";
-import { ReactComponent as Avatar } from '../assets/image/PostPhoto.svg'
 
-const TwitPopUp = (props) => {
+const TwitPopUp = ({user, setTwitPop}) => {
   return (
     <div className={styles.popContainer}>
       <div className={styles.popInner}>
         <div className={styles.popHeader}>
           <ModalX
             className={styles.deleteIcon}
-            onClick={() => props.setTwitPop(false)}
+            onClick={() => setTwitPop(false)}
           />
         </div>
         <div className={styles.mainDivider}></div>
         <div className={styles.postContainer}>
           <div className={styles.postContent}>
             <div className={styles.postAvatar}>
-              <Avatar/>
+              <img
+                className={styles.postAvatar}
+                src={user.avatar}
+                alt="avatar"
+              />
             </div>
             <textarea
               className={styles.postText}
@@ -25,7 +28,7 @@ const TwitPopUp = (props) => {
             ></textarea>
           </div>
         </div>
-        <div className={styles.popButton} onClick={() => props.setTwitPop(false)}>
+        <div className={styles.popButton} onClick={() => setTwitPop(false)}>
           <PostButton />
         </div>
       </div>

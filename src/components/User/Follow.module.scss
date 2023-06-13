@@ -1,0 +1,23 @@
+.header {
+    height: 75px;
+    margin-left: 28px;
+    display: flex;
+    align-items: center;
+
+    .returnWrapper {
+      margin-left: 28px;
+
+      .userName {
+        line-height: 26px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .tweetNum {
+        line-height: 19px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #6c757d;
+      }
+    }
+  }

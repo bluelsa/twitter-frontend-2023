@@ -4,7 +4,7 @@ import { ReactComponent as EditTitle } from "../../assets/image/EditTitle.svg";
 import { ReactComponent as EditSave } from "../../assets/image/EditSave.svg";
 import { ReactComponent as CameraGroup } from "../../assets/image/ImageEditor.svg";
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/iconCCamera.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { putUser } from "../../api/user";
 
 import TimePopup from "../TimePopup/TimePopup";

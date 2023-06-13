@@ -4,7 +4,7 @@ import { ReactComponent as HomeIcon } from "../assets/image/home-inactive.svg";
 import { ReactComponent as ProfileActiveIcon } from "../assets/image/profile-active.svg";
 import { ReactComponent as SettingIcon } from "../assets/image/setting.svg";
 import { ReactComponent as NavOut } from "../assets/image/NavOut.svg";
-import { ReactComponent as NavButton } from "../assets/image/tweetButton.svg";
+import { ReactComponent as TweetButton } from "../assets/image/tweetButton.svg";
 import { Link } from "react-router-dom";
 
 const NavbarUser = ({ setTwitPop }) => {
@@ -31,13 +31,13 @@ const NavbarUser = ({ setTwitPop }) => {
             <SettingIcon />
           </Link>
 
-          <div
-            className={styles.navBigButton}
-            onClick={() => {
-              setTwitPop(true);
-            }}
-          >
-            <NavButton className={styles.interaction} />
+          <div className={styles.navBigButton}>
+            <TweetButton
+              className={styles.interaction}
+              onClick={() => {
+                setTwitPop(true);
+              }}
+            />
           </div>
         </div>
         <div>

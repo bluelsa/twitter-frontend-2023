@@ -1,19 +1,24 @@
-import styles from "./HomeStyle.module.scss";
-import NavBar from "../common/NavBar";
+import styles from "../pages/HomeStyle.module.scss";
 import Popular from "../common/Popular";
-import Twits from "../components/Home/Twits";
+import NavbarUser from "../common/NavbarUser";
+import UserMain from "../components/User/UserMain";
+import MainFollower from "../components/User/MainFollower";
+import MainFollowing from "../components/User/MainFollow";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
 import { useState, useEffect } from "react";
 import { getUser } from "../api/user";
 import { useNavigate } from "react-router-dom";
 
-const MainPage = () => {
+const UserProfilePage = () => {
   const [twitPop, setTwitPop] = useState(false);
-  const [replyTwit, setReplyTwit] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
-  const [user, setUser] = useState({});
+  const[main, setMain] = useState(true)
+  const [follower, setFollower] = useState(false);
+  const [following, setFollowing] = useState(false)
 
+
+  const [user, setUser] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -44,26 +49,41 @@ const MainPage = () => {
     }
   }, [navigate, isAuthenticated, isLoading]);
 
-  
-
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
         <div className={styles.leftColumn}>
-          <NavBar twitPop={twitPop} setTwitPop={setTwitPop} />
+          <NavbarUser twitPop={twitPop} setTwitPop={setTwitPop} />
         </div>
-        {/* 中間推文部分 */}
         <div className={styles.middleColumn}>
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
-              <Twits
-                twitPop={twitPop}
-                setTwitPop={setTwitPop}
-                replyTwit={replyTwit}
-                replyPop={replyPop}
-                setReplyPop={setReplyPop}
-                setReplyTwit={setReplyTwit}
+            {main && (
+              <UserMain
+                main={main}
+                setMain={setMain}
+                follower={follower}
+                setFollower={setFollower}
+                following={following}
+                setFollowing={setFollowing}
                 user={user}
               />
+            )}
+            {following && (
+              <MainFollowing
+                user={user}
+                setMain={setMain}
+                setFollower={setFollower}
+                setFollowing={setFollowing}
+              />
+            )}
+            {follower && (
+              <MainFollower
+                user={user}
+                setMain={setMain}
+                setFollower={setFollower}
+                setFollowing={setFollowing}
+              />
+            )}
             {replyPop && (
               <ReplyPopUp
                 replyPop={replyPop}
@@ -88,4 +108,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default UserProfilePage;

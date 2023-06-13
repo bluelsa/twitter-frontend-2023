@@ -2,14 +2,15 @@ import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as ModalX } from "../../assets/image/ModalX.svg";
 import { ReactComponent as ReplyButton } from "../../assets/image/ReplyButton.svg";
 
-const ReplyPopUp = (props) => {
+const ReplyPopUp = ({ user, setReplyPop }) => {
   return (
-    <div className={styles.replyPopUpContanier}>
+    <div className={styles.replyPopUpContainer}>
+    <div className={styles.replyPopUpInner}>
       <div className={styles.replyPopHeader}>
         <div>
           <ModalX
             className={styles.interaction}
-            onClick={() => props.setReplyPop(false)}
+            onClick={() => setReplyPop(false)}
           />
         </div>
       </div>
@@ -43,13 +44,13 @@ const ReplyPopUp = (props) => {
           <div className={styles.postAvatar}>
             <img
               className={styles.postAvatar}
-              src="https://i.pravatar.cc"
+              src={user.avatar}
               alt="avatar"
             />
           </div>
           <textarea
             className={styles.postText}
-            placeholder="有什麼新鮮事？"
+            placeholder="推你的回覆"
           ></textarea>
         </div>
       </div>
@@ -57,9 +58,10 @@ const ReplyPopUp = (props) => {
       <div className={styles.replyButton}>
         <ReplyButton
           className={styles.interaction}
-          onClick={() => props.setReplyPop(false)}
+          onClick={() => setReplyPop(false)}
         />
       </div>
+    </div>
     </div>
   );
 };
