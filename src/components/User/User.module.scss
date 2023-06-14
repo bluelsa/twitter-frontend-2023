@@ -36,26 +36,49 @@
   position: relative;
   width: 639px;
   min-height: 400px;
-  .imageWrapper{
+
+  .imageWrapper {
     width: 639px;
     min-height: 272px;
+
     .cover {
-    width: 639px;
-    height: 200px;
+      width: 639px;
+      height: 200px;
+    }
+
+    .avatar {
+      position: absolute;
+      top: 124px;
+      left: 16.13px;
+      border-radius: 50%;
+      width: 141.1px;
+      height: 140px;
+      border: solid 4px white;
+    }
   }
 
-  .avatar {
+  .otherProSection {
     position: absolute;
-    top: 124px;
-    left: 16.13px;
-    border-radius: 50%;
-    width: 141.1px;
-    height: 140px;
-    border: solid 4px white;
-  }
-  }
-  
+    width: 623px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    top: 217px;
+    
 
+    div {
+      position: absolute;
+      right: 17px;
+      display: flex;
+      gap: 16px;
+
+      .followIcon {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
   .editButton {
     position: absolute;
     top: 216px;
@@ -95,7 +118,7 @@
 
     .description {
       width: 590px;
-      height: auto;
+      height: 100%;
       font-size: 14px;
       line-height: 22px;
       margin-top: 6px;
@@ -159,111 +182,121 @@
 
 .tweetsWrapper {
   height: 100%;
-.tweetCollection {
-  display: flex;
-  margin-left: 24px;
-
-  .avatarWrap {
-margin-right: 5px;
-    img {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    // background-color: rgb(189, 188, 188);
-    border-radius: 50%;
-    }
-
-    :hover {
-      cursor: pointer;
-    }
-
-    // .darkLogo {
-    //   position: absolute;
-    //   top: 9px;
-    //   left: 9px;
-    //   width: 34px;
-    //   height: 34px;
-    //   opacity: 0.3;
-    // }
-  }
-
-  .tweetContent {
-    width: 100%;
-    height: 100%;
+  .tweetCollection {
     display: flex;
-    flex-direction: column;
-    margin-left: 8px;
-    margin-bottom: 16px;
+    margin-left: 24px;
 
-    .nameInfo {
-      position: relative;
+    .avatarWrap {
+      margin-right: 5px;
+      img {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        // background-color: rgb(189, 188, 188);
+        border-radius: 50%;
+      }
+
+      :hover {
+        cursor: pointer;
+      }
+
+      // .darkLogo {
+      //   position: absolute;
+      //   top: 9px;
+      //   left: 9px;
+      //   width: 34px;
+      //   height: 34px;
+      //   opacity: 0.3;
+      // }
+    }
+
+    .tweetContent {
+      width: 100%;
+      height: 100%;
       display: flex;
-      line-height: 26px;
-      align-items: center;
-      margin-bottom: 8px;
+      flex-direction: column;
+      margin-left: 8px;
+      margin-bottom: 16px;
 
-      .tweetName {
-        font-size: 16px;
-        font-weight: 700;
-        margin-right: 8px;
-      }
-
-      .followIcon {
-        // position: absolute;
-        // margin-left: 386px;
-        text-align: end;
-      }
-
-      .tweetTime {
-        font-size: 14px;
-        color: #6c757d;
-      }
-    }
-
-    .reply {
-      margin-top: 8px;
-      color: #6C757D;
-
-      .replyTo {
-        margin-left: 5px;
-        color: #ff6600;
-      }
-    }
-
-    .tweetArticle {
-      width: 90%;
-      // margin-top: 8px;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 26px;
-      color: #171725;
-    }
-
-    .tweetReplyArticle {
-      width: 90%;
-      margin-top: 8px;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 26px;
-      color: #171725;
-    }
-
-    .numCount {
-      margin-top: 9.49px;
-      display: flex;
-
-      div {
+      .nameInfo {
+        position: relative;
         display: flex;
-        gap: 9.44px;
+        line-height: 26px;
         align-items: center;
+        margin-bottom: 8px;
+
+        .tweetName {
+          font-size: 16px;
+          font-weight: 700;
+          margin-right: 8px;
+        }
+
+        .followIcon {
+          // position: absolute;
+          // margin-left: 386px;
+          text-align: end;
+        }
+
+        .tweetTime {
+          font-size: 14px;
+          color: #6c757d;
+        }
       }
 
-      .likeNum {
-        margin-left: 41.3px;
+      .reply {
+        margin-top: 8px;
+        color: #6c757d;
+
+        .replyTo {
+          margin-left: 5px;
+          color: #ff6600;
+        }
+      }
+
+      .tweetArticle {
+        width: 90%;
+        // margin-top: 8px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+        color: #171725;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .tweetReplyArticle {
+        width: 90%;
+        margin-top: 8px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+        color: #171725;
+      }
+
+      .numCount {
+        margin-top: 9.49px;
+        display: flex;
+
+        .icon {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        div {
+          display: flex;
+          gap: 9.44px;
+          align-items: center;
+        }
+
+        .likeNum {
+          margin-left: 41.3px;
+        }
       }
     }
   }
-}
 }
 
 //popular class
@@ -273,7 +306,6 @@ margin-right: 5px;
   }
 }
 
-
 //edit
 .editContainer {
   position: relative;
@@ -282,12 +314,11 @@ margin-right: 5px;
   width: 634px;
   height: 610px;
   z-index: 1000;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 14px;
-  border: 1px solid #92929D;
+  border: 1px solid #92929d;
   display: flex;
   flex-direction: column;
-
 }
 
 .imageContainer {
@@ -304,9 +335,7 @@ margin-right: 5px;
     height: 140px;
     border: solid 4px white;
   }
-
 }
-
 
 .editHeader {
   width: 598px;
@@ -316,7 +345,6 @@ margin-right: 5px;
   flex-direction: row;
   justify-content: space-between;
   margin-left: 20px;
-
 
   div:nth-child(1) {
     width: 200px;
@@ -345,7 +373,7 @@ margin-right: 5px;
   div {
     width: 567px;
     height: 22px;
-    font-family: 'Noto Sans TC';
+    font-family: "Noto Sans TC";
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
@@ -354,11 +382,10 @@ margin-right: 5px;
   }
 }
 
-
 input {
   width: 567px;
   height: 22px;
-  font-family: 'Noto Sans TC';
+  font-family: "Noto Sans TC";
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
@@ -370,7 +397,7 @@ input {
 .textCount {
   width: 600px;
   height: 20px;
-  font-family: 'Noto Sans TC';
+  font-family: "Noto Sans TC";
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
@@ -398,7 +425,7 @@ input {
     display: inline-block;
     width: 566px;
     height: 115px;
-    font-family: 'Noto Sans TC';
+    font-family: "Noto Sans TC";
     font-weight: 400;
     font-size: 16px;
     line-height: 26px;
@@ -412,7 +439,7 @@ input {
   display: inline-block;
   width: 566px;
   height: 22px;
-  font-family: 'Noto Sans TC';
+  font-family: "Noto Sans TC";
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
@@ -422,10 +449,8 @@ input {
 
 // user tweets form
 .userTweetContainer {
-border: 1px solid #000;
+  border: 1px solid #000;
 }
-
-
 
 // EditPopup
 

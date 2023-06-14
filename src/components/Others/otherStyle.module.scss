@@ -1,76 +1,75 @@
 //tweet list
-.tweetContainer {
-  // width: 100%;
-  // height: 100%;
-  // min-height: 148px;
-  // border: 1px solid #e6ecf0;
-  // border-top: none;
-  // border: 1px solid #000;
-  // padding-top: 16px;
-  // margin-top: 10px;
-  // gap: 5px;
-}
+
+// .tweetContainer {
+// width: 100%;
+// height: 100%;
+// min-height: 148px;
+// border: 1px solid #e6ecf0;
+// border-top: none;
+// border: 1px solid #000;
+// padding-top: 16px;
+// margin-top: 10px;
+// gap: 5px;
+// }
 
 .tweetsWrapper {
   height: 100%;
-.tweetCollection {
-  display: flex;
-  margin-left: 24px;
-
-  .avatarWrap {
-margin-right: 5px;
-    img {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    // background-color: rgb(189, 188, 188);
-    border-radius: 50%;
-    }
-
-    :hover {
-      cursor: pointer;
-    }
-  }
-
-  .tweetContent {
-    width: 580px;
-    height: 100%;
+  .tweetCollection {
     display: flex;
-    flex-direction: column;
-    margin-left: 8px;
+    margin-left: 24px;
 
-    .nameInfo {
-      position: relative;
-      display: flex;
-      line-height: 26px;
-      align-items: center;
-      margin-bottom: 20px;
-
-      .tweetName {
-        font-size: 16px;
-        font-weight: 700;
-        margin-right: 8px;
+    .avatarWrap {
+      margin-right: 5px;
+      img {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        // background-color: rgb(189, 188, 188);
+        border-radius: 50%;
       }
 
-      .followIcon {
-        position: absolute;
-        right: 30px;
-        padding-top: 8px;
+      :hover {
+        cursor: pointer;
       }
-
-    .userIntroduction {
-      width: 90%;
-      // margin-top: 8px;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 26px;
-      color: #171725;
     }
 
-    
+    .tweetContent {
+      width: 580px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-left: 8px;
+
+      .nameInfo {
+        position: relative;
+        display: flex;
+        line-height: 26px;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .tweetName {
+          font-size: 16px;
+          font-weight: 700;
+          margin-right: 8px;
+        }
+
+        .followIcon {
+          position: absolute;
+          right: 30px;
+          padding-top: 8px;
+        }
+
+        .userIntroduction {
+          width: 90%;
+          // margin-top: 8px;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 26px;
+          color: #171725;
+        }
+      }
+    }
   }
-}
-}
 }
 
 // UserInfo
@@ -88,8 +87,8 @@ margin-right: 5px;
     align-items: center;
 
     :hover {
-        cursor: pointer;
-      }
+      cursor: pointer;
+    }
 
     .returnWrapper {
       margin-left: 28px;
@@ -182,7 +181,7 @@ margin-right: 5px;
       }
 
       .sub {
-        color: #6C757D;
+        color: #6c757d;
       }
     }
   }
@@ -240,7 +239,7 @@ margin-right: 5px;
       left: 9px;
       width: 34px;
       height: 34px;
-      opacity: .3;
+      opacity: 0.3;
     }
   }
 
@@ -272,7 +271,7 @@ margin-right: 5px;
 
     .reply {
       margin-top: 8px;
-      color: #6C757D;
+      color: #6c757d;
 
       .replyTo {
         margin-left: 5px;
@@ -350,22 +349,24 @@ margin-right: 5px;
 }
 
 .otherProSection {
-width: 100%;
+  position: relative;
+  width: 623px;
   height: 40px;
   display: flex;
-  flex-direction: rows;
   justify-content: flex-end;
 
   div {
-    width: 208px;
-    height: 40px;
+    position: absolute;
+    right: 17px;
     display: flex;
     gap: 16px;
-    flex-direction: rows;
-    margin-right: 17px;
+
+    .followIcon {
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
-
-
 }
 
 .followSection {
@@ -374,7 +375,6 @@ width: 100%;
   display: flex;
   flex-direction: rows;
   justify-content: flex-end;
- 
 
   div {
     width: 140px;
@@ -388,15 +388,15 @@ width: 100%;
 
 .otherDescription {
   width: 605px;
-  height: 155px;
+  height: 100%;;
   display: flex;
   flex-direction: column;
   margin-left: 16px;
 
   .description {
     width: 100%;
-    height: 22px;
-    font-family: 'Noto Sans TC';
+    height: 100%;
+    font-family: "Noto Sans TC";
     font-weight: 400;
     font-size: 14px;
     line-height: 22px;
@@ -411,7 +411,7 @@ width: 100%;
   .otherName {
     width: 100%;
     height: 26px;
-    font-family: 'Noto Sans TC';
+    font-family: "Noto Sans TC";
     font-size: 18px;
     font-weight: 700;
     line-height: 26px;
@@ -425,11 +425,11 @@ width: 100%;
   .otherAccount {
     width: 100%;
     height: 22px;
-    font-family: 'Noto Sans TC';
+    font-family: "Noto Sans TC";
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
-    color: #6C757D;
+    color: #6c757d;
 
     &:hover {
       cursor: pointer;
@@ -456,10 +456,9 @@ width: 100%;
     color: #171725;
 
     span {
-      color: #6C757D;
+      color: #6c757d;
     }
   }
-
 }
 
 //stick
@@ -479,11 +478,10 @@ width: 100%;
   gap: 22px;
 }
 
-
 .origin {
   width: 90px;
   height: 52px;
-  font-family: 'Noto Sans TC';
+  font-family: "Noto Sans TC";
   font-size: 15px;
   font-weight: 700;
   line-height: 52px;
@@ -493,14 +491,12 @@ width: 100%;
   &:hover {
     cursor: pointer;
   }
-
 }
-
 
 .stickRed {
   width: 90px;
   height: 52px;
-  font-family: 'Noto Sans TC';
+  font-family: "Noto Sans TC";
   font-size: 15px;
   font-weight: 700;
   line-height: 52px;
@@ -519,17 +515,15 @@ width: 100%;
 .ChoiceBox {
   width: 100%;
   height: 53px;
-
 }
 
 .mainFollowDivider {
   width: 640px;
   height: 1px;
   border: none;
-  background-color: #E6ECF0;
+  background-color: #e6ecf0;
   display: flex;
   flex-direction: row;
-
 }
 
 .followContainer {
@@ -565,7 +559,7 @@ width: 100%;
     .followArticle {
       width: 528px;
       height: 78px;
-      font-family: 'Noto Sans TC';
+      font-family: "Noto Sans TC";
       font-size: 16px;
       font-weight: 400;
       line-height: 26px;
@@ -582,7 +576,7 @@ width: 100%;
   align-items: center;
 
   .followName {
-    font-family: 'Noto Sans TC';
+    font-family: "Noto Sans TC";
     font-size: 16px;
     font-weight: 700;
     line-height: 26px;
@@ -599,14 +593,13 @@ width: 100%;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   margin-left: 2.3px;
   background: url(../../assets/image/Head.svg);
 
   &:hover {
     cursor: pointer;
   }
-
 }
 
 //follower
@@ -617,7 +610,6 @@ width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
 }
 
 .mfContainer {
@@ -656,7 +648,7 @@ width: 100%;
     font-size: 13px;
     font-weight: 500;
     line-height: 19px;
-    color: #6C757D;
+    color: #6c757d;
   }
 
   div:hover {
