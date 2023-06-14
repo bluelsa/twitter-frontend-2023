@@ -6,7 +6,7 @@ const UserReplyTweet = ({ user, userReply }) => {
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
           <div className={styles.avatarWrap}>
-            <img src="https://i.pravatar.cc" alt="" />
+            <img src="https://i.pravatar.cc" alt="avatar" />
           </div>
           <div className={styles.tweetContent}>
             <div>

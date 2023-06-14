@@ -7,6 +7,7 @@ import ReplyPopUp from "../components/Home/ReplyPopUp";
 import { useState, useEffect } from "react";
 import { getUser } from "../api/user";
 import { useNavigate } from "react-router-dom";
+import ReplyTwits from "../common/Reply/ReplyTwits";
 
 const MainPage = () => {
   const [twitPop, setTwitPop] = useState(false);
@@ -53,9 +54,10 @@ const MainPage = () => {
           <NavBar twitPop={twitPop} setTwitPop={setTwitPop} />
         </div>
         {/* 中間推文部分 */}
+       
         <div className={styles.middleColumn}>
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
-              <Twits
+             {replyTwit? (<ReplyTwits setReplyTwit={setReplyTwit} setReplyPop={setReplyPop}/>) : (<Twits
                 twitPop={twitPop}
                 setTwitPop={setTwitPop}
                 replyTwit={replyTwit}
@@ -63,7 +65,8 @@ const MainPage = () => {
                 setReplyPop={setReplyPop}
                 setReplyTwit={setReplyTwit}
                 user={user}
-              />
+              />) }
+              
             {replyPop && (
               <ReplyPopUp
                 replyPop={replyPop}

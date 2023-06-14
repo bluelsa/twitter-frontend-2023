@@ -1,10 +1,11 @@
+import styles from '../User/User.module.scss'
 import MainTweetForm from "./MainTweetForm";
 import { useState, useEffect } from 'react'
 import { getTweetsAll } from '../../api/tweets'
 
 const MainTweetList = ({
   user,
-  // replyPop,
+  setReplyTwit,
   setReplyPop,
 }) => {
 
@@ -24,9 +25,9 @@ const MainTweetList = ({
   }, []);
 
   return (
-    <div>
+    <div className={styles.list}>
       {tweets.map((tweet) => {
-        return <MainTweetForm tweet={tweet} setReplyPop={setReplyPop} />;
+        return <MainTweetForm tweet={tweet} setReplyPop={setReplyPop} setReplyTwit={setReplyTwit}/>;
       })}
     </div>
   );

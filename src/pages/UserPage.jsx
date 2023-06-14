@@ -59,13 +59,14 @@ const UserProfilePage = () => {
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
             {main && (
               <UserMain
+                user={user}
                 main={main}
                 setMain={setMain}
                 follower={follower}
                 setFollower={setFollower}
                 following={following}
                 setFollowing={setFollowing}
-                user={user}
+                setReplyPop={setReplyPop}
               />
             )}
             {following && (

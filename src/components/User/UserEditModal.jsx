@@ -31,16 +31,16 @@ const UserEditModal = ({ user, setEditPopup }) => {
         name,
         introduction,
       });
-    console.log('name:' +name)
-    console.log('intro: '+introduction)
+      console.log("name:" + name);
+      console.log("intro: " + introduction);
     } catch (error) {
       console.error(error);
     }
-console.log("name change:" + name);
-console.log("intro change : " + introduction);
+    console.log("name change:" + name);
+    console.log("intro change : " + introduction);
     setEditPopup(false);
   };
-// ＊需要畫面重新整理，才會render修改過後的個人資料
+  // ＊需要畫面重新整理，才會render修改過後的個人資料
 
   const handleClosePopup = () => {
     setNotiStatus("finished");
@@ -74,8 +74,7 @@ console.log("intro change : " + introduction);
               />
             </div>
 
-            <div>
-            </div>
+            <div></div>
           </div>
           <div className={styles.imageContainer}>
             <img className={styles.cover} src={user.background} alt="cover" />
@@ -88,38 +87,42 @@ console.log("intro change : " + introduction);
             </div>
           </div>
           <div className={styles.inputContainer}>
-            <div className={styles.nameInput}>
-              <label className={styles.input}>
-                <div>名稱</div>
-                <input
-                  className={styles.editInput}
-                  type="text"
-                  value={name}
-                  placeholder={user.name}
-                  maxLength="50"
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </label>
-            </div>
-            <div className={styles.textCount}>{name.length}/50</div>
-
-            <div className={styles.textareaWrap}>
-              <div action="" className={styles.textContainer}>
-                <label for="" className={styles.textTitle}>
-                  自我介紹
+            <form>
+              <div className={styles.nameInput}>
+                <label className={styles.input}>
+                  <div>名稱</div>
+                  <input
+                    className={styles.editInput}
+                    type="text"
+                    value={name}
+                    placeholder={user.name}
+                    maxLength="50"
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </label>
-
-                <textarea
-                  type="text"
-                  id="note"
-                  value={introduction}
-                  placeholder={user.introduction}
-                  maxLength="160"
-                  onChange={(e) => setIntroduction(e.target.value)}
-                ></textarea>
               </div>
-              <div className={styles.textCount}>{introduction.length}/160</div>
-            </div>
+              <div className={styles.textCount}>{name.length}/50</div>
+
+              <div className={styles.textareaWrap}>
+                <div action="" className={styles.textContainer}>
+                  <label for="" className={styles.textTitle}>
+                    自我介紹
+                  </label>
+
+                  <textarea
+                    type="text"
+                    id="note"
+                    value={introduction}
+                    placeholder={user.introduction}
+                    maxLength="160"
+                    onChange={(e) => setIntroduction(e.target.value)}
+                  ></textarea>
+                </div>
+                <div className={styles.textCount}>
+                  {introduction.length}/160
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>

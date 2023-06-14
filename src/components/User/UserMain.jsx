@@ -8,6 +8,7 @@ import LikeForm from "./LikeForm";
 import { useState, useEffect } from "react";
 import UserTweetList from "./UserTweetList";
 import { getUserTweets } from "../../api/user";
+import { useNavigate } from 'react-router-dom'
 
 const UserMain = ({
   user,
@@ -17,19 +18,20 @@ const UserMain = ({
   setFollower,
   following,
   setFollowing,
-  // isFollow,
-  // setIsFollow,
-  // isWhole,
-  // setIsWhole,
-  // isChange,
-  // setIsChange,
+  setReplyPop
 }) => {
+
+const navigate = useNavigate()
+
+// render推文/回覆/喜歡的內容
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
   const [likeSection, setLikeSection] = useState(false);
 
+// 編輯個人資料popup window
   const [editPopup, setEditPopup] = useState(false);
 
+// API get 使用者所有推文
   const [userTweets, setUserTweets] = useState([]);
 
   const userId = localStorage.getItem("userId");
@@ -61,18 +63,19 @@ const UserMain = ({
         <div
           className={styles.arrow}
           onClick={() => {
-            setMain(true);
-            setFollowing(false);
-            setFollower(false);
+            navigate('/home')
+            // setMain(true);
+            // setFollowing(false);
+            // setFollower(false);
           }}
         >
-          <Arrow />
+          <Arrow/>
         </div>
 
         <div className={styles.returnWrapper}>
           <div className={styles.userName}>{user.name}</div>
           <div className={styles.tweetNum}>
-            {userTweets.length}
+            <span>{userTweets.length}</span>
             推文
           </div>
         </div>
@@ -86,12 +89,6 @@ const UserMain = ({
         setFollower={setFollower}
         following={following}
         setFollowing={setFollowing}
-        // isFollow={isFollow}
-        // setIsFollow={setIsFollow}
-        // isWhole={isWhole}
-        // setIsWhole={setIsWhole}
-        // isChange={isChange}
-        // setIsChange={setIsChange}
         user={user}
       />
       <UserNavbar
@@ -103,9 +100,15 @@ const UserMain = ({
         setLikeSection={setLikeSection}
       />
 
-      {twitSection && <UserTweetList user={user} userTweets={userTweets} />}
+      {twitSection && (
+        <UserTweetList
+          user={user}
+          userTweets={userTweets}
+          setReplyPop={setReplyPop}
+        />
+      )}
       {replySection && <ReplyList userId={userId} user={user} />}
-      {likeSection && <LikeForm />}
+      {likeSection && <LikeForm setReplyPop={setReplyPop} />}
 
       {editPopup && (
         <UserEditModal

@@ -2,7 +2,7 @@ import styles from "./User.module.scss";
 import { ReactComponent as ReplyIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 
-const UserLikeTweet = ({userLike}) => {
+const UserLikeTweet = ({userLike, setReplyPop}) => {
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
@@ -22,7 +22,7 @@ const UserLikeTweet = ({userLike}) => {
             </div>
             <div className={styles.numCount}>
               <div className={styles.replyNum}>
-                <ReplyIcon />
+                <ReplyIcon onClick={()=>{setReplyPop(true)}}/>
                 <span>{userLike.Tweet.repliedCount}</span>
               </div>
               <div className={styles.likeNum}>

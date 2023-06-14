@@ -4,8 +4,31 @@ import MainFollowerItem from "./MainFollowerItem";
 import { ReactComponent as FollowerIcon } from "../../assets/image/follower-active.svg";
 import { ReactComponent as FollowingIcon } from "../../assets/image/following.svg";
 import { ReactComponent as Arrow } from "../../assets/image/Arrow.svg";
+import { useEffect, useState } from 'react'
+import { getUserFollowers } from "../../api/user";
 
 const MainFollowers = ({ user, setMain, setFollower, setFollowing }) => {
+
+  const [followers, setFollowers] = useState([])
+  const [isFollowers, setIsFollowers] = useState(true)
+
+  useEffect(() => {
+    const getUserFollowersAsync = async () => {
+      try {
+        const followers = await getUserFollowers(user.id);
+
+        if (!followers.status) {
+          setFollowers(followers);
+        }
+      } catch (error) {
+        // console.error(error);
+        setIsFollowers(false)
+      }
+    };
+
+    getUserFollowersAsync(user.id);
+  }, [user.id]);
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -28,6 +51,7 @@ const MainFollowers = ({ user, setMain, setFollower, setFollowing }) => {
       <div className={styles.nav}>
         <div className={styles.followerIcon}>
           <FollowerIcon
+            className={styles.followerIcon}
             onClick={() => {
               setMain(false);
               setFollowing(false);
@@ -37,6 +61,7 @@ const MainFollowers = ({ user, setMain, setFollower, setFollowing }) => {
         </div>
         <div className={styles.followingIcon}>
           <FollowingIcon
+            className={styles.followingIcon}
             onClick={() => {
               setMain(false);
               setFollowing(true);
@@ -45,12 +70,14 @@ const MainFollowers = ({ user, setMain, setFollower, setFollowing }) => {
           />
         </div>
       </div>
-      <div className={styles.tweetWrapper}>
-        <MainFollowerItem />
-        <MainFollowerItem />
-        <MainFollowerItem />
-        <MainFollowerItem />
-      </div>
+      {isFollowers ? (<div className={styles.list}>
+        {followers.map((follower)=> {
+          return <MainFollowerItem follower={follower} />
+        })}
+      </div>) : (
+        <h2 className={styles.noFollow}>沒有追隨者</h2>
+      )}
+      <div className={styles.mainDivider}></div>
     </div>
   );
 };

@@ -1,27 +1,27 @@
 import { ReactComponent as StopFollow } from "../../assets/image/StopFollow.svg";
 import styles from "../Others/otherStyle.module.scss";
-const MainFollowerItem = () => {
+const MainFollowerItem = ({follower}) => {
   return (
-    <>
-      <div className={styles.followContainer}>
-        <div className={styles.followCollection}>
-          <div className={styles.followAvatar}></div>
-          <div className={styles.followContent}>
-            <div className={styles.followNameInfo}>
-              <div className={styles.followName}>Apple</div>
-              <StopFollow />
+    <div className={styles.tweetContainer}>
+      <div className={styles.tweetsWrapper}>
+        <div className={styles.tweetCollection}>
+          <div className={styles.avatarWrap}>
+            <img src="https://i.pravatar.cc" alt="avatar" />
+          </div>
+          <div className={styles.tweetContent}>
+            <div className={styles.nameInfo}>
+              <div className={styles.tweetName}>{follower.Followers.name}</div>
+              <div className={styles.followIcon}>
+                <StopFollow/>
+              </div>
             </div>
-            <div className={styles.followArticle}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint illo
-              temporibus, non enim debitis ipsum repudiandae beatae nesciunt ea
-              odio?
+            <div className={styles.userIntroduction}>
+              {follower.Followers.introduction}
             </div>
           </div>
         </div>
       </div>
-
-      <div className={styles.mainDivider}></div>
-    </>
+    </div>
   );
 };
 

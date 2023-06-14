@@ -5,7 +5,7 @@ import { ReactComponent as Heart } from "../../assets/image/heart-hollow.svg";
 import { ReactComponent as BigTalk } from "../../assets/image/25x25Talk.svg";
 // import ReplyList from "../../components/User/ReplyList";
 
-function ReplyTwits(props) {
+function ReplyTwits({setReplyTwit, setReplyPop}) {
   return (
     <>
       {/* <div className={`${styles.mainBackground} ${styles.scrollbar}`}> */}
@@ -13,7 +13,7 @@ function ReplyTwits(props) {
       <header className={styles.replyHeader}>
         <div
           onClick={() => {
-            props.setReplyTwit(false);
+            setReplyTwit(false);
           }}
         >
           <Arrow className={styles.interaction} />
@@ -55,7 +55,7 @@ function ReplyTwits(props) {
           <BigTalk
             className={styles.interaction}
             onClick={() => {
-              props.setReplyPop(true);
+              setReplyPop(true);
             }}
           />
           <Heart className={styles.interaction} />

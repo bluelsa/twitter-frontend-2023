@@ -14,7 +14,8 @@
 ::-webkit-input-placeholder {
   color: #b5b5be;
   font-size: 16px;
-}
+  position: absolute;
+  left: 0;
 
 // html,
 // body {
@@ -26,4 +27,4 @@
 //   --success: #3dd598;
 //   --warning: #ffc542;
 //   --error: #fc5a5a;
-// }
+}
