@@ -1,4 +1,4 @@
-@import '../base.scss';
+@import "../base.scss";
 
 .homeContainer {
   width: 100%;
@@ -10,14 +10,14 @@
 
 //MainPage Popularitems
 .mainContainer {
-  width: 1400px; 
+  width: 1400px;
   height: 100vh;
   margin: 0 auto;
   display: flex;
   // grid-template-columns: 333px 641px 426px;
   // grid-template-rows: 1200px;
   .leftColumn {
-margin-right: 20px;
+    margin-right: 20px;
   }
 }
 
@@ -55,7 +55,7 @@ margin-right: 20px;
 }
 
 //未使用className
-.mainBlack { 
+.mainBlack {
   width: 1400px;
   height: 100vh;
   // height: 1200px;
@@ -126,12 +126,12 @@ margin-right: 20px;
 }
 
 .twitsDivider {
-    width: 640px;
-    height: 1px;
-    border: none;
-    background-color: #e6ecf0;
-    margin-bottom: 16px;
-  }
+  width: 640px;
+  height: 1px;
+  border: none;
+  background-color: #e6ecf0;
+  margin-bottom: 16px;
+}
 
 //TwitForm.jsx
 .twitAvatar {
@@ -242,8 +242,9 @@ margin-right: 20px;
 
   .popularList {
     position: absolute;
-    width: 273px;
-    max-height: 100vh;
+    width: 300px;
+    height: 100vh;
+    overflow: scroll;
     // height: 731px;
     top: 16px;
     left: 25px;
@@ -385,7 +386,7 @@ margin-right: 20px;
   gap: 8px;
 
   .postAvatar {
-    width:50px;
+    width: 50px;
     height: 50px;
     border-radius: 50%;
     &:hover {
@@ -417,93 +418,92 @@ margin-right: 20px;
 
 // replyPopUp
 .replyPopUpContainer {
-   width: 100%;
+  width: 100%;
   height: 100vh;
   position: fixed;
   z-index: 99;
   top: 0;
   left: 0;
   background-color: rgb(0, 0, 0, 0.5);
-.replyPopUpInner {
-  width: 634px;
-  height: 500px;
-  position: absolute;
+  .replyPopUpInner {
+    width: 634px;
+    height: 500px;
+    position: absolute;
 
-  display: flex;
-  flex-direction: column;
-  top: 56px;
-  left: 430px;
-  z-index: 1000;
-  background-color: #ffffff;
-  border-radius: 14px;
-  border: 1px solid #92929d;
-}
+    display: flex;
+    flex-direction: column;
+    top: 56px;
+    left: 430px;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #92929d;
+  }
 
-.replyCollection {
-  width: 589px;
-  height: 175px;
-  margin: 0px auto;
-  display: flex;
-  gap: 8px;
-}
+  .replyCollection {
+    width: 589px;
+    height: 175px;
+    margin: 0px auto;
+    display: flex;
+    gap: 8px;
+  }
 
-.replyPopHeader {
-  width: 100px;
-  height: 41px;
-  margin-top: 16px;
+  .replyPopHeader {
+    width: 100px;
+    height: 41px;
+    margin-top: 16px;
     div {
       margin-left: 20px;
     }
-}
+  }
 
-.replyAvatar {
-  width: 50px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
+  .replyAvatar {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
 
-.replyDivider {
-  width: 2px;
-  height: 86px;
-  background: #ccd6dd;
-}
+  .replyDivider {
+    width: 2px;
+    height: 86px;
+    background: #ccd6dd;
+  }
 
-.replyButton {
-  position: absolute;
-  top: 88.8%;
-  right: 16px;
-}
+  .replyButton {
+    position: absolute;
+    top: 88.8%;
+    right: 16px;
+  }
 
-.replyInfo {
-  width: 100%;
-  height: 26px;
-  margin-top: 8px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 8px;
-}
+  .replyInfo {
+    width: 100%;
+    height: 26px;
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 8px;
+  }
 
-.replyTo {
-  width: 100%;
-  height: 22px;
-  font-family: "Noto Sans TC";
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
-  color: #6c757d;
-}
+  .replyTo {
+    width: 100%;
+    height: 22px;
+    font-family: "Noto Sans TC";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #6c757d;
+  }
 
-.replyName {
-  width: 100%;
-  height: 22px;
-  font-family: "Noto Sans TC";
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
-  color: #ff6600;
+  .replyName {
+    width: 100%;
+    height: 22px;
+    font-family: "Noto Sans TC";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ff6600;
+  }
 }
-}
-

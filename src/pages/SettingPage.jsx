@@ -62,9 +62,9 @@ const SettingPage = () => {
         <div className={styles.middleColumn}>
           <div className={styles.mainBackground}>
             <div className={styles.header}>帳戶設定</div>
-
+<form>
             <div className={styles.inputContainer}>
-              <label className={styles.input}>
+              <label>
                 <div>帳號</div>
                 <input
                   type="text"
@@ -76,7 +76,7 @@ const SettingPage = () => {
             </div>
 
             <div className={styles.inputContainer}>
-              <label className={styles.input}>
+              <label>
                 <div>名稱</div>
                 <input
                   type="text"
@@ -88,8 +88,8 @@ const SettingPage = () => {
             </div>
 
             <div className={styles.inputContainer}>
-              <label className={styles.input}>
-                <div>Email</div>
+              <label>
+                Email
                 <input
                   type="text"
                   value={email}
@@ -100,8 +100,8 @@ const SettingPage = () => {
             </div>
 
             <div className={styles.inputContainer}>
-              <label className={styles.input}>
-                <div>密碼</div>
+              <label>
+                密碼
                 <input
                   type="password"
                   value={password}
@@ -112,8 +112,8 @@ const SettingPage = () => {
             </div>
 
             <div className={styles.inputContainer}>
-              <label className={styles.input}>
-                <div>密碼再確認</div>
+              <label>
+                密碼再確認
                 <input
                   type="password"
                   value={checkPassword}
@@ -122,7 +122,7 @@ const SettingPage = () => {
                 />
               </label>
             </div>
-
+</form>
             <button className={styles.storeButton}>儲存</button>
 
             {twitPop && (

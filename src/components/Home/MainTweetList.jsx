@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 import { getTweetsAll } from '../../api/tweets'
 
 const MainTweetList = ({
-  user,
-  setReplyTwit,
+  setSpecTweet,
   setReplyPop,
 }) => {
 
@@ -27,7 +26,13 @@ const MainTweetList = ({
   return (
     <div className={styles.list}>
       {tweets.map((tweet) => {
-        return <MainTweetForm tweet={tweet} setReplyPop={setReplyPop} setReplyTwit={setReplyTwit}/>;
+        return (
+          <MainTweetForm
+            tweet={tweet}
+            setReplyPop={setReplyPop}
+            setSpecTweet={setSpecTweet}
+          />
+        );
       })}
     </div>
   );

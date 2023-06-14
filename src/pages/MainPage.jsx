@@ -7,11 +7,11 @@ import ReplyPopUp from "../components/Home/ReplyPopUp";
 import { useState, useEffect } from "react";
 import { getUser } from "../api/user";
 import { useNavigate } from "react-router-dom";
-import ReplyTwits from "../common/Reply/ReplyTwits";
+import SpecTweet from "../common/Reply/SpecTweet";
 
 const MainPage = () => {
   const [twitPop, setTwitPop] = useState(false);
-  const [replyTwit, setReplyTwit] = useState(false);
+  const [specTweet, setSpecTweet] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [user, setUser] = useState({});
 
@@ -54,19 +54,26 @@ const MainPage = () => {
           <NavBar twitPop={twitPop} setTwitPop={setTwitPop} />
         </div>
         {/* 中間推文部分 */}
-       
+
         <div className={styles.middleColumn}>
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
-             {replyTwit? (<ReplyTwits setReplyTwit={setReplyTwit} setReplyPop={setReplyPop}/>) : (<Twits
+            {specTweet ? (
+              <SpecTweet
+                setSpecTweet={setSpecTweet}
+                setReplyPop={setReplyPop}
+              />
+            ) : (
+              <Twits
                 twitPop={twitPop}
                 setTwitPop={setTwitPop}
-                replyTwit={replyTwit}
+                specTweet={specTweet}
+                setSpecTweet={setSpecTweet}
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
-                setReplyTwit={setReplyTwit}
                 user={user}
-              />) }
-              
+              />
+            )}
+
             {replyPop && (
               <ReplyPopUp
                 replyPop={replyPop}

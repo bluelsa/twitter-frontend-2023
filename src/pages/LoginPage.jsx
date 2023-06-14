@@ -62,9 +62,10 @@ const LoginPage = () => {
         </div>
         <h1>登入 Alphitter</h1>
         <div className={styles.inputGroup}>
+          <form>
           <div className={styles.inputContainer}>
-            <label className={styles.input}>
-              <div>帳號</div>
+            <label>
+              帳號
               <input
                 type="text"
                 value={account}
@@ -75,8 +76,8 @@ const LoginPage = () => {
           </div>
 
           <div className={styles.inputContainer}>
-            <label className={styles.input}>
-              <div>密碼</div>
+            <label>
+              密碼
               <input
                 type="password"
                 value={password}
@@ -85,6 +86,7 @@ const LoginPage = () => {
               />
             </label>
           </div>
+          </form>
         </div>
 
         <button className={styles.button} onClick={handleClick}>

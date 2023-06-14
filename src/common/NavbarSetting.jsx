@@ -12,6 +12,7 @@ const NavbarSetting = ({ setTwitPop }) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
+    localStorage.removeItem("otherId");
   };
 
   return (

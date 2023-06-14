@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import { getUser } from "../api/user";
 import { useNavigate } from "react-router-dom";
 
-const UserProfilePage = () => {
+const UserPage = () => {
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const[main, setMain] = useState(true)
@@ -109,4 +109,4 @@ const UserProfilePage = () => {
   );
 };
 
-export default UserProfilePage;
+export default UserPage;
