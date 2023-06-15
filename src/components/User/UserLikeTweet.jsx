@@ -18,21 +18,26 @@ const handleOtherPage = () => {
   }
   return;
 };
+
+const handleReplyTweet = () => {
+  localStorage.setItem("tweetId", userLike.Tweet.id);
+}
+
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
           <div className={styles.avatarWrap} onClick={handleOtherPage}>
-            <img src="https://i.pravatar.cc" alt="avatar" />
+            <img src={userLike.Tweet.TweetUser.avatar} alt="avatar" />
           </div>
           <div className={styles.tweetContent}>
             <div>
               <div className={styles.nameInfo}>
                 <div className={styles.tweetName}>
-                  {userLike.Tweet.name}
+                  {userLike.Tweet.TweetUser.name}{" "}
                 </div>
                 <div className={styles.tweetTime}>
-                  @{userLike.Tweet.account} &bull;3小時
+                  @{userLike.Tweet.TweetUser.account} &bull;3小時
                 </div>
               </div>
             </div>
@@ -44,7 +49,8 @@ const handleOtherPage = () => {
                 <ReplyIcon
                   className={styles.icon}
                   onClick={() => {
-                    setReplyPop(true);
+                    setReplyPop(true)
+                    handleReplyTweet();
                   }}
                 />
                 <span>{userLike.Tweet.repliedCount}</span>

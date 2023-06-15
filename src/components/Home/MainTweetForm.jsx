@@ -18,6 +18,10 @@ const MainTwitForm = ({tweet, setReplyPop, setSpecTweet}) => {
     return
   }
 
+const handleReplyTweet = () => {
+  localStorage.setItem("tweetId", tweet.id);
+};
+
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
@@ -50,7 +54,8 @@ const MainTwitForm = ({tweet, setReplyPop, setSpecTweet}) => {
                 <ReplyIcon
                   className={styles.icon}
                   onClick={() => {
-                    setReplyPop(true);
+                    setReplyPop(true)
+                    handleReplyTweet();
                   }}
                 />
                 <span>{tweet.repliedCount}</span>

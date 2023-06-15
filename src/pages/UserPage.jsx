@@ -25,7 +25,7 @@ const UserPage = () => {
 
   useEffect(() => {
     const id = localStorage.getItem("userId");
-    const getUsersAsync = async (id) => {
+    const getUsersAsync = async () => {
       try {
         const user = await getUser(id);
         if (!user.status) {

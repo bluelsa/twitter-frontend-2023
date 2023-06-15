@@ -33,28 +33,28 @@ export const getTweetsAll = async () => {
 };
 
 // get觀看一篇特定推文tweets/:tweetid
-export const getTweetsId = async (id) => {
+export const getTweet = async (id) => {
   try {
     const { data } = await axiosInstance.get(`${baseURL}/${id}`);
     return data;
   } catch (error) {
-    console.error("[Get getTweetsId failed]: ", error);
+    console.error("[Get getTweetId failed]: ", error);
   }
 };
 
 // get觀看有回覆推文的推文api/tweets/id/replies
-export const getTweetsReplies = async (id) => {
+export const getTweetReplies = async (id) => {
   try {
     const { data } = await axiosInstance.get(`${baseURL}/${id}/replies`);
     return data;
   } catch (error) {
-    console.error("[Get  getTweetsReplies failed]: ", error);
+    console.error("[Get  getTweetReplies failed]: ", error);
   }
 };
 
 //post 新增推文 api/tweets
 
-export const tweetCreate = async ({ id, description }) => {
+export const createTweet = async ({ id, description }) => {
   try {
     const { data } = await axiosInstance.post(`${baseURL}`, { description });
     return data;
@@ -65,7 +65,7 @@ export const tweetCreate = async ({ id, description }) => {
 
 //post  回覆推文 api/tweets/id/replies
 
-export const tweetsReplies = async ({ id, description }) => {
+export const postReply = async ({ id, description }) => {
   try {
     const { data } = await axiosInstance.post(`${baseURL}/${id}/replies`, {
       description,
@@ -77,7 +77,7 @@ export const tweetsReplies = async ({ id, description }) => {
 };
 
 //post 對推文按讚 api/tweets/id/like
-export const tweetsLike = async (id) => {
+export const postLike = async (id) => {
   try {
     const { data } = await axiosInstance.post(`${baseURL}/${id}/like`);
     return data;
@@ -87,7 +87,7 @@ export const tweetsLike = async (id) => {
 };
 
 //post 對推文取消按讚 api/tweets/id/unlike
-export const tweetsUnlike = async (id) => {
+export const deleteLike = async (id) => {
   try {
     const { data } = await axiosInstance.post(`${baseURL}/${id}/unlike`);
     return data;

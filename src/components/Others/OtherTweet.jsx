@@ -4,12 +4,12 @@ import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
 
-const OtherTweet = ({ 
-  otherTweet, 
-  setReplyPop }) => {
+const OtherTweet = ({ otherTweet, setReplyPop }) => {
+  const [isLike, setIsLike] = useState(false);
 
-    const [isLike, setIsLike] = useState(false);
-
+  const handleReplyTweet = () => {
+    localStorage.setItem("tweetId", otherTweet.id);
+  };
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
@@ -35,6 +35,7 @@ const OtherTweet = ({
                   className={styles.icon}
                   onClick={() => {
                     setReplyPop(true);
+                    handleReplyTweet();
                   }}
                 />
                 <span>{otherTweet.repliedCount}</span>

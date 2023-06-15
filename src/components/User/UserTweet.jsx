@@ -8,6 +8,10 @@ const UserTweet = ({ user, userTweet, setReplyPop }) => {
 
   const [isLike, setIsLike] = useState(false);
 
+const handleReplyTweet = () => {
+  localStorage.setItem("tweetId", userTweet.id);
+};
+
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
@@ -30,7 +34,8 @@ const UserTweet = ({ user, userTweet, setReplyPop }) => {
                 <ReplyIcon
                   className={styles.icon}
                   onClick={() => {
-                    setReplyPop(true);
+                    setReplyPop(true)
+                    handleReplyTweet();
                   }}
                 />
                 <span>{userTweet.tweetReplyCount}</span>

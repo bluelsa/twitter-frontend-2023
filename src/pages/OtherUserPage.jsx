@@ -11,10 +11,10 @@ const OtherUserPage = () => {
   const [user,setUser] = useState({})
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
-
+// console.log('reply: '+replyPop)
 useEffect(() => {
   const id = localStorage.getItem("userId");
-  const getUsersAsync = async (id) => {
+  const getUserAsync = async (id) => {
     try {
       const user = await getUser(id);
       if (!user.status) {
@@ -24,7 +24,7 @@ useEffect(() => {
       console.error(error);
     } 
   };
-  getUsersAsync(id);
+  getUserAsync(id);
 }, []);
 
   const handleOtherIdRemove = () => {
