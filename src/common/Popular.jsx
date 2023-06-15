@@ -8,8 +8,9 @@ const Popular = () => {
         <div className={styles.popularTitle}>
           <div>推薦跟隨</div>
         </div>
-        <div className={styles.popularRectangle}></div>
         <div className={styles.usersWrapper}>
+          <Follower />
+          <Follower />
           <Follower />
           <Follower />
           <Follower />

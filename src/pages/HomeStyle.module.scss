@@ -135,16 +135,12 @@
 
 //TwitForm.jsx
 .twitAvatar {
+  img {
   position: relative;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #c4c4c4;
   margin-left: 2.3px;
-  background: url(../assets/image/Head.svg);
-
-  &:hover {
-    cursor: pointer;
   }
 }
 
@@ -236,26 +232,26 @@
 
 //Right popular section
 .rightColumn {
-  position: relative;
   width: 100%;
   height: 100vh;
 
   .popularList {
-    position: absolute;
+    margin-top: 16px;
+    margin-left: 24px;
     width: 300px;
-    height: 100vh;
-    overflow: scroll;
-    // height: 731px;
-    top: 16px;
-    left: 25px;
+    max-height: 100%;
     border-radius: 16px;
     background-color: #fafafb;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
-    .popularRectangle {
-      width: 273px;
-      height: 1px;
-      border: none;
-      background-color: #e6ecf0;
+    &::-webkit-scrollbar {
+  display: none;
+}
+
+    .usersWrapper {
+      height: 100%;
+      border-top: 1px solid #E6ECF0;
     }
 
     .popularTitle {
@@ -291,6 +287,7 @@
     grid-gap: 8px;
 
     .follower {
+      margin-left: 8px;
       width: 100%;
       height: 47px;
 
@@ -322,6 +319,7 @@
     .buttonPosition {
       width: 100%;
       height: 50px;
+      margin-left: 13px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
