@@ -1,27 +1,44 @@
 import styles from "../pages/HomeStyle.module.scss";
-import Follower from "../components/Home/Follower";
+import PopularUser from "../components/Home/PopularUser";
+import { getPopular } from "../api/user";
+import { useState, useEffect } from 'react'
 
 const Popular = () => {
+  const [popularList, setPopularList] = useState(undefined);
+
+  useEffect(() => {
+    const getPopularListAsync = async () => {
+      try {
+        const popularList = await getPopular();
+          setPopularList(popularList);
+          console.log("popular: "+ popularList)
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getPopularListAsync();
+  }, []);
+
   return (
-    <div className={styles.rightColumn}>
-      <div className={styles.popularList}>
-        <div className={styles.popularTitle}>
-          <div>推薦跟隨</div>
+    <>
+      {popularList ? (
+        <div className={styles.rightColumn}>
+          <div className={styles.popularList}>
+            <div className={styles.popularTitle}>
+              <div>推薦跟隨</div>
+            </div>
+            <div className={styles.usersWrapper}>
+              {popularList.map((popular) => {
+                return <PopularUser popular={popular}/>;
+              })}
+            </div>
+          </div>
         </div>
-        <div className={styles.usersWrapper}>
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
-        </div>
-      </div>
-    </div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

@@ -60,7 +60,7 @@ export const getUserFollowings = async (id) => {
     const { data } = await axiosInstance.get(`${userURL}/${id}/followings`);
     return data;
   } catch (error) {
-    console.error("[Get User failed]: ", error);
+    console.error("[Get User followings failed]: ", error);
   }
 };
 
@@ -73,20 +73,28 @@ export const getUserFollowers = async (id) => {
   }
 };
 
+export const getPopular = async () => {
+  try {
+    const { data } = await axiosInstance.get(`${userURL}/top`);
+    return data;
+  } catch (error) {
+    console.error("[Get Popular failed]: ", error);
+  }
+};
+
 export const putUser = async (payload) => {
-  const { id, name, introduction } = payload
+  const { id, name, introduction, avatar, background } = payload;
   try {
     console.log(`${userURL}/${id}`);
     const { data } = await axiosInstance.put(`${userURL}/${id}`, {
       name,
-      introduction
-    }) ;
-    
+      introduction,
+      avatar,
+      background
+    });
+
     return data;
   } catch (error) {
     console.error("[put User failed]: ", error);
   }
 };
-
-
-

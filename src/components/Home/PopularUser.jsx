@@ -2,9 +2,9 @@ import { ReactComponent as FollowButton } from "../../assets/image/FollowButton.
 import { ReactComponent as StopFollow } from "../../assets/image/StopFollow.svg";
 import { useState } from 'react'
 import styles from "../../pages/HomeStyle.module.scss";
-const Follower = () => {
+const PopularUser = ({popular}) => {
   
-const [isFollow, setIsFollow] = useState(true)
+const [isFollowed, setIsFollowed] = useState(popular.isFollowed)
 
   return (
     <div className={styles.followerContainer}>
@@ -13,15 +13,15 @@ const [isFollow, setIsFollow] = useState(true)
           <img src="https://i.pravatar.cc" alt="avatar" />
         </div>
         <div className={styles.follower}>
-          <div className={styles.followerName}>Pizza Hut</div>
-          <div className={styles.followerTime}>@pizzahut</div>
+          <div className={styles.followerName}>{popular.name}</div>
+          <div className={styles.followerTime}>@{popular.account}</div>
         </div>
         <div className={styles.buttonPosition}>
-          {isFollow?(<FollowButton onClick={()=>{setIsFollow(false)}}/>):(<StopFollow onClick={()=>{setIsFollow(true)}}/>)}
+          {isFollowed?(<FollowButton onClick={()=>{setIsFollowed(false)}}/>):(<StopFollow onClick={()=>{setIsFollowed(true)}}/>)}
         </div>
       </div>
     </div>
   );
 };
 
-export default Follower;
+export default PopularUser;
