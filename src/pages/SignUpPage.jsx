@@ -59,7 +59,7 @@ const handleClosePopup = () => {
           <TimePopup notification="error" title="請輸入完整資訊" />
         )}
         {notiStatus === "code" && (
-          <TimePopup notification="error" title="再次確認請輸入相同密碼" />
+          <TimePopup notification="error" title="請輸入相同密碼" />
         )}
         {notiStatus === "finish" && ""}
       </div>

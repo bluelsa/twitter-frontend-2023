@@ -11,7 +11,6 @@ const Popular = () => {
       try {
         const popularList = await getPopular();
           setPopularList(popularList);
-          console.log("popular: "+ popularList)
       } catch (error) {
         console.error(error);
       }

@@ -31,14 +31,14 @@ const OtherProfile = ({otherUser}) => {
         <div>
           <img
             className={styles.cover}
-            src="https://picsum.photos/639/200"
+            src={otherUser.background}
             alt="cover"
           />
         </div>
         <div>
           <img
             className={styles.avatar}
-            src="https://i.pravatar.cc"
+            src={otherUser.avatar}
             alt="avatar"
           />
         </div>

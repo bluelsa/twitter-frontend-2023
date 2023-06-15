@@ -6,23 +6,28 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUser } from "../api/user";
 import TwitPopUp from "../common/TwitPopUp";
+import TimePopup from "../components/TimePopup/TimePopup";
+import { putSetting } from '../api/user'
 
 const SettingPage = () => {
   //identification
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(undefined);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   //input content
   const [name, setName] = useState('');
-  const [account, setAccount] = useState('user.account');
-  const [email, setEmail] = useState('user.email');
+  const [account, setAccount] = useState('');
+  const [email, setEmail] = useState('');
+  const [introduction, setIntroduction] = useState('')
   const [password, setPassword] = useState('');
   const [checkPassword, setCheckPassword] = useState('');
 
   // popup window status
   const [twitPop, setTwitPop] = useState(false);
+  // notification
+  const [notiStatus, setNotiStatus] = useState("finished");
 
   useEffect(() => {
     const id = localStorage.getItem("userId");
@@ -31,9 +36,6 @@ const SettingPage = () => {
         const user = await getUser(id);
         if (!user.status) {
           setUser(user)
-          setName(user.name)
-          setAccount(user.account)
-          setEmail(user.email)
           setIsAuthenticated(true);
         }
       } catch (error) {
@@ -53,7 +55,56 @@ const SettingPage = () => {
     }
   }, [navigate, isAuthenticated, isLoading]);
 
+  const id = localStorage.getItem('userId')
+
+  const handleChange = async () => {
+    console.log('click')
+    if ( password !== checkPassword ) {
+      setNotiStatus("wrongPassword")
+      return
+    }
+    try {
+      const data = await putSetting({
+        id,
+        account,
+        name,
+        email,
+        introduction,
+        password,
+        checkPassword,
+      })
+      console.log('account: '+account)
+      console.log("name: " + name);
+      console.log("email: " + email);
+      console.log("password: " + password);
+      console.log("checkPassword: " + checkPassword);
+      
+    } catch (error) {
+      // if (data.message === 'Error: Account already exist') {
+
+      // }
+      setNotiStatus('wrongAccount')
+      // console.error(error)
+    }
+  }
+
   return (
+    <>
+    {user ? (<>
+      <div className={styles.notiContainer} onClick={()=> {setNotiStatus('finished')}}>
+        {notiStatus === "success" && (
+          <TimePopup notification="success" title="儲存成功" />
+        )}
+        {notiStatus === "wrongPassword" && (
+          <TimePopup notification="error" title="請輸入相同密碼" />
+        )}
+        {notiStatus === "wrongAccount" && (
+          <TimePopup notification="error" title="帳號已存在" />
+        )}
+        {notiStatus === "wrongEmail" && (
+          <TimePopup notification="error" title="Email已存在" />
+        )}
+        </div>
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>
         <div className={styles.leftColumn}>
@@ -69,7 +120,7 @@ const SettingPage = () => {
                 <input
                   type="text"
                   value={account}
-                  placeholder={account}
+                  placeholder={user.account}
                   onChange={(e) => setAccount(e.target.value)}
                 />
               </label>
@@ -81,7 +132,7 @@ const SettingPage = () => {
                 <input
                   type="text"
                   value={name}
-                  placeholder={name}
+                  placeholder={user.name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </label>
@@ -93,7 +144,7 @@ const SettingPage = () => {
                 <input
                   type="text"
                   value={email}
-                  placeholder={email}
+                  placeholder={user.email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </label>
@@ -123,7 +174,7 @@ const SettingPage = () => {
               </label>
             </div>
 </form>
-            <button className={styles.storeButton}>儲存</button>
+            <button className={styles.storeButton} onClick={handleChange}>儲存</button>
 
             {twitPop && (
               <TwitPopUp
@@ -136,6 +187,8 @@ const SettingPage = () => {
         </div>
       </div>
     </div>
+    </>):(<></>)}
+    </>
   );
 };
 

@@ -6,23 +6,21 @@ import OtherReplyTweet from "./OtherReplyTweet";
 const OtherReplyList = () => {
   const [otherReplies, setOtherReplies] = useState([]);
 
- const otherId = localStorage.getItem("otherId");
+  const otherId = localStorage.getItem("otherId");
 
- useEffect(() => {
-   const getUserReplyAsync = async (otherId) => {
-     try {
-       const otherReplies = await getUserReplies(otherId);
-       if (!otherReplies.status) {
-         setOtherReplies(otherReplies);
-       }
-      //  console.log('otherTweets '+ JSON.stringify(otherReplies))
-     } catch (error) {
-       console.error(error);
-     }
-   };
-   getUserReplyAsync(otherId);
- }, [otherId]);
-
+  useEffect(() => {
+    const getUserReplyAsync = async (otherId) => {
+      try {
+        const otherReplies = await getUserReplies(otherId);
+        if (!otherReplies.status) {
+          setOtherReplies(otherReplies);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUserReplyAsync(otherId);
+  }, [otherId]);
 
   return (
     <div className={styles.userList}>
