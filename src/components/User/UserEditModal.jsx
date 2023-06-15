@@ -42,9 +42,8 @@ const UserEditModal = ({ user, setEditPopup }) => {
       console.error(error);
     }
     setEditPopup(false);
-
+    window.location.reload();
   };
-  // ＊需要畫面重新整理，才會render修改過後的個人資料
 
   const handleClosePopup = () => {
     setNotiStatus("finished");

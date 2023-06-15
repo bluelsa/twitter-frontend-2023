@@ -1,6 +1,5 @@
 import styles from "./Setting.module.scss";
 
-
 import NavbarSetting from "../common/NavbarSetting";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -63,8 +62,8 @@ const SettingPage = () => {
       setNotiStatus("wrongPassword")
       return
     }
-    try {
-      const data = await putSetting({
+
+    const data = await putSetting({
         id,
         account,
         name,
@@ -73,20 +72,50 @@ const SettingPage = () => {
         password,
         checkPassword,
       })
-      console.log('account: '+account)
-      console.log("name: " + name);
-      console.log("email: " + email);
-      console.log("password: " + password);
-      console.log("checkPassword: " + checkPassword);
-      
-    } catch (error) {
-      // if (data.message === 'Error: Account already exist') {
 
-      // }
-      setNotiStatus('wrongAccount')
-      // console.error(error)
-    }
-  }
+      if (data.id) {
+        window.location.reload()
+        return
+      } else {
+        if (data.message === 'Error: Account already exist') {
+          setNotiStatus("wrongAccount");
+        }
+        if (data.message === 'Error: Email already exist') {
+          setNotiStatus("wrongEmail");
+        }
+      }
+      
+  //   try {
+  //     await putSetting({
+  //       id,
+  //       account,
+  //       name,
+  //       email,
+  //       introduction,
+  //       password,
+  //       checkPassword,
+  //     })
+  //     console.log('account: '+account)
+  //     console.log("name: " + name);
+  //     console.log("email: " + email);
+  //     console.log("password: " + password);
+  //     console.log("checkPassword: " + checkPassword);
+      
+  //   } catch (error) {
+  //     console.log('error click')
+  //     // const data = await putSetting({})
+  //     console.log('setting: '+error.response.data)
+  //     if (error.response.data.message === 'Error: Account already exist') {
+  //     // const
+  //     // }
+  //     setNotiStatus('wrongAccount')
+  //     // console.error(error)
+  //   }
+  //   if (error.response.data.message === "Error: Email already exist") {
+  //     setNotiStatus("wrongEmail");
+  //   }
+  // }
+}
 
   return (
     <>

@@ -92,11 +92,11 @@ export const putUser = async (payload) => {
     putFormData.append("avatar", avatar);
     putFormData.append("background", background);
     const { data } = await axiosInstance.put(`${userURL}/${id}`, putFormData, {
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'multipart/form-data',
-  } 
-});
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
     return data;
   } catch (error) {
@@ -105,7 +105,8 @@ export const putUser = async (payload) => {
 };
 
 export const putSetting = async (payload) => {
-  const { id, account, name, email,introduction, password, checkPassword } = payload;
+  const { id, account, name, email, introduction, password, checkPassword } =
+    payload;
   try {
     const { data } = await axiosInstance.put(`${userURL}/${id}/setting`, {
       account,
@@ -113,8 +114,9 @@ export const putSetting = async (payload) => {
       email,
       introduction,
       password,
-      checkPassword
+      checkPassword,
     });
+
     // const FormData = require("form-data");
     // let putFormData = new FormData();
     // putFormData.append("name", name);
@@ -130,6 +132,10 @@ export const putSetting = async (payload) => {
 
     return data;
   } catch (error) {
-    console.error("[put Setting failed]: ", error);
+    if ( error.response.status === 400) {
+    console.log(error.response.data);
+    return error.response.data
+    // console.error("[put Setting failed]: ", error);
+    }
   }
 };
