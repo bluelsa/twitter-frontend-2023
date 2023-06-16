@@ -26,7 +26,6 @@ const OtherMain = ({
 
 useEffect(() => {
   const id = localStorage.getItem("otherId");
-  console.log('mainOtherId ' + id)
   const getUsersAsync = async () => {
     try {
       const otherUser = await getUser(id);
@@ -37,7 +36,6 @@ useEffect(() => {
       console.error(error);
     }
   };
-  console.log('aaa: '+JSON.stringify(otherUser))
   getUsersAsync(id);
 }, []);
 

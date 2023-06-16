@@ -9,7 +9,7 @@ const OtherTweet = ({
   setReplyPop, 
   setSpecTweet 
 }) => {
-  const [isLike, setIsLike] = useState(false);
+  const [isLike, setIsLike] = useState(otherTweet.isLiked);
 
   const handleTweet = () => {
     localStorage.setItem("tweetId", otherTweet.id);

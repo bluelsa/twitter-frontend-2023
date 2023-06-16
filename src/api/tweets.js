@@ -77,21 +77,22 @@ export const createReply = async ({ id, comment }) => {
 };
 
 //post 對推文按讚 api/tweets/id/like
-export const postLike = async (id) => {
+export const createLike = async (tweetId) => {
   try {
-    const { data } = await axiosInstance.post(`${baseURL}/${id}/like`);
+    const { data } = await axiosInstance.post(`${baseURL}/${tweetId}/like`);
     return data;
   } catch (error) {
-    console.log("[Like create failed}:", error);
+    console.log("[Create Like failed]:", error);
   }
 };
 
 //post 對推文取消按讚 api/tweets/id/unlike
-export const deleteLike = async (id) => {
+export const deleteLike = async (tweetId) => {
   try {
-    const { data } = await axiosInstance.post(`${baseURL}/${id}/unlike`);
+    const { data } = await axiosInstance.post(`${baseURL}/${tweetId}/unlike`);
     return data;
   } catch (error) {
-    console.log(`Unlike create failed:`, error);
+    console.log("[Create Unlike failed]:", error);
   }
 };
+

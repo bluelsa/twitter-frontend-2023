@@ -6,7 +6,7 @@ import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
 const UserTweet = ({ userTweet, setMain, setSpecTweet, setReplyPop }) => {
-  const [isLike, setIsLike] = useState(false);
+  const [isLike, setIsLike] = useState(userTweet.isLiked);
   // const navigate = useNavigate()
 
   const handleTweet = () => {
@@ -36,7 +36,6 @@ const UserTweet = ({ userTweet, setMain, setSpecTweet, setReplyPop }) => {
               className={styles.tweetArticle}
               onClick={() => {
                 setSpecTweet(true);
-
                 handleTweet();
               }}
             >
@@ -51,7 +50,7 @@ const UserTweet = ({ userTweet, setMain, setSpecTweet, setReplyPop }) => {
                     handleTweet();
                   }}
                 />
-                <span>{userTweet.tweetReplyCount}</span>
+                <span>{userTweet.repliedCount}</span>
               </div>
               <div className={styles.likeNum}>
                 {isLike ? (

@@ -6,7 +6,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
-  const [isLike, setIsLike] = useState(true);
+  const [isLike, setIsLike] = useState(userLike.isLiked);
+  console.log('like:' + isLike)
 
   const navigate = useNavigate();
 

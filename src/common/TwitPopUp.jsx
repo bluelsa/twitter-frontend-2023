@@ -23,8 +23,6 @@ const TwitPopUp = ({ user, setTwitPop }) => {
       const data = await createTweet({
         description,
       });
-console.log("twitPopup: " + description);
-console.log("twitData: " + data);
       if (data.description) {
         setDescription("");
         setTwitPop(false);
@@ -32,7 +30,7 @@ console.log("twitData: " + data);
     } catch (error) {
       console.error(error);
     } finally {
-    setNotiStatus('success')}
+    window.location.reload()}
   };
 
   const handleClosePopup = () => {

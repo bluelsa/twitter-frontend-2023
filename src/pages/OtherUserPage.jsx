@@ -13,7 +13,7 @@ const OtherUserPage = () => {
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
-  // console.log('reply: '+replyPop)
+
   useEffect(() => {
     const id = localStorage.getItem("userId");
     const getUserAsync = async (id) => {

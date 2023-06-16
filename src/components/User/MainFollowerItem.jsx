@@ -2,9 +2,28 @@ import styles from "../Others/otherStyle.module.scss";
 import { ReactComponent as FollowButton } from "../../assets/image/FollowButton.svg";
 import { ReactComponent as StopFollow } from "../../assets/image/StopFollow.svg";
 import { useState } from "react";
+import { createFollow, deleteFollow } from "../../api/followship";
 
 const MainFollowerItem = ({ follower }) => {
-  const [isFollowing, setIsFollowing] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(follower.isFollowed);
+
+const handleFollow = async (id) => {
+  try {
+    await createFollow(id);
+    setIsFollowing(true);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const handleUnfollow = async (id) => {
+  try {
+    await deleteFollow(id);
+    setIsFollowing(false);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <div className={styles.followeContainer}>
@@ -20,9 +39,19 @@ const MainFollowerItem = ({ follower }) => {
             </div>
             <div className={styles.followIcon}>
               {isFollowing ? (
-                <FollowButton onClick={() => setIsFollowing(false)} />
+                <FollowButton
+                  onClick={() => {
+                    setIsFollowing(false);
+                    handleUnfollow(follower.followerId);
+                  }}
+                />
               ) : (
-                <StopFollow onClick={() => setIsFollowing(true)} />
+                <StopFollow
+                  onClick={() => {
+                    setIsFollowing(true);
+                    handleFollow(follower.followerId);
+                  }}
+                />
               )}
             </div>
           </div>

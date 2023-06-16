@@ -7,7 +7,8 @@ import { useState } from "react";
 // import { getUser } from "../../api/user";
 
 const OtherProfile = ({otherUser}) => {
-  const [isFollow, setIsFollow] = useState(true);
+  const [isFollow, setIsFollow] = useState(otherUser.isFollowed);
+  console.log('other: '+ JSON.stringify(otherUser))
   // const [otherUser, setOtherUser] = useState({});
 
   // useEffect(() => {

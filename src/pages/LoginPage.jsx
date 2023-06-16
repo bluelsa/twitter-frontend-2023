@@ -46,10 +46,7 @@ const LoginPage = () => {
           <TimePopup notification="success" title="登入成功" />
         )}
         {notiStatus === "failed" && (
-          <TimePopup
-            notification="error"
-            title="帳號密碼錯誤"
-          />
+          <TimePopup notification="error" title="帳號或密碼輸入錯誤" />
         )}
         {notiStatus === "incomplete" && (
           <TimePopup notification="error" title="請輸入完整資訊" />
@@ -63,29 +60,30 @@ const LoginPage = () => {
         <h1>登入 Alphitter</h1>
         <div className={styles.inputGroup}>
           <form>
-          <div className={styles.inputContainer}>
-            <label>
-              帳號
-              <input
-                type="text"
-                value={account}
-                placeholder="請輸入帳號"
-                onChange={(e) => setAccount(e.target.value)}
-              />
-            </label>
-          </div>
+            <div className={styles.inputContainer}>
+              <label>
+                帳號
+                <input
+                  type="text"
+                  value={account}
+                  placeholder="請輸入帳號"
+                  onChange={(e) => setAccount(e.target.value)}
+                />
+              </label>
+            </div>
 
-          <div className={styles.inputContainer}>
-            <label>
-              密碼
-              <input
-                type="password"
-                value={password}
-                placeholder="請輸入密碼"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-          </div>
+            <div className={styles.inputContainer}>
+              <label>
+                密碼
+                <input
+                  type="password"
+                  value={password}
+                  placeholder="請輸入密碼"
+                  autoComplete="current-password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </label>
+            </div>
           </form>
         </div>
 
