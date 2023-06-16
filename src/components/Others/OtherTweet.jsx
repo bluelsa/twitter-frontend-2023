@@ -4,17 +4,21 @@ import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
 
-const OtherTweet = ({ otherTweet, setReplyPop }) => {
+const OtherTweet = ({ 
+  otherTweet, 
+  setReplyPop, 
+  setSpecTweet 
+}) => {
   const [isLike, setIsLike] = useState(false);
 
-  const handleReplyTweet = () => {
+  const handleTweet = () => {
     localStorage.setItem("tweetId", otherTweet.id);
   };
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
-          <div className={styles.avatarWrap}>
+          <div className={styles.tweetAvatarWrap}>
             <img src={otherTweet.TweetUser.avatar} alt="avatar" />
           </div>
           <div className={styles.tweetContent}>
@@ -28,14 +32,22 @@ const OtherTweet = ({ otherTweet, setReplyPop }) => {
                 </div>
               </div>
             </div>
-            <div className={styles.tweetArticle}>{otherTweet.description}</div>
+            <div
+              className={styles.tweetArticle}
+              onClick={() => {
+                setSpecTweet(true);
+                handleTweet();
+              }}
+            >
+              {otherTweet.description}
+            </div>
             <div className={styles.numCount}>
               <div className={styles.replyNum}>
                 <ReplyIcon
                   className={styles.icon}
                   onClick={() => {
                     setReplyPop(true);
-                    handleReplyTweet();
+                    handleTweet();
                   }}
                 />
                 <span>{otherTweet.repliedCount}</span>

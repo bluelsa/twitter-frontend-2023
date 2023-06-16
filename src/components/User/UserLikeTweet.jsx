@@ -3,31 +3,32 @@ import { ReactComponent as ReplyIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
-const UserLikeTweet = ({userLike, setReplyPop}) => {
- const [isLike, setIsLike] = useState(true);
+const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
+  const [isLike, setIsLike] = useState(true);
 
- const navigate = useNavigate()
+  const navigate = useNavigate();
 
-const handleOtherPage = () => {
-  const userId = localStorage.getItem("userId");
-  if (userId !== JSON.stringify(userLike.Tweet.UserId)) {
-    localStorage.setItem("otherId", userLike.Tweet.UserId);
-    navigate("/otheruser");
-  }
-  return;
-};
+  const handleOtherPage = () => {
+    const userId = localStorage.getItem("userId");
+    if (userId !== JSON.stringify(userLike.Tweet.UserId)) {
+      localStorage.setItem("otherId", userLike.Tweet.UserId);
+      navigate("/otheruser");
+    }
+    return;
+  };
 
-const handleReplyTweet = () => {
-  localStorage.setItem("tweetId", userLike.Tweet.id);
-}
+  const handleTweet = () => {
+    localStorage.setItem("tweetId", userLike.Tweet.id);
+    setMain(false);
+  };
 
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
-          <div className={styles.avatarWrap} onClick={handleOtherPage}>
+          <div className={styles.tweetAvatarWrap} onClick={handleOtherPage}>
             <img src={userLike.Tweet.TweetUser.avatar} alt="avatar" />
           </div>
           <div className={styles.tweetContent}>
@@ -41,7 +42,14 @@ const handleReplyTweet = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.tweetArticle}>
+            <div
+              className={styles.tweetArticle}
+              onClick={() => {
+                setSpecTweet(true);
+
+                handleTweet();
+              }}
+            >
               {userLike.Tweet.description}
             </div>
             <div className={styles.numCount}>
@@ -49,8 +57,8 @@ const handleReplyTweet = () => {
                 <ReplyIcon
                   className={styles.icon}
                   onClick={() => {
-                    setReplyPop(true)
-                    handleReplyTweet();
+                    setReplyPop(true);
+                    handleTweet();
                   }}
                 />
                 <span>{userLike.Tweet.repliedCount}</span>

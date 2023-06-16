@@ -2,7 +2,6 @@ import styles from "./editStyle.module.scss";
 import { ReactComponent as ModalX } from "../../assets/image/ModalX.svg";
 import { ReactComponent as EditTitle } from "../../assets/image/EditTitle.svg";
 import { ReactComponent as EditSave } from "../../assets/image/EditSave.svg";
-// import { ReactComponent as CameraGroup } from "../../assets/image/ImageEditor.svg";
 import { ReactComponent as DeleteCoverIcon } from "../../assets/image/delete-white.svg";
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/iconCCamera.svg";
 import { useState } from "react";
@@ -81,6 +80,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
             </div>
           </div>
           <div className={styles.imageContainer}>
+            <div className={styles.coverContainer}> 
             <img
               className={styles.cover}
               src={
@@ -90,6 +90,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
               }
               alt="cover"
             />
+            </div>
             <div className={styles.iconWrapper}>
               <div>
                 <label>
@@ -108,7 +109,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
               </div>
             </div>
             <div className={styles.avatarWrapper}>
-              <div>
+              <div className={styles.avatarContainer}>
                 <img
                   className={styles.avatar}
                   src={

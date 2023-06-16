@@ -28,14 +28,14 @@ const OtherProfile = ({otherUser}) => {
   return (
     <div className={styles.profileContainer}>
       <div className={styles.imageWrapper}>
-        <div>
+        <div className={styles.coverWrapper}>
           <img
             className={styles.cover}
             src={otherUser.background}
             alt="cover"
           />
         </div>
-        <div>
+        <div className={styles.avatarWrapper}>
           <img
             className={styles.avatar}
             src={otherUser.avatar}

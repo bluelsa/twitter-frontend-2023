@@ -5,14 +5,18 @@ import { ReactComponent as ProfileIcon } from "../assets/image/profile.svg";
 import { ReactComponent as SettingIcon } from "../assets/image/setting.svg";
 import { ReactComponent as NavOut } from "../assets/image/NavOut.svg";
 import { ReactComponent as TweetButton } from "../assets/image/tweetButton.svg";
-import { Link  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ setTwitPop }) => {
-
+  const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
-    localStorage.removeItem("otherId")
+    localStorage.removeItem("otherId");
+  };
+
+  const handleRemove = () => {
+    localStorage.removeItem("tweetId");
   };
 
   return (
@@ -22,20 +26,28 @@ const NavBar = ({ setTwitPop }) => {
           <Logo className={styles.interaction} />
         </div>
         <div className={styles.navBar}>
-          <Link to="/home">
-            <HomeActiveIcon />
-          </Link>
+          <HomeActiveIcon
+            onClick={() => {
+              navigate("/home");
+              handleRemove();
+            }}
+          />
 
-          <Link to="/user">
-            <ProfileIcon />
-          </Link>
-          <Link to="/setting">
-            <SettingIcon />
-          </Link>
+          <ProfileIcon
+            onClick={() => {
+              navigate("/user");
+              handleRemove();
+            }}
+          />
 
-          <div
-            className={styles.navBigButton}
-          >
+          <SettingIcon
+            onClick={() => {
+              navigate("/setting");
+              handleRemove();
+            }}
+          />
+
+          <div className={styles.navBigButton}>
             <TweetButton
               className={styles.interaction}
               onClick={() => {
@@ -45,9 +57,13 @@ const NavBar = ({ setTwitPop }) => {
           </div>
         </div>
         <div>
-          <Link to="/login">
-            <NavOut className={styles.logOut} onClick={handleLogout} />
-          </Link>
+          <NavOut
+            className={styles.logOut}
+            onClick={() => {
+              navigate("/login");
+              handleLogout();
+            }}
+          />
         </div>
       </nav>
     </div>

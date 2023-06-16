@@ -14,8 +14,6 @@
   height: 100vh;
   margin: 0 auto;
   display: flex;
-  // grid-template-columns: 333px 641px 426px;
-  // grid-template-rows: 1200px;
   .leftColumn {
     margin-right: 20px;
   }
@@ -26,15 +24,6 @@
     cursor: pointer;
   }
 }
-
-// 不需要的設定
-// .mainDivider {
-//   width: 640px;
-//   height: 1px;
-//   border: none;
-//   background-color: #e6ecf0;
-//   margin-bottom: 16px;
-// }
 
 //中間Content
 .scrollbar {
@@ -135,12 +124,16 @@
 
 //TwitForm.jsx
 .twitAvatar {
-  img {
   position: relative;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   margin-left: 2.3px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -246,12 +239,12 @@
     overflow-x: hidden;
 
     &::-webkit-scrollbar {
-  display: none;
-}
+      display: none;
+    }
 
     .usersWrapper {
       height: 100%;
-      border-top: 1px solid #E6ECF0;
+      border-top: 1px solid #e6ecf0;
     }
 
     .popularTitle {
@@ -329,7 +322,6 @@
 
 //TwitPopUp
 .popContainer {
-  border: 1px solid #000;
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -340,6 +332,7 @@
   display: flex;
 
   .popInner {
+    position: relative;
     margin-top: 56px;
     margin-left: 430px;
     width: 634px;
@@ -368,40 +361,57 @@
         margin-left: 19.5px;
       }
     }
-  }
-}
+    .postContainer {
+      .popContent {
+        width: 588.61px;
+        height: 50px;
+        margin-left: 24px;
+        margin-top: 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
 
-//Post
-
-.postContent {
-  width: 588.61px;
-  height: 50px;
-  margin-left: 24px;
-  margin-top: 16px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-
-  .postAvatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    &:hover {
-      cursor: pointer;
+        .popAvatar {
+          position: relative;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .popInput {
+          height: 150px;
+          margin-top: 120px;
+        }
+      }
+    }
+    .hint {
+      position: absolute;
+      right: 101px;
+      top: 165px;
+      color: #fc5a5a;
+      font-weight: 500;
     }
   }
 
+  //Post
+
   .postText {
     width: 526px;
-    height: 26px;
+    height: 100%;
+    // height: 26px;
     font-family: "Noto Sans TC";
     font-size: 18px;
     font-weight: 700;
     line-height: 26px;
     resize: none;
     border: none;
-    overflow-y: hidden;
+    // overflow-y: hidden;
     color: #6c757d;
 
     &:focus {
@@ -414,7 +424,102 @@
   }
 }
 
+.postContent {
+  width: 588.61px;
+  margin-left: 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  .postAvatar {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .postInput {
+    margin-top: 10px;
+    .postText {
+      width: 526px;
+      height: 45px;
+      font-family: "Noto Sans TC";
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 26px;
+      resize: none;
+      border: none;
+      color: #6c757d;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        cursor: text;
+      }
+    }
+  }
+}
+
 // replyPopUp
+.replyContent {
+  width: 588.61px;
+  height: 50px;
+  margin-left: 24px;
+  display: flex;
+
+  .userAvatar {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .replyInput {
+    margin-left: 8px;
+    margin-top: 10px;
+    .replyText {
+      width: 526px;
+      height: 160px;
+      font-family: "Noto Sans TC";
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 26px;
+      resize: none;
+      border: none;
+      color: #6c757d;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        cursor: text;
+      }
+    }
+  }
+  
+}
+
+.hint {
+      position: absolute;
+      right: 101px;
+      top: 388px;
+      color: #fc5a5a;
+      font-weight: 500;
+    }
+
 .replyPopUpContainer {
   width: 100%;
   height: 100vh;
@@ -425,7 +530,7 @@
   background-color: rgb(0, 0, 0, 0.5);
   .replyPopUpInner {
     width: 634px;
-    height: 500px;
+    height: 450px;
     position: absolute;
 
     display: flex;
@@ -440,10 +545,10 @@
 
   .replyCollection {
     width: 589px;
-    height: 175px;
+    height: 150px;
     margin: 0px auto;
     display: flex;
-    gap: 8px;
+    gap: 10px;
   }
 
   .replyPopHeader {
@@ -461,18 +566,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
   }
 
   .replyDivider {
     width: 2px;
     height: 86px;
     background: #ccd6dd;
+    margin-left: 3px;
   }
 
   .replyButton {
     position: absolute;
-    top: 88.8%;
+    top: 88%;
     right: 16px;
   }
 
@@ -504,4 +610,8 @@
     line-height: 22px;
     color: #ff6600;
   }
+}
+
+.notiContainer {
+  z-index: 1000;
 }

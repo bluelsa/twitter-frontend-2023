@@ -2,25 +2,22 @@ import styles from "../User/User.module.scss";
 
 const UserProfile = ({
   user,
-  main,
   setMain,
-  follower,
   setFollower,
-  following,
   setFollowing,
   setEditPopup,
 }) => {
   return (
     <div className={styles.profileContainer}>
       <div className={styles.imageWrapper}>
-        <div>
+        <div className={styles.coverWrapper}>
           <img
             className={styles.cover}
             src={user.background}
             alt="background"
           />
         </div>
-        <div>
+        <div className={styles.avatarWrapper}>
           <img className={styles.avatar} src={user.avatar} alt="avatar" />
         </div>
       </div>

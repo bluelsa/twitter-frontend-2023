@@ -3,7 +3,11 @@ import UserLikeTweet from "./UserLikeTweet";
 import { useEffect, useState } from "react";
 import { getUserLikes } from "../../api/user";
 
-const LikeForm = ({ setReplyPop }) => {
+const LikeForm = ({ 
+  setMain,
+  setReplyPop, 
+  setSpecTweet 
+}) => {
   const [userLikes, setUserLikes] = useState([]);
 
   const userId = localStorage.getItem("userId");
@@ -26,7 +30,7 @@ const LikeForm = ({ setReplyPop }) => {
   return (
     <div className={styles.userList}>
       {userLikes.map((userLike) => {
-        return <UserLikeTweet userLike={userLike} setReplyPop={setReplyPop}/>;
+        return <UserLikeTweet key={userLike.id} userLike={userLike} setMain={setMain} setSpecTweet={setSpecTweet} setReplyPop={setReplyPop}/>;
       })}
     </div>
   );

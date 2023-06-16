@@ -5,10 +5,13 @@ import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
 
 
-const OtherLikeTweet = ({setReplyPop, otherLike}) => {
+const OtherLikeTweet = ({
+  setReplyPop, 
+  otherLike, 
+  setSpecTweet}) => {
   const [isLike, setIsLike] = useState(true);
 
-  const handleReplyTweet = () => {
+  const handleTweet = () => {
     localStorage.setItem("tweetId", otherLike.Tweet.id);
   };
 
@@ -16,7 +19,7 @@ const OtherLikeTweet = ({setReplyPop, otherLike}) => {
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
-          <div className={styles.avatarWrap}>
+          <div className={styles.tweetAvatarWrap}>
             <img src={otherLike.Tweet.TweetUser.avatar} alt="avatar" />
           </div>
           <div className={styles.tweetContent}>
@@ -30,7 +33,13 @@ const OtherLikeTweet = ({setReplyPop, otherLike}) => {
                 </div>
               </div>
             </div>
-            <div className={styles.tweetArticle}>
+            <div
+              className={styles.tweetArticle}
+              onClick={() => {
+                setSpecTweet(true);
+                handleTweet();
+              }}
+            >
               {otherLike.Tweet.description}
             </div>
             <div className={styles.numCount}>
@@ -38,8 +47,8 @@ const OtherLikeTweet = ({setReplyPop, otherLike}) => {
                 <ReplyIcon
                   className={styles.icon}
                   onClick={() => {
-                    setReplyPop(true)
-                    handleReplyTweet();
+                    setReplyPop(true);
+                    handleTweet();
                   }}
                 />
                 <span>{otherLike.Tweet.repliedCount}</span>
@@ -49,8 +58,7 @@ const OtherLikeTweet = ({setReplyPop, otherLike}) => {
                   <LikeIcon
                     className={styles.icon}
                     onClick={() => {
-                      setIsLike(false)
-                      ;
+                      setIsLike(false);
                     }}
                   />
                 ) : (

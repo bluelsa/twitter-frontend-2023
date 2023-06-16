@@ -48,31 +48,31 @@ export const getTweetReplies = async (id) => {
     const { data } = await axiosInstance.get(`${baseURL}/${id}/replies`);
     return data;
   } catch (error) {
-    console.error("[Get  getTweetReplies failed]: ", error);
+    console.error("[Get TweetReplies failed]: ", error);
   }
 };
 
 //post 新增推文 api/tweets
 
-export const createTweet = async ({ id, description }) => {
+export const createTweet = async ({ description }) => {
   try {
     const { data } = await axiosInstance.post(`${baseURL}`, { description });
     return data;
   } catch (error) {
-    console.error("[Create Tweet failed:", error);
+    console.error("[Create Tweet failed]:", error);
   }
 };
 
 //post  回覆推文 api/tweets/id/replies
 
-export const postReply = async ({ id, description }) => {
+export const createReply = async ({ id, comment }) => {
   try {
     const { data } = await axiosInstance.post(`${baseURL}/${id}/replies`, {
-      description,
+      comment,
     });
     return data;
   } catch (error) {
-    console.error("Replies create failed:", error);
+    console.error("[Create Reply failed]:", error);
   }
 };
 
@@ -82,7 +82,7 @@ export const postLike = async (id) => {
     const { data } = await axiosInstance.post(`${baseURL}/${id}/like`);
     return data;
   } catch (error) {
-    console.log(`Like create failed:`);
+    console.log("[Like create failed}:", error);
   }
 };
 

@@ -8,30 +8,30 @@ import LikeForm from "./LikeForm";
 import { useState, useEffect } from "react";
 import UserTweetList from "./UserTweetList";
 import { getUserTweets } from "../../api/user";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 const UserMain = ({
   user,
   main,
   setMain,
+  setSpecTweet,
   follower,
   setFollower,
   following,
   setFollowing,
-  setReplyPop
+  setReplyPop,
 }) => {
+  const navigate = useNavigate();
 
-const navigate = useNavigate()
-
-// render推文/回覆/喜歡的內容
+  // render推文/回覆/喜歡的內容
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
   const [likeSection, setLikeSection] = useState(false);
 
-// 編輯個人資料popup window
+  // 編輯個人資料popup window
   const [editPopup, setEditPopup] = useState(false);
 
-// API get 使用者所有推文
+  // API get 使用者所有推文
   const [userTweets, setUserTweets] = useState([]);
 
   const userId = localStorage.getItem("userId");
@@ -63,13 +63,10 @@ const navigate = useNavigate()
         <div
           className={styles.arrow}
           onClick={() => {
-            navigate('/home')
-            // setMain(true);
-            // setFollowing(false);
-            // setFollower(false);
+            navigate("/home");
           }}
         >
-          <Arrow/>
+          <Arrow />
         </div>
 
         <div className={styles.returnWrapper}>
@@ -104,11 +101,15 @@ const navigate = useNavigate()
         <UserTweetList
           user={user}
           userTweets={userTweets}
+          setMain={setMain}
+          setSpecTweet={setSpecTweet}
           setReplyPop={setReplyPop}
         />
       )}
-      {replySection && <ReplyList userId={userId} user={user} />}
-      {likeSection && <LikeForm setReplyPop={setReplyPop} />}
+      {replySection && <ReplyList userId={userId}/>}
+      {likeSection && (
+        <LikeForm setMain={setMain} setReplyPop={setReplyPop} setSpecTweet={setSpecTweet} />
+      )}
 
       {editPopup && (
         <UserEditModal

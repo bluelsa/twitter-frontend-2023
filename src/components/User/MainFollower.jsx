@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { getUserFollowers } from "../../api/user";
 
 const MainFollowers = ({ user, setMain, setFollower, setFollowing }) => {
-
+console.log("mainfollower in");
   const [followers, setFollowers] = useState([])
   const [isFollowers, setIsFollowers] = useState(true)
 
@@ -21,7 +21,6 @@ const MainFollowers = ({ user, setMain, setFollower, setFollowing }) => {
           setFollowers(followers);
         }
       } catch (error) {
-        // console.error(error);
         setIsFollowers(false)
       }
     };
@@ -72,7 +71,7 @@ const MainFollowers = ({ user, setMain, setFollower, setFollowing }) => {
       </div>
       {isFollowers ? (<div className={styles.list}>
         {followers.map((follower)=> {
-          return <MainFollowerItem follower={follower} />
+          return <MainFollowerItem key={follower.id} follower={follower} />
         })}
       </div>) : (
         <h2 className={styles.noFollow}>沒有追隨者</h2>

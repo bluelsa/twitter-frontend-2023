@@ -1,10 +1,14 @@
 import styles from "./replyStyle.module.scss";
 
-const SpecReplyTweet = ({reply, replyAccount}) => {
+const UserSpecReply = ({ reply, replyAccount }) => {
   return (
     <div className={styles.replyContainer}>
       <div className={styles.tweetAvatarWrap}>
-        <img className={styles.tweetAvatar} src={reply.RepliedUser.avatar} alt="avatar" />
+        <img
+          className={styles.tweetAvatar}
+          src={reply.RepliedUser.avatar}
+          alt="avatar"
+        />
       </div>
       <div className={styles.replyContent}>
         <div>
@@ -20,12 +24,10 @@ const SpecReplyTweet = ({reply, replyAccount}) => {
           </div>
         </div>
 
-        <div className={styles.tweetReplyArticle}>
-          {reply.comment}{" "}
-        </div>
+        <div className={styles.tweetReplyArticle}>{reply.comment} </div>
       </div>
     </div>
   );
 };
 
-export default SpecReplyTweet;
+export default UserSpecReply;

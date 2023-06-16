@@ -1,50 +1,63 @@
-import styles from '../common/Auth.module.scss'
-import { ReactComponent as Logo } from '../assets/image/ac-logo.svg'
-import { Link, useNavigate} from 'react-router-dom'
-import { useState } from 'react'
-import { signup } from '../api/auth'
-import TimePopup from '../components/TimePopup/TimePopup'
+import styles from "../common/Auth.module.scss";
+import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { signup } from "../api/auth";
+import TimePopup from "../components/TimePopup/TimePopup";
 
 const SignUpPage = () => {
-
-  const [ account, setAccount ] = useState(''); 
-  const [ name, setName ] = useState(''); 
-  const [ email, setEmail ] = useState(''); 
-  const [ password, setPassword ] = useState(''); 
-  const [ checkPassword, setCheckPassword ] = useState('')
-   const [notiStatus, setNotiStatus] = useState("finished");
-  const navigate = useNavigate()
+  const [account, setAccount] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
+  const [notiStatus, setNotiStatus] = useState("finished");
+  const navigate = useNavigate();
 
   const handleClick = async () => {
-    if (account.length === 0 || name.length === 0 || email.length === 0 || password.length === 0 || checkPassword === 0) {
-  setNotiStatus('incomplete')
-return
+    if (
+      account.length === 0 ||
+      name.length === 0 ||
+      email.length === 0 ||
+      password.length === 0 ||
+      checkPassword === 0
+    ) {
+      setNotiStatus("incomplete");
+      return;
     }
     if (password !== checkPassword) {
-setNotiStatus('code')
-return
+      setNotiStatus("code");
+      return;
     }
-    const data = await signup ({
-    account,
-    name, 
-    email, 
-    password, 
-    checkPassword
-  })
+    const data = await signup({
+      account,
+      name,
+      email,
+      password,
+      checkPassword,
+    });
 
-  if ( data.status === 'success') {
-    setNotiStatus("success");
-    setTimeout(() => {
-      navigate("/login");
-    }, 2000);
-    return
-  }
-  setNotiStatus('failed')
-  }
+    if (data.status === "success") {
+      setNotiStatus("success");
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+      return;
+    }
+    if (data.message[0] === "account已存在") {
+      setNotiStatus("account");
+    }
+    if (data.message[0] === "email已存在") {
+      setNotiStatus("email");
+    }
+    if ((data.message[0] === "account已存在" , "email已存在")) {
+      setNotiStatus("invalid");
+    }
+  };
 
-const handleClosePopup = () => {
-  setNotiStatus("finished");
-};
+  const handleClosePopup = () => {
+    setNotiStatus("finished");
+  };
 
   return (
     <>
@@ -52,8 +65,14 @@ const handleClosePopup = () => {
         {notiStatus === "success" && (
           <TimePopup notification="success" title="註冊成功" />
         )}
-        {notiStatus === "failed" && (
-          <TimePopup notification="error" title="帳號/email已註冊" />
+        {notiStatus === "account" && (
+          <TimePopup notification="error" title="帳號已註冊" />
+        )}
+        {notiStatus === "email" && (
+          <TimePopup notification="error" title="email已註冊" />
+        )}
+        {notiStatus === "invalid" && (
+          <TimePopup notification="error" title="帳號Email已註冊" />
         )}
         {notiStatus === "incomplete" && (
           <TimePopup notification="error" title="請輸入完整資訊" />
@@ -141,6 +160,6 @@ const handleClosePopup = () => {
       </div>
     </>
   );
-}
+};
 
-export default SignUpPage
+export default SignUpPage;

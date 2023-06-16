@@ -1,31 +1,29 @@
-//tweet list
-
-// .tweetContainer {
-// width: 100%;
-// height: 100%;
-// min-height: 148px;
-// border: 1px solid #e6ecf0;
-// border-top: none;
-// border: 1px solid #000;
-// padding-top: 16px;
-// margin-top: 10px;
-// gap: 5px;
-// }
-
-.tweetsWrapper {
+// follower n following
+.followWrapper {
+  position: relative;
+  padding: 5px 0 16px 0;
+  width: 622px;
   height: 100%;
-  .tweetCollection {
+  border-bottom: 1px solid #e6ecf0;
+  
+
+  .followCollection {
+    height: 100%;
     display: flex;
     margin-left: 24px;
 
     .avatarWrap {
+      margin-top: 10px;
       margin-right: 5px;
+      position: relative;
+      width: 56px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
       img {
-        position: relative;
-        width: 50px;
-        height: 50px;
-        // background-color: rgb(189, 188, 188);
-        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       :hover {
@@ -33,7 +31,7 @@
       }
     }
 
-    .tweetContent {
+    .followContent {
       width: 580px;
       height: 100%;
       display: flex;
@@ -41,32 +39,30 @@
       margin-left: 8px;
 
       .nameInfo {
-        position: relative;
+        width: 95%;
+        height: 100%;
         display: flex;
         line-height: 26px;
-        align-items: center;
-        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        margin-right: 8px;
+        margin-top: 18px;
+      }
 
-        .tweetName {
-          font-size: 16px;
-          font-weight: 700;
-          margin-right: 8px;
-        }
+      .userIntroduction {
+        width: 95%;
+        height: 100%;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+        margin-top: 8px;
+        color: #171725;
+      }
 
-        .followIcon {
-          position: absolute;
-          right: 30px;
-          padding-top: 8px;
-        }
-
-        .userIntroduction {
-          width: 90%;
-          // margin-top: 8px;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 26px;
-          color: #171725;
-        }
+      .followIcon {
+        position: absolute;
+        right: 30px;
+        top: 15px;
       }
     }
   }
@@ -114,78 +110,78 @@
 }
 
 // UserProfile
-.Container {
-  position: relative;
-  width: 639px;
-  height: 400px;
+// .Container {
+//   position: relative;
+//   width: 639px;
+//   height: 400px;
 
-  .avatar {
-    position: absolute;
-    top: 124px;
-    left: 16.13px;
-    border-radius: 50%;
-    width: 141.1px;
-    height: 140px;
-    border: solid 4px white;
-  }
+//   .avatar {
+//     position: absolute;
+//     top: 124px;
+//     left: 16.13px;
+//     border-radius: 50%;
+//     width: 141.1px;
+//     height: 140px;
+//     border: solid 4px white;
+//   }
 
-  .editButton {
-    position: absolute;
-    top: 216px;
-    right: 16px;
-    // padding: 8px 16px;
-    width: 128px;
-    height: 40px;
-    font-weight: 400;
-    font-size: 16px;
-    background: #ffffff;
-    border: 1px solid #ff6600;
-    color: #ff6600;
-    border-radius: 50px;
-  }
+//   .editButton {
+//     position: absolute;
+//     top: 216px;
+//     right: 16px;
+//     // padding: 8px 16px;
+//     width: 128px;
+//     height: 40px;
+//     font-weight: 400;
+//     font-size: 16px;
+//     background: #ffffff;
+//     border: 1px solid #ff6600;
+//     color: #ff6600;
+//     border-radius: 50px;
+//   }
 
-  .infoDescription {
-    margin-top: 72px;
-    margin-left: 16px;
+//   .infoDescription {
+//     margin-top: 72px;
+//     margin-left: 16px;
 
-    .name {
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 26px;
-      color: #171725;
-    }
+//     .name {
+//       font-weight: 700;
+//       font-size: 18px;
+//       line-height: 26px;
+//       color: #171725;
+//     }
 
-    .account {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 22px;
-      color: #6c757d;
-    }
+//     .account {
+//       font-weight: 400;
+//       font-size: 14px;
+//       line-height: 22px;
+//       color: #6c757d;
+//     }
 
-    .description {
-      font-size: 14px;
-      line-height: 22px;
-      margin-top: 6px;
-    }
+//     .description {
+//       font-size: 14px;
+//       line-height: 22px;
+//       margin-top: 6px;
+//     }
 
-    .numWrapper {
-      display: flex;
-      font-size: 14px;
-      line-height: 22px;
+//     .numWrapper {
+//       display: flex;
+//       font-size: 14px;
+//       line-height: 22px;
 
-      p {
-        margin-right: 20px;
-        &:hover {
-          cursor: pointer;
-        }
-      }
+//       p {
+//         margin-right: 20px;
+//         &:hover {
+//           cursor: pointer;
+//         }
+//       }
 
-      .sub {
-        color: #6c757d;
-      }
-    }
-  }
-}
+//       .sub {
+//         color: #6c757d;
+//       }
+//     }
+//   }
+// }
 
 // UserReplyList
 .userNav {
@@ -388,7 +384,7 @@
 
 .otherDescription {
   width: 605px;
-  height: 100%;;
+  height: 100%;
   display: flex;
   flex-direction: column;
   margin-left: 16px;

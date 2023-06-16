@@ -5,13 +5,19 @@ import { ReactComponent as ProfileActiveIcon } from "../assets/image/profile-act
 import { ReactComponent as SettingIcon } from "../assets/image/setting.svg";
 import { ReactComponent as NavOut } from "../assets/image/NavOut.svg";
 import { ReactComponent as TweetButton } from "../assets/image/tweetButton.svg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NavbarUser = ({ setTwitPop }) => {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("otherId");
+  };
+
+  const handleRemove = () => {
+    localStorage.removeItem("tweetId");
   };
 
   return (
@@ -21,16 +27,26 @@ const NavbarUser = ({ setTwitPop }) => {
           <Logo className={styles.interaction} />
         </div>
         <div className={styles.navBar}>
-          <Link to="/home">
-            <HomeIcon />
-          </Link>
+          <HomeIcon
+            onClick={() => {
+              navigate("/home");
+              handleRemove();
+            }}
+          />
 
-          <Link to="/user">
-            <ProfileActiveIcon />
-          </Link>
-          <Link to="/setting">
-            <SettingIcon />
-          </Link>
+          <ProfileActiveIcon
+            onClick={() => {
+              navigate("/user");
+              handleRemove();
+            }}
+          />
+
+          <SettingIcon
+            onClick={() => {
+              navigate("/setting");
+              handleRemove();
+            }}
+          />
 
           <div className={styles.navBigButton}>
             <TweetButton
@@ -42,9 +58,13 @@ const NavbarUser = ({ setTwitPop }) => {
           </div>
         </div>
         <div>
-          <Link to="/login">
-            <NavOut className={styles.logOut} onClick={handleLogout} />
-          </Link>
+          <NavOut
+            className={styles.logOut}
+            onClick={() => {
+              navigate("/login");
+              handleLogout();
+            }}
+          />
         </div>
       </nav>
     </div>

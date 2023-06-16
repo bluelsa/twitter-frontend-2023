@@ -7,7 +7,7 @@ import { getUserFollowings } from '../../api/user'
 import MainFollowingItem from "./MainFollowingItem";
 
 const MainFollow = ({ user, setMain, setFollower, setFollowing }) => {
-  
+  console.log('mainfollowing in')
   const [followings, setFollowings] = useState([])
   const [isFollowings, setIsFollowings] = useState(true)
   
@@ -68,15 +68,17 @@ useEffect(() => {
           />
         </div>
       </div>
+      <div>
       {isFollowings ? (
         <div className={styles.list}>
           {followings.map((following) => {
-            return <MainFollowingItem following={following} />;
+            return <MainFollowingItem key={following.id}following={following} />;
           })}
         </div>
       ) : (
         <h2 className={styles.noFollow}>尚未追隨</h2>
       )}
+      </div>
       <div className={styles.mainDivider}></div>
     </div>
   );

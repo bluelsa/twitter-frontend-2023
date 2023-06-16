@@ -18,7 +18,7 @@ const MainTwitForm = ({tweet, setReplyPop, setSpecTweet}) => {
     return
   }
 
-const handleReplyTweet = () => {
+const handleTweet = () => {
   localStorage.setItem("tweetId", tweet.id);
 };
 
@@ -27,7 +27,7 @@ const handleReplyTweet = () => {
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
           <div
-            className={styles.avatarWrap}
+            className={styles.tweetAvatarWrap}
             onClick={handleOtherPage}
           >
             <img src={tweet.TweetUser.avatar} alt="avatar" />
@@ -44,7 +44,8 @@ const handleReplyTweet = () => {
             <div
               className={styles.tweetArticle}
               onClick={() => {
-                setSpecTweet(true);
+                setSpecTweet(true)
+                handleTweet();
               }}
             >
               {tweet.description}
@@ -55,7 +56,7 @@ const handleReplyTweet = () => {
                   className={styles.icon}
                   onClick={() => {
                     setReplyPop(true)
-                    handleReplyTweet();
+                    handleTweet();
                   }}
                 />
                 <span>{tweet.repliedCount}</span>

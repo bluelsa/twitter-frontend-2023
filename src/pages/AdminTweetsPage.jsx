@@ -5,7 +5,6 @@ import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
 import { ReactComponent as HomeIcon } from "../assets/image/home-orange.svg";
 import { ReactComponent as UserIcon } from "../assets/image/user-hollow.svg";
 import { Link, useNavigate } from "react-router-dom";
-// import AdminNav from '../components/Navbar/AdminNav';
 import { useState, useEffect } from 'react'
 import { deleteTweets, getTweets } from '../api/admin'
 

@@ -3,7 +3,7 @@ import { getUserReplies } from "../../api/user";
 import { useEffect, useState } from "react";
 import UserReplyTweet from "./UserReplyTweet";
 
-const ReplyList = ({ user, userId }) => {
+const ReplyList = ({ userId }) => {
   const [userReplies, setUserReplies] = useState([]);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const ReplyList = ({ user, userId }) => {
   return (
     <div className={styles.userList}>
       {userReplies.map((userReply) => {
-        return <UserReplyTweet userReply={userReply} user={user} />;
+        return <UserReplyTweet key={userReply.id} userReply={userReply} />;
       })}
     </div>
   );

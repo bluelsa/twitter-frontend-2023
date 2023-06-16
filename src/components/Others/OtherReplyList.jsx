@@ -25,7 +25,7 @@ const OtherReplyList = () => {
   return (
     <div className={styles.userList}>
       {otherReplies.map((otherReply) => {
-        return <OtherReplyTweet otherReply={otherReply} />;
+        return <OtherReplyTweet key={otherReply.id} otherReply={otherReply} />;
       })}
     </div>
   );

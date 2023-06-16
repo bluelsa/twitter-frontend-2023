@@ -3,39 +3,52 @@ import { ReactComponent as ReplyIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
-const UserTweet = ({ user, userTweet, setReplyPop }) => {
-
+const UserTweet = ({ userTweet, setMain, setSpecTweet, setReplyPop }) => {
   const [isLike, setIsLike] = useState(false);
+  // const navigate = useNavigate()
 
-const handleReplyTweet = () => {
-  localStorage.setItem("tweetId", userTweet.id);
-};
+  const handleTweet = () => {
+    localStorage.setItem("tweetId", userTweet.id);
+    setMain(false);
+  };
 
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
-          <div className={styles.avatarWrap}>
-            <img src="https://i.pravatar.cc" alt="avatar" />
+          <div className={styles.tweetAvatarWrap}>
+            <img src={userTweet.TweetUser.avatar} alt="avatar" />
           </div>
           <div className={styles.tweetContent}>
             <div>
               <div className={styles.nameInfo}>
-                <div className={styles.tweetName}>{user.name}</div>
+                <div className={styles.tweetName}>
+                  {userTweet.TweetUser.name}
+                </div>
                 <div className={styles.tweetTime}>
-                  @{user.account} &bull;3小時
+                  @{userTweet.TweetUser.account} &bull;3小時
                 </div>
               </div>
             </div>
-            <div className={styles.tweetArticle}>{userTweet.description}</div>
+            <div
+              className={styles.tweetArticle}
+              onClick={() => {
+                setSpecTweet(true);
+
+                handleTweet();
+              }}
+            >
+              {userTweet.description}
+            </div>
             <div className={styles.numCount}>
               <div className={styles.replyNum}>
                 <ReplyIcon
                   className={styles.icon}
                   onClick={() => {
-                    setReplyPop(true)
-                    handleReplyTweet();
+                    setReplyPop(true);
+                    handleTweet();
                   }}
                 />
                 <span>{userTweet.tweetReplyCount}</span>

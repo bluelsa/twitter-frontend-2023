@@ -5,7 +5,7 @@ const OtherReplyTweet = ({otherReply}) => {
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
-          <div className={styles.avatarWrap}>
+          <div className={styles.tweetAvatarWrap}>
             <img src={otherReply.RepliedUser.avatar} alt="avatar" />
           </div>
           <div className={styles.tweetContent}>

@@ -1,5 +1,5 @@
 import styles from "../pages/HomeStyle.module.scss";
-import PopularUser from "../components/Home/PopularUser";
+import PopularUser from "./PopularUser";
 import { getPopular } from "../api/user";
 import { useState, useEffect } from 'react'
 
@@ -29,7 +29,7 @@ const Popular = () => {
             </div>
             <div className={styles.usersWrapper}>
               {popularList.map((popular) => {
-                return <PopularUser popular={popular}/>;
+                return <PopularUser key={popular.id} popular={popular}/>;
               })}
             </div>
           </div>

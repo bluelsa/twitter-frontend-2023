@@ -45,8 +45,6 @@ const MainPage = () => {
     }
   }, [navigate, isAuthenticated, isLoading]);
 
-  
-
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>

@@ -8,7 +8,7 @@ import TimePopup from "../components/TimePopup/TimePopup";
 const LoginPage = () => {
   const [account, setAccount] = useState('');
   const [password, setPassword] = useState('');
-  const [notiStatus, setNotiStatus] = useState('finished')
+  const [notiStatus, setNotiStatus] = useState('finish')
   const navigate = useNavigate()
 
 
@@ -25,7 +25,7 @@ const LoginPage = () => {
 
     if (data.status === 'success') {
       localStorage.setItem("token", data.data.token)
-      localStorage.setItem('userId', data.data.user.id );
+      localStorage.setItem("userId", data.data.user.id );
       setNotiStatus('success')
       setTimeout(() => {
         navigate('/home');

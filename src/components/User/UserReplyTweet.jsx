@@ -1,19 +1,21 @@
 import styles from "./User.module.scss";
 
-const UserReplyTweet = ({ user, userReply }) => {
+const UserReplyTweet = ({ userReply }) => {
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
-          <div className={styles.avatarWrap}>
-            <img src="https://i.pravatar.cc" alt="avatar" />
+          <div className={styles.tweetAvatarWrap}>
+            <img src={userReply.RepliedUser.avatar} alt="avatar" />
           </div>
           <div className={styles.tweetContent}>
             <div>
               <div className={styles.nameInfo}>
-                <div className={styles.tweetName}>{user.name}</div>
+                <div className={styles.tweetName}>
+                  {userReply.RepliedUser.name}
+                </div>
                 <div className={styles.tweetTime}>
-                  @{user.account} &bull;3小時
+                  @{userReply.RepliedUser.account} &bull;3小時
                 </div>
               </div>
               <div className={styles.reply}>

@@ -5,7 +5,9 @@ import { getUserTweets } from "../../api/user";
 
 
 
-const OtherTweetList = ({ setReplyPop }) => {
+const OtherTweetList = ({ 
+  setSpecTweet,
+  setReplyPop }) => {
 
   const [otherTweets, setOtherTweets] = useState([])
 
@@ -31,6 +33,8 @@ const OtherTweetList = ({ setReplyPop }) => {
       {otherTweets.map((otherTweet) => {
         return (
           <OtherTweet
+          key={otherTweet.id}
+            setSpecTweet={setSpecTweet}
             otherTweet={otherTweet}
             setReplyPop={setReplyPop}
           />

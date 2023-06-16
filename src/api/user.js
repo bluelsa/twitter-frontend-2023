@@ -105,14 +105,13 @@ export const putUser = async (payload) => {
 };
 
 export const putSetting = async (payload) => {
-  const { id, account, name, email, introduction, password, checkPassword } =
+  const { id, account, name, email, password, checkPassword } =
     payload;
   try {
     const { data } = await axiosInstance.put(`${userURL}/${id}/setting`, {
       account,
       name,
       email,
-      introduction,
       password,
       checkPassword,
     });

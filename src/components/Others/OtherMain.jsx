@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { getUser } from '../../api/user'
 
 const OtherMain = ({
+  setSpecTweet,
   setReplyPop,
   onRemove
 }) => {
@@ -81,11 +82,14 @@ useEffect(() => {
       {twitSection && (
         <OtherTweetList
           otherUser={otherUser}
+          setSpecTweet={setSpecTweet}
           setReplyPop={setReplyPop}
         />
       )}
       {replySection && <OtherReplyList />}
-      {likeSection && <OtherLikeList setReplyPop={setReplyPop} />}
+      {likeSection && (
+        <OtherLikeList setSpecTweet={setSpecTweet} setReplyPop={setReplyPop} />
+      )}
     </div>
   );
 };

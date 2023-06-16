@@ -1,11 +1,19 @@
 import styles from './User.module.scss'
 import UserTweet from "./UserTweet";
 
-const UserTweetList = ({ user, userTweets, setReplyPop }) => {
+const UserTweetList = ({ userTweets,
+  setMain,
+  setSpecTweet, 
+  setReplyPop }) => {
   return (
     <div className={styles.userList}>
       {userTweets.map((userTweet) => {
-        return <UserTweet user={user} userTweet={userTweet} setReplyPop={setReplyPop}/>;
+        return <UserTweet 
+        key={userTweet.id}
+        userTweet={userTweet} 
+        setMain={setMain}
+        setReplyPop={setReplyPop} 
+        setSpecTweet={setSpecTweet}/>;
       })}
     </div>
   );
