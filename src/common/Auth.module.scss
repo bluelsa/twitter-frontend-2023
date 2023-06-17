@@ -25,6 +25,7 @@
     margin: 40px 0 8px 0;
 
     .inputContainer {
+      position: relative;
       width: 356px;
       height: 54px;
       margin-bottom: 32px;
@@ -33,6 +34,14 @@
       justify-content: space-around;
       background-color: #f5f8fa;
       border-bottom: 2px solid #657786;
+
+      &:hover {
+        border-bottom: 2px solid#50B5FF;
+      }
+
+      &:focus {
+        border-bottom: 2px solid #50b5ff;
+      }
 
       label {
         display: flex;
@@ -51,6 +60,63 @@
           background-color: #f5f8fa;
         }
       }
+
+      .errorMessage {
+        position: absolute;
+        top: 45px;
+        line-height: 20px;
+        font-weight: 500;
+        font-size: 12px;
+        color: #fc5a5a;
+      }
+    }
+
+    .errorContainer {
+      position: relative;
+      width: 356px;
+      height: 54px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      background-color: #f5f8fa;
+      border-bottom: 2px solid #fc5a5a;
+
+      &:hover {
+        border-bottom: 2px solid#fc5a5a;
+      }
+
+      &:focus {
+        border-bottom: 2px solid #fc5a5a;
+      }
+
+      label {
+        display: flex;
+        flex-direction: column;
+        background-color: #f5f8fa;
+        border-radius: 2px;
+        font-size: 14px;
+        line-height: 22px;
+        color: #696974;
+        padding-left: 10.55px;
+
+        input {
+          width: 90%;
+          outline: none;
+          border: none;
+          background-color: #f5f8fa;
+        }
+      }
+
+      .errorMessage {
+        position: absolute;
+        top: 45px;
+        line-height: 20px;
+        font-weight: 500;
+        font-size: 12px;
+        color: #fc5a5a;
+      }
+
     }
   }
 

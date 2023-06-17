@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signup } from "../api/auth";
 import TimePopup from "../components/TimePopup/TimePopup";
+import clsx from "clsx";
 
 const SignUpPage = () => {
   const [account, setAccount] = useState("");
@@ -11,7 +12,12 @@ const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
+  // 錯誤通知
   const [notiStatus, setNotiStatus] = useState("finished");
+  // 錯誤提示
+  const [accountInvalid, setAccountInvalid] = useState(false);
+  const [emailInvalid, setEmailInvalid] = useState(false);
+
   const navigate = useNavigate();
 
   const handleClick = async () => {
@@ -36,7 +42,7 @@ const SignUpPage = () => {
       password,
       checkPassword,
     });
-
+console.log(data.message.length)
     if (data.status === "success") {
       setNotiStatus("success");
       setTimeout(() => {
@@ -46,12 +52,18 @@ const SignUpPage = () => {
     }
     if (data.message[0] === "account已存在") {
       setNotiStatus("account");
+      setAccountInvalid(true);
+      setEmailInvalid(false)
     }
     if (data.message[0] === "email已存在") {
       setNotiStatus("email");
+      setEmailInvalid(true);
+      setAccountInvalid(false)
     }
-    if ((data.message[0] === "account已存在" , "email已存在")) {
+    if (data.message.length > 1) {
       setNotiStatus("invalid");
+      setAccountInvalid(true);
+      setEmailInvalid(true);
     }
   };
 
@@ -66,10 +78,10 @@ const SignUpPage = () => {
           <TimePopup notification="success" title="註冊成功" />
         )}
         {notiStatus === "account" && (
-          <TimePopup notification="error" title="帳號已註冊" />
+          <TimePopup notification="error" title="帳號已重覆註冊" />
         )}
         {notiStatus === "email" && (
-          <TimePopup notification="error" title="email已註冊" />
+          <TimePopup notification="error" title="email已重覆註冊" />
         )}
         {notiStatus === "invalid" && (
           <TimePopup notification="error" title="帳號Email已註冊" />
@@ -88,9 +100,13 @@ const SignUpPage = () => {
         </div>
         <h1>建立你的帳號</h1>
         <div className={styles.inputGroup}>
-          <div className={styles.inputContainer}>
+          <div
+            className={clsx(styles.inputContainer, {
+              [styles.errorContainer]: accountInvalid,
+            })}
+          >
             <label className={styles.input}>
-              <div>帳號</div>
+              帳號
               <input
                 type="text"
                 value={account}
@@ -98,6 +114,11 @@ const SignUpPage = () => {
                 onChange={(e) => setAccount(e.target.value)}
               />
             </label>
+            {accountInvalid ? (
+              <p className={styles.errorMessage}>帳號已存在</p>
+            ) : (
+              <></>
+            )}
           </div>
 
           <div className={styles.inputContainer}>
@@ -113,7 +134,11 @@ const SignUpPage = () => {
             </label>
           </div>
 
-          <div className={styles.inputContainer}>
+          <div
+            className={clsx(styles.inputContainer, {
+              [styles.errorContainer]: emailInvalid,
+            })}
+          >
             <label className={styles.input}>
               <div>Email</div>
               <input
@@ -123,6 +148,11 @@ const SignUpPage = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </label>
+            {emailInvalid ? (
+              <p className={styles.errorMessage}>Email已存在</p>
+            ) : (
+              <></>
+            )}
           </div>
 
           <div className={styles.inputContainer}>

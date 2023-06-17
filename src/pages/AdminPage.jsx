@@ -1,19 +1,24 @@
-import styles from '../common/Auth.module.scss'
-import { ReactComponent as Logo } from "../assets/image/ac-logo.svg"
+import styles from "../common/Auth.module.scss";
+import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from 'react'
-import { adminlogin } from '../api/admin'
-import TimePopup from '../components/TimePopup/TimePopup';
+import { useState } from "react";
+import { adminlogin } from "../api/admin";
+import TimePopup from "../components/TimePopup/TimePopup";
+import clsx from "clsx";
 
 const AdminPage = () => {
-  const [account, setAccount] = useState('');
-  const [password, setPassword] = useState(''); 
+  const [account, setAccount] = useState("");
+  const [password, setPassword] = useState("");
+  // 錯誤通知
   const [notiStatus, setNotiStatus] = useState("finished");
-  const navigate = useNavigate()
+  // 錯誤提示
+  const [invalid, setInvalid] = useState(false);
 
-  const handleClick = async() =>  {
+  const navigate = useNavigate();
+
+  const handleClick = async () => {
     if (account.length === 0 || password.length === 0) {
-      setNotiStatus('incomplete')
+      setNotiStatus("incomplete");
       return;
     }
 
@@ -22,20 +27,21 @@ const AdminPage = () => {
       password,
     });
 
-    if ( !data.status ) {
-    localStorage.setItem('token', data.token );
-    setNotiStatus('success')
-    setTimeout(() => {
-      navigate("/admin/tweets");
-    }, 2000);
-    return;
+    if (!data.status) {
+      localStorage.setItem("token", data.token);
+      setNotiStatus("success");
+      setTimeout(() => {
+        navigate("/admin/tweets");
+      }, 2000);
+      return;
     }
-    setNotiStatus('failed')
+    setNotiStatus("failed");
+    setInvalid(true);
   };
 
-const handleClosePopup = () => {
-    setNotiStatus('finished')
-  }
+  const handleClosePopup = () => {
+    setNotiStatus("finished");
+  };
 
   return (
     <>
@@ -44,10 +50,7 @@ const handleClosePopup = () => {
           <TimePopup notification="success" title="登入成功" />
         )}
         {notiStatus === "failed" && (
-          <TimePopup
-            notification="error"
-            title="帳號密碼錯誤"
-          />
+          <TimePopup notification="error" title="帳號密碼錯誤" />
         )}
         {notiStatus === "incomplete" && (
           <TimePopup notification="error" title="請輸入完整資訊" />
@@ -60,8 +63,11 @@ const handleClosePopup = () => {
         </div>
         <h1>後台登入</h1>
         <div className={styles.inputGroup}>
-          <form>
-          <div className={styles.inputContainer}>
+          <div
+            className={clsx(styles.inputContainer, {
+              [styles.errorContainer]: invalid,
+            })}
+          >
             <label>
               帳號
               <input
@@ -71,6 +77,11 @@ const handleClosePopup = () => {
                 onChange={(e) => setAccount(e.target.value)}
               />
             </label>
+            {invalid ? (
+              <p className={styles.errorMessage}>帳號不存在</p>
+            ) : (
+              <></>
+            )}
           </div>
 
           <div className={styles.inputContainer}>
@@ -84,7 +95,6 @@ const handleClosePopup = () => {
               />
             </label>
           </div>
-          </form>
         </div>
 
         <button className={styles.button} onClick={handleClick}>
@@ -102,5 +112,3 @@ const handleClosePopup = () => {
 };
 
 export default AdminPage;
-
-

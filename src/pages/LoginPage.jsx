@@ -4,17 +4,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { login } from "../api/auth";
 import TimePopup from "../components/TimePopup/TimePopup";
+import clsx from "clsx";
 
 const LoginPage = () => {
-  const [account, setAccount] = useState('');
-  const [password, setPassword] = useState('');
-  const [notiStatus, setNotiStatus] = useState('finish')
-  const navigate = useNavigate()
+  const [account, setAccount] = useState("");
+  const [password, setPassword] = useState("");
+  // 錯誤通知
+  const [notiStatus, setNotiStatus] = useState("finished");
+  // 錯誤提示
+  const [accountInvalid, setAccountInvalid] = useState(false);
+  const [passwordInvalid, setPasswordInvalid] = useState(false);
 
+  const navigate = useNavigate();
 
   const handleClick = async () => {
     if (account.length === 0 || password.length === 0) {
-      setNotiStatus('incomplete')
+      setNotiStatus("incomplete");
       return;
     }
 
@@ -23,21 +28,23 @@ const LoginPage = () => {
       password,
     });
 
-    if (data.status === 'success') {
-      localStorage.setItem("token", data.data.token)
-      localStorage.setItem("userId", data.data.user.id );
-      setNotiStatus('success')
+    if (data.status === "success") {
+      localStorage.setItem("token", data.data.token);
+      localStorage.setItem("userId", data.data.user.id);
+      setNotiStatus("success");
       setTimeout(() => {
-        navigate('/home');
+        navigate("/home");
       }, 2000);
-      return
+      return;
     }
-      setNotiStatus('failed')
+    setNotiStatus("failed");
+    setAccountInvalid(true);
+    setPasswordInvalid(true)
   };
 
   const handleClosePopup = () => {
-    setNotiStatus('finished')
-  }
+    setNotiStatus("finished");
+  };
 
   return (
     <>
@@ -46,7 +53,13 @@ const LoginPage = () => {
           <TimePopup notification="success" title="登入成功" />
         )}
         {notiStatus === "failed" && (
-          <TimePopup notification="error" title="帳號或密碼輸入錯誤" />
+          <TimePopup notification="error" title="帳號和密碼輸入錯誤" />
+        )}
+        {notiStatus === "wrongAccount" && (
+          <TimePopup notification="error" title="帳號輸入錯誤" />
+        )}
+        {notiStatus === "wrongPassword" && (
+          <TimePopup notification="error" title="密碼輸入錯誤" />
         )}
         {notiStatus === "incomplete" && (
           <TimePopup notification="error" title="請輸入完整資訊" />
@@ -59,32 +72,48 @@ const LoginPage = () => {
         </div>
         <h1>登入 Alphitter</h1>
         <div className={styles.inputGroup}>
-          <form>
-            <div className={styles.inputContainer}>
-              <label>
-                帳號
-                <input
-                  type="text"
-                  value={account}
-                  placeholder="請輸入帳號"
-                  onChange={(e) => setAccount(e.target.value)}
-                />
-              </label>
-            </div>
+          <div
+            className={clsx(styles.inputContainer, {
+              [styles.errorContainer]: accountInvalid,
+            })}
+          >
+            <label>
+              帳號
+              <input
+                type="text"
+                value={account}
+                placeholder="請輸入帳號"
+                onChange={(e) => setAccount(e.target.value)}
+              />
+            </label>
+            {accountInvalid ? (
+              <p className={styles.errorMessage}>帳號不存在</p>
+            ) : (
+              <></>
+            )}
+          </div>
 
-            <div className={styles.inputContainer}>
-              <label>
-                密碼
-                <input
-                  type="password"
-                  value={password}
-                  placeholder="請輸入密碼"
-                  autoComplete="current-password"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </label>
-            </div>
-          </form>
+          <div
+            className={clsx(styles.inputContainer, {
+              [styles.errorContainer]: passwordInvalid,
+            })}
+          >
+            <label>
+              密碼
+              <input
+                type="password"
+                value={password}
+                placeholder="請輸入密碼"
+                autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+            {passwordInvalid ? (
+              <p className={styles.errorMessage}>密碼錯誤</p>
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
 
         <button className={styles.button} onClick={handleClick}>
