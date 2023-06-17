@@ -3,12 +3,9 @@ import { ReactComponent as ReplyIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
+import ElapsedTime from "../../common/ElapsedTime";
 
-
-const OtherLikeTweet = ({
-  setReplyPop, 
-  otherLike, 
-  setSpecTweet}) => {
+const OtherLikeTweet = ({ setReplyPop, otherLike, setSpecTweet }) => {
   const [isLike, setIsLike] = useState(otherLike.isLiked);
 
   const handleTweet = () => {
@@ -29,7 +26,8 @@ const OtherLikeTweet = ({
                   {otherLike.Tweet.TweetUser.name}
                 </div>
                 <div className={styles.tweetTime}>
-                  @{otherLike.Tweet.TweetUser.account} &bull;3小時
+                  @{otherLike.Tweet.TweetUser.account} &bull;
+                  <ElapsedTime createdAt={otherLike.Tweet.createdAt} />
                 </div>
               </div>
             </div>

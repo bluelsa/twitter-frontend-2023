@@ -3,85 +3,98 @@ import { ReactComponent as Follow } from "../../assets/image/FollowButton.svg";
 import { ReactComponent as UnFollow } from "../../assets/image/StopFollow.svg";
 import { ReactComponent as RedEmail } from "../../assets/image/RedEmail40X40.svg";
 import { ReactComponent as RedBell } from "../../assets/image/RedBell40X40.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createFollow, deleteFollow } from "../../api/followship";
 // import { getUser } from "../../api/user";
 
-const OtherProfile = ({otherUser}) => {
-  const [isFollow, setIsFollow] = useState(otherUser.isFollowed);
-  console.log('other: '+ JSON.stringify(otherUser))
-  // const [otherUser, setOtherUser] = useState({});
+const OtherProfile = ({ otherUser }) => {
+  const [isFollowed, setIsFollowed] = useState(undefined);
 
-  // useEffect(() => {
-  //   const id = localStorage.getItem("otherId");
-  //   const getUsersAsync = async (id) => {
-  //     try {
-  //       const otherUser = await getUser(id);
-  //       if (!otherUser.status) {
-  //         setOtherUser(otherUser);
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   getUsersAsync(id);
-  // }, []);
+  console.log("other isFollowed: " + otherUser.isFollowed);
+
+  useEffect(() => {
+    if (otherUser) {
+      setIsFollowed(otherUser.isFollowed);
+    }
+    console.log('follow? '+isFollowed)
+  }, [otherUser, isFollowed]);
+
+  const handleFollow = async (id) => {
+    try {
+      await createFollow(id);
+      setIsFollowed(true);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleUnfollow = async (id) => {
+    try {
+      await deleteFollow(id);
+      setIsFollowed(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <div className={styles.profileContainer}>
-      <div className={styles.imageWrapper}>
-        <div className={styles.coverWrapper}>
-          <img
-            className={styles.cover}
-            src={otherUser.background}
-            alt="cover"
-          />
-        </div>
-        <div className={styles.avatarWrapper}>
-          <img
-            className={styles.avatar}
-            src={otherUser.avatar}
-            alt="avatar"
-          />
-        </div>
-      </div>
+        <div className={styles.profileContainer}>
+          <div className={styles.imageWrapper}>
+            <div className={styles.coverWrapper}>
+              <img
+                className={styles.cover}
+                src={otherUser.background}
+                alt="cover"
+              />
+            </div>
+            <div className={styles.avatarWrapper}>
+              <img
+                className={styles.avatar}
+                src={otherUser.avatar}
+                alt="avatar"
+              />
+            </div>
+          </div>
 
-      <div className={styles.otherProSection}>
-        <div>
-          <RedEmail className={styles.emailIcon} />
-          <RedBell className={styles.bellIcon} />
-          {isFollow ? (
-            <Follow
-              className={styles.followIcon}
-              onClick={() => {
-                setIsFollow(false);
-              }}
-            />
-          ) : (
-            <UnFollow
-              className={styles.followIcon}
-              onClick={() => {
-                setIsFollow(true);
-              }}
-            />
-          )}
+          <div className={styles.otherProSection}>
+            <div>
+              <RedEmail className={styles.emailIcon} />
+              <RedBell className={styles.bellIcon} />
+              {isFollowed ? (
+                <Follow
+                  className={styles.followIcon}
+                  onClick={() => {
+                    setIsFollowed(false);
+                    handleUnfollow(otherUser.id);
+                  }}
+                />
+              ) : (
+                <UnFollow
+                  className={styles.followIcon}
+                  onClick={() => {
+                    setIsFollowed(true);
+                    handleFollow(otherUser.id);
+                  }}
+                />
+              )}
+            </div>
+          </div>
+          <div className={styles.infoDescription}>
+            <div className={styles.name}>{otherUser.name}</div>
+            <div className={styles.account}>@{otherUser.account}</div>
+            <div className={styles.description}>{otherUser.introduction}</div>
+            <div className={styles.numWrapper}>
+              <p>
+                {otherUser.followingCount} 位
+                <span className={styles.sub}> 跟隨中</span>
+              </p>
+              <p>
+                {otherUser.followerCount} 位
+                <span className={styles.sub}> 跟隨者</span>
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className={styles.infoDescription}>
-        <div className={styles.name}>{otherUser.name}</div>
-        <div className={styles.account}>@{otherUser.account}</div>
-        <div className={styles.description}>{otherUser.introduction}</div>
-        <div className={styles.numWrapper}>
-          <p>
-            {otherUser.followingCount}{" "}位
-            <span className={styles.sub}> 跟隨中</span>
-          </p>
-          <p>
-            {otherUser.followerCount}{" "}位
-            <span className={styles.sub}> 跟隨者</span>
-          </p>
-        </div>
-      </div>
-    </div>
   );
 };
 

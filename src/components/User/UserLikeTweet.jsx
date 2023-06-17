@@ -4,6 +4,7 @@ import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ElapsedTime from "../../common/ElapsedTime";
 
 const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
   const [isLike, setIsLike] = useState(userLike.isLiked);
@@ -39,7 +40,8 @@ const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
                   {userLike.Tweet.TweetUser.name}{" "}
                 </div>
                 <div className={styles.tweetTime}>
-                  @{userLike.Tweet.TweetUser.account} &bull;3小時
+                  @{userLike.Tweet.TweetUser.account} &bull;
+                  <ElapsedTime createdAt={userLike.Tweet.createdAt} />
                 </div>
               </div>
             </div>

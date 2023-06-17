@@ -5,6 +5,7 @@ import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { createLike, deleteLike } from "../../api/tweets";
+import ElapsedTime from "../../common/ElapsedTime";
 
 const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet }) => {
   const [isLike, setIsLike] = useState(tweet.isLiked);
@@ -56,7 +57,8 @@ const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet }) => {
               <div className={styles.nameInfo}>
                 <div className={styles.tweetName}>{tweet.TweetUser.name}</div>
                 <div className={styles.tweetTime}>
-                  @{tweet.TweetUser.account} &bull;3小時
+                  @{tweet.TweetUser.account} &bull;
+                  <ElapsedTime createdAt={tweet.createdAt} />
                 </div>
               </div>
             </div>

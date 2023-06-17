@@ -7,6 +7,7 @@ import { ReactComponent as LikeIcon } from "../../assets/image/heart-solid.svg";
 import { useState, useEffect } from "react";
 import { getTweet } from "../../api/tweets";
 import { useNavigate } from "react-router-dom";
+import DateTime from "../DateTime";
 
 import SpecReplyTweet from "./SpecReplyTweet";
 
@@ -67,7 +68,10 @@ const UserSpec = ({ setMain, setSpecTweet, setReplyPop }) => {
               </div>
             </div>
             <div className={styles.description}>{tweet.description}</div>
-            <div className={styles.time}>上午 10:05&bull;2021年11月10日</div>
+            <div className={styles.time}>
+<DateTime createdAt={tweet.createdAt}/>
+              {/* 上午 10:05&bull;2021年11月10日 */}
+              </div>
 
             <div className={styles.num}>
               <div className={styles.replyNum}>
@@ -101,6 +105,7 @@ const UserSpec = ({ setMain, setSpecTweet, setReplyPop }) => {
           {tweet.TweetReply.map((reply) => {
             return (
               <SpecReplyTweet
+                key={reply.id}
                 reply={reply}
                 replyAccount={tweet.TweetUser.account}
               />

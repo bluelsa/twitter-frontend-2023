@@ -1,4 +1,5 @@
 import styles from "../User/User.module.scss";
+import ElapsedTime from "../../common/ElapsedTime";
 
 const OtherReplyTweet = ({otherReply}) => {
   return (
@@ -15,7 +16,8 @@ const OtherReplyTweet = ({otherReply}) => {
                   {otherReply.RepliedUser.name}{" "}
                 </div>
                 <div className={styles.tweetTime}>
-                  @{otherReply.RepliedUser.account} &bull;3小時
+                  @{otherReply.RepliedUser.account} &bull;
+                  <ElapsedTime createdAt={otherReply.createdAt} />
                 </div>
               </div>
               <div className={styles.reply}>

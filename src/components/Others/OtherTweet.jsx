@@ -3,6 +3,7 @@ import { ReactComponent as ReplyIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
+import ElapsedTime from "../../common/ElapsedTime";
 
 const OtherTweet = ({ 
   otherTweet, 
@@ -28,7 +29,8 @@ const OtherTweet = ({
                   {otherTweet.TweetUser.name}
                 </div>
                 <div className={styles.tweetTime}>
-                  @{otherTweet.TweetUser.account} &bull;3小時
+                  @{otherTweet.TweetUser.account} &bull;
+                  <ElapsedTime createdAt={otherTweet.createdAt} />
                 </div>
               </div>
             </div>

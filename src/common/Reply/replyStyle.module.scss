@@ -88,13 +88,16 @@
       font-weight: 400;
       font-size: 24px;
     }
-
-    .time {
-      line-height: 22px;
-      font-weight: 500;
-      font-size: 14px;
+    .timeWrapper {
+      height: 22px;
       margin-bottom: 8px;
-      color: #6c757d;
+
+      .time {
+        line-height: 22px;
+        font-weight: 500;
+        font-size: 14px;
+        color: #6c757d;
+      }
     }
 
     .num {
@@ -273,10 +276,10 @@
 .tweetAvatarWrap {
   margin-right: 5px;
   position: relative;
-    width: 56px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
+  width: 56px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
   img {
     width: 100%;
     height: 100%;
@@ -288,14 +291,13 @@
   }
 }
 
-
 .avatarWrap {
   margin-right: 5px;
   position: relative;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
   img {
     width: 100%;
     height: 100%;

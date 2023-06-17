@@ -6,6 +6,9 @@ import { createFollow, deleteFollow } from "../api/followship";
 
 const PopularUser = ({ popular }) => {
   const [isFollowed, setIsFollowed] = useState(popular.isFollowed);
+  
+
+  // console.log('popular isFollowed: '+popular.isFollowed)
 
   const handleFollow = async (id) => {
     try {
