@@ -1,47 +1,36 @@
-import styles from "./User.module.scss";
+import styles from "../User/User.module.scss";
 import { ReactComponent as ReplyIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import ElapsedTime from "../../common/ElapsedTime";
 
-const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
-  const [isLike, setIsLike] = useState(userLike.isLiked);
-  console.log('like:' + isLike)
-
-  const navigate = useNavigate();
-
-  const handleOtherPage = () => {
-    const userId = localStorage.getItem("userId");
-    if (userId !== JSON.stringify(userLike.Tweet.UserId)) {
-      localStorage.setItem("otherId", userLike.Tweet.UserId);
-      navigate("/otheruser");
-    }
-    return;
-  };
+const OtherTweet = ({ 
+  otherTweet, 
+  setReplyPop, 
+  setSpecTweet 
+}) => {
+  const [isLike, setIsLike] = useState(otherTweet.isLiked);
 
   const handleTweet = () => {
-    localStorage.setItem("tweetId", userLike.Tweet.id);
-    setMain(false);
+    localStorage.setItem("tweetId", otherTweet.id);
   };
-
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
-          <div className={styles.tweetAvatarWrap} onClick={handleOtherPage}>
-            <img src={userLike.Tweet.TweetUser.avatar} alt="avatar" />
+          <div className={styles.tweetAvatarWrap}>
+            <img src={otherTweet.TweetUser.avatar} alt="avatar" />
           </div>
           <div className={styles.tweetContent}>
             <div>
               <div className={styles.nameInfo}>
                 <div className={styles.tweetName}>
-                  {userLike.Tweet.TweetUser.name}{" "}
+                  {otherTweet.TweetUser.name}
                 </div>
                 <div className={styles.tweetTime}>
-                  @{userLike.Tweet.TweetUser.account} &bull;
-                  <ElapsedTime createdAt={userLike.Tweet.createdAt} />
+                  @{otherTweet.TweetUser.account} &bull;
+                  <ElapsedTime createdAt={otherTweet.createdAt} />
                 </div>
               </div>
             </div>
@@ -49,11 +38,10 @@ const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
               className={styles.tweetArticle}
               onClick={() => {
                 setSpecTweet(true);
-
                 handleTweet();
               }}
             >
-              {userLike.Tweet.description}
+              {otherTweet.description}
             </div>
             <div className={styles.numCount}>
               <div className={styles.replyNum}>
@@ -64,7 +52,7 @@ const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
                     handleTweet();
                   }}
                 />
-                <span>{userLike.Tweet.repliedCount}</span>
+                <span>{otherTweet.repliedCount}</span>
               </div>
               <div className={styles.likeNum}>
                 {isLike ? (
@@ -82,7 +70,7 @@ const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
                     }}
                   />
                 )}
-                <span>{userLike.Tweet.likedCount}</span>
+                <span>{otherTweet.likedCount}</span>
               </div>
             </div>
           </div>
@@ -92,4 +80,4 @@ const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
   );
 };
 
-export default UserLikeTweet;
+export default OtherTweet;

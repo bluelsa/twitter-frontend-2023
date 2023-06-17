@@ -6,26 +6,22 @@ function Twits({
   user,
   twitPop,
   setTwitPop,
-  replyTwit,
   replyPop,
   setReplyPop,
-  setReplyTwit,
+  specTweet,
+  setSpecTweet
 }) {
 
   return (
     <>
       <header className={styles.header}>首頁</header>
       <div className={styles.twitsDivider}></div>
-      <Post
-        user={user}
-        twitPop={twitPop}
-        setTwitPop={setTwitPop}
-      />
+      <Post user={user} twitPop={twitPop} setTwitPop={setTwitPop} />
       <div className={styles.postDivider}></div>
       <div className={styles.tweets}>
         <MainTweetList
-          replyTwit={replyTwit}
-          setReplyTwit={setReplyTwit}
+          specTweet={specTweet}
+          setSpecTweet={setSpecTweet}
           replyPop={replyPop}
           setReplyPop={setReplyPop}
           user={user}

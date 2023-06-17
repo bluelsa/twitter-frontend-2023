@@ -1,32 +1,35 @@
+import styles from "../User/User.module.scss";
 import MainTweetForm from "./MainTweetForm";
-import { useState, useEffect } from 'react'
-import { getTweetsAll } from '../../api/tweets'
+import { useState, useEffect } from "react";
+import { getTweetsAll } from "../../api/tweets";
 
-const MainTweetList = ({
-  user,
-  // replyPop,
-  setReplyPop,
-}) => {
-
+const MainTweetList = ({ setSpecTweet, setReplyPop }) => {
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
     const getTweetsAsync = async () => {
       try {
         const twts = await getTweetsAll();
-          setTweets(twts);
+        setTweets(twts);
       } catch (error) {
         console.error(error);
       }
     };
-    
+
     getTweetsAsync();
   }, []);
 
   return (
-    <div>
+    <div className={styles.list}>
       {tweets.map((tweet) => {
-        return <MainTweetForm tweet={tweet} setReplyPop={setReplyPop} />;
+        return (
+          <MainTweetForm
+            key={tweet.id}
+            tweet={tweet}
+            setReplyPop={setReplyPop}
+            setSpecTweet={setSpecTweet}
+          />
+        );
       })}
     </div>
   );

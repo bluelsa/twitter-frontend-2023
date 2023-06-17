@@ -1,22 +1,36 @@
 import styles from "../Others/otherStyle.module.scss";
-// import UserTweetList from "../User/UserTweetList";
 import { ReactComponent as Arrow } from "../../assets/image/Arrow.svg";
 import { ReactComponent as FollowingIcon } from "../../assets/image/following-active.svg";
 import { ReactComponent as FollowerIcon } from "../../assets/image/follower.svg";
-// import { ReactComponent as FollowABlack } from "../../assets/image/itemFollowAblack.svg";
-// import { ReactComponent as FollowBRed } from "../../assets/image/itemFollowBred.svg";
-import MainFollowItem from '../User/MainFollowItem'
-// import MainFollower from "./MainFollower";
-// import WholeFollowing from "./WholeFollowing";
+import { useState, useEffect } from 'react'
+import { getUserFollowings } from '../../api/user'
+import MainFollowingItem from "./MainFollowingItem";
 
-const MainFollow = ({
-  user,
-  setMain,
-  setFollower,
-  setFollowing
-}) => {
+const MainFollow = ({ user, setMain, setFollower, setFollowing }) => {
+  console.log('mainfollowing in')
+  const [followings, setFollowings] = useState([])
+  const [isFollowings, setIsFollowings] = useState(true)
+  
+useEffect(() => {
+  const getUserFollowingsAsync = async () => {
+    try {
+      const followings = await getUserFollowings(user.id);
+
+      if (!followings.status) {
+        setFollowings(followings);
+      }
+    } catch (error) {
+      // console.error(error);
+      setIsFollowings(false)
+    }
+  };
+
+  getUserFollowingsAsync(user.id);
+}, [user.id]);
+
+  
   return (
-      <div className={styles.container}>
+    <div className={styles.container}>
       <div className={styles.header}>
         <div
           className={styles.arrow}
@@ -54,12 +68,18 @@ const MainFollow = ({
           />
         </div>
       </div>
-      <div className={styles.tweetWrapper}>
-        <MainFollowItem />
-        <MainFollowItem />
-        <MainFollowItem />
-        <MainFollowItem />
+      <div>
+      {isFollowings ? (
+        <div className={styles.list}>
+          {followings.map((following) => {
+            return <MainFollowingItem key={following.id}following={following} />;
+          })}
+        </div>
+      ) : (
+        <h2 className={styles.noFollow}>尚未追隨</h2>
+      )}
       </div>
+      <div className={styles.mainDivider}></div>
     </div>
   );
 };

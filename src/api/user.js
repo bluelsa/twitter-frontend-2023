@@ -60,7 +60,7 @@ export const getUserFollowings = async (id) => {
     const { data } = await axiosInstance.get(`${userURL}/${id}/followings`);
     return data;
   } catch (error) {
-    console.error("[Get User failed]: ", error);
+    console.error("[Get User followings failed]: ", error);
   }
 };
 
@@ -73,20 +73,68 @@ export const getUserFollowers = async (id) => {
   }
 };
 
-export const putUser = async (payload) => {
-  const { id, name, introduction } = payload
+export const getPopular = async () => {
   try {
-    console.log(`${userURL}/${id}`);
-    const { data } = await axiosInstance.put(`${userURL}/${id}`, {
-      name,
-      introduction
-    }) ;
-    
+    const { data } = await axiosInstance.get(`${userURL}/top`);
+    return data;
+  } catch (error) {
+    console.error("[Get Popular failed]: ", error);
+  }
+};
+
+export const putUser = async (payload) => {
+  const { id, name, introduction, avatar, background } = payload;
+  try {
+    const FormData = require("form-data");
+    let putFormData = new FormData();
+    putFormData.append("name", name);
+    putFormData.append("introduction", introduction);
+    putFormData.append("avatar", avatar);
+    putFormData.append("background", background);
+    const { data } = await axiosInstance.put(`${userURL}/${id}`, putFormData, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
     return data;
   } catch (error) {
     console.error("[put User failed]: ", error);
   }
 };
 
+export const putSetting = async (payload) => {
+  const { id, account, name, email, password, checkPassword } =
+    payload;
+  try {
+    const { data } = await axiosInstance.put(`${userURL}/${id}/setting`, {
+      account,
+      name,
+      email,
+      password,
+      checkPassword,
+    });
 
+    // const FormData = require("form-data");
+    // let putFormData = new FormData();
+    // putFormData.append("name", name);
+    // putFormData.append("introduction", introduction);
+    // putFormData.append("avatar", avatar);
+    // putFormData.append("background", background);
+    // const { data } = await axiosInstance.put(`${userURL}/${id}`, putFormData, {
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    // });
 
+    return data;
+  } catch (error) {
+    if ( error.response.status === 400) {
+    console.log(error.response.data);
+    return error.response.data
+    // console.error("[put Setting failed]: ", error);
+    }
+  }
+};

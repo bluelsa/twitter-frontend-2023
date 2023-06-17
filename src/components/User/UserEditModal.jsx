@@ -2,7 +2,7 @@ import styles from "./editStyle.module.scss";
 import { ReactComponent as ModalX } from "../../assets/image/ModalX.svg";
 import { ReactComponent as EditTitle } from "../../assets/image/EditTitle.svg";
 import { ReactComponent as EditSave } from "../../assets/image/EditSave.svg";
-import { ReactComponent as CameraGroup } from "../../assets/image/ImageEditor.svg";
+import { ReactComponent as DeleteCoverIcon } from "../../assets/image/delete-white.svg";
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/iconCCamera.svg";
 import { useState } from "react";
 import { putUser } from "../../api/user";
@@ -12,6 +12,10 @@ import TimePopup from "../TimePopup/TimePopup";
 const UserEditModal = ({ user, setEditPopup }) => {
   const [name, setName] = useState(user.name);
   const [introduction, setIntroduction] = useState(user.introduction);
+
+  const [avatar, setAvatar] = useState(user.avatar);
+  const [background, setBackground] = useState(user.background);
+
   const [notiStatus, setNotiStatus] = useState("finished");
 
   const id = user.id;
@@ -30,17 +34,15 @@ const UserEditModal = ({ user, setEditPopup }) => {
         id,
         name,
         introduction,
+        avatar,
+        background,
       });
-    console.log('name:' +name)
-    console.log('intro: '+introduction)
     } catch (error) {
       console.error(error);
     }
-console.log("name change:" + name);
-console.log("intro change : " + introduction);
     setEditPopup(false);
+    window.location.reload();
   };
-// ＊需要畫面重新整理，才會render修改過後的個人資料
 
   const handleClosePopup = () => {
     setNotiStatus("finished");
@@ -64,7 +66,10 @@ console.log("intro change : " + introduction);
         <div className={styles.editInner}>
           <div className={styles.editHeader}>
             <div>
-              <ModalX onClick={() => setEditPopup(false)} />
+              <ModalX
+                className={styles.icon}
+                onClick={() => setEditPopup(false)}
+              />
               <EditTitle />
             </div>
             <div>
@@ -73,53 +78,100 @@ console.log("intro change : " + introduction);
                 onClick={handleChangeInfo}
               />
             </div>
-
-            <div>
-            </div>
           </div>
           <div className={styles.imageContainer}>
-            <img className={styles.cover} src={user.background} alt="cover" />
+            <div className={styles.coverContainer}> 
+            <img
+              className={styles.cover}
+              src={
+                background instanceof File
+                  ? URL.createObjectURL(background)
+                  : background
+              }
+              alt="cover"
+            />
+            </div>
             <div className={styles.iconWrapper}>
-              <CameraGroup />
+              <div>
+                <label>
+                  <ChangePhotoIcon className={styles.changePhotoIcon} />
+                  <input
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={(e) => {
+                      setBackground(e.target.files[0]);
+                    }}
+                  />
+                </label>
+              </div>
+              <div>
+                <DeleteCoverIcon className={styles.icon} />
+              </div>
             </div>
             <div className={styles.avatarWrapper}>
-              <img className={styles.avatar} src={user.avatar} alt="avatar" />
-              <ChangePhotoIcon className={styles.changeIcon} />
+              <div className={styles.avatarContainer}>
+                <img
+                  className={styles.avatar}
+                  src={
+                    avatar instanceof File
+                      ? URL.createObjectURL(avatar)
+                      : avatar
+                  }
+                  alt="avatar"
+                />
+              </div>
+              <div>
+                <label>
+                  <ChangePhotoIcon className={styles.changePhotoIcon} />
+                  <input
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={(e) => {
+                      setAvatar(e.target.files[0]);
+                      console.log("data " + avatar);
+                    }}
+                  />
+                </label>
+              </div>
             </div>
           </div>
           <div className={styles.inputContainer}>
-            <div className={styles.nameInput}>
-              <label className={styles.input}>
-                <div>名稱</div>
-                <input
-                  className={styles.editInput}
-                  type="text"
-                  value={name}
-                  placeholder={user.name}
-                  maxLength="50"
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </label>
-            </div>
-            <div className={styles.textCount}>{name.length}/50</div>
-
-            <div className={styles.textareaWrap}>
-              <div action="" className={styles.textContainer}>
-                <label for="" className={styles.textTitle}>
-                  自我介紹
+            <form>
+              <div className={styles.nameInput}>
+                <label className={styles.input}>
+                  <div>名稱</div>
+                  <input
+                    className={styles.editInput}
+                    type="text"
+                    value={name}
+                    placeholder={user.name}
+                    maxLength="50"
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </label>
-
-                <textarea
-                  type="text"
-                  id="note"
-                  value={introduction}
-                  placeholder={user.introduction}
-                  maxLength="160"
-                  onChange={(e) => setIntroduction(e.target.value)}
-                ></textarea>
               </div>
-              <div className={styles.textCount}>{introduction.length}/160</div>
-            </div>
+              <div className={styles.textCount}>{name.length}/50</div>
+
+              <div className={styles.textareaWrap}>
+                <div action="" className={styles.textContainer}>
+                  <label for="" className={styles.textTitle}>
+                    自我介紹
+                  </label>
+
+                  <textarea
+                    type="text"
+                    id="note"
+                    value={introduction}
+                    placeholder={user.introduction}
+                    maxLength="160"
+                    onChange={(e) => setIntroduction(e.target.value)}
+                  ></textarea>
+                </div>
+                <div className={styles.textCount}>
+                  {introduction.length}/160
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
