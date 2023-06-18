@@ -3,10 +3,18 @@ import { useEffect } from 'react'
 
 const HomePage = () => {
   const navigate = useNavigate()
-
+  const token = localStorage.getItem("token")
+  
   useEffect(() => {
-    navigate('/login')
-  })
+    const token = localStorage.getItem("token")
+    if (token) {
+      navigate('/home')
+    }
+    if (!token) {
+      navigate('/login')
+    }
+    
+  }, [navigate, token])
   
 };
 
