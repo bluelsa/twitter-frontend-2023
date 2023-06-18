@@ -1,16 +1,17 @@
 import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as PostButton } from "../../assets/image/PostButton.svg";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { createTweet } from "../../api/tweets";
 import TimePopup from "../TimePopup/TimePopup";
 
 const Post = ({ user }) => {
+  const inputRef = useRef(null);
   const [description, setDescription] = useState("");
   const [notiStatus, setNotiStatus] = useState("finished");
 
   const handleTweet = async () => {
     if (description.length === 0) {
-      setNotiStatus('empty')
+      setNotiStatus("empty");
       return;
     }
     if (description.length > 140) {
@@ -18,26 +19,50 @@ const Post = ({ user }) => {
       return;
     }
     try {
-    const data = await createTweet ({
-      description
-    })
-    
-    if (data.description) {
-      setNotiStatus('success')
+      const data = await createTweet({
+        description,
+      });
+
+      if (data.description) {
+        setNotiStatus("success");
+      }
+    } catch (error) {
+      console.error(error);
     }
-  } catch(error) {
-    console.error(error)
-  }
-    setDescription("")
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
-    
+    setDescription("");
+    // setTimeout(() => {
+    window.location.reload();
+    // }, 1000);
   };
-  
+
+  const handleKeyDown = async (e) => {
+    if (e.key === "Enter") {
+      if (inputRef.current.value.length === 0) {
+        setNotiStatus("empty");
+        return;
+      }
+      if (inputRef.current.value.length > 140) {
+        setNotiStatus("max");
+        return;
+      }
+      try {
+        const data = await createTweet({
+          description,
+        });
+        if (data.description) {
+          setDescription("");
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        window.location.reload();
+      }
+    }
+  };
+
   const handleClosePopup = () => {
-      setNotiStatus("finished");
-    };
+    setNotiStatus("finished");
+  };
 
   return (
     <>
@@ -59,13 +84,16 @@ const Post = ({ user }) => {
             <img src={user.avatar} alt="avatar" />
           </div>
           <div className={styles.postInput}>
-          <textarea
-            className={styles.postText}
-            rows="2"
-            defaultValue={description}
-            placeholder="有什麼新鮮事？"
-            onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
+            <textarea
+              className={styles.postText}
+              rows="2"
+              defaultValue={description}
+              placeholder="有什麼新鮮事？"
+              maxLength="140"
+              ref={inputRef}
+              onKeyDown={handleKeyDown}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
           </div>
         </div>
         <div className={styles.postButton} onClick={handleTweet}>

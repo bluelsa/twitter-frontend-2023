@@ -6,16 +6,15 @@ import { ReactComponent as BigTalk } from "../../assets/image/25x25Talk.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-solid.svg";
 import { useState, useEffect } from "react";
 import { getTweet } from "../../api/tweets";
-import { useNavigate } from "react-router-dom";
 import DateTime from "../DateTime";
-
-import SpecReplyTweet from "./SpecReplyTweet";
+import { createLike, deleteLike } from "../../api/tweets";
+import SpecTweetList from "./SpecTweetList";
 
 const UserSpec = ({ setMain, setSpecTweet, setReplyPop }) => {
   const [tweet, setTweet] = useState(undefined);
 
-  const [isLike, setIsLike] = useState(false);
-  const navigate = useNavigate();
+  const [isLiked, setIsLiked] = useState(undefined);
+  const [likedCount, setLikedCount] = useState(undefined);
 
   const tweetId = localStorage.getItem("tweetId");
 
@@ -33,6 +32,33 @@ const UserSpec = ({ setMain, setSpecTweet, setReplyPop }) => {
     getTweetAsync(tweetId);
   }, [tweetId]);
 
+  useEffect(() => {
+    if (tweet) {
+      setIsLiked(tweet.isLiked);
+      setLikedCount(tweet.likedCount);
+    }
+  }, [tweet]);
+
+  const handleLike = async (tweetId) => {
+    try {
+      await createLike(tweetId);
+      setIsLiked(true);
+      setLikedCount(likedCount + 1);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleUnlike = async (tweetId) => {
+    try {
+      await deleteLike(tweetId);
+      setIsLiked(false);
+      setLikedCount(likedCount - 1);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleRemove = () => {
     localStorage.removeItem("tweetId");
   };
@@ -46,7 +72,7 @@ const UserSpec = ({ setMain, setSpecTweet, setReplyPop }) => {
               className={styles.arrow}
               onClick={() => {
                 setSpecTweet(false);
-                setMain(true)
+                setMain(true);
                 handleRemove();
               }}
             >
@@ -68,17 +94,17 @@ const UserSpec = ({ setMain, setSpecTweet, setReplyPop }) => {
               </div>
             </div>
             <div className={styles.description}>{tweet.description}</div>
-            <div className={styles.time}>
-<DateTime createdAt={tweet.createdAt}/>
+            <div className={styles.timeWrapper}>
+              <DateTime createdAt={tweet.createdAt} />
               {/* 上午 10:05&bull;2021年11月10日 */}
-              </div>
+            </div>
 
             <div className={styles.num}>
               <div className={styles.replyNum}>
                 {tweet.repliedCount}&nbsp;<span>回覆</span>
               </div>
               <div className={styles.likeNum}>
-                {tweet.likedCount}&nbsp;<span>喜歡次數</span>
+                {likedCount}&nbsp;<span>喜歡次數</span>
               </div>
             </div>
 
@@ -89,28 +115,30 @@ const UserSpec = ({ setMain, setSpecTweet, setReplyPop }) => {
                   setReplyPop(true);
                 }}
               />
-              {isLike ? (
+              {isLiked ? (
                 <LikeIcon
                   lassName={styles.icon}
-                  onClick={() => setIsLike(false)}
+                  onClick={() => {
+                    setIsLiked(false);
+                    handleUnlike(tweet.id);
+                  }}
                 />
               ) : (
                 <UnlikeIcon
                   className={styles.icon}
-                  onClick={() => setIsLike(true)}
+                  onClick={() => {
+                    setIsLiked(true);
+                    handleLike(tweet.id);
+                  }}
                 />
               )}
             </div>
           </div>
-          {tweet.TweetReply.map((reply) => {
-            return (
-              <SpecReplyTweet
-                key={reply.id}
-                reply={reply}
-                replyAccount={tweet.TweetUser.account}
-              />
-            );
-          })}
+
+          <SpecTweetList
+            tweetId={tweet.id}
+            tweetAccount={tweet.TweetUser.account}
+          />
         </div>
       ) : (
         <></>

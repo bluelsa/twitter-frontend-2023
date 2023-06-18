@@ -45,9 +45,9 @@ const SignUpPage = () => {
 console.log(data.message.length)
     if (data.status === "success") {
       setNotiStatus("success");
-      setTimeout(() => {
+      // setTimeout(() => {
         navigate("/login");
-      }, 2000);
+      // }, 2000);
       return;
     }
     if (data.message[0] === "account已存在") {
@@ -78,13 +78,13 @@ console.log(data.message.length)
           <TimePopup notification="success" title="註冊成功" />
         )}
         {notiStatus === "account" && (
-          <TimePopup notification="error" title="帳號已重覆註冊" />
+          <TimePopup notification="error" title="帳號已重覆註冊!" />
         )}
         {notiStatus === "email" && (
-          <TimePopup notification="error" title="email已重覆註冊" />
+          <TimePopup notification="error" title="email已重覆註冊!" />
         )}
         {notiStatus === "invalid" && (
-          <TimePopup notification="error" title="帳號Email已註冊" />
+          <TimePopup notification="error" title="帳號Email已重複註冊！" />
         )}
         {notiStatus === "incomplete" && (
           <TimePopup notification="error" title="請輸入完整資訊" />
@@ -111,6 +111,7 @@ console.log(data.message.length)
                 type="text"
                 value={account}
                 placeholder="請輸入帳號"
+                maxLength="10"
                 onChange={(e) => setAccount(e.target.value)}
               />
             </label>

@@ -1,11 +1,12 @@
 import styles from "../pages/HomeStyle.module.scss";
 import { ReactComponent as ModalX } from "../assets/image/ModalX.svg";
 import { ReactComponent as PostButton } from "../assets/image/PostButton.svg";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { createTweet } from "../api/tweets";
 import TimePopup from "../components/TimePopup/TimePopup";
 
 const TwitPopUp = ({ user, setTwitPop }) => {
+  const inputRef = useRef(null);
   const [notiStatus, setNotiStatus] = useState("finish");
   const [hint, setHint] = useState("none");
   const [description, setDescription] = useState("");
@@ -16,8 +17,8 @@ const TwitPopUp = ({ user, setTwitPop }) => {
       return;
     }
     if (description.length > 140) {
-      setHint("max")
-      return
+      setHint("max");
+      return;
     }
     try {
       const data = await createTweet({
@@ -30,7 +31,34 @@ const TwitPopUp = ({ user, setTwitPop }) => {
     } catch (error) {
       console.error(error);
     } finally {
-    window.location.reload()}
+      window.location.reload();
+    }
+  };
+
+  const handleKeyDown = async (e) => {
+    if ( e.key === "Enter") {
+      if (inputRef.current.value.length === 0) {
+        setHint("empty");
+        return;
+      }
+      if (inputRef.current.value.length > 140) {
+        setHint("max");
+        return;
+      }
+      try {
+        const data = await createTweet({
+          description,
+        });
+        if (data.description) {
+          setDescription("");
+          setTwitPop(false);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        window.location.reload();
+      }
+    }
   };
 
   const handleClosePopup = () => {
@@ -60,13 +88,16 @@ const TwitPopUp = ({ user, setTwitPop }) => {
                 <img src={user.avatar} alt="avatar" />
               </div>
               <div className={styles.popInput}>
-              <textarea
-                className={styles.postText}
-                rows="10"
-                defaultValue={description}
-                placeholder="有什麼新鮮事？"
-                onChange={(e) => setDescription(e.target.value)}
-              ></textarea>
+                <textarea
+                  className={styles.postText}
+                  rows="10"
+                  defaultValue={description}
+                  placeholder="有什麼新鮮事？"
+                  maxLength="140"
+                  ref={inputRef}
+                  onKeyDown={handleKeyDown}
+                  onChange={(e) => setDescription(e.target.value)}
+                ></textarea>
               </div>
             </div>
             <div className={styles.hint}>

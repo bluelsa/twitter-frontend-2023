@@ -30,9 +30,8 @@ const AdminPage = () => {
     if (!data.status) {
       localStorage.setItem("token", data.token);
       setNotiStatus("success");
-      setTimeout(() => {
         navigate("/admin/tweets");
-      }, 2000);
+
       return;
     }
     setNotiStatus("failed");

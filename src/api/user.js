@@ -116,19 +116,6 @@ export const putSetting = async (payload) => {
       checkPassword,
     });
 
-    // const FormData = require("form-data");
-    // let putFormData = new FormData();
-    // putFormData.append("name", name);
-    // putFormData.append("introduction", introduction);
-    // putFormData.append("avatar", avatar);
-    // putFormData.append("background", background);
-    // const { data } = await axiosInstance.put(`${userURL}/${id}`, putFormData, {
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // });
-
     return data;
   } catch (error) {
     if ( error.response.status === 400) {

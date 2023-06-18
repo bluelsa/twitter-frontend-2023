@@ -1,7 +1,8 @@
 import styles from "./replyStyle.module.scss";
 import ElapsedTime from "../ElapsedTime";
 
-const SpecReplyTweet = ({reply, replyAccount}) => {
+const SpecReplyTweet = ({reply, tweetAccount}) => {
+
   return (
     <div className={styles.replyContainer}>
       <div className={styles.tweetAvatarWrap}>
@@ -22,7 +23,7 @@ const SpecReplyTweet = ({reply, replyAccount}) => {
           </div>
           <div className={styles.reply}>
             <span>回覆</span>
-            <span className={styles.replyTo}>@{replyAccount}</span>
+            <span className={styles.replyTo}>@{tweetAccount}</span>
           </div>
         </div>
 

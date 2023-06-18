@@ -53,7 +53,7 @@ useEffect(() => {
           className={styles.arrow}
           onClick={() => {
             onRemove();
-            navigate(-1);
+            navigate("/home");
           }}
         >
           <Arrow />
@@ -67,7 +67,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      <OtherProfile otherUser={otherUser} />
+      <OtherProfile otherUser={otherUser} isFollowing={otherUser.isFollowed}/>
       <UserNavbar
         twitSection={twitSection}
         setTwitSection={setTwitSection}

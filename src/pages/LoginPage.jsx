@@ -13,7 +13,6 @@ const LoginPage = () => {
   const [notiStatus, setNotiStatus] = useState("finished");
   // 錯誤提示
   const [accountInvalid, setAccountInvalid] = useState(false);
-  const [passwordInvalid, setPasswordInvalid] = useState(false);
 
   const navigate = useNavigate();
 
@@ -32,14 +31,20 @@ const LoginPage = () => {
       localStorage.setItem("token", data.data.token);
       localStorage.setItem("userId", data.data.user.id);
       setNotiStatus("success");
-      setTimeout(() => {
+      // setTimeout(() => {
         navigate("/home");
-      }, 2000);
+      // }, 2000);
       return;
     }
-    setNotiStatus("failed");
-    setAccountInvalid(true);
-    setPasswordInvalid(true)
+    console.log('message:' +data.message)
+    if (data.status === "error" && data.message === "帳號不存在！") {
+      console.log("yes");
+      setNotiStatus("wrongAccount");
+      setAccountInvalid(true);
+    }
+    if (data.message === "帳號或密碼輸入錯誤！") {
+      setNotiStatus('failed')
+    }
   };
 
   const handleClosePopup = () => {
@@ -53,13 +58,10 @@ const LoginPage = () => {
           <TimePopup notification="success" title="登入成功" />
         )}
         {notiStatus === "failed" && (
-          <TimePopup notification="error" title="帳號和密碼輸入錯誤" />
+          <TimePopup notification="error" title="帳號或密碼輸入錯誤" />
         )}
         {notiStatus === "wrongAccount" && (
-          <TimePopup notification="error" title="帳號輸入錯誤" />
-        )}
-        {notiStatus === "wrongPassword" && (
-          <TimePopup notification="error" title="密碼輸入錯誤" />
+          <TimePopup notification="error" title="帳號不存在" />
         )}
         {notiStatus === "incomplete" && (
           <TimePopup notification="error" title="請輸入完整資訊" />
@@ -93,11 +95,7 @@ const LoginPage = () => {
             )}
           </div>
 
-          <div
-            className={clsx(styles.inputContainer, {
-              [styles.errorContainer]: passwordInvalid,
-            })}
-          >
+          <div className={styles.inputContainer}>
             <label>
               密碼
               <input
@@ -108,11 +106,6 @@ const LoginPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
-            {passwordInvalid ? (
-              <p className={styles.errorMessage}>密碼錯誤</p>
-            ) : (
-              <></>
-            )}
           </div>
         </div>
 

@@ -10,11 +10,16 @@ import { putUser } from "../../api/user";
 import TimePopup from "../TimePopup/TimePopup";
 
 const UserEditModal = ({ user, setEditPopup }) => {
+// get data
   const [name, setName] = useState(user.name);
   const [introduction, setIntroduction] = useState(user.introduction);
-
   const [avatar, setAvatar] = useState(user.avatar);
   const [background, setBackground] = useState(user.background);
+
+// error message
+// const [empty, setEmpty] = useState(false)
+// const [nameMax, setNameMax] = useState(false)
+// const [introMax, setIntroMax] = useState(false)
 
   const [notiStatus, setNotiStatus] = useState("finished");
 
@@ -28,6 +33,9 @@ const UserEditModal = ({ user, setEditPopup }) => {
     if (introduction.length === 0) {
       setNotiStatus("introductionEmpty");
       return;
+    }
+    if(name.length > 50) {
+      return
     }
     try {
       await putUser({
@@ -80,16 +88,16 @@ const UserEditModal = ({ user, setEditPopup }) => {
             </div>
           </div>
           <div className={styles.imageContainer}>
-            <div className={styles.coverContainer}> 
-            <img
-              className={styles.cover}
-              src={
-                background instanceof File
-                  ? URL.createObjectURL(background)
-                  : background
-              }
-              alt="cover"
-            />
+            <div className={styles.coverContainer}>
+              <img
+                className={styles.cover}
+                src={
+                  background instanceof File
+                    ? URL.createObjectURL(background)
+                    : background
+                }
+                alt="cover"
+              />
             </div>
             <div className={styles.iconWrapper}>
               <div>

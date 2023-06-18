@@ -54,10 +54,10 @@ const UserPage = () => {
     }
   }, [navigate, isAuthenticated, isLoading]);
 
-  console.log("main: " + main);
-  console.log("specTweet: " + specTweet);
-  console.log("follower: " + follower);
-  console.log("following: " + following);
+  // console.log("main: " + main);
+  // console.log("specTweet: " + specTweet);
+  // console.log("follower: " + follower);
+  // console.log("following: " + following);
 
   return (
     <div className={styles.homeContainer}>
