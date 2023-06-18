@@ -70,7 +70,6 @@ const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
               className={styles.tweetArticle}
               onClick={() => {
                 setSpecTweet(true);
-
                 handleTweet();
               }}
             >

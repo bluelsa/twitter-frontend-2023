@@ -4,11 +4,25 @@ import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
 import { createLike, deleteLike } from "../../api/tweets";
+import { useNavigate } from "react-router-dom";
 import ElapsedTime from "../../common/ElapsedTime";
 
 const OtherLikeTweet = ({ setReplyPop, otherLike, setSpecTweet }) => {
   const [isLike, setIsLike] = useState(otherLike.isLiked);
   const [likedCount, setLikedCount] = useState(otherLike.Tweet.likedCount);
+
+  const navigate = useNavigate();
+
+  const handleOtherPage = () => {
+    localStorage.removeItem("otherId")
+    const userId = localStorage.getItem("userId");
+    if (userId !== JSON.stringify(otherLike.Tweet.UserId)) {
+      localStorage.setItem("otherId", otherLike.Tweet.UserId);
+      navigate("/otheruser");
+      window.location.reload()
+    }
+    return;
+  };
 
   const handleLike = async (tweetId) => {
     try {
@@ -38,7 +52,7 @@ const OtherLikeTweet = ({ setReplyPop, otherLike, setSpecTweet }) => {
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
-          <div className={styles.tweetAvatarWrap}>
+          <div className={styles.tweetAvatarWrap} onClick={handleOtherPage}>
             <img src={otherLike.Tweet.TweetUser.avatar} alt="avatar" />
           </div>
           <div className={styles.tweetContent}>

@@ -111,6 +111,7 @@ console.log(data.message.length)
                 type="text"
                 value={account}
                 placeholder="請輸入帳號"
+                maxLength="10"
                 onChange={(e) => setAccount(e.target.value)}
               />
             </label>
