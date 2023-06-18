@@ -3,10 +3,32 @@ import { ReactComponent as ReplyIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
+import { createLike, deleteLike } from "../../api/tweets";
 import ElapsedTime from "../../common/ElapsedTime";
 
 const OtherLikeTweet = ({ setReplyPop, otherLike, setSpecTweet }) => {
   const [isLike, setIsLike] = useState(otherLike.isLiked);
+  const [likedCount, setLikedCount] = useState(otherLike.Tweet.likedCount);
+
+  const handleLike = async (tweetId) => {
+    try {
+      await createLike(tweetId);
+      setIsLike(true);
+      setLikedCount(likedCount + 1);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleUnlike = async (tweetId) => {
+    try {
+      await deleteLike(tweetId);
+      setIsLike(false);
+      setLikedCount(likedCount - 1);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleTweet = () => {
     localStorage.setItem("tweetId", otherLike.Tweet.id);
@@ -57,6 +79,7 @@ const OtherLikeTweet = ({ setReplyPop, otherLike, setSpecTweet }) => {
                     className={styles.icon}
                     onClick={() => {
                       setIsLike(false);
+                      handleUnlike(otherLike.TweetId);
                     }}
                   />
                 ) : (
@@ -64,10 +87,11 @@ const OtherLikeTweet = ({ setReplyPop, otherLike, setSpecTweet }) => {
                     className={styles.icon}
                     onClick={() => {
                       setIsLike(true);
+                      handleLike(otherLike.TweetId);
                     }}
                   />
                 )}
-                <span>{otherLike.Tweet.likedCount}</span>
+                <span>{likedCount}</span>
               </div>
             </div>
           </div>

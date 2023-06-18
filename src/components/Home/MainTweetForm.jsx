@@ -9,7 +9,7 @@ import ElapsedTime from "../../common/ElapsedTime";
 
 const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet }) => {
   const [isLike, setIsLike] = useState(tweet.isLiked);
-  const [likeCount, setLikeCount] = useState(tweet.likedCount);
+  const [likedCount, setLikedCount] = useState(tweet.likedCount);
   const navigate = useNavigate();
 
   const handleOtherPage = () => {
@@ -25,7 +25,7 @@ const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet }) => {
     try {
       await createLike(tweetId);
       setIsLike(true);
-      setLikeCount(likeCount + 1)
+      setLikedCount(likedCount + 1)
     } catch (error) {
       console.error(error);
     }
@@ -35,7 +35,7 @@ const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet }) => {
     try {
       await deleteLike(tweetId);
       setIsLike(false);
-      setLikeCount(likeCount - 1)
+      setLikedCount(likedCount - 1)
     } catch (error) {
       console.error(error);
     }
@@ -101,7 +101,7 @@ const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet }) => {
                   />
                 )}
 
-                <span>{likeCount}</span>
+                <span>{likedCount}</span>
               </div>
             </div>
           </div>

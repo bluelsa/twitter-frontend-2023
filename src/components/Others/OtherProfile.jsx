@@ -5,18 +5,16 @@ import { ReactComponent as RedEmail } from "../../assets/image/RedEmail40X40.svg
 import { ReactComponent as RedBell } from "../../assets/image/RedBell40X40.svg";
 import { useState, useEffect } from "react";
 import { createFollow, deleteFollow } from "../../api/followship";
-// import { getUser } from "../../api/user";
 
 const OtherProfile = ({ otherUser }) => {
   const [isFollowed, setIsFollowed] = useState(undefined);
 
-  console.log("other isFollowed: " + otherUser.isFollowed);
+  // console.log("other isFollowed: " + otherUser.isFollowed);
 
   useEffect(() => {
     if (otherUser) {
       setIsFollowed(otherUser.isFollowed);
     }
-    console.log('follow? '+isFollowed)
   }, [otherUser, isFollowed]);
 
   const handleFollow = async (id) => {

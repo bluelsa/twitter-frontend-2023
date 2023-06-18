@@ -29,9 +29,9 @@ const Post = ({ user }) => {
     console.error(error)
   }
     setDescription("")
-    setTimeout(() => {
+    // setTimeout(() => {
       window.location.reload();
-    }, 2000);
+    // }, 2000);
     
   };
   

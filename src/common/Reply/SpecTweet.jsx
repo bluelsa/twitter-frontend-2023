@@ -6,18 +6,15 @@ import { ReactComponent as BigTalk } from "../../assets/image/25x25Talk.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-solid.svg";
 import { useState, useEffect } from "react";
 import { getTweet } from "../../api/tweets";
-import { useNavigate } from "react-router-dom";
+import DateTime from "../DateTime";
 import { createLike, deleteLike } from "../../api/tweets";
-import DateTime from "../../common/DateTime";
-
-import SpecReplyTweet from "./SpecReplyTweet";
+import SpecTweetList from "./SpecTweetList";
 
 const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
   const [tweet, setTweet] = useState(undefined);
 
-  const [isLike, setIsLike] = useState(true);
-  // const [likedCount, setLikedCount] = useState(tweet.likedCount)
-  const navigate = useNavigate();
+  const [isLiked, setIsLiked] = useState(undefined);
+  const [likedCount, setLikedCount] = useState(undefined);
 
   const tweetId = localStorage.getItem("tweetId");
 
@@ -35,11 +32,18 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
     getTweetAsync(tweetId);
   }, [tweetId]);
 
+  useEffect(() => {
+    if (tweet) {
+      setIsLiked(tweet.isLiked);
+      setLikedCount(tweet.likedCount);
+    }
+  }, [tweet]);
+
   const handleLike = async (tweetId) => {
     try {
       await createLike(tweetId);
-      setIsLike(true);
-      // setLikedCount(likedCount + 1)
+      setIsLiked(true);
+      setLikedCount(likedCount + 1);
     } catch (error) {
       console.error(error);
     }
@@ -48,8 +52,8 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
   const handleUnlike = async (tweetId) => {
     try {
       await deleteLike(tweetId);
-      setIsLike(false);
-      // setLikedCount(likedCount - 1)
+      setIsLiked(false);
+      setLikedCount(likedCount - 1);
     } catch (error) {
       console.error(error);
     }
@@ -99,7 +103,7 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
                 {tweet.repliedCount}&nbsp;<span>回覆</span>
               </div>
               <div className={styles.likeNum}>
-                {tweet.likedCount}&nbsp;<span>喜歡次數</span>
+                {likedCount}&nbsp;<span>喜歡次數</span>
               </div>
             </div>
 
@@ -110,11 +114,11 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
                   setReplyPop(true);
                 }}
               />
-              {isLike ? (
+              {isLiked ? (
                 <LikeIcon
-                  className={styles.icon}
+                  lassName={styles.icon}
                   onClick={() => {
-                    setIsLike(false);
+                    setIsLiked(false);
                     handleUnlike(tweet.id);
                   }}
                 />
@@ -122,22 +126,18 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
                 <UnlikeIcon
                   className={styles.icon}
                   onClick={() => {
-                    setIsLike(true);
+                    setIsLiked(true);
                     handleLike(tweet.id);
                   }}
                 />
               )}
             </div>
           </div>
-          {tweet.TweetReply.map((reply) => {
-            return (
-              <SpecReplyTweet
-                key={tweet.id}
-                reply={reply}
-                replyAccount={tweet.TweetUser.account}
-              />
-            );
-          })}
+
+          <SpecTweetList
+            tweetId={tweet.id}
+            tweetAccount={tweet.TweetUser.account}
+          />
         </div>
       ) : (
         <></>

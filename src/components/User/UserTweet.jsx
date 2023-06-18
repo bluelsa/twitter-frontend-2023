@@ -3,12 +3,32 @@ import { ReactComponent as ReplyIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
+import { createLike, deleteLike } from "../../api/tweets";
 import ElapsedTime from "../../common/ElapsedTime";
-// import { useNavigate } from "react-router-dom";
 
 const UserTweet = ({ userTweet, setMain, setSpecTweet, setReplyPop }) => {
   const [isLike, setIsLike] = useState(userTweet.isLiked);
-  // const navigate = useNavigate()
+const [likedCount, setLikedCount] = useState(userTweet.likedCount);
+
+const handleLike = async (tweetId) => {
+  try {
+    await createLike(tweetId);
+    setIsLike(true);
+    setLikedCount(likedCount + 1);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const handleUnlike = async (tweetId) => {
+  try {
+    await deleteLike(tweetId);
+    setIsLike(false);
+    setLikedCount(likedCount - 1);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   const handleTweet = () => {
     localStorage.setItem("tweetId", userTweet.id);
@@ -60,6 +80,7 @@ const UserTweet = ({ userTweet, setMain, setSpecTweet, setReplyPop }) => {
                     className={styles.icon}
                     onClick={() => {
                       setIsLike(false);
+                      handleUnlike(userTweet.id);
                     }}
                   />
                 ) : (
@@ -67,10 +88,11 @@ const UserTweet = ({ userTweet, setMain, setSpecTweet, setReplyPop }) => {
                     className={styles.icon}
                     onClick={() => {
                       setIsLike(true);
+                      handleLike(userTweet.id);
                     }}
                   />
                 )}
-                <span>{userTweet.likedCount}</span>
+                <span>{likedCount}</span>
               </div>
             </div>
           </div>

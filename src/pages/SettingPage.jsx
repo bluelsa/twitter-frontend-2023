@@ -79,9 +79,9 @@ const SettingPage = () => {
 
     if (data.account) {
       setNotiStatus("success");
-      setTimeout(() => {
+      // setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      // }, 2000);
 
       return;
     } else {
@@ -92,37 +92,6 @@ const SettingPage = () => {
         setNotiStatus("wrongEmail");
       }
     }
-
-    //   try {
-    //     await putSetting({
-    //       id,
-    //       account,
-    //       name,
-    //       email,
-    //       introduction,
-    //       password,
-    //       checkPassword,
-    //     })
-    //     console.log('account: '+account)
-    //     console.log("name: " + name);
-    //     console.log("email: " + email);
-    //     console.log("password: " + password);
-    //     console.log("checkPassword: " + checkPassword);
-
-    //   } catch (error) {
-    //     console.log('error click')
-    //     // const data = await putSetting({})
-    //     console.log('setting: '+error.response.data)
-    //     if (error.response.data.message === 'Error: Account already exist') {
-    //     // const
-    //     // }
-    //     setNotiStatus('wrongAccount')
-    //     // console.error(error)
-    //   }
-    //   if (error.response.data.message === "Error: Email already exist") {
-    //     setNotiStatus("wrongEmail");
-    //   }
-    // }
   };
 
   return (
@@ -176,6 +145,7 @@ const SettingPage = () => {
                           type="text"
                           value={name}
                           placeholder={user.name}
+                          maxLength='50'
                           onChange={(e) => setName(e.target.value)}
                         />
                       </label>
