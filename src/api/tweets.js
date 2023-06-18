@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://pure-waters-81841.herokuapp.com/api/tweets";
+const baseURL = "https://pure-waters-81841.herokuapp.com/api";
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
@@ -25,7 +25,7 @@ axiosInstance.interceptors.request.use(
 //get觀看所有推文 api/tweets
 export const getTweetsAll = async () => {
   try {
-    const { data } = await axiosInstance.get(`${baseURL}`);
+    const { data } = await axiosInstance.get(`${baseURL}/tweets`);
     return data;
   } catch (error) {
     console.error("[Get getTweetsAll failed]: ", error);
@@ -35,7 +35,7 @@ export const getTweetsAll = async () => {
 // get觀看一篇特定推文tweets/:tweetid
 export const getTweet = async (id) => {
   try {
-    const { data } = await axiosInstance.get(`${baseURL}/${id}`);
+    const { data } = await axiosInstance.get(`${baseURL}/tweets/${id}`);
     return data;
   } catch (error) {
     console.error("[Get getTweetId failed]: ", error);
@@ -45,7 +45,7 @@ export const getTweet = async (id) => {
 // get觀看有回覆推文的推文api/tweets/id/replies
 export const getTweetReplies = async (id) => {
   try {
-    const { data } = await axiosInstance.get(`${baseURL}/${id}/replies`);
+    const { data } = await axiosInstance.get(`${baseURL}/tweets/${id}/replies`);
     return data;
   } catch (error) {
     console.error("[Get TweetReplies failed]: ", error);
@@ -56,7 +56,7 @@ export const getTweetReplies = async (id) => {
 
 export const createTweet = async ({ description }) => {
   try {
-    const { data } = await axiosInstance.post(`${baseURL}`, { description });
+    const { data } = await axiosInstance.post(`${baseURL}/tweets`, { description });
     return data;
   } catch (error) {
     console.error("[Create Tweet failed]:", error);
@@ -67,7 +67,7 @@ export const createTweet = async ({ description }) => {
 
 export const createReply = async ({ id, comment }) => {
   try {
-    const { data } = await axiosInstance.post(`${baseURL}/${id}/replies`, {
+    const { data } = await axiosInstance.post(`${baseURL}/tweets/${id}/replies`, {
       comment,
     });
     return data;
@@ -79,7 +79,7 @@ export const createReply = async ({ id, comment }) => {
 //post 對推文按讚 api/tweets/id/like
 export const createLike = async (tweetId) => {
   try {
-    const { data } = await axiosInstance.post(`${baseURL}/${tweetId}/like`);
+    const { data } = await axiosInstance.post(`${baseURL}/tweets/${tweetId}/like`);
     return data;
   } catch (error) {
     console.log("[Create Like failed]:", error);
@@ -89,7 +89,7 @@ export const createLike = async (tweetId) => {
 //post 對推文取消按讚 api/tweets/id/unlike
 export const deleteLike = async (tweetId) => {
   try {
-    const { data } = await axiosInstance.post(`${baseURL}/${tweetId}/unlike`);
+    const { data } = await axiosInstance.post(`${baseURL}/tweets/${tweetId}/unlike`);
     return data;
   } catch (error) {
     console.log("[Create Unlike failed]:", error);

@@ -9,13 +9,13 @@ import { createFollow, deleteFollow } from "../../api/followship";
 const OtherProfile = ({ otherUser, isFollowing }) => {
   const [isFollowed, setIsFollowed] = useState(undefined);
 
-  console.log("other isFollowed: " + otherUser.isFollowed);
+  // console.log("other isFollowed: " + otherUser.isFollowed);
 
   useEffect(() => {
     if (otherUser) {
       setIsFollowed(isFollowing);
     }
-    console.log("effect: "+ isFollowed)
+    // console.log("effect: "+ isFollowed)
   }, [otherUser]);
 
   const handleFollow = async (id) => {

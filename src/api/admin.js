@@ -1,10 +1,27 @@
 import axios from "axios";
 
-const adminURL = "https://pure-waters-81841.herokuapp.com/api/admin";
+const baseURL = "https://pure-waters-81841.herokuapp.com/api";
+
+const axiosInstance = axios.create({
+  baseUrl: baseURL,
+});
+
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    console.error(error);
+  }
+);
 
 export const adminlogin = async ({ account, password }) => {
   try {
-    const { data } = await axios.post(`${adminURL}/users`, {
+    const { data } = await axiosInstance.post(`${baseURL}/admin/users`, {
       account,
       password,
     });
@@ -15,39 +32,29 @@ export const adminlogin = async ({ account, password }) => {
   }
 };
 
-export const getUsers = async (token) => {
+export const getUsers = async () => {
   try {
-    const { data } = await axios.get(`${adminURL}/users`, {
-      headers: {
-        Authorization: "Bearer " + token
-      },
-    });
+    const { data } = await axiosInstance.get(`${baseURL}/admin/users`);
     return data;
   } catch (error) {
     console.error('[Get Users failed]: ', error);
   }
 };
 
-export const getTweets = async (token) => {
+export const getTweets = async () => {
   try {
-    const { data } = await axios.get(`${adminURL}/tweets`, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    const { data } = await axiosInstance.get(`${baseURL}/admin/tweets`);
     return data;
   } catch (error) {
     console.error("[Get Tweets failed]: ", error);
   }
 };
 
-export const deleteTweets = async (id, token) => {
+export const deleteTweets = async (id) => {
   try {
-    const { data } = await axios.delete(`${adminURL}/tweets/${id}`, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    const { data } = await axiosInstance.delete(
+      `${baseURL}/admin/tweets/${id}`
+    );
     return data;
   } catch (error) {
     console.error("[Get Tweets failed]: ", error);

@@ -144,7 +144,6 @@ const UserEditModal = ({ user, setEditPopup }) => {
             </div>
           </div>
           <div className={styles.inputContainer}>
-            <form>
               <div className={styles.nameInput}>
                 <label className={styles.input}>
                   <div>名稱</div>
@@ -162,7 +161,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
 
               <div className={styles.textareaWrap}>
                 <div action="" className={styles.textContainer}>
-                  <label for="" className={styles.textTitle}>
+                  <label className={styles.textTitle}>
                     自我介紹
                   </label>
 
@@ -179,7 +178,6 @@ const UserEditModal = ({ user, setEditPopup }) => {
                   {introduction.length}/160
                 </div>
               </div>
-            </form>
           </div>
         </div>
       </div>
