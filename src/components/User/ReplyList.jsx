@@ -6,8 +6,10 @@ import UserReplyTweet from "./UserReplyTweet";
 const ReplyList = () => {
   const [userReplies, setUserReplies] = useState([]);
 
-  const userId = localStorage.getItem("userId")
+  
+
   useEffect(() => {
+    const userId = localStorage.getItem("userId")
     const getUserReplyAsync = async (userId) => {
       try {
         const userReps = await getUserReplies(userId);
@@ -20,7 +22,7 @@ const ReplyList = () => {
       }
     };
     getUserReplyAsync(userId);
-  }, [userId]);
+  }, []);
 
   return (
         <div className={styles.userList}>
