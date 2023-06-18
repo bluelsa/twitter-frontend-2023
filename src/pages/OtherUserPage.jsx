@@ -7,12 +7,18 @@ import ReplyPopUp from "../components/Home/ReplyPopUp";
 import SpecTweet from "../common/Reply/SpecTweet";
 import { useState, useEffect } from "react";
 import { getUser } from "../api/user";
+import { useNavigate } from "react-router-dom";
 
 const OtherUserPage = () => {
   const [user, setUser] = useState({});
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+    const navigate = useNavigate();
 
   useEffect(() => {
     const id = localStorage.getItem("userId");
@@ -21,13 +27,24 @@ const OtherUserPage = () => {
         const user = await getUser(id);
         if (!user.status) {
           setUser(user);
+           setIsAuthenticated(true);
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false)
       }
     };
     getUserAsync(id);
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        navigate("/login");
+      }
+    }
+  }, [navigate, isAuthenticated, isLoading]);
 
   const handleOtherIdRemove = () => {
     localStorage.removeItem("otherId");

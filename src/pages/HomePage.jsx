@@ -7,11 +7,15 @@ const HomePage = () => {
   
   useEffect(() => {
     const token = localStorage.getItem("token")
+    const adminToken = localStorage.getItem("adminToken")
     if (token) {
       navigate('/home')
     }
-    if (!token) {
+    if (!token && !adminToken) {
       navigate('/login')
+    }
+    if (adminToken) {
+      navigate('/admin/tweets')
     }
     
   }, [navigate, token])

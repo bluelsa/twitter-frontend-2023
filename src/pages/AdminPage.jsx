@@ -28,7 +28,9 @@ const AdminPage = () => {
     });
 
     if (!data.status) {
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("adminToken", data.token);
+      localStorage.removeItem("token")
+      localStorage.removeItem("userId")
       setNotiStatus("success");
         navigate("/admin/tweets");
 

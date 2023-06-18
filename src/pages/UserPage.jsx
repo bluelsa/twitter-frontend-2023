@@ -6,7 +6,6 @@ import MainFollower from "../components/User/MainFollower";
 import MainFollowing from "../components/User/MainFollow";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
-// import SpecTweet from "../common/Reply/SpecTweet";
 import UserSpec from "../common/Reply/UserSpec";
 import { useState, useEffect } from "react";
 import { getUser } from "../api/user";
@@ -30,7 +29,7 @@ const UserPage = () => {
 
   useEffect(() => {
     const id = localStorage.getItem("userId");
-    const getUsersAsync = async () => {
+    const getUserAsync = async () => {
       try {
         const user = await getUser(id);
         if (!user.status) {
@@ -43,7 +42,7 @@ const UserPage = () => {
         setIsLoading(false);
       }
     };
-    getUsersAsync(id);
+    getUserAsync(id);
   }, []);
 
   useEffect(() => {
