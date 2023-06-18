@@ -13,9 +13,12 @@ import OtherUserPage from './pages/OtherUserPage';
 
 
 function App() {
+
+  const basename = process.env.PUBLIC_URL;
+
   return (
     <div className="app">
-      <BrowserRouter>
+      <BrowserRouter basename={basename}> 
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
