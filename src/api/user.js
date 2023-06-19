@@ -129,7 +129,6 @@ export const putSetting = async (payload) => {
     return data;
   } catch (error) {
     if ( error.response.status === 400) {
-    console.log(error.response.data);
     return error.response.data
     // console.error("[put Setting failed]: ", error);
     }

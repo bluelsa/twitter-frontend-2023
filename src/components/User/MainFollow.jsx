@@ -7,7 +7,7 @@ import { getUserFollowings } from '../../api/user'
 import MainFollowingItem from "./MainFollowingItem";
 
 const MainFollow = ({ user, setMain, setFollower, setFollowing }) => {
-  console.log('mainfollowing in')
+
   const [followings, setFollowings] = useState([])
   const [isFollowings, setIsFollowings] = useState(true)
   

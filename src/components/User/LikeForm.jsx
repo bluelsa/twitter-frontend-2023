@@ -25,12 +25,20 @@ const LikeForm = ({
     };
 
     getUserLikesAsync(userId);
-  }, []);
+  }, []); 
 
   return (
     <div className={styles.userList}>
       {userLikes.map((userLike) => {
-        return <UserLikeTweet key={userLike.TweetId} userLike={userLike} setMain={setMain} setSpecTweet={setSpecTweet} setReplyPop={setReplyPop}/>;
+        return (
+          <UserLikeTweet
+            key={userLike.TweetId}
+            userLike={userLike}
+            setMain={setMain}
+            setSpecTweet={setSpecTweet}
+            setReplyPop={setReplyPop}
+          />
+        );
       })}
     </div>
   );

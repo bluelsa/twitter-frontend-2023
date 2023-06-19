@@ -22,7 +22,7 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
     const getTweetAsync = async () => {
       try {
         const tweet = await getTweet(tweetId);
-        if (!tweet.status) {
+        if (tweet) {
           setTweet(tweet);
         }
       } catch (error) {
@@ -30,7 +30,7 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
       }
     };
     getTweetAsync(tweetId);
-  }, [tweetId]);
+  }, []); 
 
   useEffect(() => {
     if (tweet) {

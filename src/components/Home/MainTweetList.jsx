@@ -17,7 +17,7 @@ const MainTweetList = ({ setSpecTweet, setReplyPop }) => {
     };
 
     getTweetsAsync();
-  }, []);
+  }, []); 
 
   return (
     <div className={styles.list}>

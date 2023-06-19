@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { getUserFollowers } from "../../api/user";
 
 const MainFollowers = ({ user, setMain, setFollower, setFollowing }) => {
-console.log("mainfollower in");
+
   const [followers, setFollowers] = useState([])
   const [isFollowers, setIsFollowers] = useState(true)
 

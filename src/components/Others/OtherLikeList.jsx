@@ -21,12 +21,19 @@ const OtherLikeList = ({setReplyPop, setSpecTweet}) => {
     };
 
     getUserLikesAsync(otherId);
-  }, []);
+  }, []); 
 
   return (
     <div className={styles.userList}>
       {otherLikes.map((otherLike) => {
-        return <OtherLikeTweet key={otherLike.id} otherLike={otherLike} setSpecTweet={setSpecTweet} setReplyPop={setReplyPop} />;
+        return (
+          <OtherLikeTweet
+            key={otherLike.id}
+            otherLike={otherLike}
+            setSpecTweet={setSpecTweet}
+            setReplyPop={setReplyPop}
+          />
+        );
       })}
     </div>
   );

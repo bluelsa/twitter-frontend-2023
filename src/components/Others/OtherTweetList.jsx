@@ -20,7 +20,6 @@ const OtherTweetList = ({
         if (!otherTweets.status) {
           setOtherTweets(otherTweets);
         }
-        // console.log('otherTweets '+ JSON.stringify(otherTweets))
       } catch (error) {
         console.error(error);
       }

@@ -14,7 +14,7 @@ const SettingPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  console.log("user: " + user);
+
   //input content
   const [name, setName] = useState('');
   const [account, setAccount] = useState('');
@@ -41,7 +41,6 @@ const SettingPage = () => {
           setCheckPassword(user.checkPassword)
           setIsAuthenticated(true);
         }
-        console.log('effect: '+ user)
       } catch (error) {
         console.error(error);
       } finally {
@@ -62,7 +61,6 @@ const SettingPage = () => {
   const id = localStorage.getItem("userId");
 
   const handleChange = async () => {
-    console.log("click");
     if (password !== checkPassword) {
       setNotiStatus("wrongPassword");
       return;
@@ -79,9 +77,7 @@ const SettingPage = () => {
 
     if (data.account) {
       setNotiStatus("success");
-      // setTimeout(() => {
         window.location.reload();
-      // }, 2000);
 
       return;
     } else {

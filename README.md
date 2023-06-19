@@ -59,7 +59,7 @@ localhost:3000/twitter-frontend-2023/
 ### 退出專案
 
 ```
-ctrl c
+ctrl+c
 ```
 
 ## 開發工具

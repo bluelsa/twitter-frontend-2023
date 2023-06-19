@@ -140,7 +140,6 @@ const UserEditModal = ({ user, setEditPopup }) => {
                     style={{ display: "none" }}
                     onChange={(e) => {
                       setAvatar(e.target.files[0]);
-                      console.log("data " + avatar);
                     }}
                   />
                 </label>

@@ -6,6 +6,7 @@ const SpecTweetList = ({ tweetId, tweetAccount }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
+    console.log("replyTweet:" + replies);
     const getRepliesAsync = async (tweetId) => {
       try {
         const reps = await getTweetReplies(tweetId);
@@ -19,14 +20,20 @@ const SpecTweetList = ({ tweetId, tweetAccount }) => {
     };
 
     getRepliesAsync(tweetId);
-  }, [tweetId]);
+  }, []); 
 
   return (
     <>
       {replies ? (
         <div>
           {replies.map((reply) => {
-            return <SpecReplyTweet key={reply.id} reply={reply} tweetAccount={tweetAccount} />;
+            return (
+              <SpecReplyTweet
+                key={reply.id}
+                reply={reply}
+                tweetAccount={tweetAccount}
+              />
+            );
           })}
         </div>
       ) : (

@@ -9,18 +9,18 @@ import { useState, useEffect } from 'react'
 import { deleteTweets, getTweets } from '../api/admin'
 
 const TweetsPage = () => {
-  const [tweets, setTweets] = useState([])
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [tweets, setTweets] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  useEffect(() => {  
+  useEffect(() => {
     const token = localStorage.getItem("token");
-    
+
     const getUsersAsync = async (token) => {
       try {
         const tweets = await getTweets(token);
-       
+
         if (!tweets.status) {
           setTweets(tweets);
           setIsAuthenticated(true);
@@ -31,69 +31,66 @@ const TweetsPage = () => {
         setIsLoading(false);
       }
     };
-   getUsersAsync(token);
-  }, []);
+    getUsersAsync(token);
+  }, []); 
 
-useEffect(() => {
-  if (!isLoading) {
-  if (!isAuthenticated) {
-    navigate("/admin");
-  }
-}
-}, [navigate, isAuthenticated, isLoading]);
-
+  useEffect(() => {
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        navigate("/admin");
+      }
+    }
+  }, [navigate, isAuthenticated, isLoading]);
 
   const handleDelete = async (id) => {
-   const token = localStorage.getItem("token");
-   try {
-     await deleteTweets(id, token);
-     setTweets((prevTweets) => {
-      return prevTweets.filter((tweet) => tweet.id !== id)
-     })
-   } catch(error) {
-    console.error(error)
-   }
-
-  }
+    const token = localStorage.getItem("token");
+    try {
+      await deleteTweets(id, token);
+      setTweets((prevTweets) => {
+        return prevTweets.filter((tweet) => tweet.id !== id);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
   };
-
 
   return (
     <div className={styles.Container}>
       {/* navbar */}
       <div className={styles.leftColumn}>
         {/* <AdminNav/> */}
-          <nav className={styles.navContainer}>
-            <div className={styles.navBar}>
-              <Logo className={styles.logo} />
-              <div className={styles.homeIcon}>
-                <HomeIcon />
-                <Link to="/admin/tweets">
-                  <div className={styles.active}>推文清單</div>
-                </Link>
-              </div>
-              <div className={styles.userIcon}>
-                <UserIcon />
-                <Link to="/admin/users">
-                  <div>使用者列表</div>
-                </Link>
-              </div>
-            </div>
-
-            <div className={styles.logoutIcon}>
-              <LogoutIcon />
-              <Link to='/admin'>
-              <div onClick={handleLogout}>登出</div>
+        <nav className={styles.navContainer}>
+          <div className={styles.navBar}>
+            <Logo className={styles.logo} />
+            <div className={styles.homeIcon}>
+              <HomeIcon />
+              <Link to="/admin/tweets">
+                <div className={styles.active}>推文清單</div>
               </Link>
             </div>
-          </nav>
+            <div className={styles.userIcon}>
+              <UserIcon />
+              <Link to="/admin/users">
+                <div>使用者列表</div>
+              </Link>
+            </div>
+          </div>
+
+          <div className={styles.logoutIcon}>
+            <LogoutIcon />
+            <Link to="/admin">
+              <div onClick={handleLogout}>登出</div>
+            </Link>
+          </div>
+        </nav>
       </div>
-{/* content */}
+      {/* content */}
       <div className={styles.contentContainer}>
-        <TweetList tweets={tweets} onDelete={handleDelete}/>
+        <TweetList tweets={tweets} onDelete={handleDelete} />
       </div>
     </div>
   );

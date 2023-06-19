@@ -17,7 +17,7 @@ const Popular = () => {
     };
 
     getPopularListAsync();
-  }, []);
+  }, []); 
 
   return (
     <>

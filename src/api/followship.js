@@ -20,7 +20,6 @@ axiosInstance.interceptors.request.use(
 );
 
 export const createFollow = async (id) => {
-  console.log(id)
   try {
     const { data } = await axiosInstance.post(`${baseURL}`, {
       id
