@@ -13,7 +13,6 @@ const UserTweetList = ({ twitPop, replyPop, setMain, setSpecTweet, setReplyPop }
         if (userTweets) {
           setUserTweets(userTweets);
         }
-        console.log("userTweetList: " + userTweets);
       } catch (error) {
         console.error(error);
       }

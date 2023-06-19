@@ -24,7 +24,7 @@ const UserMain = ({
 }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  console.log("userMain: " + user);
+
   // render推文/回覆/喜歡的內容
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);

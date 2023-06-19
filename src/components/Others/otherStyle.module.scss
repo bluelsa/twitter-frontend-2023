@@ -26,7 +26,7 @@
         object-fit: cover;
       }
 
-      :hover {
+      &:hover {
         cursor: pointer;
       }
     }
@@ -82,7 +82,7 @@
     display: flex;
     align-items: center;
 
-    :hover {
+    &:hover {
       cursor: pointer;
     }
 
@@ -225,7 +225,7 @@
     background-color: rgb(189, 188, 188);
     border-radius: 50%;
 
-    :hover {
+    &:hover {
       cursor: pointer;
     }
 

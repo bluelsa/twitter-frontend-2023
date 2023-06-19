@@ -15,15 +15,12 @@ const ReplyList = () => {
         if (userReplies) {
           setUserReplies(userReplies);
         }
-        console.log('replyList: '+ JSON.stringify(userReplies))
       } catch (error) {
         console.error(error);
       }
     };
     getUserReplyAsync(userId);
   }, []);
-
-  console.log('AAAA: '+ userReplies)
 
   return (
     <>

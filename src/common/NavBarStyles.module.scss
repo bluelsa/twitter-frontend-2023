@@ -29,7 +29,7 @@
     .navBigButton {
       width: 178px;
       height: 46px;
-      :hover {
+      &:hover {
           cursor: pointer;
         }
     }
@@ -48,7 +48,7 @@
 .blackIcon {
   fill: #44444F;
 
-  :hover {
+  &:hover {
     cursor: pointer;
   }
 }
@@ -56,7 +56,7 @@
 .orangeIcon {
   fill: #FF6600;
 
-  :hover {
+  &:hover {
     cursor: pointer;
   }
 }
@@ -65,7 +65,7 @@
   width: 178px;
   height: 58px;
 
-  :hover {
+  &:hover {
       cursor: pointer;
     }
 }
