@@ -27,7 +27,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
 
   const handleChangeInfo = async () => {
     const id = localStorage.getItem("userId");
-    setLoading(true);
+    
     if (name.length === 0) {
       setNotiStatus("nameEmpty");
       return;
@@ -36,9 +36,11 @@ const UserEditModal = ({ user, setEditPopup }) => {
       setNotiStatus("introductionEmpty");
       return;
     }
-    if (name.length > 50) {
+    if (name.length > 50 || introduction.length > 140) {
+      setNotiStatus('max')
       return;
-    }
+    } 
+    setLoading(true);
     try {
       await putUser({
         id,
@@ -70,8 +72,8 @@ const UserEditModal = ({ user, setEditPopup }) => {
             {notiStatus === "introductionEmpty" && (
               <TimePopup notification="error" title="自我介紹不可為空白" />
             )}
-            {notiStatus === "incomplete" && (
-              <TimePopup notification="error" title="請輸入完整資訊" />
+            {notiStatus === "max" && (
+              <TimePopup notification="error" title="字數超出上限！" />
             )}
             {notiStatus === "finish" && ""}
           </div>
@@ -156,7 +158,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
                       type="text"
                       value={name}
                       placeholder={user.name}
-                      maxLength="50"
+                      // maxLength="50"
                       onChange={(e) => setName(e.target.value)}
                     />
                   </label>
@@ -172,7 +174,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
                       id="note"
                       value={introduction}
                       placeholder={user.introduction}
-                      maxLength="160"
+                      // maxLength="160"
                       onChange={(e) => setIntroduction(e.target.value)}
                     ></textarea>
                   </div>

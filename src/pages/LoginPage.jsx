@@ -18,14 +18,14 @@ const LoginPage = () => {
 
   // 若為已登入狀態，則無法回到登入頁面
   useEffect(() => {
-  const token = localStorage.getItem("token")
-  if (token) {
-    navigate('/home')
-  }
-  if (!token) {
-    return
-  }
-  }, [navigate])
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/home");
+    }
+    if (!token) {
+      return;
+    }
+  }, [navigate]);
 
   const handleClick = async () => {
     if (account.length === 0 || password.length === 0) {
@@ -39,11 +39,11 @@ const LoginPage = () => {
     });
 
     if (data.status === "success") {
-      localStorage.removeItem("adminToken")
+      localStorage.removeItem("adminToken");
       localStorage.setItem("token", data.data.token);
       localStorage.setItem("userId", data.data.user.id);
       setNotiStatus("success");
-        navigate("/home");
+      navigate("/home");
       return;
     }
     if (data.status === "error" && data.message === "帳號不存在！") {
@@ -51,7 +51,7 @@ const LoginPage = () => {
       setAccountInvalid(true);
     }
     if (data.message === "帳號或密碼輸入錯誤！") {
-      setNotiStatus('failed')
+      setNotiStatus("failed");
     }
   };
 
@@ -82,39 +82,39 @@ const LoginPage = () => {
         </div>
         <h1>登入 Alphitter</h1>
         <div className={styles.inputGroup}>
-          <div
-            className={clsx(styles.inputContainer, {
-              [styles.errorContainer]: accountInvalid,
-            })}
-          >
-            <label>
-              帳號
-              <input
-                type="text"
-                value={account}
-                placeholder="請輸入帳號"
-                onChange={(e) => setAccount(e.target.value)}
-              />
-            </label>
-            {accountInvalid ? (
-              <p className={styles.errorMessage}>帳號不存在</p>
-            ) : (
-              <></>
-            )}
-          </div>
+            <div
+              className={clsx(styles.inputContainer, {
+                [styles.errorContainer]: accountInvalid,
+              })}
+            >
+              <label>
+                帳號
+                <input
+                  type="text"
+                  value={account}
+                  placeholder="請輸入帳號"
+                  onChange={(e) => setAccount(e.target.value)}
+                />
+              </label>
+              {accountInvalid ? (
+                <p className={styles.errorMessage}>帳號不存在</p>
+              ) : (
+                <></>
+              )}
+            </div>
 
-          <div className={styles.inputContainer}>
-            <label>
-              密碼
-              <input
-                type="password"
-                value={password}
-                placeholder="請輸入密碼"
-                autoComplete="current-password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-          </div>
+            <div className={styles.inputContainer}>
+              <label>
+                密碼
+                <input
+                  type="password"
+                  value={password}
+                  placeholder="請輸入密碼"
+                  autoComplete="current-password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </label>
+            </div>
         </div>
 
         <button className={styles.button} onClick={handleClick}>
@@ -126,7 +126,14 @@ const LoginPage = () => {
           </Link>
           <span>&bull;</span>
           <Link to="/admin">
-            <span className={styles.linkText} onClick={()=>{navigate('/admin')}}>後台登入</span>
+            <span
+              className={styles.linkText}
+              onClick={() => {
+                navigate("/admin");
+              }}
+            >
+              後台登入
+            </span>
           </Link>
         </div>
       </div>
