@@ -48,7 +48,7 @@ useEffect(() => {
 }, [navigate, isAuthenticated, isLoading]);
 
 const handleLogout = () => {
-  localStorage.removeItem('token')
+  localStorage.removeItem('adminToken')
 }
 
   return (

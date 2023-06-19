@@ -42,7 +42,7 @@ const SignUpPage = () => {
       password,
       checkPassword,
     });
-console.log(data.message.length)
+
     if (data.status === "success") {
       setNotiStatus("success");
       // setTimeout(() => {

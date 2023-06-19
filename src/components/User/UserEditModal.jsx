@@ -6,6 +6,7 @@ import { ReactComponent as DeleteCoverIcon } from "../../assets/image/delete-whi
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/iconCCamera.svg";
 import { useState } from "react";
 import { putUser } from "../../api/user";
+import Loading from "../Animation/Loading";
 
 import TimePopup from "../TimePopup/TimePopup";
 
@@ -15,6 +16,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
   const [introduction, setIntroduction] = useState(user.introduction);
   const [avatar, setAvatar] = useState(user.avatar);
   const [background, setBackground] = useState(user.background);
+  const [loading, setLoading] = useState(false)
 
 // error message
 // const [empty, setEmpty] = useState(false)
@@ -26,6 +28,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
   const id = user.id;
 
   const handleChangeInfo = async () => {
+    setLoading(true)
     if (name.length === 0) {
       setNotiStatus("nameEmpty");
       return;
@@ -50,6 +53,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
     }
     setEditPopup(false);
     window.location.reload();
+    setLoading(false)
   };
 
   const handleClosePopup = () => {
@@ -180,6 +184,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
               </div>
           </div>
         </div>
+        {loading && (<div className={styles.loadingWrapper}><Loading className={styles.loading}/></div>)}
       </div>
     </>
   );

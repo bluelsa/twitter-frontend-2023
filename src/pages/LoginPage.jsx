@@ -28,17 +28,14 @@ const LoginPage = () => {
     });
 
     if (data.status === "success") {
+      localStorage.removeItem("adminToken")
       localStorage.setItem("token", data.data.token);
       localStorage.setItem("userId", data.data.user.id);
       setNotiStatus("success");
-      // setTimeout(() => {
         navigate("/home");
-      // }, 2000);
       return;
     }
-    console.log('message:' +data.message)
     if (data.status === "error" && data.message === "帳號不存在！") {
-      console.log("yes");
       setNotiStatus("wrongAccount");
       setAccountInvalid(true);
     }

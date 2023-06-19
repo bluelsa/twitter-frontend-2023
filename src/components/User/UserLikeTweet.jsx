@@ -4,11 +4,11 @@ import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createLike, deleteLike } from "../../api/tweets";
+import { deleteLike } from "../../api/tweets";
 import ElapsedTime from "../../common/ElapsedTime";
 
 const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
-  const [isLike, setIsLike] = useState(userLike.isLiked);
+  const [isLike, setIsLike] = useState(true);
   const [likedCount, setLikedCount] = useState(userLike.Tweet.likedCount);
 
   const navigate = useNavigate();
@@ -22,15 +22,6 @@ const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
     return;
   };
 
-  const handleLike = async (tweetId) => {
-    try {
-      await createLike(tweetId);
-      setIsLike(true);
-      setLikedCount(likedCount + 1);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const handleUnlike = async (tweetId) => {
     try {
@@ -98,10 +89,6 @@ const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
                 ) : (
                   <UnLikeIcon
                     className={styles.icon}
-                    onClick={() => {
-                      setIsLike(true);
-                      handleLike(userLike.TweetId);
-                    }}
                   />
                 )}
                 <span>{likedCount}</span>
