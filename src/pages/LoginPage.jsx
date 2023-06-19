@@ -1,7 +1,7 @@
 import styles from "../common/Auth.module.scss";
 import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { login } from "../api/auth";
 import TimePopup from "../components/TimePopup/TimePopup";
 import clsx from "clsx";
@@ -15,6 +15,14 @@ const LoginPage = () => {
   const [accountInvalid, setAccountInvalid] = useState(false);
 
   const navigate = useNavigate();
+
+  // 若為已登入狀態，則無法回到登入頁面
+  useEffect(() => {
+  const token = localStorage.getItem("token")
+  if (token) {
+    navigate('/home')
+  }
+  }, [navigate])
 
   const handleClick = async () => {
     if (account.length === 0 || password.length === 0) {

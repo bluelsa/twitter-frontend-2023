@@ -14,6 +14,7 @@ const NavbarUser = ({ setTwitPop }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("otherId");
+    navigate("/login");
   };
 
   const handleRemove = () => {
@@ -61,7 +62,6 @@ const NavbarUser = ({ setTwitPop }) => {
           <NavOut
             className={styles.logOut}
             onClick={() => {
-              navigate("/login");
               handleLogout();
             }}
           />

@@ -37,6 +37,10 @@
     .logOut {
       position: absolute;
       bottom: 0px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

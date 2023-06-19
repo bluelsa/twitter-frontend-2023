@@ -11,8 +11,6 @@ import { putSetting } from "../api/user";
 const SettingPage = () => {
   //identification
   const [user, setUser] = useState(undefined);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   //input content
@@ -27,36 +25,27 @@ const SettingPage = () => {
   // notification
   const [notiStatus, setNotiStatus] = useState("finished");
 
-  useEffect(() => {
-    const id = localStorage.getItem("userId");
-    const getUsersAsync = async (id) => {
-      try {
-        const user = await getUser(id);
-        if (!user.status) {
-          setUser(user);
-          setAccount(user.account)
-          setName(user.name)
-          setEmail(user.email)
-          setPassword(user.password)
-          setCheckPassword(user.checkPassword)
-          setIsAuthenticated(true);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getUsersAsync(id);
-  }, []);
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        navigate("/login");
-      }
-    }
-  }, [navigate, isAuthenticated, isLoading]);
+ useEffect(() => {
+   const token = localStorage.getItem("token");
+   if (!token) {
+     navigate("/login");
+   }
+   const id = localStorage.getItem("userId");
+   const getUsersAsync = async (id) => {
+     try {
+       const user = await getUser(id);
+       if (!user.status) {
+         setUser(user);
+         setName(user.name)
+      setAccount(user.account)
+      setEmail(user.email)
+       }
+     } catch (error) {
+       console.error(error);
+     }
+   };
+   getUsersAsync(id);
+ }, [navigate]);
 
   const id = localStorage.getItem("userId");
 
@@ -77,6 +66,7 @@ const SettingPage = () => {
 
     if (data.account) {
       setNotiStatus("success");
+      
         window.location.reload();
 
       return;

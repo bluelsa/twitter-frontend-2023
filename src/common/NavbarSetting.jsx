@@ -5,14 +5,18 @@ import { ReactComponent as ProfileIcon } from "../assets/image/profile.svg";
 import { ReactComponent as SettingActiveIcon } from "../assets/image/setting-active.svg";
 import { ReactComponent as NavOut } from "../assets/image/NavOut.svg";
 import { ReactComponent as TweetButton } from "../assets/image/tweetButton.svg";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
 const NavbarSetting = ({ setTwitPop }) => {
+const navigate = useNavigate()
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("otherId");
+    navigate("/login");
   };
 
   return (

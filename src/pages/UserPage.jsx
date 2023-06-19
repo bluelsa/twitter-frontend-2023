@@ -20,38 +20,29 @@ const UserPage = () => {
   //popup window
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
-  //data & authentication
+  //get user data
   const [user, setUser] = useState({});
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const id = localStorage.getItem("userId");
-    const getUserAsync = async () => {
-      try {
-        const user = await getUser(id);
-        if (!user.status) {
-          setUser(user);
-          setIsAuthenticated(true);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
+useEffect(() => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    navigate("/login");
+  }
+  const id = localStorage.getItem("userId");
+  const getUsersAsync = async (id) => {
+    try {
+      const user = await getUser(id);
+      if (!user.status) {
+        setUser(user);
       }
-    };
-    getUserAsync(id);
-  }, []);
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        navigate("/login");
-      }
+    } catch (error) {
+      console.error(error);
     }
-  }, [navigate, isAuthenticated, isLoading]);
+  };
+  getUsersAsync(id);
+}, [navigate]);
 
   return (
     <div className={styles.homeContainer}>

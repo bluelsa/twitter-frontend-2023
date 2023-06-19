@@ -15,35 +15,26 @@ const MainPage = () => {
   const [replyPop, setReplyPop] = useState(false);
   const [user, setUser] = useState({});
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (!token) {
+      navigate('/login')
+    }
     const id = localStorage.getItem("userId");
     const getUsersAsync = async (id) => {
       try {
         const user = await getUser(id);
         if (!user.status) {
           setUser(user);
-          setIsAuthenticated(true);
         }
       } catch (error) {
         console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
+      } 
     };
     getUsersAsync(id);
-  }, []);
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        navigate("/login");
-      }
-    }
-  }, [navigate, isAuthenticated, isLoading]);
+  }, [navigate]);
 
   return (
     <div className={styles.homeContainer}>
