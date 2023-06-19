@@ -25,30 +25,42 @@ https://bluelsa.github.io/twitter-frontend-2023/
 
 ## 專案執行
 
-### `下載專案`
+### 下載專案
 
 打開terminal，下載此專案
-```git clone https://github.com/bluelsa/twitter-frontend-2023```
+```
+git clone https://github.com/bluelsa/twitter-frontend-2023
+```
 
-### `進入專案資料夾`
+### 進入專案資料夾
 
-```cd twitter-frontend-2023```
+```
+cd twitter-frontend-2023
+```
 
-### `安裝套件`
+### 安裝套件
 
-```npm install```
+```
+npm install
+```
 
-### `啟動專案`
+### 啟動專案
 
-```npm start```
+```
+npm start
+```
 
-### `本地網址`
+### 本地網址
 
-```localhost:3000/twitter-frontend-2023/```
+```
+localhost:3000/twitter-frontend-2023/
+```
 
-### `退出專案`
+### 退出專案
 
-```ctrl c```
+```
+ctrl c
+```
 
 ## 開發工具
 
