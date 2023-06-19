@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/twitter-frontend-2023/static/css/main.166f2ac8.css",
-    "main.js": "/twitter-frontend-2023/static/js/main.e37091ce.js",
+    "main.css": "/twitter-frontend-2023/static/css/main.61e8806d.css",
+    "main.js": "/twitter-frontend-2023/static/js/main.83c5d676.js",
     "static/js/787.1dc0477a.chunk.js": "/twitter-frontend-2023/static/js/787.1dc0477a.chunk.js",
     "static/media/setting.svg": "/twitter-frontend-2023/static/media/setting.d92e97bd542ce6687a3b44373ff64c96.svg",
     "static/media/EditTitle.svg": "/twitter-frontend-2023/static/media/EditTitle.74fdb24353c006d906af5ef119533d55.svg",
@@ -50,12 +50,12 @@
     "static/media/heart-xs.svg": "/twitter-frontend-2023/static/media/heart-xs.5e5d892842ae545d6d81b84cec2019b6.svg",
     "static/media/heart-solid.svg": "/twitter-frontend-2023/static/media/heart-solid.5fbcc09a16cf4089a4ac11eda9ef9e21.svg",
     "static/media/success.svg": "/twitter-frontend-2023/static/media/success.3d838d9cdeb2b9807b6cbea717208e0f.svg",
-    "main.166f2ac8.css.map": "/twitter-frontend-2023/static/css/main.166f2ac8.css.map",
-    "main.e37091ce.js.map": "/twitter-frontend-2023/static/js/main.e37091ce.js.map",
+    "main.61e8806d.css.map": "/twitter-frontend-2023/static/css/main.61e8806d.css.map",
+    "main.83c5d676.js.map": "/twitter-frontend-2023/static/js/main.83c5d676.js.map",
     "787.1dc0477a.chunk.js.map": "/twitter-frontend-2023/static/js/787.1dc0477a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.166f2ac8.css",
-    "static/js/main.e37091ce.js"
+    "static/css/main.61e8806d.css",
+    "static/js/main.83c5d676.js"
   ]
 }
