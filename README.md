@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# AC Simple Twitter 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+此專案為使用React打造的 `Alphitter` 簡易版社交平台，使用者能建立個人帳戶，與其他使用者進行互動與交流。
 
-## Available Scripts
+## Github Page
 
-In the project directory, you can run:
+https://bluelsa.github.io/twitter-frontend-2023/
 
-### `npm start`
+## 功能列表
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`使用者`
+* 可於註冊頁面註冊專屬個人帳號
+* 登入後進入個人首頁，查看所有使用者推文
+* 發佈個人推文、對推文進行回覆與按讚
+* 個人頁面查看所有推文、回覆及喜歡的內容
+* 查看個人追蹤者、被追蹤者的使用者列表
+* 編輯個人頭像、封面照片、暱稱及自我介紹
+* 編輯個人帳號、暱稱、Email、密碼資料
+* 查看其他使用者個人資料，並進行追蹤/取消追蹤
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`管理者`
+* 可由後台登入頁面登入
+* 瀏覽所有使用者個人資料列表
+* 瀏覽所有推文列表、刪除特定推文
 
-### `npm test`
+## 專案執行
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `下載專案`
 
-### `npm run build`
+打開terminal，下載此專案
+```git clone https://github.com/bluelsa/twitter-frontend-2023```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `進入專案資料夾`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```cd twitter-frontend-2023```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `安裝套件`
 
-### `npm run eject`
+```npm install```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `啟動專案`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```npm start```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `本地網址`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```localhost:3000/twitter-frontend-2023/```
 
-## Learn More
+### `退出專案`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```ctrl c```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 開發工具
 
-### Code Splitting
+* react@18.2.0
+* react-router-dom@18.2.0
+* react-scripts@5.0.1
+* axios@0.27.2
+* sass@1.62.1
+* clsx@1.2.1
+* lottie-web@5.12.2
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 專案開發人員
+[Elsa Tung](https://github.com/bluelsa)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
