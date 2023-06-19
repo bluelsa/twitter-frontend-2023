@@ -11,8 +11,6 @@ const Post = () => {
   const [notiStatus, setNotiStatus] = useState("finished");
   const { user } = useAuth()
 
-  console.log('post: '+ user)
-
   const handleTweet = async () => {
     if (description.length === 0) {
       setNotiStatus("empty");

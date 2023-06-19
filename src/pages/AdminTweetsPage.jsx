@@ -15,11 +15,13 @@ const TweetsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    const getUsersAsync = async (token) => {
+    const adminToken = localStorage.getItem("adminToken");
+    const getUsersAsync = async (adminToken) => {
+      if (!adminToken) {
+        navigate('/admin')
+      } 
       try {
-        const tweets = await getTweets(token);
+        const tweets = await getTweets(adminToken);
 
         if (!tweets.status) {
           setTweets(tweets);
@@ -31,7 +33,7 @@ const TweetsPage = () => {
         setIsLoading(false);
       }
     };
-    getUsersAsync(token);
+    getUsersAsync(adminToken);
   }, []); 
 
   useEffect(() => {
@@ -43,9 +45,9 @@ const TweetsPage = () => {
   }, [navigate, isAuthenticated, isLoading]);
 
   const handleDelete = async (id) => {
-    const token = localStorage.getItem("token");
+    const adminToken = localStorage.getItem("adminToken");
     try {
-      await deleteTweets(id, token);
+      await deleteTweets(id, adminToken);
       setTweets((prevTweets) => {
         return prevTweets.filter((tweet) => tweet.id !== id);
       });

@@ -5,9 +5,8 @@ import UserNavbar from "./UserNav";
 import ReplyList from "./ReplyList";
 import UserEditModal from "./UserEditModal";
 import LikeForm from "./LikeForm";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import UserTweetList from "./UserTweetList";
-import { getUserTweets } from "../../api/user";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -22,7 +21,7 @@ const UserMain = ({
   setReplyPop,
 }) => {
   const navigate = useNavigate();
-  const { user } = useAuth()
+  const { user, userTweets } = useAuth()
 
   // render推文/回覆/喜歡的內容
   const [twitSection, setTwitSection] = useState(true);
@@ -31,25 +30,6 @@ const UserMain = ({
 
   // 編輯個人資料popup window
   const [editPopup, setEditPopup] = useState(false);
-
-  // API get 使用者所有推文
-  const [userTweets, setUserTweets] = useState([]);
-
-  const userId = localStorage.getItem("userId");
-
-  useEffect(() => {
-    const getUserTweetsAsync = async (userId) => {
-      try {
-        const userTweets = await getUserTweets(userId);
-        if (!userTweets.status) {
-          setUserTweets(userTweets);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getUserTweetsAsync(userId);
-  }, [userId]);
 
   return (
     <div className={styles.container}>

@@ -6,15 +6,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteLike } from "../../api/tweets";
 import ElapsedTime from "../../common/ElapsedTime";
+import { useAuth } from "../../contexts/AuthContext";
 
 const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
   const [isLike, setIsLike] = useState(true);
   const [likedCount, setLikedCount] = useState(userLike.Tweet.likedCount);
-
+  const { userId } = useAuth
   const navigate = useNavigate();
 
   const handleOtherPage = () => {
-    const userId = localStorage.getItem("userId");
+    // const userId = localStorage.getItem("userId");
     if (userId !== JSON.stringify(userLike.Tweet.UserId)) {
       localStorage.setItem("otherId", userLike.Tweet.UserId);
       navigate("/otheruser");
