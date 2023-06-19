@@ -1,17 +1,15 @@
 import styles from "./Setting.module.scss";
 
 import NavbarSetting from "../common/NavbarSetting";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getUser } from "../api/user";
 import TwitPopUp from "../common/TwitPopUp";
 import TimePopup from "../components/TimePopup/TimePopup";
 import { putSetting } from "../api/user";
+import { useAuth } from "../contexts/AuthContext";
 
 const SettingPage = () => {
   //identification
-  const [user, setUser] = useState(undefined);
-  const navigate = useNavigate();
+  const { user } = useAuth()
 
   //input content
   const [name, setName] = useState('');
@@ -25,27 +23,14 @@ const SettingPage = () => {
   // notification
   const [notiStatus, setNotiStatus] = useState("finished");
 
- useEffect(() => {
-   const token = localStorage.getItem("token");
-   if (!token) {
-     navigate("/login");
-   }
-   const id = localStorage.getItem("userId");
-   const getUsersAsync = async (id) => {
-     try {
-       const user = await getUser(id);
-       if (!user.status) {
-         setUser(user);
-         setName(user.name)
+
+  useEffect(() => {
+    if(user) {
+      setName(user.name);
       setAccount(user.account)
       setEmail(user.email)
-       }
-     } catch (error) {
-       console.error(error);
-     }
-   };
-   getUsersAsync(id);
- }, [navigate]);
+    }
+  },[user])
 
   const id = localStorage.getItem("userId");
 
@@ -82,8 +67,6 @@ const SettingPage = () => {
 
   return (
     <>
-      {user ? (
-        <>
           <div
             className={styles.notiContainer}
             onClick={() => {
@@ -181,17 +164,12 @@ const SettingPage = () => {
                     <TwitPopUp
                       twitPop={twitPop}
                       setTwitPop={setTwitPop}
-                      user={user}
                     />
                   )}
                 </div>
               </div>
             </div>
           </div>
-        </>
-      ) : (
-        <></>
-      )}
     </>
   );
 };

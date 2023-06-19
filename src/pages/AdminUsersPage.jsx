@@ -12,7 +12,7 @@ import { getUsers } from '../api/admin'
 
 
 
-const UsersPage = () => {
+const AdminUsersPage = () => {
   const [users, setUsers] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -85,4 +85,4 @@ const UsersPage = () => {
   );
 };
 
-export default UsersPage;
+export default AdminUsersPage;

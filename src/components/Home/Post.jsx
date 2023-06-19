@@ -2,12 +2,16 @@ import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as PostButton } from "../../assets/image/PostButton.svg";
 import { useState, useRef } from "react";
 import { createTweet } from "../../api/tweets";
+import { useAuth } from "../../contexts/AuthContext";
 import TimePopup from "../TimePopup/TimePopup";
 
-const Post = ({ user }) => {
+const Post = () => {
   const inputRef = useRef(null);
   const [description, setDescription] = useState("");
   const [notiStatus, setNotiStatus] = useState("finished");
+  const { user } = useAuth()
+
+  console.log('post: '+ user)
 
   const handleTweet = async () => {
     if (description.length === 0) {
@@ -30,9 +34,7 @@ const Post = ({ user }) => {
       console.error(error);
     }
     setDescription("");
-    // setTimeout(() => {
     window.location.reload();
-    // }, 1000);
   };
 
   const handleKeyDown = async (e) => {

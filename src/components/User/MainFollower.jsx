@@ -1,16 +1,17 @@
 import styles from "../Others/otherStyle.module.scss";
-// import MainFollowingItem from "./MainFollowingItem";
 import MainFollowerItem from "./MainFollowerItem";
 import { ReactComponent as FollowerIcon } from "../../assets/image/follower-active.svg";
 import { ReactComponent as FollowingIcon } from "../../assets/image/following.svg";
 import { ReactComponent as Arrow } from "../../assets/image/Arrow.svg";
 import { useEffect, useState } from 'react'
 import { getUserFollowers } from "../../api/user";
+import { useAuth } from "../../contexts/AuthContext";
 
-const MainFollowers = ({ user, setMain, setFollower, setFollowing }) => {
-
+const MainFollowers = ({ setMain, setFollower, setFollowing }) => {
+  const { user } = useAuth()
   const [followers, setFollowers] = useState([])
   const [isFollowers, setIsFollowers] = useState(true)
+
 
   useEffect(() => {
     const getUserFollowersAsync = async () => {

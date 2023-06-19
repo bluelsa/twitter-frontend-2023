@@ -3,14 +3,16 @@ import { ReactComponent as ModalX } from "../assets/image/ModalX.svg";
 import { ReactComponent as PostButton } from "../assets/image/PostButton.svg";
 import { useState, useRef } from "react";
 import { createTweet } from "../api/tweets";
+import { useAuth } from "../contexts/AuthContext";
 import TimePopup from "../components/TimePopup/TimePopup";
 
-const TwitPopUp = ({ user, setTwitPop }) => {
+const TwitPopUp = ({ setTwitPop }) => {
   const inputRef = useRef(null);
   const [notiStatus, setNotiStatus] = useState("finish");
   const [hint, setHint] = useState("none");
   const [description, setDescription] = useState("");
-
+  const { user } = useAuth();
+  
   const handleTweet = async () => {
     if (description.length === 0) {
       setHint("empty");
@@ -36,7 +38,7 @@ const TwitPopUp = ({ user, setTwitPop }) => {
   };
 
   const handleKeyDown = async (e) => {
-    if ( e.key === "Enter") {
+    if (e.key === "Enter") {
       if (inputRef.current.value.length === 0) {
         setHint("empty");
         return;

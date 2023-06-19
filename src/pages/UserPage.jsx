@@ -7,9 +7,7 @@ import MainFollowing from "../components/User/MainFollow";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
 import UserSpec from "../common/Reply/UserSpec";
-import { useState, useEffect } from "react";
-import { getUser } from "../api/user";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const UserPage = () => {
   //render state
@@ -20,29 +18,6 @@ const UserPage = () => {
   //popup window
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
-  //get user data
-  const [user, setUser] = useState({});
-
-  const navigate = useNavigate();
-
-useEffect(() => {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    navigate("/login");
-  }
-  const id = localStorage.getItem("userId");
-  const getUsersAsync = async (id) => {
-    try {
-      const user = await getUser(id);
-      if (!user.status) {
-        setUser(user);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  getUsersAsync(id);
-}, [navigate]);
 
   return (
     <div className={styles.homeContainer}>
@@ -62,7 +37,6 @@ useEffect(() => {
 
             {main && (
               <UserMain
-                user={user}
                 main={main}
                 setMain={setMain}
                 setSpecTweet={setSpecTweet}
@@ -76,7 +50,6 @@ useEffect(() => {
 
             {following && (
               <MainFollowing
-                user={user}
                 setMain={setMain}
                 setFollower={setFollower}
                 setFollowing={setFollowing}
@@ -84,7 +57,6 @@ useEffect(() => {
             )}
             {follower && (
               <MainFollower
-                user={user}
                 setMain={setMain}
                 setFollower={setFollower}
                 setFollowing={setFollowing}
@@ -94,14 +66,12 @@ useEffect(() => {
               <ReplyPopUp
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
-                user={user}
               />
             )}
             {twitPop && (
               <TwitPopUp
                 twitPop={twitPop}
                 setTwitPop={setTwitPop}
-                user={user}
               />
             )}
           </div>

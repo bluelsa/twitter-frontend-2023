@@ -1,33 +1,43 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getUser } from "../api/user";
 
 const defaultApiContext = {
-  isAuthenticated: false,
-  user: null,
+  user: {},
 };
 
 const AuthContext = createContext(defaultApiContext);
 
-const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
+export const useAuth = () => useContext(AuthContext);
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+  const navigate = useNavigate()
+
+useEffect(() => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    navigate("/login");
+  }
+  const id = localStorage.getItem("userId");
+  const getUsersAsync = async (id) => {
+    try {
+      const user = await getUser(id);
+      if (!user.status) {
+        setUser(user);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  getUsersAsync(id);
+}, [navigate]);
 
   const value = {
-    isAuthenticated,
-    user: async (id) => {
-      try {
-        const user = await getUser(id);
-        if (!user.status) {
-          setUser(user);
-          setIsAuthenticated(true);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    },
+    user
   };
 
   return (
-    <AuthContext.Provider value={{ value }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={ value }>{children}</AuthContext.Provider>
   );
 };

@@ -8,23 +8,19 @@
   position: relative;
 }
 
-//MainPage Popularitems
+//MainPage Popular
 .mainContainer {
   width: 1400px;
   height: 100vh;
   margin: 0 auto;
   display: flex;
-  // grid-template-columns: 333px 641px 426px;
-  // grid-template-rows: 1200px;
   .leftColumn {
     margin-right: 20px;
   }
   .middleColumn {
     display: flex;
-    // position: relative;
 
     .mainBackground {
-      // width: 100%;
       width: 639px;
       height: 100vh;
       border: 1px solid #e6ecf0;

@@ -4,37 +4,13 @@ import Popular from "../common/Popular";
 import Twits from "../components/Home/Twits";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
-import { useState, useEffect } from "react";
-import { getUser } from "../api/user";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import SpecTweet from "../common/Reply/SpecTweet";
 
 const MainPage = () => {
   const [twitPop, setTwitPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
-  const [user, setUser] = useState({});
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-    if (!token) {
-      navigate('/login')
-    }
-    const id = localStorage.getItem("userId");
-    const getUsersAsync = async (id) => {
-      try {
-        const user = await getUser(id);
-        if (!user.status) {
-          setUser(user);
-        }
-      } catch (error) {
-        console.error(error);
-      } 
-    };
-    getUsersAsync(id);
-  }, [navigate]);
 
   return (
     <div className={styles.homeContainer}>
@@ -59,7 +35,6 @@ const MainPage = () => {
                 setSpecTweet={setSpecTweet}
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
-                user={user}
               />
             )}
 
@@ -67,14 +42,12 @@ const MainPage = () => {
               <ReplyPopUp
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
-                user={user}
               />
             )}
             {twitPop && (
               <TwitPopUp
                 twitPop={twitPop}
                 setTwitPop={setTwitPop}
-                user={user}
               />
             )}
           </div>

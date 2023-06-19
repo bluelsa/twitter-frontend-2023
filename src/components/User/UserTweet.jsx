@@ -9,7 +9,6 @@ import ElapsedTime from "../../common/ElapsedTime";
 const UserTweet = ({ userTweet, setMain, setSpecTweet, setReplyPop }) => {
   const [isLike, setIsLike] = useState(userTweet.isLiked);
 const [likedCount, setLikedCount] = useState(userTweet.likedCount);
-const [replyCount, setReplyCount] = useState(userTweet.repliedCount)
 
 const handleLike = async (tweetId) => {
   try {
@@ -38,7 +37,6 @@ const handleUnlike = async (tweetId) => {
 
   const handleReply = () => {
     localStorage.setItem("tweetId", userTweet.id);
-    setReplyCount(replyCount + 1)
   };
 
   return (
@@ -78,7 +76,7 @@ const handleUnlike = async (tweetId) => {
                     handleReply();
                   }}
                 />
-                <span>{replyCount}</span>
+                <span>{userTweet.repliedCount}</span>
               </div>
               <div className={styles.likeNum}>
                 {isLike ? (

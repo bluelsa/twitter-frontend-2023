@@ -9,9 +9,9 @@ import { useState, useEffect } from "react";
 import UserTweetList from "./UserTweetList";
 import { getUserTweets } from "../../api/user";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const UserMain = ({
-  user,
   main,
   setMain,
   setSpecTweet,
@@ -22,6 +22,7 @@ const UserMain = ({
   setReplyPop,
 }) => {
   const navigate = useNavigate();
+  const { user } = useAuth()
 
   // render推文/回覆/喜歡的內容
   const [twitSection, setTwitSection] = useState(true);
@@ -86,7 +87,6 @@ const UserMain = ({
         setFollower={setFollower}
         following={following}
         setFollowing={setFollowing}
-        user={user}
       />
       <UserNavbar
         twitSection={twitSection}
@@ -99,14 +99,13 @@ const UserMain = ({
 
       {twitSection && (
         <UserTweetList
-          user={user}
           userTweets={userTweets}
           setMain={setMain}
           setSpecTweet={setSpecTweet}
           setReplyPop={setReplyPop}
         />
       )}
-      {replySection && <ReplyList userId={userId}/>}
+      {replySection && <ReplyList/>}
       {likeSection && (
         <LikeForm setMain={setMain} setReplyPop={setReplyPop} setSpecTweet={setSpecTweet} />
       )}
@@ -115,7 +114,6 @@ const UserMain = ({
         <UserEditModal
           editPopup={editPopup}
           setEditPopup={setEditPopup}
-          user={user}
         />
       )}
     </div>

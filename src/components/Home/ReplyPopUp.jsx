@@ -4,12 +4,14 @@ import { ReactComponent as ReplyButton } from "../../assets/image/ReplyButton.sv
 import { useState, useEffect, useRef } from "react";
 import { getTweet } from "../../api/tweets";
 import { createReply } from "../../api/tweets";
+import { useAuth } from "../../contexts/AuthContext";
 
-const ReplyPopUp = ({ user, setReplyPop }) => {
+const ReplyPopUp = ({ setReplyPop }) => {
   const inputRef = useRef(null);
   const [replyTweet, setReplyTweet] = useState(undefined);
   const [hint, setHint] = useState("none");
   const [comment, setComment] = useState("");
+  const { user } = useAuth()
 
   const id = localStorage.getItem("tweetId");
 

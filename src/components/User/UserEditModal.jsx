@@ -6,12 +6,14 @@ import { ReactComponent as DeleteCoverIcon } from "../../assets/image/delete-whi
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/iconCCamera.svg";
 import { useState } from "react";
 import { putUser } from "../../api/user";
+import { useAuth } from "../../contexts/AuthContext";
 import Loading from "../Animation/Loading";
 
 import TimePopup from "../TimePopup/TimePopup";
 
-const UserEditModal = ({ user, setEditPopup }) => {
-// get data
+const UserEditModal = ({  setEditPopup }) => {
+  const { user } = useAuth
+  // get data
   const [name, setName] = useState(user.name);
   const [introduction, setIntroduction] = useState(user.introduction);
   const [avatar, setAvatar] = useState(user.avatar);

@@ -5,36 +5,12 @@ import NavbarOther from "../components/Others/NavbarOther";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
 import SpecTweet from "../common/Reply/SpecTweet";
-import { useState, useEffect } from "react";
-import { getUser } from "../api/user";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const OtherUserPage = () => {
-  const [user, setUser] = useState({});
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
-
-    const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-    const id = localStorage.getItem("userId");
-    const getUsersAsync = async (id) => {
-      try {
-        const user = await getUser(id);
-        if (!user.status) {
-          setUser(user);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getUsersAsync(id);
-  }, [navigate]);
 
   const handleOtherIdRemove = () => {
     localStorage.removeItem("otherId");
@@ -59,7 +35,6 @@ const OtherUserPage = () => {
               />
             ) : (
               <OtherMain
-                user={user}
                 setReplyPop={setReplyPop}
                 setSpecTweet={setSpecTweet}
                 onRemove={handleOtherIdRemove}
@@ -71,14 +46,12 @@ const OtherUserPage = () => {
               <ReplyPopUp
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
-                user={user}
               />
             )}
             {twitPop && (
               <TwitPopUp
                 twitPop={twitPop}
                 setTwitPop={setTwitPop}
-                user={user}
               />
             )}
           </div>

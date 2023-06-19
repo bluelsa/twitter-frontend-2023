@@ -1,12 +1,15 @@
 import styles from "../User/User.module.scss";
+import { useAuth } from "../../contexts/AuthContext";
 
 const UserProfile = ({
-  user,
   setMain,
   setFollower,
   setFollowing,
   setEditPopup,
 }) => {
+  
+  const { user } = useAuth()
+
   return (
     <div className={styles.profileContainer}>
       <div className={styles.imageWrapper}>
