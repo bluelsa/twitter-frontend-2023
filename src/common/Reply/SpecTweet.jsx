@@ -135,8 +135,7 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
           </div>
 
           <SpecTweetList
-            tweetId={tweet.id}
-            tweetAccount={tweet.TweetUser.account}
+            tweet={tweet}
           />
         </div>
       ) : (

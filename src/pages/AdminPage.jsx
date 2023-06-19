@@ -21,6 +21,7 @@ useEffect(() => {
   if (adminToken) {
     navigate("/admin/tweets");
   }
+
 }, [navigate]);
 
   const handleClick = async () => {

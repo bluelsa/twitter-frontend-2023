@@ -10,8 +10,9 @@ const LikeForm = ({
 }) => {
   const [userLikes, setUserLikes] = useState([]);
 
-  const userId = localStorage.getItem("userId");
+ 
   useEffect(() => {
+    const userId = localStorage.getItem("userId");
     const getUserLikesAsync = async (userId) => {
       try {
         const userLikes = await getUserLikes(userId);
@@ -28,7 +29,8 @@ const LikeForm = ({
   }, []); 
 
   return (
-    <div className={styles.userList}>
+    <>
+    {userLikes? (<div className={styles.userList}>
       {userLikes.map((userLike) => {
         return (
           <UserLikeTweet
@@ -40,7 +42,9 @@ const LikeForm = ({
           />
         );
       })}
-    </div>
+    </div>):(<></>)}
+    
+    </>
   );
 };
 

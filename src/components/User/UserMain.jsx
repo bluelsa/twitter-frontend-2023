@@ -21,8 +21,8 @@ const UserMain = ({
   setReplyPop,
 }) => {
   const navigate = useNavigate();
-  const { user, userTweets } = useAuth()
-
+  const { user } = useAuth()
+console.log('userMain: '+ user)
   // render推文/回覆/喜歡的內容
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
@@ -32,7 +32,8 @@ const UserMain = ({
   const [editPopup, setEditPopup] = useState(false);
 
   return (
-    <div className={styles.container}>
+    <>
+    {user? (<div className={styles.container}>
       <div
         className={styles.header}
         onClick={() => {
@@ -53,7 +54,7 @@ const UserMain = ({
         <div className={styles.returnWrapper}>
           <div className={styles.userName}>{user.name}</div>
           <div className={styles.tweetNum}>
-            <span>{userTweets.length}</span>
+            <span>{user.userTweetCount}</span>
             推文
           </div>
         </div>
@@ -79,7 +80,6 @@ const UserMain = ({
 
       {twitSection && (
         <UserTweetList
-          userTweets={userTweets}
           setMain={setMain}
           setSpecTweet={setSpecTweet}
           setReplyPop={setReplyPop}
@@ -92,11 +92,14 @@ const UserMain = ({
 
       {editPopup && (
         <UserEditModal
+          user={user}
           editPopup={editPopup}
           setEditPopup={setEditPopup}
         />
       )}
-    </div>
+    </div>):(<></>)}
+    
+    </>
   );
 };
 

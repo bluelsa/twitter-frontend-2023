@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import SpecReplyTweet from "./SpecReplyTweet";
 import { getTweetReplies } from "../../api/tweets";
 
-const SpecTweetList = ({ tweetId, tweetAccount }) => {
+const SpecTweetList = ({ tweet }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    console.log("replyTweet:" + replies);
+    const tweetId = tweet.id
     const getRepliesAsync = async (tweetId) => {
       try {
         const reps = await getTweetReplies(tweetId);
-
         if (reps) {
           setReplies(reps);
         }
@@ -31,7 +30,7 @@ const SpecTweetList = ({ tweetId, tweetAccount }) => {
               <SpecReplyTweet
                 key={reply.id}
                 reply={reply}
-                tweetAccount={tweetAccount}
+                tweetAccount={tweet.TweetUser.account}
               />
             );
           })}

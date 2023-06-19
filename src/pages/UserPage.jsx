@@ -19,6 +19,8 @@ const UserPage = () => {
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
 
+  
+
   return (
     <div className={styles.homeContainer}>
       <div className={styles.mainContainer}>

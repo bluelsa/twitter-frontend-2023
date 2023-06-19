@@ -6,8 +6,9 @@ import { getUserLikes } from "../../api/user";
 const OtherLikeList = ({setReplyPop, setSpecTweet}) => {
   const [otherLikes, setOtherLikes] = useState([]);
 
-  const otherId = localStorage.getItem("otherId");
+  
   useEffect(() => {
+    const otherId = localStorage.getItem("otherId");
     const getUserLikesAsync = async (otherId) => {
       try {
         const otherLikes = await getUserLikes(otherId);

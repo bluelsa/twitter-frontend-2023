@@ -10,24 +10,33 @@ const ReplyList = () => {
     const userId = localStorage.getItem("userId");
     const getUserReplyAsync = async (userId) => {
       try {
-        const userReps = await getUserReplies(userId);
+        const userReplies = await getUserReplies(userId);
 
-        if (userReps) {
-          setUserReplies(userReps);
+        if (userReplies) {
+          setUserReplies(userReplies);
         }
+        console.log('replyList: '+ JSON.stringify(userReplies))
       } catch (error) {
         console.error(error);
       }
     };
     getUserReplyAsync(userId);
-  }, []); 
+  }, []);
+
+  console.log('AAAA: '+ userReplies)
 
   return (
-    <div className={styles.userList}>
-      {userReplies.map((userReply) => {
-        return <UserReplyTweet key={userReply.id} userReply={userReply} />;
-      })}
-    </div>
+    <>
+      {userReplies ? (
+        <div className={styles.userList}>
+          {userReplies.map((userReply) => {
+            return <UserReplyTweet key={userReply.id} userReply={userReply} />;
+          })}
+        </div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 
