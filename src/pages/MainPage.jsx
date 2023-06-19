@@ -11,6 +11,7 @@ const MainPage = () => {
   const [twitPop, setTwitPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
+  const [post, setPost] = useState(false)
 
   return (
     <div className={styles.homeContainer}>
@@ -24,11 +25,14 @@ const MainPage = () => {
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
             {specTweet ? (
               <SpecTweet
+                replyPop={replyPop}
                 setSpecTweet={setSpecTweet}
                 setReplyPop={setReplyPop}
               />
             ) : (
               <Twits
+                post={post}
+                setPost={setPost}
                 twitPop={twitPop}
                 setTwitPop={setTwitPop}
                 specTweet={specTweet}

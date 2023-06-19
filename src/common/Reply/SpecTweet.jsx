@@ -10,7 +10,7 @@ import DateTime from "../DateTime";
 import { createLike, deleteLike } from "../../api/tweets";
 import SpecTweetList from "./SpecTweetList";
 
-const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
+const SpecTweet = ({ replyPop, setSpecTweet, setReplyPop }) => {
   const [tweet, setTweet] = useState(undefined);
 
   const [isLiked, setIsLiked] = useState(undefined);
@@ -136,6 +136,7 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
 
           <SpecTweetList
             tweet={tweet}
+            replyPop={replyPop}
           />
         </div>
       ) : (

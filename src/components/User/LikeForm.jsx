@@ -5,6 +5,7 @@ import { getUserLikes } from "../../api/user";
 
 const LikeForm = ({ 
   setMain,
+  replyPop,
   setReplyPop, 
   setSpecTweet 
 }) => {
@@ -26,11 +27,10 @@ const LikeForm = ({
     };
 
     getUserLikesAsync(userId);
-  }, []); 
+  }, [replyPop]); 
 
   return (
-    <>
-    {userLikes? (<div className={styles.userList}>
+<div className={styles.userList}>
       {userLikes.map((userLike) => {
         return (
           <UserLikeTweet
@@ -42,9 +42,7 @@ const LikeForm = ({
           />
         );
       })}
-    </div>):(<></>)}
-    
-    </>
+    </div>
   );
 };
 

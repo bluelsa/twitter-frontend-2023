@@ -40,6 +40,8 @@ const UserPage = () => {
             {main && (
               <UserMain
                 main={main}
+                twitPop={twitPop}
+                replyPop={replyPop}
                 setMain={setMain}
                 setSpecTweet={setSpecTweet}
                 follower={follower}

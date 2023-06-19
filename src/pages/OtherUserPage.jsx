@@ -30,11 +30,13 @@ const OtherUserPage = () => {
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
             {specTweet ? (
               <SpecTweet
+              replyPop={replyPop}
                 setSpecTweet={setSpecTweet}
                 setReplyPop={setReplyPop}
               />
             ) : (
               <OtherMain
+              replyPop={replyPop}
                 setReplyPop={setReplyPop}
                 setSpecTweet={setSpecTweet}
                 onRemove={handleOtherIdRemove}

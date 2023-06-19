@@ -32,9 +32,7 @@ const TwitPopUp = ({ setTwitPop }) => {
       }
     } catch (error) {
       console.error(error);
-    } finally {
-      window.location.reload();
-    }
+    } 
   };
 
   const handleKeyDown = async (e) => {
@@ -57,9 +55,7 @@ const TwitPopUp = ({ setTwitPop }) => {
         }
       } catch (error) {
         console.error(error);
-      } finally {
-        window.location.reload();
-      }
+      } 
     }
   };
 

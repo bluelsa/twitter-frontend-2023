@@ -33,9 +33,13 @@ const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
   };
 
   const handleTweet = () => {
-    localStorage.setItem("tweetId", userLike.Tweet.id);
+    localStorage.setItem("tweetId", userLike.TweetId);
     setMain(false);
   };
+
+   const handleReply = () => {
+     localStorage.setItem("tweetId", userLike.TweetId);
+   };
 
   return (
     <div className={styles.tweetContainer}>
@@ -71,7 +75,7 @@ const UserLikeTweet = ({ userLike, setMain, setReplyPop, setSpecTweet }) => {
                   className={styles.icon}
                   onClick={() => {
                     setReplyPop(true);
-                    handleTweet();
+                    handleReply();
                   }}
                 />
                 <span>{userLike.Tweet.repliedCount}</span>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SpecReplyTweet from "./SpecReplyTweet";
 import { getTweetReplies } from "../../api/tweets";
 
-const SpecTweetList = ({ tweet }) => {
+const SpecTweetList = ({ tweet, replyPop }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const SpecTweetList = ({ tweet }) => {
     };
 
     getRepliesAsync(tweetId);
-  }, []); 
+  }, [replyPop]); 
 
   return (
     <>

@@ -3,7 +3,7 @@ import UserTweet from "./UserTweet";
 import { useState, useEffect } from "react";
 import { getUserTweets } from "../../api/user";
 
-const UserTweetList = ({ setMain, setSpecTweet, setReplyPop }) => {
+const UserTweetList = ({ twitPop, replyPop, setMain, setSpecTweet, setReplyPop }) => {
   const [userTweets, setUserTweets] = useState([]);
   const userId = localStorage.getItem("userId");
   useEffect(() => {
@@ -19,7 +19,7 @@ const UserTweetList = ({ setMain, setSpecTweet, setReplyPop }) => {
       }
     };
     getUserTweetsAsync(userId);
-  }, [userId]);
+  }, [twitPop,replyPop]);
 
   return (
     <>

@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { getUser } from '../../api/user'
 
 const OtherMain = ({
+  replyPop,
   setSpecTweet,
   setReplyPop,
   onRemove
@@ -79,6 +80,7 @@ const OtherMain = ({
 
       {twitSection && (
         <OtherTweetList
+        replyPop={replyPop}
           otherUser={otherUser}
           setSpecTweet={setSpecTweet}
           setReplyPop={setReplyPop}
@@ -86,7 +88,7 @@ const OtherMain = ({
       )}
       {replySection && <OtherReplyList />}
       {likeSection && (
-        <OtherLikeList setSpecTweet={setSpecTweet} setReplyPop={setReplyPop} />
+        <OtherLikeList replyPop={replyPop} setSpecTweet={setSpecTweet} setReplyPop={setReplyPop} />
       )}
     </div>
   );

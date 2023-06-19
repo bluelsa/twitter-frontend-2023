@@ -3,7 +3,7 @@ import OtherLikeTweet from "./OtherLikeTweet";
 import { useEffect, useState } from "react";
 import { getUserLikes } from "../../api/user";
 
-const OtherLikeList = ({setReplyPop, setSpecTweet}) => {
+const OtherLikeList = ({replyPop, setReplyPop, setSpecTweet}) => {
   const [otherLikes, setOtherLikes] = useState([]);
 
   
@@ -22,7 +22,7 @@ const OtherLikeList = ({setReplyPop, setSpecTweet}) => {
     };
 
     getUserLikesAsync(otherId);
-  }, []); 
+  }, [replyPop]); 
 
   return (
     <div className={styles.userList}>
