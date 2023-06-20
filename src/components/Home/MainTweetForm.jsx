@@ -17,8 +17,9 @@ const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet }) => {
     if (userId !== JSON.stringify(tweet.UserId)) {
       localStorage.setItem("otherId", tweet.UserId);
       navigate("/otheruser");
-    }
-    return;
+    } else {
+    navigate('/user');}
+    return
   };
 
   const handleLike = async (tweetId) => {

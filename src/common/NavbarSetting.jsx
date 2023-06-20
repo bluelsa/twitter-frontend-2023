@@ -19,6 +19,10 @@ const navigate = useNavigate()
     navigate("/login");
   };
 
+  const handleRemove = () => {
+    localStorage.removeItem("OtherId");
+  };
+
   return (
     <div className={styles.leftColumn}>
       <nav className={styles.navContainer}>
@@ -26,16 +30,29 @@ const navigate = useNavigate()
           <Logo className={styles.interaction} />
         </div>
         <div className={styles.navBar}>
-          <Link to="/home">
-            <HomeIcon />
-          </Link>
+          <HomeIcon
+            className={styles.icon}
+            onClick={() => {
+              navigate("/home");
+              handleRemove();
+            }}
+          />
 
-          <Link to="/user">
-            <ProfileIcon />
-          </Link>
-          <Link to="/setting">
-            <SettingActiveIcon />
-          </Link>
+          <ProfileIcon
+            className={styles.icon}
+            onClick={() => {
+              navigate("/user");
+              handleRemove();
+            }}
+          />
+
+          <SettingActiveIcon
+            className={styles.icon}
+            onClick={() => {
+              navigate("/setting");
+              handleRemove();
+            }}
+          />
 
           <div className={styles.navBigButton}>
             <TweetButton

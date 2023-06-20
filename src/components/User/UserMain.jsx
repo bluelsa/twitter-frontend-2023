@@ -25,6 +25,8 @@ const UserMain = ({
   const navigate = useNavigate();
   const { user } = useAuth();
 
+  const [editData, setEditData] = useState(undefined)
+
   // render推文/回覆/喜歡的內容
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
@@ -55,7 +57,10 @@ const UserMain = ({
             </div>
 
             <div className={styles.returnWrapper}>
-              <div className={styles.userName}>{user.name}</div>
+              {editData === undefined && (
+                <div className={styles.userName}>{user.name}</div>
+              )}
+              {editData && <div className={styles.userName}>{editData.name}</div>}
               <div className={styles.tweetNum}>
                 <span>{user.userTweetCount}</span>
                 推文
@@ -63,6 +68,7 @@ const UserMain = ({
             </div>
           </div>
           <UserProfile
+            editData={editData}
             editPopup={editPopup}
             setEditPopup={setEditPopup}
             main={main}
@@ -85,6 +91,7 @@ const UserMain = ({
             <UserTweetList
               setMain={setMain}
               twitPop={twitPop}
+              editData={editData}
               replyPop={replyPop}
               setSpecTweet={setSpecTweet}
               setReplyPop={setReplyPop}
@@ -93,7 +100,7 @@ const UserMain = ({
           {replySection && <ReplyList />}
           {likeSection && (
             <LikeForm
-            replyPop={replyPop}
+              replyPop={replyPop}
               setMain={setMain}
               setReplyPop={setReplyPop}
               setSpecTweet={setSpecTweet}
@@ -102,6 +109,8 @@ const UserMain = ({
 
           {editPopup && (
             <UserEditModal
+              editData={editData}
+              setEditData={setEditData}
               user={user}
               editPopup={editPopup}
               setEditPopup={setEditPopup}

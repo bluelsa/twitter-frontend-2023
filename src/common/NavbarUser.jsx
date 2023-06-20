@@ -29,6 +29,7 @@ const NavbarUser = ({ setTwitPop }) => {
         </div>
         <div className={styles.navBar}>
           <HomeIcon
+            className={styles.icon}
             onClick={() => {
               navigate("/home");
               handleRemove();
@@ -36,6 +37,7 @@ const NavbarUser = ({ setTwitPop }) => {
           />
 
           <ProfileActiveIcon
+            className={styles.icon}
             onClick={() => {
               navigate("/user");
               handleRemove();
@@ -43,6 +45,7 @@ const NavbarUser = ({ setTwitPop }) => {
           />
 
           <SettingIcon
+            className={styles.icon}
             onClick={() => {
               navigate("/setting");
               handleRemove();

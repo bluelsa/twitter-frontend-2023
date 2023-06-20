@@ -69,6 +69,7 @@
       }
 
       .storeButton {
+        border: 1px solid #000;
         width: 88px;
         height: 46px;
         font-size: 20px;
@@ -83,7 +84,7 @@
         padding: 8px 24px;
         margin-left: 515px;
 
-        &.hover {
+        &:hover {
           cursor: pointer;
         }
       }

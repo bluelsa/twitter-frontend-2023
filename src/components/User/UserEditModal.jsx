@@ -4,18 +4,18 @@ import { ReactComponent as EditTitle } from "../../assets/image/EditTitle.svg";
 import { ReactComponent as EditSave } from "../../assets/image/EditSave.svg";
 import { ReactComponent as DeleteCoverIcon } from "../../assets/image/delete-white.svg";
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/iconCCamera.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { putUser } from "../../api/user";
 import Loading from "../Animation/Loading";
 
 import TimePopup from "../TimePopup/TimePopup";
 
-const UserEditModal = ({ user, setEditPopup }) => {
+const UserEditModal = ({ user, editData, setEditData, setEditPopup }) => {
   // get data
-  const [name, setName] = useState(user.name);
-  const [introduction, setIntroduction] = useState(user.introduction);
-  const [avatar, setAvatar] = useState(user.avatar);
-  const [background, setBackground] = useState(user.background);
+  const [name, setName] = useState('');
+  const [introduction, setIntroduction] = useState('');
+  const [avatar, setAvatar] = useState('');
+  const [background, setBackground] = useState('');
   const [loading, setLoading] = useState(false);
 
   // error message
@@ -24,6 +24,24 @@ const UserEditModal = ({ user, setEditPopup }) => {
   // const [introMax, setIntroMax] = useState(false)
 
   const [notiStatus, setNotiStatus] = useState("finished");
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name);
+      setIntroduction(user.introduction);
+      setAvatar(user.avatar);
+      setBackground(user.background)
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (editData) {
+      setName(editData.name);
+      setIntroduction(editData.introduction);
+      setAvatar(editData.avatar);
+      setBackground(editData.background);
+    }
+  }, [editData]);
 
   const handleChangeInfo = async () => {
     const id = localStorage.getItem("userId");
@@ -42,18 +60,18 @@ const UserEditModal = ({ user, setEditPopup }) => {
     } 
     setLoading(true);
     try {
-      await putUser({
+      const data = await putUser({
         id,
         name,
         introduction,
         avatar,
         background,
       });
+      setEditData(data)
     } catch (error) {
       console.error(error);
     }
     setEditPopup(false);
-    window.location.reload();
     setLoading(false);
   };
 
@@ -63,8 +81,6 @@ const UserEditModal = ({ user, setEditPopup }) => {
 
   return (
     <>
-      {user ? (
-        <>
           <div className={styles.notiContainer} onClick={handleClosePopup}>
             {notiStatus === "nameEmpty" && (
               <TimePopup notification="error" title="名稱不可為空白" />
@@ -90,7 +106,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
                 <div>
                   <EditSave
                     className={styles.saveIcon}
-                    onClick={handleChangeInfo}
+                    onClick={() => handleChangeInfo?.(editData)}
                   />
                 </div>
               </div>
@@ -157,7 +173,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
                       className={styles.editInput}
                       type="text"
                       value={name}
-                      placeholder={user.name}
+                      placeholder={name}
                       // maxLength="50"
                       onChange={(e) => setName(e.target.value)}
                     />
@@ -173,7 +189,7 @@ const UserEditModal = ({ user, setEditPopup }) => {
                       type="text"
                       id="note"
                       value={introduction}
-                      placeholder={user.introduction}
+                      placeholder={introduction}
                       // maxLength="160"
                       onChange={(e) => setIntroduction(e.target.value)}
                     ></textarea>
@@ -191,10 +207,6 @@ const UserEditModal = ({ user, setEditPopup }) => {
             )}
           </div>
         </>
-      ) : (
-        <></>
-      )}
-    </>
   );
 };
 
