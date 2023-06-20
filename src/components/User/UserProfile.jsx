@@ -1,6 +1,5 @@
 import styles from "../User/User.module.scss";
 import { useAuth } from "../../contexts/AuthContext";
-import { useState } from "react";
 
 const UserProfile = ({
   editData,

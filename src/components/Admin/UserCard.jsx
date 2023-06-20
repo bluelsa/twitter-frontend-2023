@@ -6,16 +6,15 @@ import { ReactComponent as Likes } from '../../assets/image/heart-hollow.svg'
 const UserCard = ({user}) => {
   return (
     <div className={styles.userCard}>
-      <img
-        className={styles.cover}
-        src="https://plus.unsplash.com/premium_photo-1668852917755-0e6fc9a66db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+      <div className={styles.cover}><img
+        src={user.background}
         alt="cover"
-      />
-      <img
-        className={styles.avatar}
-        src="https://loremflickr.com/320/240/person/?random=19.08872965484445"
+      /></div>
+      <div className={styles.avatar}> <img
+        src={user.avatar}
         alt="avatar"
-      />
+      /></div>
+     
       <div className={styles.info}>
         <div className={styles.name}>{user.name}</div>
         <div className={styles.account}>@{user.account}</div>
