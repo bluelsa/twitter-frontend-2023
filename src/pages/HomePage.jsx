@@ -1,25 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react'
+import { useAuth } from "../contexts/AuthContext";
 
 const HomePage = () => {
+  const { isAuthenticated } = useAuth
   const navigate = useNavigate()
-  const token = localStorage.getItem("token")
-  
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-    const adminToken = localStorage.getItem("adminToken")
-    if (token) {
+
+  useEffect(()=> {
+    if (isAuthenticated) {
       navigate('/home')
-    }
-    if (!token && !adminToken) {
+    } else {
       navigate('/login')
     }
-    if (adminToken) {
-      navigate('/admin/tweets')
-    }
-    
-  }, [navigate, token])
-  
+  },[navigate, isAuthenticated])
 };
 
 export default HomePage;

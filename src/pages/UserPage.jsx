@@ -7,9 +7,13 @@ import MainFollowing from "../components/User/MainFollow";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
 import UserSpec from "../common/Reply/UserSpec";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const UserPage = () => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   //render state
   const [main, setMain] = useState(true);
   const [specTweet, setSpecTweet] = useState(false);
@@ -19,7 +23,11 @@ const UserPage = () => {
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
 
-  
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [navigate, isAuthenticated]);
 
   return (
     <div className={styles.homeContainer}>

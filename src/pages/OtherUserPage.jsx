@@ -5,17 +5,26 @@ import NavbarOther from "../components/Others/NavbarOther";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
 import SpecTweet from "../common/Reply/SpecTweet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const OtherUserPage = () => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
 
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [navigate, isAuthenticated]);
+  
   const handleOtherIdRemove = () => {
     localStorage.removeItem("otherId");
   };
-
 
   return (
     <div className={styles.homeContainer}>

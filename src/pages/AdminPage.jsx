@@ -11,41 +11,38 @@ const AdminPage = () => {
   const [password, setPassword] = useState("");
   // 錯誤通知
   const [notiStatus, setNotiStatus] = useState("finished");
-  // 錯誤提示
-  const [invalid, setInvalid] = useState(false);
 
   const navigate = useNavigate();
 
-useEffect(() => {
-  const adminToken = localStorage.getItem("adminToken");
-  if (adminToken) {
-    navigate("/admin/tweets");
-  }
-
-}, [navigate]);
+  useEffect(() => {
+    const adminToken = localStorage.getItem("adminToken");
+    if (adminToken) {
+      navigate("/admin/tweets");
+    }
+  }, [navigate]);
 
   const handleClick = async () => {
     if (account.length === 0 || password.length === 0) {
       setNotiStatus("incomplete");
       return;
     }
+    try {
+      const data = await adminlogin({
+        account,
+        password,
+      });
 
-    const data = await adminlogin({
-      account,
-      password,
-    });
-
-    if (!data.status) {
-      localStorage.setItem("adminToken", data.token);
-      localStorage.removeItem("token")
-      localStorage.removeItem("userId")
-      setNotiStatus("success");
+      if (data.id) {
+        localStorage.setItem("adminToken", data.token);
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
         navigate("/admin/tweets");
-
-      return;
+        return;
+      }
+    } catch (error) {
+      console.log(error);
     }
     setNotiStatus("failed");
-    setInvalid(true);
   };
 
   const handleClosePopup = () => {
@@ -55,11 +52,8 @@ useEffect(() => {
   return (
     <>
       <div className={styles.notiContainer} onClick={handleClosePopup}>
-        {notiStatus === "success" && (
-          <TimePopup notification="success" title="登入成功" />
-        )}
         {notiStatus === "failed" && (
-          <TimePopup notification="error" title="帳號密碼錯誤" />
+          <TimePopup notification="error" title="帳號或密碼輸入錯誤" />
         )}
         {notiStatus === "incomplete" && (
           <TimePopup notification="error" title="請輸入完整資訊" />
@@ -72,11 +66,7 @@ useEffect(() => {
         </div>
         <h1>後台登入</h1>
         <div className={styles.inputGroup}>
-          <div
-            className={clsx(styles.inputContainer, {
-              [styles.errorContainer]: invalid,
-            })}
-          >
+          <div className={styles.inputContainer}>
             <label>
               帳號
               <input
@@ -86,11 +76,6 @@ useEffect(() => {
                 onChange={(e) => setAccount(e.target.value)}
               />
             </label>
-            {invalid ? (
-              <p className={styles.errorMessage}>帳號不存在</p>
-            ) : (
-              <></>
-            )}
           </div>
 
           <div className={styles.inputContainer}>

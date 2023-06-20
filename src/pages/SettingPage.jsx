@@ -6,10 +6,12 @@ import TwitPopUp from "../common/TwitPopUp";
 import TimePopup from "../components/TimePopup/TimePopup";
 import { putSetting } from "../api/user";
 import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const SettingPage = () => {
   //identification
-  const { user } = useAuth()
+  const { user, isAuthenticated } = useAuth()
+  const navigate = useNavigate();
 
   //input content
   const [name, setName] = useState('');
@@ -23,6 +25,11 @@ const SettingPage = () => {
   // notification
   const [notiStatus, setNotiStatus] = useState("finished");
 
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [navigate, isAuthenticated]);
 
   useEffect(() => {
     if(user) {

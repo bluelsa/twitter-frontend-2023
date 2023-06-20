@@ -3,10 +3,12 @@ import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { login } from "../api/auth";
+import { useAuth } from "../contexts/AuthContext";
 import TimePopup from "../components/TimePopup/TimePopup";
 import clsx from "clsx";
 
 const LoginPage = () => {
+  const { isAuthenticated } = useAuth()
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
   // 錯誤通知
@@ -16,16 +18,11 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  // 若為已登入狀態，則無法回到登入頁面
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
+    if (isAuthenticated) {
       navigate("/home");
-    }
-    if (!token) {
-      return;
-    }
-  }, [navigate]);
+    } return
+  }, [navigate, isAuthenticated]);
 
   const handleClick = async () => {
     if (account.length === 0 || password.length === 0) {
@@ -39,7 +36,6 @@ const LoginPage = () => {
     });
 
     if (data.status === "success") {
-      localStorage.removeItem("adminToken");
       localStorage.setItem("token", data.data.token);
       localStorage.setItem("userId", data.data.user.id);
       setNotiStatus("success");
@@ -126,14 +122,7 @@ const LoginPage = () => {
           </Link>
           <span>&bull;</span>
           <Link to="/admin">
-            <span
-              className={styles.linkText}
-              onClick={() => {
-                navigate("/admin");
-              }}
-            >
-              後台登入
-            </span>
+            <span className={styles.linkText}>後台登入</span>
           </Link>
         </div>
       </div>
