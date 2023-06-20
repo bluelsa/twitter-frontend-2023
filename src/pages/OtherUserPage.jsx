@@ -11,10 +11,13 @@ const OtherUserPage = () => {
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
+  //Follow狀態改變
+  const [trigger, setTrigger] = useState(false);
 
   const handleOtherIdRemove = () => {
     localStorage.removeItem("otherId");
   };
+
 
   return (
     <div className={styles.homeContainer}>
@@ -30,13 +33,15 @@ const OtherUserPage = () => {
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
             {specTweet ? (
               <SpecTweet
-              replyPop={replyPop}
+                replyPop={replyPop}
                 setSpecTweet={setSpecTweet}
                 setReplyPop={setReplyPop}
               />
             ) : (
               <OtherMain
-              replyPop={replyPop}
+                trigger={trigger}
+                setTrigger={setTrigger}
+                replyPop={replyPop}
                 setReplyPop={setReplyPop}
                 setSpecTweet={setSpecTweet}
                 onRemove={handleOtherIdRemove}
@@ -45,21 +50,13 @@ const OtherUserPage = () => {
 
             {/* 推文與回覆推文彈跳視窗 */}
             {replyPop && (
-              <ReplyPopUp
-                replyPop={replyPop}
-                setReplyPop={setReplyPop}
-              />
+              <ReplyPopUp replyPop={replyPop} setReplyPop={setReplyPop} />
             )}
-            {twitPop && (
-              <TwitPopUp
-                twitPop={twitPop}
-                setTwitPop={setTwitPop}
-              />
-            )}
+            {twitPop && <TwitPopUp twitPop={twitPop} setTwitPop={setTwitPop} />}
           </div>
         </div>
         <div className={styles.rightColumn}>
-          <Popular />
+          <Popular trigger={trigger} />
         </div>
       </div>
     </div>

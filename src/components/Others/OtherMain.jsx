@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { getUser } from '../../api/user'
 
 const OtherMain = ({
+  trigger,
+  setTrigger,
   replyPop,
   setSpecTweet,
   setReplyPop,
@@ -68,7 +70,7 @@ const OtherMain = ({
           </div>
         </div>
       </div>
-      <OtherProfile otherUser={otherUser} isFollowing={otherUser.isFollowed} />
+      <OtherProfile otherUser={otherUser} isFollowing={otherUser.isFollowed} trigger={trigger} setTrigger={setTrigger}/>
       <UserNavbar
         twitSection={twitSection}
         setTwitSection={setTwitSection}

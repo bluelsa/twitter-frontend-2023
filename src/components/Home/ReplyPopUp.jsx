@@ -94,7 +94,7 @@ const ReplyPopUp = ({ setReplyPop }) => {
             <div className={styles.replyPopHeader}>
               <div>
                 <ModalX
-                  className={styles.interaction}
+                  className={styles.xIcon}
                   onClick={handleReplyChange}
                 />
               </div>
@@ -139,7 +139,7 @@ const ReplyPopUp = ({ setReplyPop }) => {
                     className={styles.replyText}
                     defaultValue={comment}
                     placeholder="推你的回覆"
-                    maxLength="140"
+                    // maxLength="140"
                     ref={inputRef}
                     onKeyDown={handleKeyDown}
                     onChange={(e) => setComment(e.target.value)}

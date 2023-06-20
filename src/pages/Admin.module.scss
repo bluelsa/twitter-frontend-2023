@@ -14,7 +14,7 @@
   }
 
   .contentContainer {
-    border: 1px solid #E6ECF0;
+    border: 1px solid #e6ecf0;
     border-right-style: none;
     border-bottom-style: none;
     display: flex;
@@ -47,7 +47,6 @@
   color: #44444f;
 
   .navBar {
-
     .logo {
       margin: 13px 0 31.78px 13px;
     }
@@ -70,6 +69,8 @@
 
       &:hover {
         cursor: pointer;
+        transform: scale(1.1);
+        margin-left: 5px;
       }
 
       div {
@@ -102,6 +103,8 @@
 
     &:hover {
       cursor: pointer;
+      transform: scale(1.1);
+      margin-left: 5px;
     }
 
     div {
@@ -129,6 +132,8 @@
 
     &:hover {
       cursor: pointer;
+      transform: scale(1.1);
+      margin-left: 5px;
     }
 
     div {

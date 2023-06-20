@@ -91,7 +91,7 @@ const TwitPopUp = ({ setTwitPop }) => {
                   rows="10"
                   defaultValue={description}
                   placeholder="有什麼新鮮事？"
-                  maxLength="140"
+                  // maxLength="140"
                   ref={inputRef}
                   onKeyDown={handleKeyDown}
                   onChange={(e) => setDescription(e.target.value)}

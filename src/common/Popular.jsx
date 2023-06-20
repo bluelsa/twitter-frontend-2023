@@ -3,7 +3,7 @@ import PopularUser from "./PopularUser";
 import { getPopular } from "../api/user";
 import { useState, useEffect } from 'react'
 
-const Popular = () => {
+const Popular = ({trigger}) => {
   const [popularList, setPopularList] = useState(undefined);
 
   useEffect(() => {
@@ -17,7 +17,8 @@ const Popular = () => {
     };
 
     getPopularListAsync();
-  }, []); 
+  }, [trigger]); 
+  console.log("trigger? "+trigger)
 
   return (
     <>
