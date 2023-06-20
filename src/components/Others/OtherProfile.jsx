@@ -6,7 +6,7 @@ import { ReactComponent as RedBell } from "../../assets/image/RedBell40X40.svg";
 import { useState, useEffect } from "react";
 import { createFollow, deleteFollow } from "../../api/followship";
 
-const OtherProfile = ({ trigger, setTrigger, otherUser, isFollowing }) => {
+const OtherProfile = ({  otherUser, isFollowing }) => {
   const [isFollowed, setIsFollowed] = useState(undefined);
 
   useEffect(() => {
@@ -33,9 +33,6 @@ const OtherProfile = ({ trigger, setTrigger, otherUser, isFollowing }) => {
     }
   };
 
-  const handleTrigger = () => {
-    setTrigger(!trigger)
-  }
 
   return (
         <div className={styles.profileContainer}>
@@ -66,7 +63,6 @@ const OtherProfile = ({ trigger, setTrigger, otherUser, isFollowing }) => {
                   onClick={() => {
                     setIsFollowed(false);
                     handleUnfollow(otherUser.id);
-                    handleTrigger?.(trigger)
                   }}
                 />
               ) : (
@@ -75,7 +71,6 @@ const OtherProfile = ({ trigger, setTrigger, otherUser, isFollowing }) => {
                   onClick={() => {
                     setIsFollowed(true);
                     handleFollow(otherUser.id);
-                    handleTrigger?.(trigger)
                   }}
                 />
               )}

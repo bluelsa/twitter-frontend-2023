@@ -42,6 +42,7 @@ const UserEditModal = ({ user, editData, setEditData, setEditPopup }) => {
       setBackground(editData.background);
     }
   }, [editData]);
+  
 
   const handleChangeInfo = async () => {
     const id = localStorage.getItem("userId");

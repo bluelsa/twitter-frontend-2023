@@ -14,15 +14,16 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
 
+const userId = localStorage.getItem("userId")
   //get user
   useEffect(() => {
-    const id = localStorage.getItem("userId");
-    const getUsersAsync = async (id) => {
-      if (!id) {
-        navigate('/login')
+    const userId = localStorage.getItem("userId");
+    const getUsersAsync = async (userId) => {
+      if (!userId) {
+        navigate("/login");
       }
       try {
-        const user = await getUser(id);
+        const user = await getUser(userId);
         if (user) {
           setUser(user);
         }
@@ -30,8 +31,8 @@ export const AuthProvider = ({ children }) => {
         console.error(error);
       }
     };
-    getUsersAsync(id);
-  }, []);
+    getUsersAsync(userId);
+  }, [userId, navigate]);
 
   const value = {
     user

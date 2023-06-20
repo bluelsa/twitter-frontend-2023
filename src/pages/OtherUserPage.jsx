@@ -11,8 +11,6 @@ const OtherUserPage = () => {
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
-  //Follow狀態改變
-  const [trigger, setTrigger] = useState(false);
 
   const handleOtherIdRemove = () => {
     localStorage.removeItem("otherId");
@@ -39,8 +37,6 @@ const OtherUserPage = () => {
               />
             ) : (
               <OtherMain
-                trigger={trigger}
-                setTrigger={setTrigger}
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
                 setSpecTweet={setSpecTweet}
@@ -56,7 +52,7 @@ const OtherUserPage = () => {
           </div>
         </div>
         <div className={styles.rightColumn}>
-          <Popular trigger={trigger} />
+          <Popular />
         </div>
       </div>
     </div>
