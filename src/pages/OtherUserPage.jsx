@@ -5,46 +5,12 @@ import NavbarOther from "../components/Others/NavbarOther";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
 import SpecTweet from "../common/Reply/SpecTweet";
-import { useState, useEffect } from "react";
-import { getUser } from "../api/user";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const OtherUserPage = () => {
-  const [user, setUser] = useState({});
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-    const navigate = useNavigate();
-
-  useEffect(() => {
-    const id = localStorage.getItem("userId");
-    const getUserAsync = async (id) => {
-      try {
-        const user = await getUser(id);
-        if (!user.status) {
-          setUser(user);
-           setIsAuthenticated(true);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false)
-      }
-    };
-    getUserAsync(id);
-  }, []);
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        navigate("/login");
-      }
-    }
-  }, [navigate, isAuthenticated, isLoading]);
 
   const handleOtherIdRemove = () => {
     localStorage.removeItem("otherId");
@@ -64,12 +30,13 @@ const OtherUserPage = () => {
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
             {specTweet ? (
               <SpecTweet
+              replyPop={replyPop}
                 setSpecTweet={setSpecTweet}
                 setReplyPop={setReplyPop}
               />
             ) : (
               <OtherMain
-                user={user}
+              replyPop={replyPop}
                 setReplyPop={setReplyPop}
                 setSpecTweet={setSpecTweet}
                 onRemove={handleOtherIdRemove}
@@ -81,14 +48,12 @@ const OtherUserPage = () => {
               <ReplyPopUp
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
-                user={user}
               />
             )}
             {twitPop && (
               <TwitPopUp
                 twitPop={twitPop}
                 setTwitPop={setTwitPop}
-                user={user}
               />
             )}
           </div>

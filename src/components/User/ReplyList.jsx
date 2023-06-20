@@ -6,16 +6,14 @@ import UserReplyTweet from "./UserReplyTweet";
 const ReplyList = () => {
   const [userReplies, setUserReplies] = useState([]);
 
-  
-
   useEffect(() => {
-    const userId = localStorage.getItem("userId")
+    const userId = localStorage.getItem("userId");
     const getUserReplyAsync = async (userId) => {
       try {
-        const userReps = await getUserReplies(userId);
+        const userReplies = await getUserReplies(userId);
 
-        if (userReps) {
-          setUserReplies(userReps);
+        if (userReplies) {
+          setUserReplies(userReplies);
         }
       } catch (error) {
         console.error(error);
@@ -25,11 +23,17 @@ const ReplyList = () => {
   }, []);
 
   return (
+    <>
+      {userReplies ? (
         <div className={styles.userList}>
           {userReplies.map((userReply) => {
             return <UserReplyTweet key={userReply.id} userReply={userReply} />;
           })}
         </div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

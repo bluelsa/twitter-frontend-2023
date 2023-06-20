@@ -7,9 +7,7 @@ import MainFollowing from "../components/User/MainFollow";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
 import UserSpec from "../common/Reply/UserSpec";
-import { useState, useEffect } from "react";
-import { getUser } from "../api/user";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const UserPage = () => {
   //render state
@@ -20,43 +18,8 @@ const UserPage = () => {
   //popup window
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
-  //data & authentication
-  const [user, setUser] = useState({});
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const id = localStorage.getItem("userId");
-    const getUserAsync = async () => {
-      try {
-        const user = await getUser(id);
-        if (!user.status) {
-          setUser(user);
-          setIsAuthenticated(true);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getUserAsync(id);
-  }, []);
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        navigate("/login");
-      }
-    }
-  }, [navigate, isAuthenticated, isLoading]);
-
-  // console.log("main: " + main);
-  // console.log("specTweet: " + specTweet);
-  // console.log("follower: " + follower);
-  // console.log("following: " + following);
+  
 
   return (
     <div className={styles.homeContainer}>
@@ -76,8 +39,9 @@ const UserPage = () => {
 
             {main && (
               <UserMain
-                user={user}
                 main={main}
+                twitPop={twitPop}
+                replyPop={replyPop}
                 setMain={setMain}
                 setSpecTweet={setSpecTweet}
                 follower={follower}
@@ -90,7 +54,6 @@ const UserPage = () => {
 
             {following && (
               <MainFollowing
-                user={user}
                 setMain={setMain}
                 setFollower={setFollower}
                 setFollowing={setFollowing}
@@ -98,7 +61,6 @@ const UserPage = () => {
             )}
             {follower && (
               <MainFollower
-                user={user}
                 setMain={setMain}
                 setFollower={setFollower}
                 setFollowing={setFollowing}
@@ -108,14 +70,12 @@ const UserPage = () => {
               <ReplyPopUp
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
-                user={user}
               />
             )}
             {twitPop && (
               <TwitPopUp
                 twitPop={twitPop}
                 setTwitPop={setTwitPop}
-                user={user}
               />
             )}
           </div>

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { createLike, deleteLike } from "../../api/tweets";
 import ElapsedTime from "../../common/ElapsedTime";
 
-const UserTweet = ({ userTweet, setMain, setSpecTweet, setReplyPop }) => {
+const UserTweet = ({ editData, userTweet, setMain, setSpecTweet, setReplyPop }) => {
   const [isLike, setIsLike] = useState(userTweet.isLiked);
 const [likedCount, setLikedCount] = useState(userTweet.likedCount);
 
@@ -35,6 +35,10 @@ const handleUnlike = async (tweetId) => {
     setMain(false);
   };
 
+  const handleReply = () => {
+    localStorage.setItem("tweetId", userTweet.id);
+  };
+
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetsWrapper}>
@@ -45,9 +49,16 @@ const handleUnlike = async (tweetId) => {
           <div className={styles.tweetContent}>
             <div>
               <div className={styles.nameInfo}>
-                <div className={styles.tweetName}>
-                  {userTweet.TweetUser.name}
-                </div>
+                {editData === undefined && (
+                  <div className={styles.tweetName}>
+                    {userTweet.TweetUser.name}
+                  </div>
+                )}
+                {editData && (
+                  <div className={styles.tweetName}>
+                    {editData.name}
+                  </div>
+                )}
                 <div className={styles.tweetTime}>
                   @{userTweet.TweetUser.account} &bull;
                   <ElapsedTime createdAt={userTweet.createdAt} />
@@ -69,7 +80,7 @@ const handleUnlike = async (tweetId) => {
                   className={styles.icon}
                   onClick={() => {
                     setReplyPop(true);
-                    handleTweet();
+                    handleReply();
                   }}
                 />
                 <span>{userTweet.repliedCount}</span>

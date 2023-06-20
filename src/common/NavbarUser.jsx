@@ -14,6 +14,7 @@ const NavbarUser = ({ setTwitPop }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("otherId");
+    navigate("/login");
   };
 
   const handleRemove = () => {
@@ -28,6 +29,7 @@ const NavbarUser = ({ setTwitPop }) => {
         </div>
         <div className={styles.navBar}>
           <HomeIcon
+            className={styles.icon}
             onClick={() => {
               navigate("/home");
               handleRemove();
@@ -35,6 +37,7 @@ const NavbarUser = ({ setTwitPop }) => {
           />
 
           <ProfileActiveIcon
+            className={styles.icon}
             onClick={() => {
               navigate("/user");
               handleRemove();
@@ -42,6 +45,7 @@ const NavbarUser = ({ setTwitPop }) => {
           />
 
           <SettingIcon
+            className={styles.icon}
             onClick={() => {
               navigate("/setting");
               handleRemove();
@@ -61,7 +65,6 @@ const NavbarUser = ({ setTwitPop }) => {
           <NavOut
             className={styles.logOut}
             onClick={() => {
-              navigate("/login");
               handleLogout();
             }}
           />

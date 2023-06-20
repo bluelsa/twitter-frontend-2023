@@ -5,9 +5,10 @@ import { ReactComponent as FollowerIcon } from "../../assets/image/follower.svg"
 import { useState, useEffect } from 'react'
 import { getUserFollowings } from '../../api/user'
 import MainFollowingItem from "./MainFollowingItem";
+import { useAuth } from "../../contexts/AuthContext";
 
-const MainFollow = ({ user, setMain, setFollower, setFollowing }) => {
-  console.log('mainfollowing in')
+const MainFollow = ( {setMain, setFollower, setFollowing }) => {
+  const { user } = useAuth()
   const [followings, setFollowings] = useState([])
   const [isFollowings, setIsFollowings] = useState(true)
   

@@ -1,20 +1,16 @@
 import styles from "./Setting.module.scss";
 
 import NavbarSetting from "../common/NavbarSetting";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getUser } from "../api/user";
 import TwitPopUp from "../common/TwitPopUp";
 import TimePopup from "../components/TimePopup/TimePopup";
 import { putSetting } from "../api/user";
+import { useAuth } from "../contexts/AuthContext";
 
 const SettingPage = () => {
   //identification
-  const [user, setUser] = useState(undefined);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  console.log("user: " + user);
+  const { user } = useAuth()
+
   //input content
   const [name, setName] = useState('');
   const [account, setAccount] = useState('');
@@ -27,42 +23,18 @@ const SettingPage = () => {
   // notification
   const [notiStatus, setNotiStatus] = useState("finished");
 
-  useEffect(() => {
-    const id = localStorage.getItem("userId");
-    const getUsersAsync = async (id) => {
-      try {
-        const user = await getUser(id);
-        if (!user.status) {
-          setUser(user);
-          setAccount(user.account)
-          setName(user.name)
-          setEmail(user.email)
-          setPassword(user.password)
-          setCheckPassword(user.checkPassword)
-          setIsAuthenticated(true);
-        }
-        console.log('effect: '+ user)
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getUsersAsync(id);
-  }, []);
 
   useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        navigate("/login");
-      }
+    if(user) {
+      setName(user.name);
+      setAccount(user.account)
+      setEmail(user.email)
     }
-  }, [navigate, isAuthenticated, isLoading]);
+  },[user])
 
   const id = localStorage.getItem("userId");
 
   const handleChange = async () => {
-    console.log("click");
     if (password !== checkPassword) {
       setNotiStatus("wrongPassword");
       return;
@@ -79,9 +51,8 @@ const SettingPage = () => {
 
     if (data.account) {
       setNotiStatus("success");
-      // setTimeout(() => {
+      
         window.location.reload();
-      // }, 2000);
 
       return;
     } else {
@@ -96,8 +67,6 @@ const SettingPage = () => {
 
   return (
     <>
-      {user ? (
-        <>
           <div
             className={styles.notiContainer}
             onClick={() => {
@@ -195,17 +164,12 @@ const SettingPage = () => {
                     <TwitPopUp
                       twitPop={twitPop}
                       setTwitPop={setTwitPop}
-                      user={user}
                     />
                   )}
                 </div>
               </div>
             </div>
           </div>
-        </>
-      ) : (
-        <></>
-      )}
     </>
   );
 };

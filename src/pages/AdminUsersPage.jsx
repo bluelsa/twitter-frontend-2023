@@ -12,44 +12,41 @@ import { getUsers } from '../api/admin'
 
 
 
-const UsersPage = () => {
+const AdminUsersPage = () => {
+  const [users, setUsers] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
-const [users, setUsers] = useState([])
-const [isAuthenticated, setIsAuthenticated] = useState(false)
-const [isLoading, setIsLoading] = useState(true);
-const navigate = useNavigate()
-
-
-useEffect(() => {
-  const token = localStorage.getItem("token");
-  const getUsersAsync = async (token) => {
-    try {
-      const users = await getUsers(token);
-      if (!users.status) {
-        setUsers(users);
-        setIsAuthenticated(true);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const getUsersAsync = async (token) => {
+      try {
+        const users = await getUsers(token);
+        if (!users.status) {
+          setUsers(users);
+          setIsAuthenticated(true);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error(error);
-    } 
-    finally {
-      setIsLoading(false);
+    };
+    getUsersAsync(token);
+  }, []); 
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        navigate("/admin");
+      }
     }
-  }
-  getUsersAsync(token)
-}, [])
+  }, [navigate, isAuthenticated, isLoading]);
 
-useEffect(() => {
-  if (!isLoading) {
-  if (!isAuthenticated) {
-    navigate("/admin");
-  }
-}
-}, [navigate, isAuthenticated, isLoading]);
-
-const handleLogout = () => {
-  localStorage.removeItem('adminToken')
-}
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+  };
 
   return (
     <div className={styles.Container}>
@@ -74,18 +71,18 @@ const handleLogout = () => {
 
           <div className={styles.logoutIcon}>
             <LogoutIcon />
-            <Link to='/admin'>
-            <div onClick={handleLogout}>登出</div>
+            <Link to="/admin">
+              <div onClick={handleLogout}>登出</div>
             </Link>
           </div>
         </nav>
       </div>
       {/* content */}
       <div className={styles.contentContainer}>
-        <UserList users={users}/>
+        <UserList users={users} />
       </div>
     </div>
   );
 };
 
-export default UsersPage;
+export default AdminUsersPage;

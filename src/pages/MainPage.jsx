@@ -4,46 +4,14 @@ import Popular from "../common/Popular";
 import Twits from "../components/Home/Twits";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
-import { useState, useEffect } from "react";
-import { getUser } from "../api/user";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import SpecTweet from "../common/Reply/SpecTweet";
 
 const MainPage = () => {
   const [twitPop, setTwitPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
-  const [user, setUser] = useState({});
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const id = localStorage.getItem("userId");
-    const getUsersAsync = async (id) => {
-      try {
-        const user = await getUser(id);
-        if (!user.status) {
-          setUser(user);
-          setIsAuthenticated(true);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getUsersAsync(id);
-  }, []);
-
-  useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        navigate("/login");
-      }
-    }
-  }, [navigate, isAuthenticated, isLoading]);
+  const [post, setPost] = useState(false)
 
   return (
     <div className={styles.homeContainer}>
@@ -57,18 +25,20 @@ const MainPage = () => {
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
             {specTweet ? (
               <SpecTweet
+                replyPop={replyPop}
                 setSpecTweet={setSpecTweet}
                 setReplyPop={setReplyPop}
               />
             ) : (
               <Twits
+                post={post}
+                setPost={setPost}
                 twitPop={twitPop}
                 setTwitPop={setTwitPop}
                 specTweet={specTweet}
                 setSpecTweet={setSpecTweet}
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
-                user={user}
               />
             )}
 
@@ -76,14 +46,12 @@ const MainPage = () => {
               <ReplyPopUp
                 replyPop={replyPop}
                 setReplyPop={setReplyPop}
-                user={user}
               />
             )}
             {twitPop && (
               <TwitPopUp
                 twitPop={twitPop}
                 setTwitPop={setTwitPop}
-                user={user}
               />
             )}
           </div>

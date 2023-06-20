@@ -5,13 +5,15 @@ import { getUserLikes } from "../../api/user";
 
 const LikeForm = ({ 
   setMain,
+  replyPop,
   setReplyPop, 
   setSpecTweet 
 }) => {
   const [userLikes, setUserLikes] = useState([]);
 
-  const userId = localStorage.getItem("userId");
+ 
   useEffect(() => {
+    const userId = localStorage.getItem("userId");
     const getUserLikesAsync = async (userId) => {
       try {
         const userLikes = await getUserLikes(userId);
@@ -25,12 +27,20 @@ const LikeForm = ({
     };
 
     getUserLikesAsync(userId);
-  }, []);
+  }, [replyPop]); 
 
   return (
-    <div className={styles.userList}>
+<div className={styles.userList}>
       {userLikes.map((userLike) => {
-        return <UserLikeTweet key={userLike.TweetId} userLike={userLike} setMain={setMain} setSpecTweet={setSpecTweet} setReplyPop={setReplyPop}/>;
+        return (
+          <UserLikeTweet
+            key={userLike.TweetId}
+            userLike={userLike}
+            setMain={setMain}
+            setSpecTweet={setSpecTweet}
+            setReplyPop={setReplyPop}
+          />
+        );
       })}
     </div>
   );

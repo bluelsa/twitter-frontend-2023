@@ -5,14 +5,15 @@ import UserNavbar from "./UserNav";
 import ReplyList from "./ReplyList";
 import UserEditModal from "./UserEditModal";
 import LikeForm from "./LikeForm";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import UserTweetList from "./UserTweetList";
-import { getUserTweets } from "../../api/user";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const UserMain = ({
-  user,
   main,
+  twitPop,
+  replyPop,
   setMain,
   setSpecTweet,
   follower,
@@ -22,6 +23,9 @@ const UserMain = ({
   setReplyPop,
 }) => {
   const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const [editData, setEditData] = useState(undefined)
 
   // render推文/回覆/喜歡的內容
   const [twitSection, setTwitSection] = useState(true);
@@ -31,94 +35,92 @@ const UserMain = ({
   // 編輯個人資料popup window
   const [editPopup, setEditPopup] = useState(false);
 
-  // API get 使用者所有推文
-  const [userTweets, setUserTweets] = useState([]);
-
-  const userId = localStorage.getItem("userId");
-
-  useEffect(() => {
-    const getUserTweetsAsync = async (userId) => {
-      try {
-        const userTweets = await getUserTweets(userId);
-        if (!userTweets.status) {
-          setUserTweets(userTweets);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getUserTweetsAsync(userId);
-  }, [userId]);
-
   return (
-    <div className={styles.container}>
-      <div
-        className={styles.header}
-        onClick={() => {
-          setTwitSection(true);
-          setReplySection(false);
-          setLikeSection(false);
-        }}
-      >
-        <div
-          className={styles.arrow}
-          onClick={() => {
-            navigate("/home");
-          }}
-        >
-          <Arrow />
-        </div>
+    <>
+      {user ? (
+        <div className={styles.container}>
+          <div
+            className={styles.header}
+            onClick={() => {
+              setTwitSection(true);
+              setReplySection(false);
+              setLikeSection(false);
+            }}
+          >
+            <div
+              className={styles.arrow}
+              onClick={() => {
+                navigate("/home");
+              }}
+            >
+              <Arrow />
+            </div>
 
-        <div className={styles.returnWrapper}>
-          <div className={styles.userName}>{user.name}</div>
-          <div className={styles.tweetNum}>
-            <span>{userTweets.length}</span>
-            推文
+            <div className={styles.returnWrapper}>
+              {editData === undefined && (
+                <div className={styles.userName}>{user.name}</div>
+              )}
+              {editData && <div className={styles.userName}>{editData.name}</div>}
+              <div className={styles.tweetNum}>
+                <span>{user.userTweetCount}</span>
+                推文
+              </div>
+            </div>
           </div>
+          <UserProfile
+            editData={editData}
+            editPopup={editPopup}
+            setEditPopup={setEditPopup}
+            main={main}
+            setMain={setMain}
+            follower={follower}
+            setFollower={setFollower}
+            following={following}
+            setFollowing={setFollowing}
+          />
+          <UserNavbar
+            twitSection={twitSection}
+            setTwitSection={setTwitSection}
+            replySection={replySection}
+            setReplySection={setReplySection}
+            likeSection={likeSection}
+            setLikeSection={setLikeSection}
+          />
+
+          {twitSection && (
+            <UserTweetList
+              setMain={setMain}
+              twitPop={twitPop}
+              editData={editData}
+              replyPop={replyPop}
+              setSpecTweet={setSpecTweet}
+              setReplyPop={setReplyPop}
+            />
+          )}
+          {replySection && <ReplyList />}
+          {likeSection && (
+            <LikeForm
+              replyPop={replyPop}
+              setMain={setMain}
+              setReplyPop={setReplyPop}
+              setSpecTweet={setSpecTweet}
+            />
+          )}
+
+          {editPopup && (
+            <UserEditModal
+              editData={editData}
+              setEditData={setEditData}
+              user={user}
+              editPopup={editPopup}
+              setEditPopup={setEditPopup}
+            />
+          )}
         </div>
-      </div>
-      <UserProfile
-        editPopup={editPopup}
-        setEditPopup={setEditPopup}
-        main={main}
-        setMain={setMain}
-        follower={follower}
-        setFollower={setFollower}
-        following={following}
-        setFollowing={setFollowing}
-        user={user}
-      />
-      <UserNavbar
-        twitSection={twitSection}
-        setTwitSection={setTwitSection}
-        replySection={replySection}
-        setReplySection={setReplySection}
-        likeSection={likeSection}
-        setLikeSection={setLikeSection}
-      />
-
-      {twitSection && (
-        <UserTweetList
-          user={user}
-          userTweets={userTweets}
-          setMain={setMain}
-          setSpecTweet={setSpecTweet}
-          setReplyPop={setReplyPop}
-        />
+      ) : (
+        <></>
       )}
-      {replySection && <ReplyList userId={userId}/>}
-      {likeSection && (
-        <LikeForm setMain={setMain} setReplyPop={setReplyPop} setSpecTweet={setSpecTweet} />
-      )}
-
-      {editPopup && (
-        <UserEditModal
-          editPopup={editPopup}
-          setEditPopup={setEditPopup}
-          user={user}
-        />
-      )}
-    </div>
+    </>
   );
 };
 

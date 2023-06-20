@@ -26,7 +26,7 @@
         color: #ff6600;
       }
 
-      :hover {
+      &:hover {
         cursor: pointer;
       }
 
@@ -35,7 +35,7 @@
         height: 26px;
         font-size: 18px;
 
-        :hover {
+        &:hover {
           cursor: pointer;
         }
       }
@@ -58,7 +58,7 @@
       color: #ff6600;
     }
 
-    :hover {
+    &:hover {
       cursor: pointer;
     }
 
@@ -67,7 +67,7 @@
       height: 26px;
       font-size: 18px;
 
-      :hover {
+      &:hover {
         cursor: pointer;
       }
     }
@@ -85,7 +85,7 @@
     bottom: 16px;
     gap: 16px;
 
-    :hover {
+    &:hover {
       cursor: pointer;
     }
 
@@ -94,7 +94,7 @@
       height: 26px;
       font-size: 18px;
 
-      :hover {
+      &:hover {
         cursor: pointer;
       }
     }

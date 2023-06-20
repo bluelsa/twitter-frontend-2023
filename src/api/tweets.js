@@ -18,7 +18,7 @@ axiosInstance.interceptors.request.use(
   },
   (error) => {
     // Do something with request error
-    console.log(error);
+    console.error(error);
   }
 );
 
@@ -82,7 +82,7 @@ export const createLike = async (tweetId) => {
     const { data } = await axiosInstance.post(`${baseURL}/tweets/${tweetId}/like`);
     return data;
   } catch (error) {
-    console.log("[Create Like failed]:", error);
+    console.error("[Create Like failed]:", error);
   }
 };
 
@@ -92,7 +92,7 @@ export const deleteLike = async (tweetId) => {
     const { data } = await axiosInstance.post(`${baseURL}/tweets/${tweetId}/unlike`);
     return data;
   } catch (error) {
-    console.log("[Create Unlike failed]:", error);
+    console.error("[Create Unlike failed]:", error);
   }
 };
 

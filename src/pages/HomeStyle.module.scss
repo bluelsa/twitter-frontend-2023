@@ -156,7 +156,7 @@
     flex-direction: column;
     gap: 8px;
 
-    :hover {
+    &:hover {
       cursor: pointer;
     }
 
@@ -455,6 +455,7 @@
       resize: none;
       border: none;
       color: #6c757d;
+      overflow: hidden;
 
       &:focus {
         outline: none;

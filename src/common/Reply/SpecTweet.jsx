@@ -10,7 +10,7 @@ import DateTime from "../DateTime";
 import { createLike, deleteLike } from "../../api/tweets";
 import SpecTweetList from "./SpecTweetList";
 
-const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
+const SpecTweet = ({ replyPop, setSpecTweet, setReplyPop }) => {
   const [tweet, setTweet] = useState(undefined);
 
   const [isLiked, setIsLiked] = useState(undefined);
@@ -22,7 +22,7 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
     const getTweetAsync = async () => {
       try {
         const tweet = await getTweet(tweetId);
-        if (!tweet.status) {
+        if (tweet) {
           setTweet(tweet);
         }
       } catch (error) {
@@ -30,7 +30,7 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
       }
     };
     getTweetAsync(tweetId);
-  }, [tweetId]);
+  }, []); 
 
   useEffect(() => {
     if (tweet) {
@@ -135,8 +135,8 @@ const SpecTweet = ({ setSpecTweet, setReplyPop }) => {
           </div>
 
           <SpecTweetList
-            tweetId={tweet.id}
-            tweetAccount={tweet.TweetUser.account}
+            tweet={tweet}
+            replyPop={replyPop}
           />
         </div>
       ) : (

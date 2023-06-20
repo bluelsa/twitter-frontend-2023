@@ -209,7 +209,7 @@
         object-fit: cover;
       }
 
-      :hover {
+      &:hover {
         cursor: pointer;
       }
     }
@@ -227,8 +227,10 @@
         object-fit: cover;
       }
 
-      :hover {
+      &:hover {
         cursor: pointer;
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+        border: 2px solid #ff6600;
       }
     }
 

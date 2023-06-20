@@ -135,8 +135,9 @@
     margin-bottom: 22px;
     padding: 8px 24px;
 
-    &.hover {
+    &:hover {
       cursor: pointer;
+      box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2)
     }
   }
   .linkText {
@@ -148,6 +149,7 @@
     width: 356px;
     height: 46px;
     text-align: end;
+
     .linkText {
       margin: 0 12px 0 12px;
       color: var(--primary);

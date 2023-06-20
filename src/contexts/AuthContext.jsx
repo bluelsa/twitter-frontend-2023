@@ -1,25 +1,41 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getUser } from "../api/user";
 
-const defaultAuthContext = {
-  isAuthenticated: false,
-  currentMember: null,
-  signup: null,
-  login: null,
-  logout: null,
-}
+const defaultApiContext = {
+  user: {},
+};
 
-const AuthContext = createContext(defaultAuthContext) 
+const AuthContext = createContext(defaultApiContext);
 
-const AuthProvider = ({children}) => {
- const [isAuthenticated, setIsAuthenticated] = useState(false)
- const [payload, setPayload] = useState(null)
+export const useAuth = () => useContext(AuthContext);
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+  const navigate = useNavigate();
+
+  //get user
+  useEffect(() => {
+    const id = localStorage.getItem("userId");
+    const getUsersAsync = async (id) => {
+      if (!id) {
+        navigate('/login')
+      }
+      try {
+        const user = await getUser(id);
+        if (user) {
+          setUser(user);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUsersAsync(id);
+  }, []);
 
   const value = {
-  isAuthenticated,
-  currentMember: payload,
-  }
+    user
+  };
 
-  return <AuthContext.Provider value={{value}}>
-
-  </AuthContext.Provider>
-}
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};

@@ -2,14 +2,17 @@ import styles from "../../pages/HomeStyle.module.scss";
 import { ReactComponent as PostButton } from "../../assets/image/PostButton.svg";
 import { useState, useRef } from "react";
 import { createTweet } from "../../api/tweets";
+import { useAuth } from "../../contexts/AuthContext";
 import TimePopup from "../TimePopup/TimePopup";
 
-const Post = ({ user }) => {
-  const inputRef = useRef(null);
+const Post = ({ setPost }) => {
+  const inputRef = useRef(null)
   const [description, setDescription] = useState("");
   const [notiStatus, setNotiStatus] = useState("finished");
+  const { user } = useAuth();
 
   const handleTweet = async () => {
+    setPost(true);
     if (description.length === 0) {
       setNotiStatus("empty");
       return;
@@ -19,46 +22,42 @@ const Post = ({ user }) => {
       return;
     }
     try {
-      const data = await createTweet({
+      await createTweet({
         description,
       });
 
-      if (data.description) {
-        setNotiStatus("success");
-      }
+      setNotiStatus("success");
     } catch (error) {
       console.error(error);
     }
-    setDescription("");
-    // setTimeout(() => {
-    window.location.reload();
-    // }, 1000);
-  };
+    setDescription("")
+    setPost(false);
+  } 
 
-  const handleKeyDown = async (e) => {
-    if (e.key === "Enter") {
-      if (inputRef.current.value.length === 0) {
-        setNotiStatus("empty");
-        return;
-      }
-      if (inputRef.current.value.length > 140) {
-        setNotiStatus("max");
-        return;
-      }
-      try {
-        const data = await createTweet({
-          description,
-        });
-        if (data.description) {
-          setDescription("");
+    const handleKeyDown = async (e) => {
+      if (e.key === "Enter") {
+        if (inputRef.current.value.length === 0) {
+          setNotiStatus("empty");
+          return;
         }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        window.location.reload();
-      }
+        if (inputRef.current.value.length > 140) {
+          setNotiStatus("max");
+          return;
+        }
+        try {
+      await createTweet({
+        description,
+      });
+
+      setNotiStatus("success");
+    } catch (error) {
+      console.error(error);
     }
-  };
+    setDescription("")
+    setPost(false);
+    };
+  }
+
 
   const handleClosePopup = () => {
     setNotiStatus("finished");
@@ -87,12 +86,14 @@ const Post = ({ user }) => {
             <textarea
               className={styles.postText}
               rows="2"
-              defaultValue={description}
-              placeholder="有什麼新鮮事？"
-              maxLength="140"
+              value={description}
               ref={inputRef}
               onKeyDown={handleKeyDown}
-              onChange={(e) => setDescription(e.target.value)}
+              placeholder="有什麼新鮮事？"
+              // maxLength="140"
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
             ></textarea>
           </div>
         </div>

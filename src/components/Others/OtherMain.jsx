@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { getUser } from '../../api/user'
 
 const OtherMain = ({
+  replyPop,
   setSpecTweet,
   setReplyPop,
   onRemove
@@ -20,24 +21,24 @@ const OtherMain = ({
   const [likeSection, setLikeSection] = useState(false);
 
   // API get 其他使用者資料
-  const [otherUser, setOtherUser] = useState({})
+  const [otherUser, setOtherUser] = useState({});
 
   const navigate = useNavigate();
 
-useEffect(() => {
-  const id = localStorage.getItem("otherId");
-  const getUsersAsync = async () => {
-    try {
-      const otherUser = await getUser(id);
-      if (!otherUser.status) {
-        setOtherUser(otherUser);
+  useEffect(() => {
+    const id = localStorage.getItem("otherId");
+    const getUsersAsync = async () => {
+      try {
+        const otherUser = await getUser(id);
+        if (!otherUser.status) {
+          setOtherUser(otherUser);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  getUsersAsync(id);
-}, []);
+    };
+    getUsersAsync(id);
+  }, []); 
 
   return (
     <div className={styles.container}>
@@ -67,7 +68,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      <OtherProfile otherUser={otherUser} isFollowing={otherUser.isFollowed}/>
+      <OtherProfile otherUser={otherUser} isFollowing={otherUser.isFollowed} />
       <UserNavbar
         twitSection={twitSection}
         setTwitSection={setTwitSection}
@@ -79,6 +80,7 @@ useEffect(() => {
 
       {twitSection && (
         <OtherTweetList
+        replyPop={replyPop}
           otherUser={otherUser}
           setSpecTweet={setSpecTweet}
           setReplyPop={setReplyPop}
@@ -86,7 +88,7 @@ useEffect(() => {
       )}
       {replySection && <OtherReplyList />}
       {likeSection && (
-        <OtherLikeList setSpecTweet={setSpecTweet} setReplyPop={setReplyPop} />
+        <OtherLikeList replyPop={replyPop} setSpecTweet={setSpecTweet} setReplyPop={setReplyPop} />
       )}
     </div>
   );

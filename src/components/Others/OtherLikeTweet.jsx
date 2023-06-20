@@ -36,7 +36,7 @@ const OtherLikeTweet = ({ setReplyPop, otherLike, setSpecTweet }) => {
   };
 
   const handleTweet = () => {
-    localStorage.setItem("tweetId", otherLike.Tweet.id);
+    localStorage.setItem("tweetId", otherLike.TweetId);
   };
 
   return (

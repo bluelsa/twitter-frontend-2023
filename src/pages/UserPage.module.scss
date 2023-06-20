@@ -90,6 +90,10 @@
   left: 19px;
   bottom: 16px;
   gap: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 // TimePopup

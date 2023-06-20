@@ -3,7 +3,7 @@ import MainTweetForm from "./MainTweetForm";
 import { useState, useEffect } from "react";
 import { getTweetsAll } from "../../api/tweets";
 
-const MainTweetList = ({ setSpecTweet, setReplyPop }) => {
+const MainTweetList = ({ post, twitPop, replyPop, setSpecTweet, setReplyPop }) => {
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const MainTweetList = ({ setSpecTweet, setReplyPop }) => {
     };
 
     getTweetsAsync();
-  }, []);
+  }, [twitPop,replyPop,post]); 
 
   return (
     <div className={styles.list}>

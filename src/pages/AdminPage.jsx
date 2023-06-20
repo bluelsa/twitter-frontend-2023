@@ -1,7 +1,7 @@
 import styles from "../common/Auth.module.scss";
 import { ReactComponent as Logo } from "../assets/image/ac-logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { adminlogin } from "../api/admin";
 import TimePopup from "../components/TimePopup/TimePopup";
 import clsx from "clsx";
@@ -15,6 +15,14 @@ const AdminPage = () => {
   const [invalid, setInvalid] = useState(false);
 
   const navigate = useNavigate();
+
+useEffect(() => {
+  const adminToken = localStorage.getItem("adminToken");
+  if (adminToken) {
+    navigate("/admin/tweets");
+  }
+
+}, [navigate]);
 
   const handleClick = async () => {
     if (account.length === 0 || password.length === 0) {

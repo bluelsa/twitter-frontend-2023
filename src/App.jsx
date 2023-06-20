@@ -1,5 +1,6 @@
 import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter basename={basename}>
+        <AuthProvider>
         <Routes>
           <Route path="*" element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
@@ -34,6 +36,7 @@ function App() {
           <Route path="admin/tweets" element={<TweetsPage />} />
           <Route path="admin/users" element={<UsersPage />} />
         </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

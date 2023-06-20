@@ -45,9 +45,7 @@ const SignUpPage = () => {
 
     if (data.status === "success") {
       setNotiStatus("success");
-      // setTimeout(() => {
         navigate("/login");
-      // }, 2000);
       return;
     }
     if (data.message[0] === "account已存在") {
