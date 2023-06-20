@@ -125,7 +125,7 @@ const UserEditModal = ({ user, editData, setEditData, setEditPopup }) => {
                 <div className={styles.iconWrapper}>
                   <div>
                     <label>
-                      <ChangePhotoIcon className={styles.changePhotoIcon} />
+                      <ChangePhotoIcon className={styles.icon} />
                       <input
                         type="file"
                         style={{ display: "none" }}
