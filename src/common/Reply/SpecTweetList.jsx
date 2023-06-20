@@ -6,7 +6,7 @@ const SpecTweetList = ({ tweet, replyPop }) => {
   const [replies, setReplies] = useState([]);
 
   useEffect(() => {
-    const tweetId = tweet.id
+    const tweetId = localStorage.getItem("tweetId")
     const getRepliesAsync = async (tweetId) => {
       try {
         const reps = await getTweetReplies(tweetId);
@@ -30,7 +30,7 @@ const SpecTweetList = ({ tweet, replyPop }) => {
               <SpecReplyTweet
                 key={reply.id}
                 reply={reply}
-                tweetAccount={tweet.TweetUser.account}
+                tweet={tweet}
               />
             );
           })}

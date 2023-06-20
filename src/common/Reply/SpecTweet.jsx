@@ -30,7 +30,7 @@ const SpecTweet = ({ replyPop, setSpecTweet, setReplyPop }) => {
       }
     };
     getTweetAsync(tweetId);
-  }, []); 
+  }, [tweetId]); 
 
   useEffect(() => {
     if (tweet) {
