@@ -37,25 +37,12 @@ const UserMain = ({
 
   const reloadUserMain = async() =>  {
     const userId = localStorage.getItem("userId")
-    // Implement the logic to reload the UserMain component here
-    // This can include fetching updated data from the API or updating state variables
-
-    // Example: Refetch main data
     try {
      const data = await getUser(userId)
      setUser(data)
     } catch(error) {
       console.log(error)
     }
-    // axios
-    //   .get(`https://pure-waters-81841.herokuapp.com/api/users/${userId}`)
-    //   .then((response) => {
-    //     setUser(response.data);
-    //   })
-    //   console.log('user main: '+JSON.stringify(user))
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   };
 
   return (
