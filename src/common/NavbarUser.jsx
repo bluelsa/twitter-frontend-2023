@@ -14,7 +14,7 @@ const NavbarUser = ({ setTwitPop }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("otherId");
-    navigate("/login");
+    navigate("/login")
   };
 
   const handleRemove = () => {

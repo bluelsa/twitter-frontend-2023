@@ -27,6 +27,8 @@
       .icon {
         &:hover{
           cursor: pointer;
+          transform: scale(1.1);
+          margin-left: 4px;
         }
       }
     }
@@ -36,6 +38,7 @@
       height: 46px;
       &:hover {
           cursor: pointer;
+          transform: scale(1.05);
         }
     }
 
@@ -45,6 +48,8 @@
 
       &:hover {
         cursor: pointer;
+        transform: scale(1.1);
+        margin-left: 5px;
       }
     }
   }

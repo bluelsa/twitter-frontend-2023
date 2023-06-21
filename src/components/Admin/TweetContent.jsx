@@ -7,8 +7,8 @@ const TweetContent = ({tweet, onDelete}) => {
       <div className={styles.tweetCollection}>
         <div className={styles.avatarWrap}>
           <img
-            src="https://loremflickr.com/320/240/person/?random=19.08872965484445"
-            alt=""
+            src={tweet.TweetUser.avatar}
+            alt="avatar"
           />
         </div>
 

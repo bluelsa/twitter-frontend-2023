@@ -34,7 +34,7 @@ const TweetsPage = () => {
       }
     };
     getUsersAsync(adminToken);
-  }, []); 
+  }, [navigate]); 
 
   useEffect(() => {
     if (!isLoading) {

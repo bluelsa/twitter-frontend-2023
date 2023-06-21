@@ -88,6 +88,7 @@
 
       &:hover {
         cursor: pointer;
+        transform: scale(1.05);
       }
     }
   }
@@ -316,6 +317,11 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1)
+      }
     }
   }
 }
@@ -359,6 +365,12 @@
       .deleteIcon {
         margin-top: 20px;
         margin-left: 19.5px;
+
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.2);
+
+        }
       }
     }
     .postContainer {
@@ -615,4 +627,11 @@
 
 .notiContainer {
   z-index: 1000;
+}
+
+.xIcon {
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
 }

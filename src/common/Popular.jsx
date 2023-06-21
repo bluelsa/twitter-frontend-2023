@@ -19,6 +19,7 @@ const Popular = () => {
     getPopularListAsync();
   }, []); 
 
+
   return (
     <>
       {popularList ? (

@@ -6,7 +6,7 @@ import { ReactComponent as RedBell } from "../../assets/image/RedBell40X40.svg";
 import { useState, useEffect } from "react";
 import { createFollow, deleteFollow } from "../../api/followship";
 
-const OtherProfile = ({ otherUser, isFollowing }) => {
+const OtherProfile = ({  otherUser, isFollowing }) => {
   const [isFollowed, setIsFollowed] = useState(undefined);
 
   useEffect(() => {
@@ -32,6 +32,7 @@ const OtherProfile = ({ otherUser, isFollowing }) => {
       console.error(error);
     }
   };
+
 
   return (
         <div className={styles.profileContainer}>

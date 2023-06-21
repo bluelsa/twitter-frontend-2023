@@ -5,12 +5,22 @@ import NavbarOther from "../components/Others/NavbarOther";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
 import SpecTweet from "../common/Reply/SpecTweet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const OtherUserPage = () => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [twitPop, setTwitPop] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
+
+  useEffect(() => {
+    if (isAuthenticated === false) {
+      navigate("/login");
+    }
+  }, [navigate, isAuthenticated]);
 
   const handleOtherIdRemove = () => {
     localStorage.removeItem("otherId");
@@ -30,13 +40,13 @@ const OtherUserPage = () => {
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>
             {specTweet ? (
               <SpecTweet
-              replyPop={replyPop}
+                replyPop={replyPop}
                 setSpecTweet={setSpecTweet}
                 setReplyPop={setReplyPop}
               />
             ) : (
               <OtherMain
-              replyPop={replyPop}
+                replyPop={replyPop}
                 setReplyPop={setReplyPop}
                 setSpecTweet={setSpecTweet}
                 onRemove={handleOtherIdRemove}
@@ -45,17 +55,9 @@ const OtherUserPage = () => {
 
             {/* 推文與回覆推文彈跳視窗 */}
             {replyPop && (
-              <ReplyPopUp
-                replyPop={replyPop}
-                setReplyPop={setReplyPop}
-              />
+              <ReplyPopUp replyPop={replyPop} setReplyPop={setReplyPop} />
             )}
-            {twitPop && (
-              <TwitPopUp
-                twitPop={twitPop}
-                setTwitPop={setTwitPop}
-              />
-            )}
+            {twitPop && <TwitPopUp twitPop={twitPop} setTwitPop={setTwitPop} />}
           </div>
         </div>
         <div className={styles.rightColumn}>

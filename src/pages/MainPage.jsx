@@ -4,14 +4,24 @@ import Popular from "../common/Popular";
 import Twits from "../components/Home/Twits";
 import TwitPopUp from "../common/TwitPopUp";
 import ReplyPopUp from "../components/Home/ReplyPopUp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 import SpecTweet from "../common/Reply/SpecTweet";
 
 const MainPage = () => {
+  const { isAuthenticated } = useAuth()
+  const navigate = useNavigate()
   const [twitPop, setTwitPop] = useState(false);
   const [specTweet, setSpecTweet] = useState(false);
   const [replyPop, setReplyPop] = useState(false);
   const [post, setPost] = useState(false)
+
+useEffect(() => {
+  if (isAuthenticated === false) {
+    navigate("/login");
+  }
+}, [navigate, isAuthenticated]);
 
   return (
     <div className={styles.homeContainer}>

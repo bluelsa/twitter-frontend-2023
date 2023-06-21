@@ -6,7 +6,7 @@ import { useState } from "react";
 import { createLike, deleteLike } from "../../api/tweets";
 import ElapsedTime from "../../common/ElapsedTime";
 
-const UserTweet = ({ editData, userTweet, setMain, setSpecTweet, setReplyPop }) => {
+const UserTweet = ({ user, userTweet, setMain, setSpecTweet, setReplyPop }) => {
   const [isLike, setIsLike] = useState(userTweet.isLiked);
 const [likedCount, setLikedCount] = useState(userTweet.likedCount);
 
@@ -44,21 +44,14 @@ const handleUnlike = async (tweetId) => {
       <div className={styles.tweetsWrapper}>
         <div className={styles.tweetCollection}>
           <div className={styles.tweetAvatarWrap}>
-            <img src={userTweet.TweetUser.avatar} alt="avatar" />
+            <img src={user.avatar} alt="avatar" />
           </div>
           <div className={styles.tweetContent}>
             <div>
               <div className={styles.nameInfo}>
-                {editData === undefined && (
                   <div className={styles.tweetName}>
-                    {userTweet.TweetUser.name}
+                    {user.name}
                   </div>
-                )}
-                {editData && (
-                  <div className={styles.tweetName}>
-                    {editData.name}
-                  </div>
-                )}
                 <div className={styles.tweetTime}>
                   @{userTweet.TweetUser.account} &bull;
                   <ElapsedTime createdAt={userTweet.createdAt} />

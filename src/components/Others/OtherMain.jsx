@@ -68,7 +68,7 @@ const OtherMain = ({
           </div>
         </div>
       </div>
-      <OtherProfile otherUser={otherUser} isFollowing={otherUser.isFollowed} />
+      <OtherProfile otherUser={otherUser} isFollowing={otherUser.isFollowed}/>
       <UserNavbar
         twitSection={twitSection}
         setTwitSection={setTwitSection}

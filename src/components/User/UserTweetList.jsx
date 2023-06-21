@@ -3,7 +3,7 @@ import UserTweet from "./UserTweet";
 import { useState, useEffect } from "react";
 import { getUserTweets } from "../../api/user";
 
-const UserTweetList = ({ editData, twitPop, replyPop, setMain, setSpecTweet, setReplyPop }) => {
+const UserTweetList = ({ user,twitPop, replyPop, setMain, setSpecTweet, setReplyPop }) => {
   const [userTweets, setUserTweets] = useState([]);
   const userId = localStorage.getItem("userId");
   useEffect(() => {
@@ -27,7 +27,7 @@ const UserTweetList = ({ editData, twitPop, replyPop, setMain, setSpecTweet, set
           {userTweets.map((userTweet) => {
             return (
               <UserTweet
-              editData={editData}
+              user={user}
                 key={userTweet.id}
                 userTweet={userTweet}
                 setMain={setMain}
