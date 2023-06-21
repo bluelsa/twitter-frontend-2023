@@ -25,11 +25,11 @@ const SettingPage = () => {
   // notification
   const [notiStatus, setNotiStatus] = useState("finished");
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [navigate, isAuthenticated]);
+ useEffect(() => {
+   if (isAuthenticated === false) {
+     navigate("/login");
+   }
+ }, [navigate, isAuthenticated]);
 
   useEffect(() => {
     if(user) {

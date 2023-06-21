@@ -1,10 +1,10 @@
 import { useState, createContext, useContext, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { getUser } from "../api/user";
 
 const defaultApiContext = {
   user: {},
-  isAuthenticated: null,
+  isAuthenticated: undefined,
 };
 
 const AuthContext = createContext(defaultApiContext);
@@ -14,10 +14,8 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState({});
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(undefined);
   const { pathname } = useLocation()
-  const navigate = useNavigate();
-
   const userId = localStorage.getItem("userId");
 
   //Authentication
@@ -33,6 +31,7 @@ export const AuthProvider = ({ children }) => {
 
   //get user
   useEffect(() => {
+    if (isAuthenticated) {
     const userId = localStorage.getItem("userId");
     const getUsersAsync = async (userId) => {
       try {
@@ -45,11 +44,13 @@ export const AuthProvider = ({ children }) => {
       }
     };
     getUsersAsync(userId);
-  }, [userId]);
+  }
+  }, [userId, isAuthenticated]);
 
   const value = {
     user,
-    isAuthenticated
+    setUser,
+    isAuthenticated,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

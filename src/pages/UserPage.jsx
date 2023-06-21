@@ -24,7 +24,7 @@ const UserPage = () => {
   const [replyPop, setReplyPop] = useState(false);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (isAuthenticated === false) {
       navigate("/login");
     }
   }, [navigate, isAuthenticated]);
@@ -75,17 +75,9 @@ const UserPage = () => {
               />
             )}
             {replyPop && (
-              <ReplyPopUp
-                replyPop={replyPop}
-                setReplyPop={setReplyPop}
-              />
+              <ReplyPopUp replyPop={replyPop} setReplyPop={setReplyPop} />
             )}
-            {twitPop && (
-              <TwitPopUp
-                twitPop={twitPop}
-                setTwitPop={setTwitPop}
-              />
-            )}
+            {twitPop && <TwitPopUp twitPop={twitPop} setTwitPop={setTwitPop} />}
           </div>
         </div>
         <div className={styles.rightColumn}>

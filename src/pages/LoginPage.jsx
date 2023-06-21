@@ -21,7 +21,8 @@ const LoginPage = () => {
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/home");
-    } return
+    } 
+    
   }, [navigate, isAuthenticated]);
 
   const handleClick = async () => {

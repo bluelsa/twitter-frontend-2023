@@ -9,6 +9,8 @@ import { useState } from "react";
 import UserTweetList from "./UserTweetList";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { getUser } from "../../api/user";
+import axios from "axios";
 
 const UserMain = ({
   main,
@@ -23,9 +25,7 @@ const UserMain = ({
   setReplyPop,
 }) => {
   const navigate = useNavigate();
-  const { user } = useAuth();
-
-  const [editData, setEditData] = useState(undefined)
+  const { user, setUser } = useAuth();
 
   // render推文/回覆/喜歡的內容
   const [twitSection, setTwitSection] = useState(true);
@@ -34,6 +34,29 @@ const UserMain = ({
 
   // 編輯個人資料popup window
   const [editPopup, setEditPopup] = useState(false);
+
+  const reloadUserMain = async() =>  {
+    const userId = localStorage.getItem("userId")
+    // Implement the logic to reload the UserMain component here
+    // This can include fetching updated data from the API or updating state variables
+
+    // Example: Refetch main data
+    try {
+     const data = await getUser(userId)
+     setUser(data)
+    } catch(error) {
+      console.log(error)
+    }
+    // axios
+    //   .get(`https://pure-waters-81841.herokuapp.com/api/users/${userId}`)
+    //   .then((response) => {
+    //     setUser(response.data);
+    //   })
+    //   console.log('user main: '+JSON.stringify(user))
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+  };
 
   return (
     <>
@@ -57,10 +80,8 @@ const UserMain = ({
             </div>
 
             <div className={styles.returnWrapper}>
-              {editData === undefined && (
-                <div className={styles.userName}>{user.name}</div>
-              )}
-              {editData && <div className={styles.userName}>{editData.name}</div>}
+              <div className={styles.userName}>{user.name}</div>
+
               <div className={styles.tweetNum}>
                 <span>{user.userTweetCount}</span>
                 推文
@@ -68,7 +89,6 @@ const UserMain = ({
             </div>
           </div>
           <UserProfile
-            editData={editData}
             editPopup={editPopup}
             setEditPopup={setEditPopup}
             main={main}
@@ -89,9 +109,9 @@ const UserMain = ({
 
           {twitSection && (
             <UserTweetList
+            user={user}
               setMain={setMain}
               twitPop={twitPop}
-              editData={editData}
               replyPop={replyPop}
               setSpecTweet={setSpecTweet}
               setReplyPop={setReplyPop}
@@ -109,11 +129,9 @@ const UserMain = ({
 
           {editPopup && (
             <UserEditModal
-              editData={editData}
-              setEditData={setEditData}
               user={user}
-              editPopup={editPopup}
               setEditPopup={setEditPopup}
+              reloadUserMain={reloadUserMain}
             />
           )}
         </div>

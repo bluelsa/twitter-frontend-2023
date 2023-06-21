@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { adminlogin } from "../api/admin";
 import TimePopup from "../components/TimePopup/TimePopup";
-import clsx from "clsx";
 
 const AdminPage = () => {
   const [account, setAccount] = useState("");

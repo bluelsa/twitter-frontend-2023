@@ -18,7 +18,7 @@ const MainPage = () => {
   const [post, setPost] = useState(false)
 
 useEffect(() => {
-  if (!isAuthenticated) {
+  if (isAuthenticated === false) {
     navigate("/login");
   }
 }, [navigate, isAuthenticated]);

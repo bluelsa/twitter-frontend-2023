@@ -6,22 +6,20 @@ import { ReactComponent as DeleteCoverIcon } from "../../assets/image/delete-whi
 import { ReactComponent as ChangePhotoIcon } from "../../assets/image/iconCCamera.svg";
 import { useState, useEffect } from "react";
 import { putUser } from "../../api/user";
+// import { useAuth } from "../../contexts/AuthContext";
 import Loading from "../Animation/Loading";
 
 import TimePopup from "../TimePopup/TimePopup";
 
-const UserEditModal = ({ user, editData, setEditData, setEditPopup }) => {
+const UserEditModal = ({ reloadUserMain, user, setEditPopup }) => {
   // get data
-  const [name, setName] = useState('');
-  const [introduction, setIntroduction] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const [background, setBackground] = useState('');
+  const [name, setName] = useState("");
+  const [introduction, setIntroduction] = useState("");
+  const [avatar, setAvatar] = useState("");
+  const [background, setBackground] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // error message
-  // const [empty, setEmpty] = useState(false)
-  // const [nameMax, setNameMax] = useState(false)
-  // const [introMax, setIntroMax] = useState(false)
+  // const { user } = useAuth();
 
   const [notiStatus, setNotiStatus] = useState("finished");
 
@@ -30,23 +28,13 @@ const UserEditModal = ({ user, editData, setEditData, setEditPopup }) => {
       setName(user.name);
       setIntroduction(user.introduction);
       setAvatar(user.avatar);
-      setBackground(user.background)
+      setBackground(user.background);
     }
   }, [user]);
 
-  useEffect(() => {
-    if (editData) {
-      setName(editData.name);
-      setIntroduction(editData.introduction);
-      setAvatar(editData.avatar);
-      setBackground(editData.background);
-    }
-  }, [editData]);
-  
-
   const handleChangeInfo = async () => {
     const id = localStorage.getItem("userId");
-    
+
     if (name.length === 0) {
       setNotiStatus("nameEmpty");
       return;
@@ -56,22 +44,23 @@ const UserEditModal = ({ user, editData, setEditData, setEditPopup }) => {
       return;
     }
     if (name.length > 50 || introduction.length > 140) {
-      setNotiStatus('max')
+      setNotiStatus("max");
       return;
-    } 
+    }
     setLoading(true);
     try {
-      const data = await putUser({
+      await putUser({
         id,
         name,
         introduction,
         avatar,
         background,
       });
-      setEditData(data)
+      reloadUserMain(); // <-------------------
     } catch (error) {
       console.error(error);
     }
+    // window.location.reload()
     setEditPopup(false);
     setLoading(false);
   };
@@ -82,6 +71,8 @@ const UserEditModal = ({ user, editData, setEditData, setEditPopup }) => {
 
   return (
     <>
+      {user ? (
+        <>
           <div className={styles.notiContainer} onClick={handleClosePopup}>
             {notiStatus === "nameEmpty" && (
               <TimePopup notification="error" title="名稱不可為空白" />
@@ -107,7 +98,7 @@ const UserEditModal = ({ user, editData, setEditData, setEditPopup }) => {
                 <div>
                   <EditSave
                     className={styles.saveIcon}
-                    onClick={() => handleChangeInfo?.(editData)}
+                    onClick={handleChangeInfo}
                   />
                 </div>
               </div>
@@ -208,6 +199,10 @@ const UserEditModal = ({ user, editData, setEditData, setEditPopup }) => {
             )}
           </div>
         </>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

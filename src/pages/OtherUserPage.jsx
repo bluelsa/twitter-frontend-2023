@@ -17,11 +17,11 @@ const OtherUserPage = () => {
   const [specTweet, setSpecTweet] = useState(false);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (isAuthenticated === false) {
       navigate("/login");
     }
   }, [navigate, isAuthenticated]);
-  
+
   const handleOtherIdRemove = () => {
     localStorage.removeItem("otherId");
   };
