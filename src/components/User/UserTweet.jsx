@@ -50,7 +50,7 @@ const handleUnlike = async (tweetId) => {
             <div>
               <div className={styles.nameInfo}>
                   <div className={styles.tweetName}>
-                    {userTweet.TweetUser.name}
+                    {user.name}
                   </div>
                 <div className={styles.tweetTime}>
                   @{userTweet.TweetUser.account} &bull;
