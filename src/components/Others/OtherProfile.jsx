@@ -13,7 +13,7 @@ const OtherProfile = ({  otherUser, isFollowing }) => {
     if (otherUser) {
       setIsFollowed(isFollowing);
     }
-  }, [otherUser]);
+  }, [otherUser, isFollowing]);
 
   const handleFollow = async (id) => {
     try {

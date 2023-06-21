@@ -10,7 +10,6 @@ import UserTweetList from "./UserTweetList";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { getUser } from "../../api/user";
-import axios from "axios";
 
 const UserMain = ({
   main,

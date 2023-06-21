@@ -43,7 +43,7 @@ const UserEditModal = ({ reloadUserMain, user, setEditPopup }) => {
       setNotiStatus("introductionEmpty");
       return;
     }
-    if (name.length > 50 || introduction.length > 140) {
+    if (name.length > 50 || introduction.length > 160) {
       setNotiStatus("max");
       return;
     }

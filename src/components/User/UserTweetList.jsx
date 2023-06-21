@@ -18,7 +18,7 @@ const UserTweetList = ({ user,twitPop, replyPop, setMain, setSpecTweet, setReply
       }
     };
     getUserTweetsAsync(userId);
-  }, [twitPop,replyPop]);
+  }, [userId,twitPop,replyPop]);
 
   return (
     <>
