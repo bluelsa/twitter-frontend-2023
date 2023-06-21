@@ -20,7 +20,7 @@ const OtherTweetList = ({ replyPop, setSpecTweet, setReplyPop }) => {
         }
       };
       getUserTweetsAsync(otherId);
-    }, []);
+    }, [otherId]);
 
 
   return (
