@@ -21,7 +21,6 @@ useEffect(() => {
         setFollowings(followings);
       }
     } catch (error) {
-      // console.error(error);
       setIsFollowings(false)
     }
   };
