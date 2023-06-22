@@ -1,15 +1,13 @@
 import styles from "./TweetList.module.scss";
 import { ReactComponent as DeleteIcon } from "../../assets/image/delete-icon.svg";
+import ElapsedTime from "../../common/ElapsedTime";
 
 const TweetContent = ({tweet, onDelete}) => {
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.tweetCollection}>
         <div className={styles.avatarWrap}>
-          <img
-            src={tweet.TweetUser.avatar}
-            alt="avatar"
-          />
+          <img src={tweet.TweetUser.avatar} alt="avatar" />
         </div>
 
         <div className={styles.tweetContent}>
@@ -17,7 +15,8 @@ const TweetContent = ({tweet, onDelete}) => {
             <div className={styles.nameInfo}>
               <div className={styles.tweetName}>{tweet.TweetUser.name}</div>
               <div className={styles.tweetTime}>
-                @{tweet.TweetUser.account} &bull;3小時
+                @{tweet.TweetUser.account} &bull;
+                <ElapsedTime createdAt={tweet.createdAt} />
               </div>
               <div>
                 <DeleteIcon
