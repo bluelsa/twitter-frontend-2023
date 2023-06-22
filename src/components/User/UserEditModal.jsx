@@ -60,7 +60,6 @@ const UserEditModal = ({ reloadUserMain, user, setEditPopup }) => {
     } catch (error) {
       console.error(error);
     }
-    // window.location.reload()
     setEditPopup(false);
     setLoading(false);
   };

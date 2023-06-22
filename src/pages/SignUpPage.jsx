@@ -76,7 +76,7 @@ const SignUpPage = () => {
           <TimePopup notification="success" title="註冊成功" />
         )}
         {notiStatus === "account" && (
-          <TimePopup notification="error" title="帳號已重覆註冊!" />
+          <TimePopup notification="error" title="account已重覆註冊!" />
         )}
         {notiStatus === "email" && (
           <TimePopup notification="error" title="email已重覆註冊!" />
