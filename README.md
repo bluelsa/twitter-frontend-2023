@@ -1,78 +1,136 @@
-# AC Simple Twitter 
+# Alphitter - Simple Twitter Clone
 
-此專案為使用React打造的 `Alphitter` 簡易版社交平台，使用者能建立個人帳戶，與其他使用者進行互動與交流。
+A simple social media platform built with React, where users can create personal accounts and interact with other users.
 
-## Github Page
+## Features
 
-https://bluelsa.github.io/twitter-frontend-2023/
+### User Features
+- Register a personal account on the signup page
+- View all tweets on the home page after login
+- Post tweets, reply to tweets, and like tweets
+- View personal tweets, replies, and liked content on profile page
+- View followers and following lists
+- Edit profile avatar, cover photo, nickname, and bio
+- Edit account settings including username, email, and password
+- View other users' profiles and follow/unfollow them
 
-## 功能列表
+### Admin Features
+- Login via the admin login page
+- Browse all user profiles
+- Browse all tweets and delete specific tweets
 
-`使用者`
-* 可於註冊頁面註冊專屬個人帳號
-* 登入後進入個人首頁，查看所有使用者推文
-* 發佈個人推文、對推文進行回覆與按讚
-* 個人頁面查看所有推文、回覆及喜歡的內容
-* 查看個人追蹤者、被追蹤者的使用者列表
-* 編輯個人頭像、封面照片、暱稱及自我介紹
-* 編輯個人帳號、暱稱、Email、密碼資料
-* 查看其他使用者個人資料，並進行追蹤/取消追蹤
+## Getting Started
 
-`管理者`
-* 可由後台登入頁面登入
-* 瀏覽所有使用者個人資料列表
-* 瀏覽所有推文列表、刪除特定推文
+### Prerequisites
 
-## 專案執行
+- Node.js (v14 or higher recommended)
+- npm
 
-### 下載專案
+### Installation
 
-打開terminal，下載此專案
-```
+1. **Clone the repository**
+
+```bash
 git clone https://github.com/bluelsa/twitter-frontend-2023
-```
-
-### 進入專案資料夾
-
-```
 cd twitter-frontend-2023
 ```
 
-### 安裝套件
+2. **Install dependencies**
 
-```
+```bash
 npm install
 ```
 
-### 啟動專案
+### Running the Application
 
+You need to run both the mock backend server and the frontend:
+
+**Terminal 1 - Start Mock Backend Server (Port 3001)**
+
+```bash
+npm run dev-server
 ```
+
+**Terminal 2 - Start Frontend (Port 3000)**
+
+```bash
 npm start
 ```
 
-### 本地網址
+### Access the Application
+
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost:3000/twitter-frontend-2023/ |
+| Mock API | http://localhost:3001 |
+
+### Test Accounts
+
+| Role | Account | Password |
+|------|---------|----------|
+| User | `user1` | `12345678` |
+| User | `user2` | `12345678` |
+| User | `user3` | `12345678` |
+| Admin | `root` | `12345678` |
+
+### Stop the Application
+
+Press `Ctrl + C` in each terminal to stop the servers.
+
+## Tech Stack
+
+- React 18.2.0
+- React Router DOM 6.4.1
+- React Scripts 5.0.1
+- Axios 0.27.2
+- Sass 1.62.1
+- clsx 1.2.1
+- Lottie Web 5.12.2
+- JSON Server 0.17.0 (Mock Backend)
+
+## Project Structure
 
 ```
-localhost:3000/twitter-frontend-2023/
+twitter-frontend/
+├── public/              # Static files
+├── src/
+│   ├── api/            # API service functions
+│   ├── assets/         # Images and icons
+│   ├── common/         # Shared components
+│   ├── components/     # Feature components
+│   ├── contexts/       # React contexts
+│   ├── pages/          # Page components
+│   └── App.jsx         # Main app component
+├── db.json             # Mock database
+├── server.js           # Custom mock API server
+└── package.json
 ```
 
-### 退出專案
+## API Endpoints
 
-```
-ctrl+c
-```
+The mock backend provides the following endpoints:
 
-## 開發工具
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/users/login` | User login |
+| POST | `/api/users` | User registration |
+| GET | `/api/tweets` | Get all tweets |
+| POST | `/api/tweets` | Create a tweet |
+| GET | `/api/tweets/:id` | Get a specific tweet |
+| GET | `/api/tweets/:id/replies` | Get tweet replies |
+| POST | `/api/tweets/:id/replies` | Reply to a tweet |
+| POST | `/api/tweets/:id/like` | Like a tweet |
+| POST | `/api/tweets/:id/unlike` | Unlike a tweet |
+| GET | `/api/users/:id` | Get user profile |
+| GET | `/api/users/:id/tweets` | Get user's tweets |
+| GET | `/api/users/top` | Get popular users |
+| POST | `/api/followships` | Follow a user |
+| DELETE | `/api/followships/:id` | Unfollow a user |
+| POST | `/api/admin/users` | Admin login |
+| GET | `/api/admin/users` | Get all users (admin) |
+| GET | `/api/admin/tweets` | Get all tweets (admin) |
+| DELETE | `/api/admin/tweets/:id` | Delete a tweet (admin) |
 
-* react@18.2.0
-* react-router-dom@18.2.0
-* react-scripts@5.0.1
-* axios@0.27.2
-* sass@1.62.1
-* clsx@1.2.1
-* lottie-web@5.12.2
+## Contributors
 
-## 專案開發人員
-[Elsa Tung](https://github.com/bluelsa)
-
-
+- [Elsa Tung](https://github.com/bluelsa)

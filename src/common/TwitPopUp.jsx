@@ -67,7 +67,7 @@ const TwitPopUp = ({ setTwitPop }) => {
     <>
       <div className={styles.notiContainer} onClick={handleClosePopup}>
         {notiStatus === "success" && (
-          <TimePopup notification="new" title="收到新的推文" />
+          <TimePopup notification="new" title="New tweet received" />
         )}
         {notiStatus === "finish" && ""}
       </div>
@@ -90,7 +90,7 @@ const TwitPopUp = ({ setTwitPop }) => {
                   className={styles.postText}
                   rows="10"
                   defaultValue={description}
-                  placeholder="有什麼新鮮事？"
+                  placeholder="What's happening?"
                   // maxLength="140"
                   ref={inputRef}
                   onKeyDown={handleKeyDown}
@@ -99,8 +99,8 @@ const TwitPopUp = ({ setTwitPop }) => {
               </div>
             </div>
             <div className={styles.hint}>
-              {hint === "empty" && <p>內容不可空白</p>}
-              {hint === "max" && <p>字數不可超過 140 字</p>}
+              {hint === "empty" && <p>Content cannot be empty</p>}
+              {hint === "max" && <p>Cannot exceed 140 characters</p>}
             </div>
           </div>
           <div className={styles.popButton} onClick={handleTweet}>

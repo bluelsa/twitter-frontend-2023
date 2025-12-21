@@ -115,14 +115,14 @@ const ReplyPopUp = ({ setReplyPop }) => {
                     {replyTweet.TweetUser.name}{" "}
                   </div>
                   <div className={styles.tweetTime}>
-                    @{replyTweet.TweetUser.account} &bull;3小時
+                    @{replyTweet.TweetUser.account} &bull;3h
                   </div>
                 </div>
                 <div className={styles.tweetArticle}>
                   {replyTweet.description}
                 </div>
                 <div className={styles.replyInfo}>
-                  <div className={styles.replyTo}>回覆給</div>
+                  <div className={styles.replyTo}>Replying to</div>
                   <div className={styles.replyName}>
                     @{replyTweet.TweetUser.account}{" "}
                   </div>
@@ -138,7 +138,7 @@ const ReplyPopUp = ({ setReplyPop }) => {
                   <textarea
                     className={styles.replyText}
                     defaultValue={comment}
-                    placeholder="推你的回覆"
+                    placeholder="Tweet your reply"
                     // maxLength="140"
                     ref={inputRef}
                     onKeyDown={handleKeyDown}
@@ -147,8 +147,8 @@ const ReplyPopUp = ({ setReplyPop }) => {
                 </div>
               </div>
               <div className={styles.hint}>
-                {hint === "empty" && <p>內容不可空白</p>}
-                {hint === "max" && <p>字數不可超過 140 字</p>}
+                {hint === "empty" && <p>Content cannot be empty</p>}
+                {hint === "max" && <p>Cannot exceed 140 characters</p>}
               </div>
             </div>
 

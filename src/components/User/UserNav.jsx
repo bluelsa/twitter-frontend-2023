@@ -15,7 +15,7 @@ const UserNav = ({twitSection, setTwitSection, replySection, setReplySection, li
             twitSection ? `${styles.stickRed}` : `${styles.origin}`
           }
         >
-          推文
+          Tweets
         </div>
 
         <div
@@ -28,7 +28,7 @@ const UserNav = ({twitSection, setTwitSection, replySection, setReplySection, li
             replySection ? `${styles.stickRed}` : `${styles.origin}`
           }
         >
-          回覆
+          Replies
         </div>
         <div
           onClick={() => {
@@ -40,7 +40,7 @@ const UserNav = ({twitSection, setTwitSection, replySection, setReplySection, li
             likeSection ? `${styles.stickRed}` : `${styles.origin}`
           }
         >
-          喜歡的內容
+          Likes
         </div>
       </div>
      

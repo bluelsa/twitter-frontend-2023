@@ -325,6 +325,23 @@
         .likeNum {
           margin-left: 41.3px;
         }
+        
+        .deleteBtn {
+          margin-left: 41.3px;
+          
+          .icon {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s, transform 0.2s;
+            
+            &:hover {
+              opacity: 1;
+              transform: scale(1.1);
+            }
+          }
+        }
       }
     }
   }

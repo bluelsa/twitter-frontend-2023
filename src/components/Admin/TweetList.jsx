@@ -5,7 +5,7 @@ const TweetList = ({ tweets, onDelete }) => {
   return (
     <div className={styles.Container}>
       <div className={styles.lineContent}>
-        <h4 className={styles.title}>推文清單</h4>
+        <h4 className={styles.title}>Tweet List</h4>
       </div>
       <div className={styles.list}>
         {tweets.map((tweet) => {

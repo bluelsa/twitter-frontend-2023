@@ -1,34 +1,274 @@
 {
-  "tweets": [
+  "users": [
     {
       "id": 1,
-      "name": "Apple",
-      "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
-      "isFollow": true
+      "account": "user1",
+      "email": "user1@example.com",
+      "password": "12345678",
+      "name": "John Doe",
+      "avatar": "https://i.pravatar.cc/150?img=1",
+      "background": "https://picsum.photos/seed/bg1/600/200",
+      "introduction": "Hello, I'm John!",
+      "role": "user",
+      "tweetCount": 10,
+      "followerCount": 5,
+      "followingCount": 3
     },
     {
       "id": 2,
-      "name": "Jane Cathy",
-      "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
-      "isFollow": true
+      "account": "user2",
+      "email": "user2@example.com",
+      "password": "12345678",
+      "name": "Jane Smith",
+      "avatar": "https://i.pravatar.cc/150?img=2",
+      "background": "https://picsum.photos/seed/bg2/600/200",
+      "introduction": "Frontend developer",
+      "role": "user",
+      "tweetCount": 8,
+      "followerCount": 12,
+      "followingCount": 7
     },
     {
       "id": 3,
-      "name": "McDomold adword.junior",
-      "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
-      "isFollow": false
+      "account": "user3",
+      "email": "user3@example.com",
+      "password": "12345678",
+      "name": "Bob Wilson",
+      "avatar": "https://i.pravatar.cc/150?img=3",
+      "background": "https://picsum.photos/seed/bg3/600/200",
+      "introduction": "Tech enthusiast",
+      "role": "user",
+      "tweetCount": 15,
+      "followerCount": 20,
+      "followingCount": 10
     },
     {
       "id": 4,
-      "name": "Billy ocean",
-      "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
-      "isFollow": false
+      "account": "user4",
+      "email": "user4@example.com",
+      "password": "12345678",
+      "name": "Alice Chen",
+      "avatar": "https://i.pravatar.cc/150?img=5",
+      "background": "https://picsum.photos/seed/bg4/600/200",
+      "introduction": "Designer & artist",
+      "role": "user",
+      "tweetCount": 12,
+      "followerCount": 35,
+      "followingCount": 15
     },
     {
       "id": 5,
-      "name": "Adm studoward",
-      "article": "this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment this is a article this is react assignment",
-      "isFollow": false
+      "account": "user5",
+      "email": "user5@example.com",
+      "password": "12345678",
+      "name": "David Lee",
+      "avatar": "https://i.pravatar.cc/150?img=8",
+      "background": "https://picsum.photos/seed/bg5/600/200",
+      "introduction": "Full-stack developer",
+      "role": "user",
+      "tweetCount": 20,
+      "followerCount": 50,
+      "followingCount": 25
+    },
+    {
+      "id": 6,
+      "account": "user6",
+      "email": "user6@example.com",
+      "password": "12345678",
+      "name": "Emma Watson",
+      "avatar": "https://i.pravatar.cc/150?img=9",
+      "background": "https://picsum.photos/seed/bg6/600/200",
+      "introduction": "Product manager",
+      "role": "user",
+      "tweetCount": 18,
+      "followerCount": 42,
+      "followingCount": 30
+    },
+    {
+      "id": 100,
+      "account": "root",
+      "email": "root@example.com",
+      "password": "12345678",
+      "name": "Admin",
+      "avatar": "https://i.pravatar.cc/150?img=10",
+      "background": "https://picsum.photos/seed/admin/600/200",
+      "introduction": "System Administrator",
+      "role": "admin",
+      "tweetCount": 0,
+      "followerCount": 0,
+      "followingCount": 0
+    }
+  ],
+  "tweets": [
+    {
+      "id": 1,
+      "UserId": 1,
+      "description": "This is my first tweet! Hello everyone! 🎉",
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "repliedCount": 2,
+      "likedCount": 5,
+      "isLiked": false,
+      "TweetUser": {
+        "id": 1,
+        "name": "John Doe",
+        "account": "user1",
+        "avatar": "https://i.pravatar.cc/150?img=1"
+      }
+    },
+    {
+      "id": 2,
+      "UserId": 2,
+      "description": "Learning React is so much fun! Building amazing things every day. 💻",
+      "createdAt": "2024-01-14T15:45:00.000Z",
+      "repliedCount": 3,
+      "likedCount": 12,
+      "isLiked": true,
+      "TweetUser": {
+        "id": 2,
+        "name": "Jane Smith",
+        "account": "user2",
+        "avatar": "https://i.pravatar.cc/150?img=2"
+      }
+    },
+    {
+      "id": 3,
+      "UserId": 3,
+      "description": "Just deployed my new project! Check it out and let me know what you think. 🚀",
+      "createdAt": "2024-01-13T09:00:00.000Z",
+      "repliedCount": 5,
+      "likedCount": 25,
+      "isLiked": false,
+      "TweetUser": {
+        "id": 3,
+        "name": "Bob Wilson",
+        "account": "user3",
+        "avatar": "https://i.pravatar.cc/150?img=3"
+      }
+    },
+    {
+      "id": 4,
+      "UserId": 1,
+      "description": "Coffee and code - the perfect morning combo ☕️",
+      "createdAt": "2024-01-12T08:15:00.000Z",
+      "repliedCount": 1,
+      "likedCount": 7,
+      "isLiked": false,
+      "TweetUser": {
+        "id": 1,
+        "name": "John Doe",
+        "account": "user1",
+        "avatar": "https://i.pravatar.cc/150?img=1"
+      }
+    },
+    {
+      "id": 5,
+      "UserId": 2,
+      "description": "TypeScript makes everything better! Strong typing for the win. 🎯",
+      "createdAt": "2024-01-11T14:20:00.000Z",
+      "repliedCount": 7,
+      "likedCount": 30,
+      "isLiked": false,
+      "TweetUser": {
+        "id": 2,
+        "name": "Jane Smith",
+        "account": "user2",
+        "avatar": "https://i.pravatar.cc/150?img=2"
+      }
+    }
+  ],
+  "replies": [
+    {
+      "id": 1,
+      "TweetId": 1,
+      "UserId": 2,
+      "comment": "Welcome to the platform!",
+      "createdAt": "2024-01-15T11:00:00.000Z",
+      "User": {
+        "id": 2,
+        "name": "Jane Smith",
+        "account": "user2",
+        "avatar": "https://i.pravatar.cc/150?img=2"
+      }
+    },
+    {
+      "id": 2,
+      "TweetId": 1,
+      "UserId": 3,
+      "comment": "Great first tweet!",
+      "createdAt": "2024-01-15T12:30:00.000Z",
+      "User": {
+        "id": 3,
+        "name": "Bob Wilson",
+        "account": "user3",
+        "avatar": "https://i.pravatar.cc/150?img=3"
+      }
+    },
+    {
+      "id": 3,
+      "TweetId": 2,
+      "UserId": 1,
+      "comment": "React is awesome!",
+      "createdAt": "2024-01-14T16:00:00.000Z",
+      "User": {
+        "id": 1,
+        "name": "John Doe",
+        "account": "user1",
+        "avatar": "https://i.pravatar.cc/150?img=1"
+      }
+    }
+  ],
+  "followships": [
+    {
+      "id": 1,
+      "followerId": 1,
+      "followingId": 2
+    },
+    {
+      "id": 2,
+      "followerId": 1,
+      "followingId": 3
+    },
+    {
+      "id": 3,
+      "followerId": 2,
+      "followingId": 1
+    },
+    {
+      "id": 4,
+      "followerId": 3,
+      "followingId": 1
+    },
+    {
+      "id": 5,
+      "followerId": 3,
+      "followingId": 2
+    },
+    {
+      "id": 1766316649142,
+      "followerId": 1,
+      "followingId": 4
+    }
+  ],
+  "likes": [
+    {
+      "id": 1,
+      "UserId": 1,
+      "TweetId": 2
+    },
+    {
+      "id": 2,
+      "UserId": 1,
+      "TweetId": 4
+    },
+    {
+      "id": 3,
+      "UserId": 2,
+      "TweetId": 1
+    },
+    {
+      "id": 4,
+      "UserId": 2,
+      "TweetId": 3
     }
   ]
 }

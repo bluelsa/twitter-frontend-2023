@@ -11,9 +11,9 @@ const LoginPage = () => {
   const { isAuthenticated } = useAuth()
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
-  // 錯誤通知
+  // Error notification
   const [notiStatus, setNotiStatus] = useState("finished");
-  // 錯誤提示
+  // Error message
   const [accountInvalid, setAccountInvalid] = useState(false);
 
   const navigate = useNavigate();
@@ -43,11 +43,11 @@ const LoginPage = () => {
       navigate("/home");
       return;
     }
-    if (data.status === "error" && data.message === "帳號不存在！") {
+    if (data.status === "error" && data.message === "Account does not exist!") {
       setNotiStatus("wrongAccount");
       setAccountInvalid(true);
     }
-    if (data.message === "帳號或密碼輸入錯誤！") {
+    if (data.message === "Invalid account or password!") {
       setNotiStatus("failed");
     }
   };
@@ -60,16 +60,16 @@ const LoginPage = () => {
     <>
       <div className={styles.notiContainer} onClick={handleClosePopup}>
         {notiStatus === "success" && (
-          <TimePopup notification="success" title="登入成功" />
+          <TimePopup notification="success" title="Login successful" />
         )}
         {notiStatus === "failed" && (
-          <TimePopup notification="error" title="帳號或密碼輸入錯誤" />
+          <TimePopup notification="error" title="Invalid account or password" />
         )}
         {notiStatus === "wrongAccount" && (
-          <TimePopup notification="error" title="帳號不存在" />
+          <TimePopup notification="error" title="Account does not exist" />
         )}
         {notiStatus === "incomplete" && (
-          <TimePopup notification="error" title="請輸入完整資訊" />
+          <TimePopup notification="error" title="Please fill in all fields" />
         )}
         {notiStatus === "finish" && ""}
       </div>
@@ -77,7 +77,7 @@ const LoginPage = () => {
         <div>
           <Logo className={styles.logo} />
         </div>
-        <h1>登入 Alphitter</h1>
+        <h1>Login to Alphitter</h1>
         <div className={styles.inputGroup}>
             <div
               className={clsx(styles.inputContainer, {
@@ -85,16 +85,16 @@ const LoginPage = () => {
               })}
             >
               <label>
-                帳號
+                Account
                 <input
                   type="text"
                   value={account}
-                  placeholder="請輸入帳號"
+                  placeholder="Enter your account"
                   onChange={(e) => setAccount(e.target.value)}
                 />
               </label>
               {accountInvalid ? (
-                <p className={styles.errorMessage}>帳號不存在</p>
+                <p className={styles.errorMessage}>Account does not exist</p>
               ) : (
                 <></>
               )}
@@ -102,11 +102,11 @@ const LoginPage = () => {
 
             <div className={styles.inputContainer}>
               <label>
-                密碼
+                Password
                 <input
                   type="password"
                   value={password}
-                  placeholder="請輸入密碼"
+                  placeholder="Enter your password"
                   autoComplete="current-password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -115,15 +115,15 @@ const LoginPage = () => {
         </div>
 
         <button className={styles.button} onClick={handleClick}>
-          登入
+          Login
         </button>
         <div className={styles.loginLink}>
           <Link to="/signup">
-            <span className={styles.linkText}>註冊</span>
+            <span className={styles.linkText}>Sign Up</span>
           </Link>
           <span>&bull;</span>
           <Link to="/admin">
-            <span className={styles.linkText}>後台登入</span>
+            <span className={styles.linkText}>Admin Login</span>
           </Link>
         </div>
       </div>

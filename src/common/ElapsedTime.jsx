@@ -17,13 +17,13 @@ const ElapsedTime = ({ createdAt }) => {
       let elapsedTimeString = "";
 
       if (elapsedDays > 0) {
-        elapsedTimeString = `${elapsedDays} 天`;
+        elapsedTimeString = `${elapsedDays}d`;
       } else if (elapsedHours > 0) {
-        elapsedTimeString = `${elapsedHours} 小時 `;
+        elapsedTimeString = `${elapsedHours}h`;
       } else if (elapsedMinutes > 0) {
-        elapsedTimeString = `${elapsedMinutes} 分鐘`;
+        elapsedTimeString = `${elapsedMinutes}m`;
       } else {
-        elapsedTimeString = `${elapsedSeconds} 秒 `;
+        elapsedTimeString = `${elapsedSeconds}s`;
       }
 
       setElapsedTime(elapsedTimeString);

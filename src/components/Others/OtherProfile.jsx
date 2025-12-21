@@ -82,12 +82,12 @@ const OtherProfile = ({  otherUser, isFollowing }) => {
             <div className={styles.description}>{otherUser.introduction}</div>
             <div className={styles.numWrapper}>
               <p>
-                {otherUser.followingCount} 位
-                <span className={styles.sub}> 跟隨中</span>
+                {otherUser.followingCount}
+                <span className={styles.sub}> Following</span>
               </p>
               <p>
-                {otherUser.followerCount} 位
-                <span className={styles.sub}> 跟隨者</span>
+                {otherUser.followerCount}
+                <span className={styles.sub}> Followers</span>
               </p>
             </div>
           </div>

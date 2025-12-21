@@ -12,9 +12,9 @@ const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
-  // 錯誤通知
+  // Error notification
   const [notiStatus, setNotiStatus] = useState("finished");
-  // 錯誤提示
+  // Error message
   const [accountInvalid, setAccountInvalid] = useState(false);
   const [emailInvalid, setEmailInvalid] = useState(false);
 
@@ -48,12 +48,12 @@ const SignUpPage = () => {
         navigate("/login");
       return;
     }
-    if (data.message[0] === "account已存在") {
+    if (data.message[0] === "Account already exists") {
       setNotiStatus("account");
       setAccountInvalid(true);
       setEmailInvalid(false)
     }
-    if (data.message[0] === "email已存在") {
+    if (data.message[0] === "Email already exists") {
       setNotiStatus("email");
       setEmailInvalid(true);
       setAccountInvalid(false)
@@ -73,22 +73,22 @@ const SignUpPage = () => {
     <>
       <div className={styles.notiContainer} onClick={handleClosePopup}>
         {notiStatus === "success" && (
-          <TimePopup notification="success" title="註冊成功" />
+          <TimePopup notification="success" title="Registration successful" />
         )}
         {notiStatus === "account" && (
-          <TimePopup notification="error" title="account已重覆註冊!" />
+          <TimePopup notification="error" title="Account already exists!" />
         )}
         {notiStatus === "email" && (
-          <TimePopup notification="error" title="email已重覆註冊!" />
+          <TimePopup notification="error" title="Email already registered!" />
         )}
         {notiStatus === "invalid" && (
-          <TimePopup notification="error" title="帳號Email已重複註冊！" />
+          <TimePopup notification="error" title="Account and Email already exist!" />
         )}
         {notiStatus === "incomplete" && (
-          <TimePopup notification="error" title="請輸入完整資訊" />
+          <TimePopup notification="error" title="Please fill in all fields" />
         )}
         {notiStatus === "code" && (
-          <TimePopup notification="error" title="請輸入相同密碼" />
+          <TimePopup notification="error" title="Passwords do not match" />
         )}
         {notiStatus === "finish" && ""}
       </div>
@@ -96,7 +96,7 @@ const SignUpPage = () => {
         <div>
           <Logo className={styles.logo} />
         </div>
-        <h1>建立你的帳號</h1>
+        <h1>Create your account</h1>
         <div className={styles.inputGroup}>
           <div
             className={clsx(styles.inputContainer, {
@@ -104,17 +104,17 @@ const SignUpPage = () => {
             })}
           >
             <label className={styles.input}>
-              帳號
+              Account
               <input
                 type="text"
                 value={account}
-                placeholder="請輸入帳號"
+                placeholder="Enter your account"
                 maxLength="10"
                 onChange={(e) => setAccount(e.target.value)}
               />
             </label>
             {accountInvalid ? (
-              <p className={styles.errorMessage}>帳號已存在</p>
+              <p className={styles.errorMessage}>Account already exists</p>
             ) : (
               <></>
             )}
@@ -122,11 +122,11 @@ const SignUpPage = () => {
 
           <div className={styles.inputContainer}>
             <label className={styles.input}>
-              <div>名稱</div>
+              <div>Name</div>
               <input
                 type="text"
                 value={name}
-                placeholder="請輸入使用者名稱"
+                placeholder="Enter your name"
                 maxLength="50"
                 onChange={(e) => setName(e.target.value)}
               />
@@ -143,12 +143,12 @@ const SignUpPage = () => {
               <input
                 type="text"
                 value={email}
-                placeholder="請輸入Email"
+                placeholder="Enter your email"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </label>
             {emailInvalid ? (
-              <p className={styles.errorMessage}>Email已存在</p>
+              <p className={styles.errorMessage}>Email already exists</p>
             ) : (
               <></>
             )}
@@ -156,11 +156,11 @@ const SignUpPage = () => {
 
           <div className={styles.inputContainer}>
             <label className={styles.input}>
-              <div>密碼</div>
+              <div>Password</div>
               <input
                 type="password"
                 value={password}
-                placeholder="請設定密碼"
+                placeholder="Set your password"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
@@ -168,22 +168,22 @@ const SignUpPage = () => {
 
           <div className={styles.inputContainer}>
             <label className={styles.input}>
-              <div>密碼確認</div>
+              <div>Confirm Password</div>
               <input
                 type="password"
                 value={checkPassword}
-                placeholder="請再次輸入密碼"
+                placeholder="Enter password again"
                 onChange={(e) => setCheckPassword(e.target.value)}
               />
             </label>
           </div>
         </div>
         <button className={styles.button} onClick={handleClick}>
-          註冊
+          Sign Up
         </button>
         <div>
           <Link className={styles.linkText} to="/login">
-            <span>取消</span>
+            <span>Cancel</span>
           </Link>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://pure-waters-81841.herokuapp.com/api";
+const baseURL = "http://localhost:3001/api";
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
@@ -22,7 +22,7 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-//get觀看所有推文 api/tweets
+// Get all tweets api/tweets
 export const getTweetsAll = async () => {
   try {
     const { data } = await axiosInstance.get(`${baseURL}/tweets`);
@@ -32,7 +32,7 @@ export const getTweetsAll = async () => {
   }
 };
 
-// get觀看一篇特定推文tweets/:tweetid
+// Get a specific tweet tweets/:tweetid
 export const getTweet = async (id) => {
   try {
     const { data } = await axiosInstance.get(`${baseURL}/tweets/${id}`);
@@ -42,7 +42,7 @@ export const getTweet = async (id) => {
   }
 };
 
-// get觀看有回覆推文的推文api/tweets/id/replies
+// Get tweet replies api/tweets/id/replies
 export const getTweetReplies = async (id) => {
   try {
     const { data } = await axiosInstance.get(`${baseURL}/tweets/${id}/replies`);
@@ -52,7 +52,7 @@ export const getTweetReplies = async (id) => {
   }
 };
 
-//post 新增推文 api/tweets
+// Create a new tweet api/tweets
 
 export const createTweet = async ({ description }) => {
   try {
@@ -63,7 +63,7 @@ export const createTweet = async ({ description }) => {
   }
 };
 
-//post  回覆推文 api/tweets/id/replies
+// Reply to a tweet api/tweets/id/replies
 
 export const createReply = async ({ id, comment }) => {
   try {
@@ -76,7 +76,7 @@ export const createReply = async ({ id, comment }) => {
   }
 };
 
-//post 對推文按讚 api/tweets/id/like
+// Like a tweet api/tweets/id/like
 export const createLike = async (tweetId) => {
   try {
     const { data } = await axiosInstance.post(`${baseURL}/tweets/${tweetId}/like`);
@@ -86,7 +86,7 @@ export const createLike = async (tweetId) => {
   }
 };
 
-//post 對推文取消按讚 api/tweets/id/unlike
+// Unlike a tweet api/tweets/id/unlike
 export const deleteLike = async (tweetId) => {
   try {
     const { data } = await axiosInstance.post(`${baseURL}/tweets/${tweetId}/unlike`);
@@ -96,3 +96,13 @@ export const deleteLike = async (tweetId) => {
   }
 };
 
+// Delete a tweet api/tweets/id
+export const deleteTweet = async (tweetId) => {
+  try {
+    const { data } = await axiosInstance.delete(`${baseURL}/tweets/${tweetId}`);
+    return data;
+  } catch (error) {
+    console.error("[Delete Tweet failed]:", error);
+    throw error;
+  }
+};

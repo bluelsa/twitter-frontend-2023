@@ -4,18 +4,27 @@
   width: 100%;
   height: 100vh;
   margin: 0 auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 //MainPage Popularitems
 .mainContainer {
-  width: 1400px;
+  width: 100%;
+  max-width: 1400px;
   height: 100vh;
   margin: 0 auto;
   display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 20px;
+  box-sizing: border-box;
   .leftColumn {
     margin-right: 20px;
+    flex-shrink: 0;
   }
 }
 
@@ -25,7 +34,7 @@
   }
 }
 
-//中間Content
+// Middle Content
 .scrollbar {
   padding-left: 0px;
 
@@ -43,7 +52,7 @@
   }
 }
 
-//未使用className
+// Unused className
 .mainBlack {
   width: 1400px;
   height: 100vh;
@@ -54,13 +63,15 @@
 }
 
 .mainBackground {
-  // width: 100%;
-  width: 639px;
+  flex: 1;
+  min-width: 300px;
+  max-width: 639px;
   height: 100vh;
   border: 1px solid #e6ecf0;
   overflow-y: scroll;
   overflow-x: hidden;
   position: relative;
+  box-sizing: border-box;
 
   .header {
     margin-top: 20px;
@@ -94,7 +105,7 @@
   }
 
   .postDivider {
-    width: 639px;
+    width: 100%;
     height: 10px;
     border: none;
     background-color: #e6ecf0;
@@ -116,7 +127,7 @@
 }
 
 .twitsDivider {
-  width: 640px;
+  width: 100%;
   height: 1px;
   border: none;
   background-color: #e6ecf0;
@@ -144,15 +155,19 @@
 }
 
 .tweetCollection {
-  width: 589px;
-  height: 136px;
-  margin: 0px auto;
-  // display: flex;
+  width: calc(100% - 48px);
+  max-width: 589px;
+  height: auto;
+  min-height: 136px;
+  margin: 0 auto;
+  padding: 0 16px;
   gap: 8px;
+  box-sizing: border-box;
 
   .tweetContent {
-    width: 532px;
-    height: 136px;
+    width: 100%;
+    height: auto;
+    min-height: 136px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -163,12 +178,14 @@
 
     .tweetArticle {
       width: 100%;
-      height: 78px;
+      height: auto;
+      min-height: 26px;
       font-family: "Noto Sans TC";
       font-size: 16px;
       font-weight: 400;
       line-height: 26px;
       color: #171725;
+      word-wrap: break-word;
     }
 
     .tweetMessage {
@@ -226,17 +243,18 @@
 
 //Right popular section
 .rightColumn {
-  width: 100%;
+  flex: 0 0 320px;
+  width: 320px;
   height: 100vh;
 
   .popularList {
     margin-top: 16px;
-    margin-left: 24px;
-    width: 300px;
-    max-height: 100%;
+    margin-left: 16px;
+    width: calc(100% - 32px);
+    max-height: calc(100vh - 32px);
     border-radius: 16px;
     background-color: #fafafb;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 
     &::-webkit-scrollbar {
@@ -253,14 +271,117 @@
       height: 58px;
 
       div {
-        width: 96px;
+        width: auto;
+        white-space: nowrap;
         height: 26px;
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 700;
         font-family: "Noto Sans TC";
         margin-top: 24px;
-        margin-left: 24px;
+        margin-left: 16px;
       }
+    }
+  }
+}
+
+// Responsive breakpoints
+@media (max-width: 1350px) {
+  .rightColumn {
+    flex: 0 0 280px;
+    width: 280px;
+    
+    .popularList {
+      margin-left: 12px;
+      width: calc(100% - 24px);
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .rightColumn {
+    flex: 0 0 220px;
+    width: 220px;
+  }
+  
+  .mainBackground {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .rightColumn {
+    display: none;
+  }
+  
+  .mainBackground {
+    flex: 1;
+    max-width: 100%;
+    min-width: 0;
+  }
+  
+  .mainContainer {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .leftColumn {
+    flex: 0 0 240px;
+    width: 240px;
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .leftColumn {
+    flex: 0 0 200px;
+    width: 200px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .leftColumn {
+    flex: 0 0 80px;
+    width: 80px;
+    margin-right: 10px;
+  }
+  
+  .mainBackground {
+    min-width: 0;
+    
+    .header {
+      font-size: 20px;
+      padding-left: 16px;
+    }
+    
+    .postDivider,
+    .twitsDivider {
+      width: 100%;
+    }
+  }
+  
+  .mainContainer {
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .leftColumn {
+    display: none;
+  }
+  
+  .mainContainer {
+    padding: 0;
+  }
+  
+  .mainBackground {
+    flex: 1;
+    max-width: 100%;
+    
+    .header {
+      font-size: 18px;
+      padding-left: 12px;
     }
   }
 }
@@ -269,30 +390,44 @@
 //1.follower
 .followerContainer {
   width: 100%;
-  height: 82px;
-  border: 1px solid #fafafb;
+  min-height: 64px;
+  border-bottom: 1px solid #e6ecf0;
+  box-sizing: border-box;
 
   .followerContent {
-    width: 250px;
-    height: 50px;
-    margin: 16px;
-    display: grid;
-    grid-template-columns: 50px 86px 96px;
-    grid-gap: 8px;
+    width: 100%;
+    height: auto;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+
+    // Override avatar size for popular users
+    .twitAvatar {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      flex-shrink: 0;
+    }
 
     .follower {
-      margin-left: 8px;
-      width: 100%;
-      height: 47px;
+      flex: 1;
+      min-width: 0; // Important for text truncation to work
+      height: auto;
+      overflow: hidden;
 
       .followerName {
         width: 100%;
-        height: 26px;
+        height: 20px;
         font-family: "Noto Sans TC";
-        font-size: 16px;
+        font-size: 13px;
         font-weight: 700;
-        line-height: 26px;
+        line-height: 20px;
         color: #171725;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         &:hover {
           cursor: pointer;
@@ -301,26 +436,34 @@
 
       .followerTime {
         width: 100%;
-        height: 22px;
+        height: 16px;
         font-family: "Noto Sans TC";
-        font-size: 14px;
+        font-size: 11px;
         font-weight: 500;
-        line-height: 22px;
+        line-height: 16px;
         color: #92929d;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
 
     .buttonPosition {
-      width: 100%;
-      height: 50px;
-      margin-left: 13px;
+      flex-shrink: 0;
+      width: auto;
+      height: 26px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
 
+      svg {
+        height: 26px;
+        width: auto;
+      }
+
       &:hover {
         cursor: pointer;
-        transform: scale(1.1)
+        transform: scale(1.02);
       }
     }
   }

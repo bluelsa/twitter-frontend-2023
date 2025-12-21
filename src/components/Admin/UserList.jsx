@@ -5,7 +5,7 @@ const UserList = ({users}) => {
   return (
     <div className={styles.container}>
       <div className={styles.lineContent}>
-        <h4 className={styles.title}>使用者列表</h4>
+        <h4 className={styles.title}>User List</h4>
       </div>
       <div className={styles.cardsContainer}>
         {users.map((user) => {

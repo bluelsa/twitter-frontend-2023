@@ -26,7 +26,7 @@ const UserProfile = ({ setMain, setFollower, setFollowing, setEditPopup }) => {
           setFollowing(false);
         }}
       >
-        編輯個人資料
+        Edit Profile
       </button>
       <div className={styles.infoDescription}>
         <div className={styles.name}>{user.name}</div>
@@ -41,7 +41,7 @@ const UserProfile = ({ setMain, setFollower, setFollowing, setEditPopup }) => {
               setFollowing(true);
             }}
           >
-            {user.followingCount}位 <span className={styles.sub}> 跟隨中</span>
+            {user.followingCount} <span className={styles.sub}>Following</span>
           </p>
           <p
             onClick={() => {
@@ -50,7 +50,7 @@ const UserProfile = ({ setMain, setFollower, setFollowing, setEditPopup }) => {
               setFollowing(false);
             }}
           >
-            {user.followerCount}位 <span className={styles.sub}> 跟隨者</span>
+            {user.followerCount} <span className={styles.sub}>Followers</span>
           </p>
         </div>
       </div>

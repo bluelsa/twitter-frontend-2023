@@ -26,12 +26,12 @@ const UserMain = ({
   const navigate = useNavigate();
   const { user, setUser } = useAuth();
 
-  // render推文/回覆/喜歡的內容
+  // Render tweets/replies/likes sections
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
   const [likeSection, setLikeSection] = useState(false);
 
-  // 編輯個人資料popup window
+  // Edit profile popup window
   const [editPopup, setEditPopup] = useState(false);
 
   const reloadUserMain = async() =>  {
@@ -70,7 +70,7 @@ const UserMain = ({
 
               <div className={styles.tweetNum}>
                 <span>{user.userTweetCount}</span>
-                推文
+                Tweets
               </div>
             </div>
           </div>

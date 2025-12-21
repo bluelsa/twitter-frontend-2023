@@ -22,7 +22,7 @@ const SpecReplyTweet = ({reply, tweet}) => {
             </div>
           </div>
           <div className={styles.reply}>
-            <span>回覆</span>
+            <span>Replying to</span>
             <span className={styles.replyTo}>@{tweet.TweetUser.account}</span>
           </div>
         </div>

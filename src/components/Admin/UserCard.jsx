@@ -34,11 +34,11 @@ const UserCard = ({user}) => {
         </div>
         <div className={styles.followInfo}>
           <p>
-            {user.followingCount} 個<span className={styles.sub}>跟隨中</span>
+            {user.followingCount} <span className={styles.sub}>Following</span>
           </p>
 
           <p>
-            {user.followerCount} 位<span className={styles.sub}>跟隨者</span>
+            {user.followerCount} <span className={styles.sub}>Followers</span>
           </p>
         </div>
       </div>

@@ -15,7 +15,7 @@ function Twits({
 
   return (
     <>
-      <header className={styles.header}>首頁</header>
+      <header className={styles.header}>Home</header>
       <div className={styles.twitsDivider}></div>
       <Post 
       setPost={setPost}
