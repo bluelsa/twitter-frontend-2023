@@ -2,15 +2,18 @@ import styles from "../User/User.module.scss";
 import { ReactComponent as ReplyIcon } from "../../assets/image/TalkIcon.svg";
 import { ReactComponent as UnLikeIcon } from "../../assets/image/heart-hollow-xs.svg";
 import { ReactComponent as LikeIcon } from "../../assets/image/heart-xs.svg";
+import { ReactComponent as DeleteIcon } from "../../assets/image/delete-icon.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { createLike, deleteLike } from "../../api/tweets";
+import { createLike, deleteLike, deleteTweet } from "../../api/tweets";
 import ElapsedTime from "../../common/ElapsedTime";
 
-const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet }) => {
+const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet, onDelete }) => {
   const [isLike, setIsLike] = useState(tweet.isLiked);
   const [likedCount, setLikedCount] = useState(tweet.likedCount);
+  const [isDeleted, setIsDeleted] = useState(false);
   const navigate = useNavigate();
+  const currentUserId = parseInt(localStorage.getItem("userId"));
 
   const handleOtherPage = () => {
     const userId = localStorage.getItem("userId");
@@ -45,6 +48,26 @@ const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet }) => {
   const handleTweet = () => {
     localStorage.setItem("tweetId", tweet.id);
   };
+
+  const handleDelete = async () => {
+    if (window.confirm("Are you sure you want to delete this tweet?")) {
+      try {
+        await deleteTweet(tweet.id);
+        setIsDeleted(true);
+        if (onDelete) {
+          onDelete(tweet.id);
+        }
+      } catch (error) {
+        console.error("Failed to delete tweet:", error);
+        alert("Failed to delete tweet. Please try again.");
+      }
+    }
+  };
+
+  // Don't render if deleted
+  if (isDeleted) {
+    return null;
+  }
 
   return (
     <div className={styles.tweetContainer}>
@@ -104,6 +127,15 @@ const MainTwitForm = ({ tweet, setReplyPop, setSpecTweet }) => {
 
                 <span>{likedCount}</span>
               </div>
+              {currentUserId === tweet.UserId && (
+                <div className={styles.deleteBtn}>
+                  <DeleteIcon
+                    className={styles.icon}
+                    onClick={handleDelete}
+                    title="Delete tweet"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

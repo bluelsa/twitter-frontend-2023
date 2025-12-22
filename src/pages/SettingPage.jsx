@@ -81,16 +81,16 @@ const SettingPage = () => {
             }}
           >
             {notiStatus === "success" && (
-              <TimePopup notification="success" title="儲存成功" />
+              <TimePopup notification="success" title="Saved successfully" />
             )}
             {notiStatus === "wrongPassword" && (
-              <TimePopup notification="error" title="請輸入相同密碼" />
+              <TimePopup notification="error" title="Passwords do not match" />
             )}
             {notiStatus === "wrongAccount" && (
-              <TimePopup notification="error" title="帳號已存在" />
+              <TimePopup notification="error" title="Account already exists" />
             )}
             {notiStatus === "wrongEmail" && (
-              <TimePopup notification="error" title="Email已存在" />
+              <TimePopup notification="error" title="Email already exists" />
             )}
           </div>
           <div className={styles.homeContainer}>
@@ -100,11 +100,11 @@ const SettingPage = () => {
               </div>
               <div className={styles.middleColumn}>
                 <div className={styles.mainBackground}>
-                  <div className={styles.header}>帳戶設定</div>
+                  <div className={styles.header}>Account Settings</div>
                   <form>
                     <div className={styles.inputContainer}>
                       <label>
-                        <div>帳號</div>
+                        <div>Account</div>
                         <input
                           type="text"
                           value={account}
@@ -116,7 +116,7 @@ const SettingPage = () => {
 
                     <div className={styles.inputContainer}>
                       <label>
-                        <div>名稱</div>
+                        <div>Name</div>
                         <input
                           type="text"
                           value={name}
@@ -141,11 +141,11 @@ const SettingPage = () => {
 
                     <div className={styles.inputContainer}>
                       <label>
-                        密碼
+                        Password
                         <input
                           type="password"
                           value={password}
-                          placeholder="請設定密碼"
+                          placeholder="Set your password"
                           onChange={(e) => setPassword(e.target.value)}
                         />
                       </label>
@@ -153,18 +153,18 @@ const SettingPage = () => {
 
                     <div className={styles.inputContainer}>
                       <label>
-                        密碼再確認
+                        Confirm Password
                         <input
                           type="password"
                           value={checkPassword}
-                          placeholder="請再次輸入密碼"
+                          placeholder="Enter password again"
                           onChange={(e) => setCheckPassword(e.target.value)}
                         />
                       </label>
                     </div>
                   </form>
                   <button className={styles.storeButton} onClick={handleChange}>
-                    儲存
+                    Save
                   </button>
 
                   {twitPop && (

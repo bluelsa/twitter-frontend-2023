@@ -22,7 +22,7 @@ const OtherReplyTweet = ({otherReply}) => {
                 </div>
               </div>
               <div className={styles.reply}>
-                <span>回覆</span>
+                <span>Replying to</span>
                 <span className={styles.replyTo}>
                   @{otherReply.Tweet.TweetUser.account}{" "}
                 </span>

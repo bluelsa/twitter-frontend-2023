@@ -45,7 +45,7 @@ const MainFollowers = ({ setMain, setFollower, setFollowing }) => {
 
         <div className={styles.returnWrapper}>
           <div className={styles.userName}>{user.name}</div>
-          <div className={styles.tweetNum}>{user.userTweetCount} 推文</div>
+          <div className={styles.tweetNum}>{user.userTweetCount} Tweets</div>
         </div>
       </div>
       <div className={styles.nav}>
@@ -75,7 +75,7 @@ const MainFollowers = ({ setMain, setFollower, setFollowing }) => {
           return <MainFollowerItem key={follower.id} follower={follower} />
         })}
       </div>) : (
-        <h2 className={styles.noFollow}>沒有追隨者</h2>
+        <h2 className={styles.noFollow}>No followers yet</h2>
       )}
       <div className={styles.mainDivider}></div>
     </div>

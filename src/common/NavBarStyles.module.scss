@@ -4,6 +4,7 @@
   width: 100%;
   height: 100vh;
   position: relative;
+  flex-shrink: 0;
 
   .navContainer {
     width: 178px;
@@ -52,6 +53,54 @@
         margin-left: 5px;
       }
     }
+  }
+}
+
+// Responsive styles for navbar
+@media (max-width: 1200px) {
+  .leftColumn {
+    .navContainer {
+      margin-left: 40px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .leftColumn {
+    .navContainer {
+      margin-left: 10px;
+      width: 160px;
+    }
+  }
+  
+  .navItem {
+    width: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .leftColumn {
+    .navContainer {
+      width: 60px;
+      margin-left: 5px;
+      overflow: hidden;
+      
+      .navBigButton {
+        width: 50px;
+        overflow: hidden;
+      }
+    }
+  }
+  
+  .navItem {
+    width: 60px;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 600px) {
+  .leftColumn {
+    display: none;
   }
 }
 

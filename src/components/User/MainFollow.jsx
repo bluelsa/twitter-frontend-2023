@@ -45,7 +45,7 @@ useEffect(() => {
 
         <div className={styles.returnWrapper}>
           <div className={styles.userName}>{user.name}</div>
-          <div className={styles.tweetNum}>{user.userTweetCount} 推文</div>
+          <div className={styles.tweetNum}>{user.userTweetCount} Tweets</div>
         </div>
       </div>
       <div className={styles.nav}>
@@ -76,7 +76,7 @@ useEffect(() => {
           })}
         </div>
       ) : (
-        <h2 className={styles.noFollow}>尚未追隨</h2>
+        <h2 className={styles.noFollow}>Not following anyone</h2>
       )}
       </div>
       <div className={styles.mainDivider}></div>

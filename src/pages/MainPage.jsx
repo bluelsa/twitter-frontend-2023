@@ -29,7 +29,7 @@ useEffect(() => {
         <div className={styles.leftColumn}>
           <NavBar twitPop={twitPop} setTwitPop={setTwitPop} />
         </div>
-        {/* 中間推文部分 */}
+        {/* Middle tweet section */}
 
         <div className={styles.middleColumn}>
           <div className={`${styles.mainBackground} ${styles.scrollbar}`}>

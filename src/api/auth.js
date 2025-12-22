@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const authURL = "https://pure-waters-81841.herokuapp.com/api/users";
+const authURL = "http://localhost:3001/api/users";
 
 const axiosInstance = axios.create({
   baseUrl: authURL,

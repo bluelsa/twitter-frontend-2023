@@ -15,11 +15,11 @@ const UserSpecReply = ({ reply, replyAccount }) => {
           <div className={styles.replyInfo}>
             <div className={styles.tweetName}>{reply.RepliedUser.name}</div>
             <div className={styles.tweetTime}>
-              @{reply.RepliedUser.account} &bull;3小時
+              @{reply.RepliedUser.account} &bull;3h
             </div>
           </div>
           <div className={styles.reply}>
-            <span>回覆</span>
+            <span>Replying to</span>
             <span className={styles.replyTo}>@{replyAccount}</span>
           </div>
         </div>

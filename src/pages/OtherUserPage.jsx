@@ -53,7 +53,7 @@ const OtherUserPage = () => {
               />
             )}
 
-            {/* 推文與回覆推文彈跳視窗 */}
+            {/* Tweet and reply popup windows */}
             {replyPop && (
               <ReplyPopUp replyPop={replyPop} setReplyPop={setReplyPop} />
             )}

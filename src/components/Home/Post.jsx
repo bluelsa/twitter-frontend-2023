@@ -68,13 +68,13 @@ const Post = ({ setPost }) => {
         <>
           <div className={styles.notiContainer} onClick={handleClosePopup}>
             {notiStatus === "success" && (
-              <TimePopup notification="new" title="收到新的推文" />
+              <TimePopup notification="new" title="New tweet posted" />
             )}
             {notiStatus === "empty" && (
-              <TimePopup notification="error" title="內容不可空白" />
+              <TimePopup notification="error" title="Content cannot be empty" />
             )}
             {notiStatus === "max" && (
-              <TimePopup notification="error" title="字數不可超過 140 字" />
+              <TimePopup notification="error" title="Cannot exceed 140 characters" />
             )}
             {notiStatus === "finish" && ""}
           </div>
@@ -90,7 +90,7 @@ const Post = ({ setPost }) => {
                   value={description}
                   ref={inputRef}
                   onKeyDown={handleKeyDown}
-                  placeholder="有什麼新鮮事？"
+                  placeholder="What's happening?"
                   // maxLength="140"
                   onChange={(e) => {
                     setDescription(e.target.value);

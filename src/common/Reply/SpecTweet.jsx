@@ -95,15 +95,15 @@ const SpecTweet = ({ replyPop, setSpecTweet, setReplyPop }) => {
             <div className={styles.description}>{tweet.description}</div>
             <div className={styles.timeWrapper}>
               <DateTime createdAt={tweet.createdAt} />
-              {/* 上午 10:05&bull;2021年11月10日 */}
+              {/* 10:05 AM · Nov 10, 2021 */}
             </div>
 
             <div className={styles.num}>
               <div className={styles.replyNum}>
-                {tweet.repliedCount}&nbsp;<span>回覆</span>
+                {tweet.repliedCount}&nbsp;<span>Replies</span>
               </div>
               <div className={styles.likeNum}>
-                {likedCount}&nbsp;<span>喜歡次數</span>
+                {likedCount}&nbsp;<span>Likes</span>
               </div>
             </div>
 

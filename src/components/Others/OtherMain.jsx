@@ -15,12 +15,12 @@ const OtherMain = ({
   setReplyPop,
   onRemove
 }) => {
-  // render推文/回覆/喜歡的內容
+  // Render tweets/replies/likes sections
   const [twitSection, setTwitSection] = useState(true);
   const [replySection, setReplySection] = useState(false);
   const [likeSection, setLikeSection] = useState(false);
 
-  // API get 其他使用者資料
+  // API get other user data
   const [otherUser, setOtherUser] = useState({});
 
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ const OtherMain = ({
           <div className={styles.userName}>{otherUser.name}</div>
           <div className={styles.tweetNum}>
             <span>{otherUser.userTweetCount}</span>
-            推文
+            Tweets
           </div>
         </div>
       </div>

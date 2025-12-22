@@ -58,13 +58,13 @@ const AdminUsersPage = () => {
             <div className={styles.homeIcon}>
               <HomeIcon />
               <Link to="/admin/tweets">
-                <div>推文清單</div>
+                <div>Tweet List</div>
               </Link>
             </div>
             <div className={styles.userIcon}>
               <UserIcon />
               <Link to="/admin/users">
-                <div className={styles.active}>使用者列表</div>
+                <div className={styles.active}>User List</div>
               </Link>
             </div>
           </div>
@@ -72,7 +72,7 @@ const AdminUsersPage = () => {
           <div className={styles.logoutIcon}>
             <LogoutIcon />
             <Link to="/admin">
-              <div onClick={handleLogout}>登出</div>
+              <div onClick={handleLogout}>Logout</div>
             </Link>
           </div>
         </nav>

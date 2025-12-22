@@ -74,13 +74,13 @@ const UserEditModal = ({ reloadUserMain, user, setEditPopup }) => {
         <>
           <div className={styles.notiContainer} onClick={handleClosePopup}>
             {notiStatus === "nameEmpty" && (
-              <TimePopup notification="error" title="名稱不可為空白" />
+              <TimePopup notification="error" title="Name cannot be empty" />
             )}
             {notiStatus === "introductionEmpty" && (
-              <TimePopup notification="error" title="自我介紹不可為空白" />
+              <TimePopup notification="error" title="Bio cannot be empty" />
             )}
             {notiStatus === "max" && (
-              <TimePopup notification="error" title="字數超出上限！" />
+              <TimePopup notification="error" title="Character limit exceeded!" />
             )}
             {notiStatus === "finish" && ""}
           </div>
@@ -159,7 +159,7 @@ const UserEditModal = ({ reloadUserMain, user, setEditPopup }) => {
               <div className={styles.inputContainer}>
                 <div className={styles.nameInput}>
                   <label className={styles.input}>
-                    <div>名稱</div>
+                    <div>Name</div>
                     <input
                       className={styles.editInput}
                       type="text"
@@ -174,7 +174,7 @@ const UserEditModal = ({ reloadUserMain, user, setEditPopup }) => {
 
                 <div className={styles.textareaWrap}>
                   <div action="" className={styles.textContainer}>
-                    <label className={styles.textTitle}>自我介紹</label>
+                    <label className={styles.textTitle}>Bio</label>
 
                     <textarea
                       type="text"
